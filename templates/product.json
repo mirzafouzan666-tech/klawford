@@ -1,0 +1,133 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "review_count": "284",
+        "show_upsell": true,
+        "upsell_1_label": "Add Mattress & Base",
+        "upsell_2_label": "Choose Mattress"
+      }
+    },
+    "in_real_life": {
+      "type": "product-in-real-life",
+      "settings": {
+        "heading": "In Real Life",
+        "subheading": "See how our customers style their bed"
+      },
+      "blocks": {
+        "img1": { "type": "image", "settings": { "show_play": true } },
+        "img2": { "type": "image", "settings": { "show_play": true } },
+        "img3": { "type": "image", "settings": { "show_play": false } },
+        "img4": { "type": "image", "settings": { "show_play": true } },
+        "img5": { "type": "image", "settings": { "show_play": false } },
+        "img6": { "type": "image", "settings": { "show_play": false } }
+      },
+      "block_order": ["img1","img2","img3","img4","img5","img6"]
+    },
+    "social_proof": {
+      "type": "social-proof-bar",
+      "settings": {
+        "text": "Over 100,000 Happy Customers",
+        "rating_text": "Trustpilot 4.9/5"
+      },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "text": "Service was very good and the team were extremely helpful throughout.", "author": "Sample Customer", "time_ago": "1 day ago" } },
+        "r2": { "type": "review", "settings": { "text": "Went to great lengths to make sure my order was right, really happy with it.", "author": "Sample Customer", "time_ago": "2 days ago" } },
+        "r3": { "type": "review", "settings": { "text": "I couldn't be happier with the service I received, fast and easy.", "author": "Sample Customer", "time_ago": "2 days ago" } },
+        "r4": { "type": "review", "settings": { "text": "The delivery was really fast and the bed and base look brilliant.", "author": "Sample Customer", "time_ago": "3 days ago" } },
+        "r5": { "type": "review", "settings": { "text": "Great product, exactly as described, and easy to assemble.", "author": "Sample Customer", "time_ago": "4 days ago" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5"]
+    },
+    "product_features": {
+      "type": "product-features",
+      "settings": {
+        "heading": "Why Choose A Klawford Divan Bed?"
+      },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "title": "60 Night Risk-Free Trial", "description": "<p>Our beds are crafted with exceptional quality, and we're sure you'll love your Klawford bed. If you're not completely satisfied within the first 60 nights, simply contact us for a hassle-free return or swap.</p>" } },
+        "f2": { "type": "feature", "settings": { "title": "Extra Storage Option For More Space", "description": "<p>Make the most of your space with Klawford Divan Beds. Choose from our fantastic range of storage options to keep your bedroom organised and clutter-free.</p>" } },
+        "f3": { "type": "feature", "settings": { "title": "Sustainably Sourced & Handmade in The UK", "description": "<p>Every Klawford bed is made with the finest components from sustainably sourced materials, ensuring longevity, comfort, and eco-friendly design.</p>" } },
+        "f4": { "type": "feature", "settings": { "title": "Customisable & Beautiful Headboards", "description": "<p>Every Klawford Divan Bed comes with a stunning headboard designed to complement your bed perfectly. Every headboard is removable — integrate it into your bedroom exactly how you want.</p>" } },
+        "f5": { "type": "feature", "settings": { "title": "Handle Extreme Weight With a Reinforced Base", "description": "<p>Our divan bed base is built to last and designed for maximum durability with an exceptional weight tolerance able to support all types of sleepers.</p>" } }
+      },
+      "block_order": ["f1","f2","f3","f4","f5"]
+    },
+    "product_dimensions": {
+      "type": "product-dimensions",
+      "settings": {
+        "heading": "Dimensions",
+        "headboard_note": "Small Divan Standing Headboard"
+      },
+      "blocks": {
+        "d1": { "type": "dimension_row", "settings": { "size": "3ft Single", "length": "190 cm", "width": "90 cm" } },
+        "d2": { "type": "dimension_row", "settings": { "size": "4ft Small Double", "length": "190 cm", "width": "120 cm" } },
+        "d3": { "type": "dimension_row", "settings": { "size": "4ft 6 Double", "length": "190 cm", "width": "135 cm" } },
+        "d4": { "type": "dimension_row", "settings": { "size": "5ft King", "length": "200 cm", "width": "150 cm" } },
+        "d5": { "type": "dimension_row", "settings": { "size": "6ft Super King", "length": "200 cm", "width": "180 cm" } },
+        "p1": { "type": "package_row", "settings": { "size": "3ft Single", "length": "100 cm", "width": "48 cm" } },
+        "p2": { "type": "package_row", "settings": { "size": "4ft Small Double", "length": "100 cm", "width": "62 cm" } },
+        "p3": { "type": "package_row", "settings": { "size": "4ft 6 Double", "length": "100 cm", "width": "70 cm" } },
+        "p4": { "type": "package_row", "settings": { "size": "5ft King", "length": "106 cm", "width": "78 cm" } },
+        "p5": { "type": "package_row", "settings": { "size": "6ft Super King", "length": "106 cm", "width": "92 cm" } }
+      },
+      "block_order": ["d1","d2","d3","d4","d5","p1","p2","p3","p4","p5"]
+    },
+    "product_finance": {
+      "type": "product-finance",
+      "settings": {
+        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
+        "heading": "Shop Now, Pay Later",
+        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees."
+      },
+      "blocks": {
+        "pt1": { "type": "point", "settings": { "title": "Up to 12 Monthly Instalments", "description": "Spread the cost of your order over up to 12 equal monthly payments." } },
+        "pt2": { "type": "point", "settings": { "title": "Zero Interest Rate", "description": "Pay absolutely nothing extra — 0% interest for the full term of your plan." } },
+        "pt3": { "type": "point", "settings": { "title": "No Early Repayment Charges", "description": "Want to pay it off sooner? No problem — there are no fees when your balance is paid early." } }
+      },
+      "block_order": ["pt1","pt2","pt3"]
+    },
+    "product_services": {
+      "type": "product-services",
+      "settings": {
+        "heading": "Sleep Specialists At Your Service!",
+        "show_atc": true,
+        "atc_label": "Add to Basket"
+      },
+      "blocks": {
+        "s1": { "type": "service", "settings": { "title": "Delivered to Your Room", "description": "Our 2-man delivery team will bring your order straight to your room of choice at no extra charge." } },
+        "s2": { "type": "service", "settings": { "title": "Stress-Free Assembly", "description": "Your free team of experts will assemble your new bed set in as little as 15 minutes so all you have to do is enjoy it." } },
+        "s3": { "type": "service", "settings": { "title": "We're Just a Phone Call Away", "description": "Got questions or need advice? Our sleep specialists are ready to help. Call us at 0800 000 0000 and we'll be happy to assist!" } }
+      },
+      "block_order": ["s1","s2","s3"]
+    },
+    "product_faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "Which is right for me first, and what does this mean?", "answer": "<p>A divan bed is a great choice if you want a sturdy base with optional storage. Ottoman bases offer lift-up storage. Wingback beds feature a tall, padded headboard for a luxurious look. Choose based on your storage needs and style preference.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "How long does it take to make Klawford beds?", "answer": "<p>Each Klawford bed is handcrafted in the UK and typically takes 5–10 working days to manufacture before dispatch. Our team works hard to ensure every detail is perfect.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "Can I change my order?", "answer": "<p>You can amend your order within 24 hours of placing it by contacting our customer service team. After manufacturing begins we are unable to make changes.</p>" } },
+        "q4": { "type": "faq_item", "settings": { "question": "Can I choose my delivery date and time?", "answer": "<p>Yes! Once your order is ready to dispatch, our delivery partner will contact you to arrange a convenient date and time window that works for you.</p>" } },
+        "q5": { "type": "faq_item", "settings": { "question": "Can I pay monthly or through financing options?", "answer": "<p>Yes — we offer 0% interest financing through Klarna and Dividebuy. Split your purchase into monthly instalments at checkout with no hidden fees.</p>" } },
+        "q6": { "type": "faq_item", "settings": { "question": "Where are your products manufactured?", "answer": "<p>All Klawford products are handcrafted in the United Kingdom using sustainably sourced materials. We're proud to support British manufacturing.</p>" } },
+        "q7": { "type": "faq_item", "settings": { "question": "Do you count the height the headboard adds to the bed?", "answer": "<p>The dimensions listed for each product refer to the bed base and mattress only. Headboard height is listed separately in the product dimensions section above.</p>" } },
+        "q8": { "type": "faq_item", "settings": { "question": "How much credit can I use through financing options?", "answer": "<p>Credit limits vary depending on your credit assessment. Most customers can finance orders from £250 up to £5,000 through our 0% interest finance partners.</p>" } }
+      },
+      "block_order": ["q1","q2","q3","q4","q5","q6","q7","q8"]
+    }
+  },
+  "order": [
+    "main",
+    "in_real_life",
+    "social_proof",
+    "product_features",
+    "product_dimensions",
+    "product_finance",
+    "product_services",
+    "product_faq"
+  ]
+}

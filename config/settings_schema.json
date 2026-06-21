@@ -1,0 +1,90 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Klawford",
+    "theme_version": "1.0.0",
+    "theme_author": "Custom",
+    "theme_documentation_url": "https://1a1s0b-as.myshopify.com",
+    "theme_support_url": "https://1a1s0b-as.myshopify.com"
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image",
+        "info": "16 x 16px .png recommended"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary (cream)",
+        "default": "#F2E8E0"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary",
+        "label": "Secondary (wine/purple)",
+        "default": "#7F285B"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Body text",
+        "default": "#474546"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "heading_font",
+        "label": "Heading font",
+        "options": [
+          { "value": "'Playfair Display', serif", "label": "Playfair Display (default)" },
+          { "value": "'Georgia', serif", "label": "Georgia" },
+          { "value": "'Times New Roman', serif", "label": "Times New Roman" }
+        ],
+        "default": "'Playfair Display', serif"
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_facebook",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "Twitter / X URL"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "YouTube URL"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL"
+      }
+    ]
+  }
+]

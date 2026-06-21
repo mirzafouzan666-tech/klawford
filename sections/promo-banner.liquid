@@ -1,0 +1,53 @@
+<div class="promo-banner" role="marquee" aria-label="Promotional offer">
+  <div class="promo-marquee">
+    <!-- Duplicate content so the scroll loops seamlessly -->
+    <div class="promo-marquee__track" id="promo-track" aria-hidden="true">
+
+      {%- assign repeated = ',,,,,' | split: ',' -%}
+      {%- for r in repeated -%}
+        <div class="promo-marquee__item">
+          <span class="promo-dot"></span>
+          <span>TODAY'S DAILY DEAL</span>
+          <span class="promo-dot"></span>
+          <span>EXTRA {{ section.settings.discount }}% OFF</span>
+          <span class="promo-dot"></span>
+          <span>ENDS IN <span class="promo-countdown__time" data-end="{{ section.settings.countdown_end }}">00:00:00</span></span>
+          <span class="promo-dot"></span>
+          <span>USE CODE <span class="promo-code-pill">{{ section.settings.code }}</span></span>
+        </div>
+      {%- endfor -%}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promo Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "discount",
+      "label": "Discount percentage",
+      "default": "25"
+    },
+    {
+      "type": "text",
+      "id": "code",
+      "label": "Promo code",
+      "default": "EXTRA25"
+    },
+    {
+      "type": "number",
+      "id": "countdown_end",
+      "label": "Countdown end (Unix timestamp)",
+      "info": "Leave 0 to auto-countdown to midnight. Get a Unix timestamp from unixtimestamp.com"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,46 @@
+<div class="search-results">
+  <div class="container">
+    <h1 class="search-results__heading">
+      {%- if search.performed -%}
+        {%- if search.results_count == 0 -%}
+          No results for &ldquo;{{ search.terms | escape }}&rdquo;
+        {%- else -%}
+          {{ search.results_count }} result{% if search.results_count != 1 %}s{% endif %} for &ldquo;{{ search.terms | escape }}&rdquo;
+        {%- endif -%}
+      {%- else -%}
+        Search
+      {%- endif -%}
+    </h1>
+
+    <form action="/search" method="get" role="search" style="max-width:600px;margin-bottom:40px;">
+      <input type="hidden" name="type" value="product">
+      <div style="display:flex;gap:0;border:1.5px solid var(--clr-alto);border-radius:var(--radius-full);overflow:hidden;transition:var(--transition);" onfocusin="this.style.borderColor='var(--clr-secondary)'" onfocusout="this.style.borderColor='var(--clr-alto)'">
+        <input
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="Search for beds, mattresses…"
+          autocomplete="off"
+          style="flex:1;padding:14px 20px;border:none;outline:none;font-family:inherit;font-size:var(--fs-sm);">
+        <button type="submit" style="background:var(--clr-secondary);color:white;padding:14px 24px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);white-space:nowrap;transition:var(--transition);">Search</button>
+      </div>
+    </form>
+
+    {%- if search.performed and search.results_count > 0 -%}
+      <div class="collection-grid">
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}
+            {%- render 'product-card', product: item -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search Results",
+  "settings": []
+}
+{% endschema %}

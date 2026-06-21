@@ -1,0 +1,190 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div>
+        <a href="/" aria-label="{{ shop.name }} home">
+          {%- if section.settings.logo != blank -%}
+            <img
+              src="{{ section.settings.logo | image_url: width: 200 }}"
+              alt="{{ shop.name }}"
+              class="header-logo__img"
+              width="160"
+              loading="lazy">
+          {%- else -%}
+            <span class="footer-logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </a>
+
+        {%- if section.settings.about_text != blank -%}
+          <p class="footer-about">{{ section.settings.about_text }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.address != blank -%}
+          <address class="footer-address">{{ section.settings.address | newline_to_br }}</address>
+        {%- endif -%}
+
+        <!-- Social icons -->
+        <div class="footer-socials" aria-label="Social media links">
+          {%- if settings.social_facebook != blank -%}
+            <a href="{{ settings.social_facebook }}" class="footer-social" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_instagram != blank -%}
+            <a href="{{ settings.social_instagram }}" class="footer-social" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_twitter != blank -%}
+            <a href="{{ settings.social_twitter }}" class="footer-social" target="_blank" rel="noopener" aria-label="X / Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_youtube != blank -%}
+            <a href="{{ settings.social_youtube }}" class="footer-social" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if settings.social_tiktok != blank -%}
+            <a href="{{ settings.social_tiktok }}" class="footer-social" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.3 6.3 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/></svg>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Useful links -->
+      <div>
+        <h3 class="footer-col-title">Useful Links</h3>
+        <ul class="footer-links" role="list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'useful_link' -%}
+              <li><a href="{{ block.settings.url }}" class="footer-link">{{ block.settings.label }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if section.blocks == empty or section.blocks.size == 0 -%}
+            <li><a href="/collections/all" class="footer-link">All Products</a></li>
+            <li><a href="/pages/about-us" class="footer-link">About Us</a></li>
+            <li><a href="/pages/contact" class="footer-link">Contact Us</a></li>
+            <li><a href="/pages/delivery" class="footer-link">Delivery Information</a></li>
+            <li><a href="/pages/returns" class="footer-link">Returns Policy</a></li>
+            <li><a href="/pages/faq" class="footer-link">FAQ</a></li>
+            <li><a href="/blogs/news" class="footer-link">Blog</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <!-- Account links -->
+      <div>
+        <h3 class="footer-col-title">Account</h3>
+        <ul class="footer-links" role="list">
+          <li><a href="{{ routes.account_url }}" class="footer-link">My Account</a></li>
+          <li><a href="{{ routes.account_login_url }}" class="footer-link">Login</a></li>
+          <li><a href="{{ routes.account_register_url }}" class="footer-link">Register</a></li>
+          <li><a href="{{ routes.cart_url }}" class="footer-link">My Cart</a></li>
+          <li><a href="/pages/privacy-policy" class="footer-link">Privacy Policy</a></li>
+          <li><a href="/pages/terms-of-service" class="footer-link">Terms of Service</a></li>
+          <li><a href="/pages/cookie-policy" class="footer-link">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h3 class="footer-col-title">{{ section.settings.newsletter_heading | default: 'Stay in the Loop' }}</h3>
+        <p class="footer-newsletter-text">
+          {{ section.settings.newsletter_text | default: 'Subscribe for exclusive offers, new arrivals, and sleep tips delivered to your inbox.' }}
+        </p>
+        {%- form 'customer', class: 'footer-newsletter-form', id: 'footer-newsletter-form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <input
+            type="email"
+            name="contact[email]"
+            class="footer-newsletter-input"
+            placeholder="Your email address"
+            required
+            autocomplete="email"
+            aria-label="Email address for newsletter">
+          <button type="submit" class="footer-newsletter-btn">
+            Subscribe
+          </button>
+        {%- endform -%}
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+      </p>
+      <div class="footer-payments" aria-label="Accepted payment methods">
+        <span class="payment-badge">VISA</span>
+        <span class="payment-badge">MC</span>
+        <span class="payment-badge">AMEX</span>
+        <span class="payment-badge">Apple Pay</span>
+        <span class="payment-badge">G Pay</span>
+        <span class="payment-badge">Klarna</span>
+        <span class="payment-badge">PayPal</span>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer logo"
+    },
+    {
+      "type": "textarea",
+      "id": "about_text",
+      "label": "About text",
+      "default": "Klawford creates beautiful, handcrafted beds and mattresses engineered for the perfect night's sleep."
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "123 Furniture Lane\nBirmingham, B1 1AA\nUnited Kingdom\nTel: 0800 000 0000"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_heading",
+      "label": "Newsletter heading",
+      "default": "Stay in the Loop"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_text",
+      "label": "Newsletter description",
+      "default": "Subscribe for exclusive offers, new arrivals, and sleep tips delivered straight to your inbox."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "useful_link",
+      "name": "Useful Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Link label",
+          "default": "About Us"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

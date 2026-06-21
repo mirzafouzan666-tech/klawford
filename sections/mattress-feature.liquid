@@ -1,0 +1,259 @@
+<section class="feature-section feature-section--white">
+  <div class="container">
+    <div class="feature-section__grid {% if section.settings.image_position == 'right' %}feature-section__grid--reverse{% endif %}">
+
+      <!-- Text content -->
+      <div class="feature-section__content">
+        {%- if section.settings.label != blank -%}
+          <span class="feature-label">{{ section.settings.label }}</span>
+        {%- endif -%}
+
+        <h2 class="feature-heading">
+          {{ section.settings.heading }}
+          {%- if section.settings.heading_italic != blank -%}
+            <em> — {{ section.settings.heading_italic }}</em>
+          {%- endif -%}
+        </h2>
+
+        <ul class="feature-list" aria-label="Mattress features">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'feature' -%}
+              <li class="feature-item" {{ block.shopify_attributes }}>
+                <div class="feature-item__icon" aria-hidden="true">
+                  {%- case block.settings.icon -%}
+                    {%- when 'quality' -%}
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 1l2.24 4.54 5.01.73-3.62 3.53.85 4.98L10 12.27l-4.48 2.51.85-4.98L2.75 6.27l5.01-.73L10 1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                      </svg>
+                    {%- when 'posture' -%}
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 2c-3 0-5 2-5 5s2 7 5 7 5-4 5-7-2-5-5-5z" stroke="currentColor" stroke-width="1.4"/>
+                        <path d="M5 18c0-2 2-3 5-3s5 1 5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      </svg>
+                    {%- when 'allergy' -%}
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 2s-6 4-6 9a6 6 0 0 0 12 0c0-5-6-9-6-9z" stroke="currentColor" stroke-width="1.4"/>
+                        <path d="M7 13s1 2 3 2 3-2 3-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      </svg>
+                    {%- when 'motion' -%}
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10h12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <path d="M4 6c2 0 2.5 2 5 2s3-2 5-2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <path d="M4 14c2 0 2.5-2 5-2s3 2 5 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                      </svg>
+                    {%- else -%}
+                      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M3 10l5 5 9-9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  {%- endcase -%}
+                </div>
+                <div class="feature-item__body">
+                  <p class="feature-item__title">{{ block.settings.title }}</p>
+                  <p class="feature-item__desc">{{ block.settings.description }}</p>
+                </div>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="btn btn--primary">
+            {{ section.settings.cta_label }}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {%- endif -%}
+
+        <!-- Price range -->
+        {%- if section.settings.price_range != blank -%}
+          <p class="feature-price-range">{{ section.settings.price_range }}</p>
+        {%- endif -%}
+
+        <!-- Rating -->
+        <div class="feature-rating">
+          <div class="feature-rating__stars" aria-label="5 star rating">
+            {%- for i in (1..5) -%}
+              <div class="feature-rating__star" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            {%- endfor -%}
+          </div>
+          <span class="feature-rating__text">{{ section.settings.rating_text | default: '4.9 / 5 · Trustpilot' }}</span>
+        </div>
+
+        {%- if section.settings.show_payments -%}
+          <div class="feature-payments" aria-label="Accepted payment methods">
+            <span class="payment-pill">Visa</span>
+            <span class="payment-pill">Mastercard</span>
+            <span class="payment-pill">Amex</span>
+            <span class="payment-pill">Apple Pay</span>
+            <span class="payment-pill">Google Pay</span>
+            <span class="payment-pill">Klarna</span>
+            <span class="payment-pill">PayPal</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Image -->
+      <div class="feature-section__image">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 900 }}"
+            srcset="{{ section.settings.image | image_url: width: 600 }} 600w,
+                    {{ section.settings.image | image_url: width: 900 }} 900w"
+            sizes="(max-width: 992px) 100vw, 50vw"
+            alt="{{ section.settings.image.alt | escape | default: 'Klawford Mattress' }}"
+            loading="lazy"
+            width="900"
+            height="900">
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mattress Feature",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label (above heading)",
+      "default": "Sleep Science"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "KLAWFORD Mattresses"
+    },
+    {
+      "type": "text",
+      "id": "heading_italic",
+      "label": "Italic part of heading",
+      "default": "Engineered for Dreams"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left",  "label": "Left (default)" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop Mattresses"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "price_range",
+      "label": "Price range text",
+      "default": "From £249 — £499 · 12,400 Reviews"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.9 / 5 · Trustpilot"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payments",
+      "label": "Show payment badges",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Point",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "quality",  "label": "Quality / Star" },
+            { "value": "posture",  "label": "Posture / Body" },
+            { "value": "allergy",  "label": "Allergy / Droplet" },
+            { "value": "motion",   "label": "Motion isolation" },
+            { "value": "check",    "label": "Check mark" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Feature title",
+          "default": "Quality Pocket Spring"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Feature description",
+          "default": "Premium pocket springs provide targeted support across every part of your body for a superior night's sleep."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mattress Feature",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "quality",
+            "title": "Quality Pocket Spring",
+            "description": "Premium springs that provide support to relieve the pressure off the painful pressure points so there's no more tossing and turning at night."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "posture",
+            "title": "Promote Good Form and Posture",
+            "description": "Support each part of your spine equally and keep your spine in a straight line throughout the night."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "allergy",
+            "title": "Prevent Allergen Reaction",
+            "description": "Klawford mattresses and hypoallergenic, so one can enjoy a deep sleep at night even if you suffer from allergies or sensitivities."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "icon": "motion",
+            "title": "Infinite Restless Movements",
+            "description": "The responsive springs absorb motion and reduce partner disturbance at your personal leisure and fancy."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

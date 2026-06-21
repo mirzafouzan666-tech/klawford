@@ -1,0 +1,333 @@
+{%- paginate collection.products by section.settings.products_per_page -%}
+
+<div class="collection-main">
+  <div class="container">
+
+    <div class="collection-header">
+      <h1 class="collection-header__title">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="rte" style="font-size:var(--fs-sm);color:var(--clr-text-light);margin-top:8px;max-width:700px;">
+          {{ collection.description }}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Mobile filter toggle {%- endcomment -%}
+    <button
+      class="collection-sidebar-mobile-toggle"
+      style="display:none;align-items:center;gap:8px;margin-bottom:16px;padding:10px 18px;border:1.5px solid var(--clr-alto);border-radius:var(--radius-full);font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--clr-text);"
+      onclick="this.nextElementSibling.querySelector('.collection-sidebar').classList.toggle('is-visible')"
+    >
+      <svg width="16" height="14" viewBox="0 0 16 14" fill="none"><path d="M1 2h14M4 7h8M7 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Filter &amp; Sort
+    </button>
+
+    <div class="collection-layout">
+
+      {%- comment -%} ---- SIDEBAR ---------------------------------------- {%- endcomment -%}
+      <aside class="collection-sidebar">
+        <div class="collection-sidebar__head">
+          <span class="collection-sidebar__title">Filter</span>
+          {%- if collection.filters.size > 0 -%}
+            <a href="{{ collection.url }}" class="collection-sidebar__clear">Clear all</a>
+          {%- endif -%}
+        </div>
+
+        {%- for filter in collection.filters -%}
+          <div class="filter-group is-open" data-filter-group>
+            <button class="filter-group__header" onclick="this.closest('[data-filter-group]').classList.toggle('is-open')">
+              <span>{{ filter.label }}</span>
+              <svg class="filter-group__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="filter-group__body">
+              <div class="filter-group__inner">
+                {%- if filter.type == 'price_range' -%}
+                  <div class="filter-price-range">
+                    <label class="filter-price-range__field">
+                      <span>£</span>
+                      <input type="number" min="0" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" placeholder="0" form="collection-filters-form" onchange="this.closest('form').submit()">
+                    </label>
+                    <span class="filter-price-range__sep">to</span>
+                    <label class="filter-price-range__field">
+                      <span>£</span>
+                      <input type="number" min="0" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" placeholder="{{ filter.range_max | money_without_currency }}" form="collection-filters-form" onchange="this.closest('form').submit()">
+                    </label>
+                  </div>
+                  <p class="filter-price-range__hint">The highest price is {{ filter.range_max | money }}</p>
+                {%- else -%}
+                  {%- for value in filter.values -%}
+                    <label class="filter-option">
+                      <input
+                        type="checkbox"
+                        name="{{ value.param_name }}"
+                        value="{{ value.value }}"
+                        {% if value.active %}checked{% endif %}
+                        onchange="this.closest('form').submit()"
+                        form="collection-filters-form"
+                      >
+                      {%- if filter.type == 'list' and value.swatch != blank -%}
+                        <span class="filter-option__swatch" style="background:{{ value.swatch.color }};"></span>
+                      {%- endif -%}
+                      <span>{{ value.label }}</span>
+                      <span class="filter-option__count">{{ value.count }}</span>
+                    </label>
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- else -%}
+          {%- comment -%} Default static filters when Shopify filters not configured {%- endcomment -%}
+          <div class="filter-group is-open" data-filter-group>
+            <button class="filter-group__header" onclick="this.closest('[data-filter-group]').classList.toggle('is-open')">
+              <span>Type</span>
+              <svg class="filter-group__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="filter-group__body">
+              <div class="filter-group__inner">
+                <label class="filter-option"><input type="checkbox"><span>Divan Beds</span></label>
+                <label class="filter-option"><input type="checkbox"><span>Ottoman Beds</span></label>
+                <label class="filter-option"><input type="checkbox"><span>Upholstered Beds</span></label>
+                <label class="filter-option"><input type="checkbox"><span>Wingback Beds</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="filter-group is-open" data-filter-group>
+            <button class="filter-group__header" onclick="this.closest('[data-filter-group]').classList.toggle('is-open')">
+              <span>Mattress</span>
+              <svg class="filter-group__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="filter-group__body">
+              <div class="filter-group__inner">
+                <label class="filter-option"><input type="checkbox"><span>Single 3ft</span></label>
+                <label class="filter-option"><input type="checkbox"><span>Small Double 4ft</span></label>
+                <label class="filter-option"><input type="checkbox"><span>Double 4ft 6</span></label>
+                <label class="filter-option"><input type="checkbox"><span>King Size 5ft</span></label>
+                <label class="filter-option"><input type="checkbox"><span>Super King 6ft</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="filter-group" data-filter-group>
+            <button class="filter-group__header" onclick="this.closest('[data-filter-group]').classList.toggle('is-open')">
+              <span>Colour</span>
+              <svg class="filter-group__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="filter-group__body">
+              <div class="filter-group__inner">
+                <label class="filter-option"><input type="checkbox"><span class="filter-option__swatch" style="background:#c9b8a8;"></span><span>Beige</span></label>
+                <label class="filter-option"><input type="checkbox"><span class="filter-option__swatch" style="background:#555;"></span><span>Grey</span></label>
+                <label class="filter-option"><input type="checkbox"><span class="filter-option__swatch" style="background:#1a1a2e;"></span><span>Navy</span></label>
+                <label class="filter-option"><input type="checkbox"><span class="filter-option__swatch" style="background:#f5f5f5;border:1px solid #ddd;"></span><span>White</span></label>
+                <label class="filter-option"><input type="checkbox"><span class="filter-option__swatch" style="background:#7F285B;"></span><span>Plum</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="filter-group" data-filter-group>
+            <button class="filter-group__header" onclick="this.closest('[data-filter-group]').classList.toggle('is-open')">
+              <span>Price</span>
+              <svg class="filter-group__icon" width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="filter-group__body">
+              <div class="filter-group__inner">
+                <label class="filter-option"><input type="checkbox"><span>Under £250</span></label>
+                <label class="filter-option"><input type="checkbox"><span>£250 – £400</span></label>
+                <label class="filter-option"><input type="checkbox"><span>£400 – £600</span></label>
+                <label class="filter-option"><input type="checkbox"><span>Over £600</span></label>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </aside>
+
+      {%- comment -%} ---- MAIN CONTENT ------------------------------------ {%- endcomment -%}
+      <div class="collection-content">
+
+        <div class="collection-toolbar">
+          <span style="font-size:var(--fs-sm);color:var(--clr-gray-dusty);">{{ collection.products_count }} products</span>
+          <div class="collection-sort">
+            <label for="sort-select" style="font-size:var(--fs-sm);font-weight:var(--fw-semibold);">Sort by:</label>
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <select id="sort-select" name="sort_by" aria-label="Sort products" onchange="window.location.href='?sort_by=' + this.value">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>
+                  {{ option.name }}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+        </div>
+
+        <form id="collection-filters-form" method="get" action="{{ collection.url }}">
+          <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
+        </form>
+
+        <div class="collection-grid">
+          {%- for product in collection.products -%}
+            {%- render 'product-card', product: product -%}
+            {%- assign promo_tile_mod = forloop.index | modulo: 6 -%}
+            {%- if section.settings.show_promo_tile and promo_tile_mod == 0 and forloop.index != collection.products_count -%}
+              <a href="{{ section.settings.promo_tile_url | default: '#' }}" class="collection-promo-tile">
+                <span class="collection-promo-tile__kicker">{{ section.settings.promo_tile_kicker | default: "Spring" }}</span>
+                <span class="collection-promo-tile__pct">{{ section.settings.promo_tile_pct | default: "25%" }}</span>
+                <span class="collection-promo-tile__off">OFF</span>
+                <span class="collection-promo-tile__code">Code {{ section.settings.promo_tile_code | default: "EXTRA25" }}</span>
+                <span class="collection-promo-tile__cta">Shop Now</span>
+              </a>
+            {%- endif -%}
+          {%- else -%}
+            <p style="grid-column:1/-1;text-align:center;color:var(--clr-gray-dusty);padding:60px 0;">
+              No products found in this collection.
+            </p>
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <div class="collection-pagination" role="navigation" aria-label="Pagination">
+            {%- if paginate.previous -%}
+              <a href="{{ paginate.previous.url }}" aria-label="Previous page">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            {%- endif -%}
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}">{{ part.title }}</a>
+              {%- else -%}
+                <span class="current">{{ part.title }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+            {%- if paginate.next -%}
+              <a href="{{ paginate.next.url }}" aria-label="Next page">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+      </div>{%- comment -%}/.collection-content{%- endcomment -%}
+    </div>{%- comment -%}/.collection-layout{%- endcomment -%}
+
+    {%- comment -%} ---- COLLECTION DESCRIPTION / SEO CONTENT -------------- {%- endcomment -%}
+    {%- if section.settings.show_seo_content and section.settings.seo_content != blank -%}
+      <div class="collection-seo rte" style="max-width:900px;margin:48px auto 0;padding-top:40px;border-top:1px solid var(--clr-ash);font-size:var(--fs-sm);color:var(--clr-text-light);line-height:1.9;">
+        {{ section.settings.seo_content }}
+      </div>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{%- if section.settings.show_trust_bar -%}
+<div class="collection-trust-bar">
+  <div class="container">
+    <div class="collection-trust-bar__inner">
+      <div class="collection-trust-item">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 3l2.8 5.6 6.2.9-4.5 4.4 1.1 6.1L14 17l-5.6 3 1.1-6.1L5 9.5l6.2-.9L14 3z" stroke="var(--clr-secondary)" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        <span>5 Year Warranty</span>
+      </div>
+      <div class="collection-trust-item">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="var(--clr-secondary)" stroke-width="1.5"/><path d="M14 9v5l3 3" stroke="var(--clr-secondary)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span>60 Night Risk-Free Trial</span>
+      </div>
+      <div class="collection-trust-item">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 12h12m-4-4 4 4-4 4" stroke="var(--clr-secondary)" stroke-width="1.5" stroke-linecap="round"/><path d="M16 8h6a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-6" stroke="var(--clr-secondary)" stroke-width="1.5"/></svg>
+        <span>0% Interest Rate</span>
+      </div>
+      <div class="collection-trust-item">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="9" width="22" height="14" rx="2" stroke="var(--clr-secondary)" stroke-width="1.5"/><path d="M8 9V7a6 6 0 0 1 12 0v2" stroke="var(--clr-secondary)" stroke-width="1.5"/></svg>
+        <span>Fast Free Delivery</span>
+      </div>
+      <div class="collection-trust-item">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4C9.6 4 6 7.6 6 12c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="var(--clr-secondary)" stroke-width="1.5"/></svg>
+        <span>Handmade in the UK</span>
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{%- if section.settings.show_social_proof -%}
+<div class="social-proof-bar collection-social-proof">
+  <div class="container">
+    <div class="social-proof-bar__header">
+      <div class="tp-stars" aria-label="5 star rating">
+        {%- for i in (1..5) -%}
+          <div class="tp-star" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        {%- endfor -%}
+      </div>
+      <p class="social-proof-bar__text">Over 100,000 Happy Customers</p>
+      <div class="tp-label">
+        <span>Rated</span>
+        <strong class="tp-logo-text">Trustpilot</strong>
+        <span>4.9 / 5 · 12,400 reviews</span>
+      </div>
+    </div>
+
+    <div class="review-carousel" data-review-carousel>
+      <button type="button" class="review-carousel__arrow review-carousel__arrow--prev" aria-label="Previous reviews" data-review-prev>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="review-carousel__track" data-review-track>
+        {%- assign collection_reviews = "Service was very good and the team were extremely helpful throughout.|1 day ago,Went to great lengths to make sure my order was right, really happy with it.|2 days ago,I couldn't be happier with the service I received, fast and easy.|2 days ago,The delivery was really fast and the bed and base look brilliant.|3 days ago,Great product, exactly as described, and easy to assemble.|4 days ago" | split: "," -%}
+        {%- for entry in collection_reviews -%}
+          {%- assign parts = entry | split: "|" -%}
+          <div class="review-card">
+            <div class="tp-stars review-card__stars" aria-hidden="true">
+              {%- for i in (1..5) -%}
+                <div class="tp-star"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+              {%- endfor -%}
+            </div>
+            <p class="review-card__text">{{ parts[0] }}</p>
+            <p class="review-card__meta">Sample Customer, {{ parts[1] }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+      <button type="button" class="review-carousel__arrow review-carousel__arrow--next" aria-label="Next reviews" data-review-next>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection Main",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 12,
+      "max": 48,
+      "step": 12,
+      "label": "Products per page",
+      "default": 24
+    },
+    {
+      "type": "checkbox",
+      "id": "show_seo_content",
+      "label": "Show SEO content below grid",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "seo_content",
+      "label": "SEO / description content"
+    },
+    { "type": "checkbox", "id": "show_trust_bar", "label": "Show trust bar", "default": true },
+    { "type": "checkbox", "id": "show_social_proof", "label": "Show social proof section", "default": true },
+    {
+      "type": "header",
+      "content": "Promo tile (shown every 6 products)"
+    },
+    { "type": "checkbox", "id": "show_promo_tile", "label": "Show promo tile in grid", "default": true },
+    { "type": "url", "id": "promo_tile_url", "label": "Promo tile link" },
+    { "type": "text", "id": "promo_tile_kicker", "label": "Promo tile kicker", "default": "Spring" },
+    { "type": "text", "id": "promo_tile_pct", "label": "Promo tile percentage", "default": "25%" },
+    { "type": "text", "id": "promo_tile_code", "label": "Promo tile code", "default": "EXTRA25" }
+  ]
+}
+{% endschema %}

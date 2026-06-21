@@ -1,0 +1,88 @@
+<section class="new-trending">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.heading }}</h2>
+
+    {%- assign collection = collections[section.settings.collection] -%}
+
+    <div class="products-grid">
+      {%- if collection != blank and collection.products.size > 0 -%}
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..8) -%}
+          {%- assign placeholder_index = i | modulo: 6 -%}
+          {%- if placeholder_index == 0 -%}{%- assign placeholder_index = 6 -%}{%- endif -%}
+          <div class="product-card">
+            <div class="product-card__img-wrap">
+              <div class="product-card__img">
+                {{ 'product-' | append: placeholder_index | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+            </div>
+            <div class="product-card__info">
+              <p class="product-card__title">Sample Product {{ i }}</p>
+              <div class="product-card__pricing">
+                <span class="product-card__price">£299.99</span>
+                <span class="product-card__compare">£399.99</span>
+                <span class="product-card__save">Save £100</span>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    <div class="new-trending__cta">
+      <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="btn btn--primary btn--lg">
+        {{ section.settings.cta_label | default: 'Show Trending' }}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "New & Trending",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "New & Trending"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection to show"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "label": "Number of products",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Show Trending"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "New & Trending"
+    }
+  ]
+}
+{% endschema %}

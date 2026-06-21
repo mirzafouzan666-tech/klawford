@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_seo_content": true,
+        "seo_content": "<h3>What is a divan bed?</h3><p>A divan bed pairs a solid, upholstered base with a separate mattress, giving you a sturdy platform and — on most styles — built-in drawers for extra storage. The base itself is finished in your choice of fabric, so it doubles as a piece of furniture in its own right rather than disappearing under a fitted valance.</p><h3>Does a divan bed come with a mattress?</h3><p>It depends on the listing — some of our divan beds are sold as a base-and-mattress bundle, while others let you choose the base on its own so you can pair it with a mattress you already own or pick one separately. Check the product options on each listing to see what's included.</p><h3>What are the benefits of choosing a divan?</h3><p>Divan bases are built for everyday use: the platform top gives even support across the whole mattress, and drawer storage options mean you don't need a separate ottoman or under-bed boxes. They also tend to sit a little higher off the floor, which makes getting in and out easier.</p><h3>What fabric and colour options are there?</h3><p>Our divan range comes in a selection of fabrics and colourways, from plush velvets to more practical weaves, so you can match the base and headboard to the rest of your room.</p><h3>What does a footboard add?</h3><p>A footboard is an upholstered panel fitted to the end of the base. It's a styling choice more than a functional one — it gives the bed a more finished, hotel-style look and adds a bit of extra padding at the foot end.</p><h3>Wingback vs. standard headboard — what's the difference?</h3><p>A wingback headboard has panels that angle out at the sides, creating a more framed, cocooned look and giving you something to lean against side-on. A standard headboard is a flat panel — simpler, and usually a little more affordable.</p><h3>Are divan beds easy to assemble?</h3><p>Yes — divan bases are designed for straightforward home assembly with basic tools, and the headboard typically brackets on separately. Full instructions are included with every order.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,101 @@
+<div class="cart-page">
+  <div class="container">
+    <h1 class="cart-page__title">Your Cart</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-page__grid">
+
+        <!-- Items -->
+        <div>
+          <div class="cart-table-head" aria-hidden="true">
+            <span>Product</span>
+            <span>Price</span>
+            <span>Quantity</span>
+            <span></span>
+          </div>
+
+          {%- form 'cart', cart -%}
+            {%- for item in cart.items -%}
+              <div class="cart-table-row">
+                <div class="cart-row__product">
+                  <a href="{{ item.url }}" class="cart-row__img">
+                    {%- if item.image -%}
+                      <img src="{{ item.image | image_url: width: 180 }}" alt="{{ item.title | escape }}" width="90" height="90" loading="lazy">
+                    {%- endif -%}
+                  </a>
+                  <div>
+                    <a href="{{ item.url }}" class="cart-row__name">{{ item.product.title }}</a>
+                    {%- unless item.product.has_only_default_variant -%}
+                      <p class="cart-row__variant">{{ item.variant.title }}</p>
+                    {%- endunless -%}
+                  </div>
+                </div>
+                <span class="cart-row__price">{{ item.price | money }}</span>
+                <div class="cart-row__qty">
+                  <button type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.dispatchEvent(new Event('change'))">&#8722;</button>
+                  <input
+                    type="number"
+                    name="updates[]"
+                    id="updates_{{ item.key }}"
+                    value="{{ item.quantity }}"
+                    min="0"
+                    data-key="{{ item.key }}"
+                    aria-label="Quantity for {{ item.title | escape }}">
+                  <button type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.dispatchEvent(new Event('change'))">&#43;</button>
+                </div>
+                <div class="cart-row__remove">
+                  <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" aria-label="Remove {{ item.title | escape }}">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                  </a>
+                </div>
+              </div>
+            {%- endfor -%}
+
+            <div style="margin-top:20px;">
+              <button type="submit" name="update" class="btn btn--outline btn--sm">Update Cart</button>
+            </div>
+          {%- endform -%}
+        </div>
+
+        <!-- Summary -->
+        <div class="cart-summary">
+          <h2 class="cart-summary__title">Order Summary</h2>
+          <div class="cart-summary__row">
+            <span>Subtotal ({{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %})</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <div class="cart-summary__row">
+            <span>Shipping</span>
+            <span>Calculated at checkout</span>
+          </div>
+          <div class="cart-summary__row cart-summary__row--total">
+            <span>Total</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <p class="cart-summary__note">Taxes included. Shipping calculated at checkout.</p>
+          <a href="/checkout" class="btn btn--primary btn--block btn--lg">Proceed to Checkout</a>
+          <a href="/collections/all" class="btn btn--outline btn--block">Continue Shopping</a>
+        </div>
+
+      </div>
+    {%- else -%}
+      <div style="text-align:center;padding:80px 20px;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="margin:0 auto 20px;" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10 8h8l5.5 28M23 36h38l-4.5 22.5H27.5L23 36z" stroke="#dadada" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="32" cy="65" r="4" stroke="#dadada" stroke-width="2.5"/>
+          <circle cx="55" cy="65" r="4" stroke="#dadada" stroke-width="2.5"/>
+        </svg>
+        <h2 style="font-family:var(--ff-primary);font-size:28px;margin-bottom:12px;">Your cart is empty</h2>
+        <p style="color:var(--clr-gray-dusty);margin-bottom:28px;">Looks like you haven't added anything yet.</p>
+        <a href="/collections/all" class="btn btn--primary btn--lg">Start Shopping</a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Cart Main",
+  "settings": []
+}
+{% endschema %}

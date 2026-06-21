@@ -1,0 +1,165 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Spring Sale",
+        "subheading": "EXTRA 25% OFF",
+        "badge_text": "Spring Sale",
+        "promo_code": "EXTRA25"
+      },
+      "blocks": {
+        "btn_mattresses": {
+          "type": "button",
+          "settings": { "label": "Mattresses", "url": "/collections/mattresses" }
+        },
+        "btn_divan": {
+          "type": "button",
+          "settings": { "label": "Divan Beds", "url": "/collections/divan-beds" }
+        },
+        "btn_ottoman": {
+          "type": "button",
+          "settings": { "label": "Ottoman Beds", "url": "/collections/ottoman-beds" }
+        }
+      },
+      "block_order": ["btn_mattresses", "btn_divan", "btn_ottoman"]
+    },
+    "social_proof": {
+      "type": "social-proof-bar",
+      "settings": {
+        "text": "Over 100,000 Happy Customers",
+        "rating_text": "4.9 / 5 · 12,400 reviews"
+      },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "text": "Service was very good and the team were extremely helpful throughout.", "author": "Sample Customer", "time_ago": "1 day ago" } },
+        "r2": { "type": "review", "settings": { "text": "Went to great lengths to make sure my order was right, really happy with it.", "author": "Sample Customer", "time_ago": "2 days ago" } },
+        "r3": { "type": "review", "settings": { "text": "I couldn't be happier with the service I received, fast and easy.", "author": "Sample Customer", "time_ago": "2 days ago" } },
+        "r4": { "type": "review", "settings": { "text": "The delivery was really fast and the bed and base look brilliant.", "author": "Sample Customer", "time_ago": "3 days ago" } },
+        "r5": { "type": "review", "settings": { "text": "Great product, exactly as described, and easy to assemble.", "author": "Sample Customer", "time_ago": "4 days ago" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4", "r5"]
+    },
+    "popular_categories": {
+      "type": "popular-categories",
+      "settings": { "heading": "Popular Categories" },
+      "blocks": {
+        "cat1": { "type": "category", "settings": { "label": "Divan Beds" } },
+        "cat2": { "type": "category", "settings": { "label": "Ottoman Beds" } },
+        "cat3": { "type": "category", "settings": { "label": "Upholstered Beds" } },
+        "cat4": { "type": "category", "settings": { "label": "Mattresses" } }
+      },
+      "block_order": ["cat1", "cat2", "cat3", "cat4"]
+    },
+    "new_trending": {
+      "type": "new-trending",
+      "settings": {
+        "heading": "New & Trending",
+        "products_to_show": 8,
+        "cta_label": "Show Trending"
+      }
+    },
+    "trust_badges": {
+      "type": "trust-badges",
+      "settings": {},
+      "blocks": {
+        "badge1": { "type": "badge", "settings": { "icon": "warranty",  "text": "5 Years Warranty" } },
+        "badge2": { "type": "badge", "settings": { "icon": "trial",     "text": "60 Night Risk-Free Trial" } },
+        "badge3": { "type": "badge", "settings": { "icon": "finance",   "text": "0% Interest Rate" } },
+        "badge4": { "type": "badge", "settings": { "icon": "delivery",  "text": "Fast Free Delivery" } },
+        "badge5": { "type": "badge", "settings": { "icon": "handmade",  "text": "Handmade in the UK" } }
+      },
+      "block_order": ["badge1", "badge2", "badge3", "badge4", "badge5"]
+    },
+    "divan_feature": {
+      "type": "divan-feature",
+      "settings": {
+        "heading": "Klawford Divan Beds",
+        "cta_label": "Shop Divan Beds",
+        "cta_url": "/collections/divan-beds",
+        "show_payments": true
+      },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "icon": "happiness",   "title": "Happiness Guaranteed or Money Back", "description": "We're so committed to your satisfaction that after 6 months, if you're not happy simply return it or swap for a new one." } },
+        "f2": { "type": "feature", "settings": { "icon": "sustainable", "title": "Sustainably Sourced & Handmade in The UK", "description": "Every Klawford bed is handcrafted in the UK using sustainably sourced materials." } },
+        "f3": { "type": "feature", "settings": { "icon": "customize",   "title": "Customisable Options for Your Specific Needs", "description": "Choose your colour, size, storage type, headboard and base to create your perfect bed." } },
+        "f4": { "type": "feature", "settings": { "icon": "motion",      "title": "Infinite Restless Movements", "description": "The responsive design absorbs motion for a calm and undisturbed night's sleep." } }
+      },
+      "block_order": ["f1", "f2", "f3", "f4"]
+    },
+    "loved_gallery": {
+      "type": "loved-gallery",
+      "settings": { "heading": "Loved in Homes Just Like Yours" },
+      "blocks": {
+        "g1": { "type": "image", "settings": { "show_play": true } },
+        "g2": { "type": "image", "settings": { "show_play": true } },
+        "g3": { "type": "image", "settings": { "show_play": true } },
+        "g4": { "type": "image", "settings": { "show_play": true } },
+        "g5": { "type": "image", "settings": { "show_play": false } },
+        "g6": { "type": "image", "settings": { "show_play": false } }
+      },
+      "block_order": ["g1", "g2", "g3", "g4", "g5", "g6"]
+    },
+    "promo_banner": {
+      "type": "promo-banner",
+      "settings": { "discount": "25", "code": "EXTRA25" }
+    },
+    "how_it_works": {
+      "type": "how-it-works",
+      "settings": {
+        "heading": "Hassle-Free Shopping Experience",
+        "subheading": "in 3 Easy Steps"
+      },
+      "blocks": {
+        "step1": { "type": "step", "settings": { "icon": "product",  "title": "Select Product",  "description": "Choose your desired Klawford product, selecting the colour, size and storage options that suit you best." } },
+        "step2": { "type": "step", "settings": { "icon": "payment",  "title": "Easy Payment",    "description": "Pay securely online with Klarna, Visa, Mastercard, Apple Pay, and more — interest-free options available." } },
+        "step3": { "type": "step", "settings": { "icon": "delivery", "title": "2 Man Delivery",  "description": "Our 2-man team delivers to your room and assembles everything. White glove service included." } }
+      },
+      "block_order": ["step1", "step2", "step3"]
+    },
+    "mattress_feature": {
+      "type": "mattress-feature",
+      "settings": {
+        "heading": "KLAWFORD Mattresses",
+        "heading_italic": "Engineered for Dreams",
+        "cta_label": "Shop Mattresses",
+        "cta_url": "/collections/mattresses",
+        "show_payments": true,
+        "image_position": "left"
+      },
+      "blocks": {
+        "m1": { "type": "feature", "settings": { "icon": "quality",  "title": "Quality Pocket Spring", "description": "Premium springs provide targeted support to relieve pressure points for a superior night's sleep." } },
+        "m2": { "type": "feature", "settings": { "icon": "posture",  "title": "Promote Good Form and Posture", "description": "Supports each part of your spine equally to keep your posture aligned throughout the night." } },
+        "m3": { "type": "feature", "settings": { "icon": "allergy",  "title": "Prevent Allergen Reaction", "description": "Hypoallergenic materials so everyone can enjoy a deep, undisturbed sleep." } },
+        "m4": { "type": "feature", "settings": { "icon": "motion",   "title": "Infinite Restless Movements", "description": "Responsive springs absorb motion and reduce partner disturbance at night." } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4"]
+    },
+    "faq_section": {
+      "type": "faq",
+      "settings": { "heading": "Frequently Asked Questions" },
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "Do your products conform to UK fire safety regulations?", "answer": "<p>Yes, all of our products are fully compliant with UK fire safety regulations, including BS 7177 for mattresses and related furniture.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "How long does delivery take once I've placed my order?", "answer": "<p>Standard delivery is 7–14 working days. Express delivery options are available at checkout.</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "Can I choose my delivery date and time?", "answer": "<p>Yes! Once your order is dispatched, our delivery partner will contact you to arrange a convenient date and time.</p>" } },
+        "q4": { "type": "faq_item", "settings": { "question": "Can I track my order on my phone?", "answer": "<p>Absolutely. You'll receive an email with a tracking link once your order is dispatched.</p>" } },
+        "q5": { "type": "faq_item", "settings": { "question": "What is the 60 night risk-free trial?", "answer": "<p>If you're not completely happy within the first 60 nights, contact us for a full refund or replacement — no questions asked.</p>" } },
+        "q6": { "type": "faq_item", "settings": { "question": "What does the 5-year warranty cover?", "answer": "<p>Our 5-year warranty covers all manufacturing defects, structural issues and material faults.</p>" } },
+        "q7": { "type": "faq_item", "settings": { "question": "Can I buy monthly or through financing options?", "answer": "<p>Yes! We offer 0% interest financing through Klarna and other providers at checkout.</p>" } }
+      },
+      "block_order": ["q1","q2","q3","q4","q5","q6","q7"]
+    }
+  },
+  "order": [
+    "hero_banner",
+    "social_proof",
+    "popular_categories",
+    "new_trending",
+    "trust_badges",
+    "divan_feature",
+    "loved_gallery",
+    "promo_banner",
+    "how_it_works",
+    "mattress_feature",
+    "faq_section"
+  ]
+}

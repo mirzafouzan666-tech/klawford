@@ -1,0 +1,20 @@
+<div class="page-main container" style="max-width:860px;">
+  <p style="font-size:var(--fs-xs);color:var(--clr-gray-dusty);margin-bottom:8px;">
+    {{ article.published_at | date: "%B %d, %Y" }} &nbsp;&bull;&nbsp; {{ article.author }}
+  </p>
+  <h1>{{ article.title }}</h1>
+  {%- if article.image -%}
+    <img src="{{ article.image | image_url: width: 1200 }}" alt="{{ article.image.alt | escape }}" style="width:100%;border-radius:var(--radius-lg);margin:24px 0;aspect-ratio:16/9;object-fit:cover;" loading="eager">
+  {%- endif -%}
+  <div class="rte">{{ article.content }}</div>
+  <div style="margin-top:40px;">
+    <a href="{{ blog.url }}" class="btn btn--outline">&larr; Back to {{ blog.title }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

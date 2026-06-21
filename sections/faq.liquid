@@ -1,0 +1,118 @@
+<section class="faq-section">
+  <div class="container">
+    <h2 class="section-title">{{ section.settings.heading }}</h2>
+
+    <div class="faq-list" role="list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' -%}
+          <div class="faq-item" role="listitem" {{ block.shopify_attributes }}>
+            <button
+              class="faq-trigger"
+              aria-expanded="false"
+              aria-controls="faq-answer-{{ block.id }}">
+              <span>{{ block.settings.question }}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-body" id="faq-answer-{{ block.id }}" role="region">
+              <div class="faq-body__inner">{{ block.settings.answer }}</div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Do your products conform to UK fire safety regulations?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Yes, all of our products are fully compliant with UK fire safety regulations, including BS 7177 for mattresses and related furniture.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do your products conform to UK fire safety regulations?",
+            "answer": "<p>Yes, all of our products are fully compliant with UK fire safety regulations, including BS 7177 for mattresses and related furniture. Our factory holds all required certifications.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does delivery take once I've placed my order?",
+            "answer": "<p>Standard delivery is 7–14 working days. Express delivery options are available at checkout. You will receive tracking information once your order has been dispatched.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I choose my delivery date and time?",
+            "answer": "<p>Yes! Once your order is ready to dispatch, our delivery partner will contact you to arrange a convenient date and time window that suits you.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I track my order on your phone?",
+            "answer": "<p>Absolutely. You will receive an email with a tracking link once your order has been dispatched. You can also log into your account to view order status at any time.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the 60 night risk-free trial, and what does this mean?",
+            "answer": "<p>We're so confident in the quality of our products that we offer a 60-night risk-free trial. If you're not completely happy within the first 60 nights, simply contact us and we'll arrange a full refund or replacement — no questions asked.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does the 5-year warranty cover?",
+            "answer": "<p>Our 5-year warranty covers all manufacturing defects, structural issues, and material faults. It does not cover normal wear and tear or damage caused by misuse. Simply contact our customer service team with your order number to make a claim.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I buy monthly or through financing options?",
+            "answer": "<p>Yes! We offer 0% interest financing through Klarna and other providers. You can split your purchase into monthly instalments at checkout with no hidden fees.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

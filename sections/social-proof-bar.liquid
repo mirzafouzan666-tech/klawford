@@ -1,0 +1,94 @@
+<section class="social-proof-bar">
+  <div class="container">
+
+    <div class="social-proof-bar__header">
+      <div class="tp-stars" aria-label="5 star rating">
+        {%- for i in (1..5) -%}
+          <div class="tp-star" aria-hidden="true">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+        {%- endfor -%}
+      </div>
+      <p class="social-proof-bar__text">{{ section.settings.text }}</p>
+      <div class="tp-label">
+        <span>Rated</span>
+        <strong class="tp-logo-text">Trustpilot</strong>
+        <span>{{ section.settings.rating_text }}</span>
+      </div>
+    </div>
+
+    <div class="review-carousel" data-review-carousel>
+      <button type="button" class="review-carousel__arrow review-carousel__arrow--prev" aria-label="Previous reviews" data-review-prev>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="review-carousel__track" data-review-track>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'review' -%}
+            <div class="review-card" {{ block.shopify_attributes }}>
+              <div class="tp-stars review-card__stars" aria-hidden="true">
+                {%- for i in (1..5) -%}
+                  <div class="tp-star">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </div>
+                {%- endfor -%}
+              </div>
+              <p class="review-card__text">{{ block.settings.text }}</p>
+              <p class="review-card__meta">{{ block.settings.author }}, {{ block.settings.time_ago }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <button type="button" class="review-carousel__arrow review-carousel__arrow--next" aria-label="Next reviews" data-review-next>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social Proof Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Main text",
+      "default": "Over 100,000 Happy Customers"
+    },
+    {
+      "type": "text",
+      "id": "rating_text",
+      "label": "Rating text",
+      "default": "4.9 / 5 · 12,400 reviews"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Review text", "default": "Great quality and fast delivery, would recommend." },
+        { "type": "text", "id": "author", "label": "Author", "default": "Sample Customer" },
+        { "type": "text", "id": "time_ago", "label": "Time ago", "default": "2 days ago" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof Bar",
+      "blocks": [
+        { "type": "review", "settings": { "text": "Service was very good and the team were extremely helpful throughout.", "author": "Sample Customer", "time_ago": "1 day ago" } },
+        { "type": "review", "settings": { "text": "Went to great lengths to make sure my order was right, really happy with it.", "author": "Sample Customer", "time_ago": "2 days ago" } },
+        { "type": "review", "settings": { "text": "I couldn't be happier with the service I received, fast and easy.", "author": "Sample Customer", "time_ago": "2 days ago" } },
+        { "type": "review", "settings": { "text": "The delivery was really fast and the bed and base look brilliant.", "author": "Sample Customer", "time_ago": "3 days ago" } },
+        { "type": "review", "settings": { "text": "Great product, exactly as described, and easy to assemble.", "author": "Sample Customer", "time_ago": "4 days ago" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
