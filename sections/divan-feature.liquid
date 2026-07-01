@@ -75,15 +75,7 @@
 
         <!-- Payment methods -->
         {%- if section.settings.show_payments -%}
-          <div class="feature-payments" aria-label="Accepted payment methods">
-            <span class="payment-pill">Visa</span>
-            <span class="payment-pill">Mastercard</span>
-            <span class="payment-pill">Amex</span>
-            <span class="payment-pill">Apple Pay</span>
-            <span class="payment-pill">Google Pay</span>
-            <span class="payment-pill">Klarna</span>
-            <span class="payment-pill">PayPal</span>
-          </div>
+          {%- render 'payment-icons' -%}
         {%- endif -%}
       </div>
 
@@ -100,7 +92,7 @@
             width="900"
             height="900">
         {%- else -%}
-          <div class="feature-section__fallback-img" style="background-image: url('https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=900&q=85');"></div>
+          <div class="feature-section__fallback-img" style="background-image: url('{{ 'klawford_lifestyle_couple_relaxing_in_bed.jpg' | asset_url }}');"></div>
         {%- endif -%}
       </div>
 

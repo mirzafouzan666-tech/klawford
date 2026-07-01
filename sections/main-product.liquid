@@ -293,15 +293,8 @@
             <span class="product-finance-logo product-finance-logo--klarna">Klarna.</span>
             <span class="product-finance-info">{{ section.settings.klarna_text | default: 'Pay later in 30 days or £108.33 in 3 Monthly Installments' }}</span>
           </div>
-          <div class="product-payment-icons__list" style="padding-top:12px;border-top:1px solid var(--clr-ash);margin-top:4px;">
-            <span class="payment-pill">VISA</span>
-            <span class="payment-pill">AMEX</span>
-            <span class="payment-pill">Apple Pay</span>
-            <span class="payment-pill">Google Pay</span>
-            <span class="payment-pill">ShopPay</span>
-            <span class="payment-pill">Klarna</span>
-            <span class="payment-pill">DivideBuy</span>
-            <span class="payment-pill">Mastercard</span>
+          <div style="padding-top:12px;border-top:1px solid var(--clr-ash);margin-top:4px;">
+            {%- render 'payment-icons', extended: true -%}
           </div>
         </div>
 

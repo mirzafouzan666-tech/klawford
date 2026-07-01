@@ -119,15 +119,7 @@
       <p class="footer-copy">
         &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
       </p>
-      <div class="footer-payments" aria-label="Accepted payment methods">
-        <span class="payment-badge">VISA</span>
-        <span class="payment-badge">MC</span>
-        <span class="payment-badge">AMEX</span>
-        <span class="payment-badge">Apple Pay</span>
-        <span class="payment-badge">G Pay</span>
-        <span class="payment-badge">Klarna</span>
-        <span class="payment-badge">PayPal</span>
-      </div>
+      {%- render 'payment-icons', class: 'footer-pay' -%}
     </div>
 
   </div>
