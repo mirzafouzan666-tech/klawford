@@ -1,402 +1,326 @@
 {%- paginate collection.products by section.settings.products_per_page -%}
 
-{%- comment -%} Count active filters {%- endcomment -%}
 {%- assign active_filter_count = 0 -%}
 {%- for filter in collection.active_filters -%}
   {%- assign active_filter_count = active_filter_count | plus: 1 -%}
 {%- endfor -%}
 
 {%- comment -%} ================================================================
-    COLLECTION PAGE HEADER (compact — Sonno-style, no hero image)
-    ================================================================ {%- endcomment -%}
-<div class="collection-page-header">
-  <div class="container">
-    <nav class="collection-breadcrumb" aria-label="Breadcrumb">
-      <a href="/" class="collection-breadcrumb__link">Home</a>
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-        <path d="M3 2l4 3-4 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <a href="/collections" class="collection-breadcrumb__link">Collections</a>
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-        <path d="M3 2l4 3-4 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="collection-breadcrumb__current" aria-current="page">{{ collection.title }}</span>
-    </nav>
-
-    <div class="collection-page-header__inner">
-      <div class="collection-page-header__text">
-        <h1 class="collection-page-header__title">{{ collection.title }}</h1>
-        {%- if collection.description != blank -%}
-          <div class="collection-page-header__desc">{{ collection.description | strip_html | truncatewords: 40 }}</div>
-        {%- endif -%}
-      </div>
-      {%- if collection.image -%}
-        <div class="collection-page-header__img">
-          <img
-            src="{{ collection.image | image_url: width: 600 }}"
-            alt="{{ collection.title | escape }}"
-            loading="eager"
-            width="600"
-            height="300">
-        </div>
-      {%- endif -%}
-    </div>
-  </div>
-</div>
-
-{%- comment -%} ================================================================
     MOBILE FILTER DRAWER
     ================================================================ {%- endcomment -%}
-<div class="filter-drawer-overlay" id="filter-drawer-overlay" onclick="klCollectionCloseDrawer()"></div>
+<div class="kl-overlay" id="kl-overlay" onclick="klCloseFilters()"></div>
 
-<aside class="filter-drawer" id="filter-drawer" role="dialog" aria-modal="true" aria-label="Product filters">
-  <div class="filter-drawer__header">
-    <span class="filter-drawer__title">
-      <svg width="15" height="13" viewBox="0 0 16 14" fill="none" aria-hidden="true">
+<aside class="kl-drawer" id="kl-drawer" role="dialog" aria-modal="true" aria-label="Product filters">
+  <div class="kl-drawer__head">
+    <span class="kl-drawer__title">
+      <svg width="14" height="12" viewBox="0 0 16 14" fill="none" aria-hidden="true">
         <path d="M1 2h14M4 7h8M7 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
       Filters
     </span>
-    {%- if active_filter_count > 0 -%}
-      <span class="filter-drawer__active-count">{{ active_filter_count }} active</span>
-    {%- endif -%}
-    <button class="filter-drawer__close" onclick="klCollectionCloseDrawer()" aria-label="Close filters" type="button">
+    <button class="kl-drawer__close" onclick="klCloseFilters()" aria-label="Close filters" type="button">
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
       </svg>
     </button>
   </div>
 
-  <div class="filter-drawer__body">
+  <div class="kl-drawer__body">
     {%- for filter in collection.filters -%}
-      <div class="filter-group is-open" data-filter-group>
-        <button class="filter-group__header" onclick="this.closest('[data-filter-group]').classList.toggle('is-open')" type="button">
-          <span>{{ filter.label }}</span>
-          {%- if filter.active_values.size > 0 -%}
-            <span class="filter-group__active-badge">{{ filter.active_values.size }}</span>
-          {%- endif -%}
-          <svg class="filter-group__icon" width="11" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+      <div class="kl-fg is-open" data-fg>
+        <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+          <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
             <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
+          <span>{{ filter.label }}</span>
+          {%- if filter.active_values.size > 0 -%}
+            <span class="kl-fg__badge">{{ filter.active_values.size }}</span>
+          {%- endif -%}
         </button>
-        <div class="filter-group__body">
-          <div class="filter-group__inner">
-            {%- if filter.type == 'price_range' -%}
-              <div class="filter-price-range">
-                <label class="filter-price-range__field">
-                  <span>£</span>
-                  <input type="number" min="0" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" placeholder="0" form="filter-form-drawer" onchange="document.getElementById('filter-form-drawer').submit()">
-                </label>
-                <span class="filter-price-range__sep">–</span>
-                <label class="filter-price-range__field">
-                  <span>£</span>
-                  <input type="number" min="0" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" placeholder="{{ filter.range_max | money_without_currency }}" form="filter-form-drawer" onchange="document.getElementById('filter-form-drawer').submit()">
-                </label>
-              </div>
-              <p class="filter-price-range__hint">Up to {{ filter.range_max | money }}</p>
-            {%- elsif filter.type == 'list' and filter.presentation == 'swatch' -%}
-              <div class="filter-swatches">
-                {%- for value in filter.values -%}
-                  <label class="filter-swatch-label{% if value.count == 0 %} is-disabled{% endif %}" title="{{ value.label }} ({{ value.count }})">
-                    <input
-                      type="checkbox"
-                      name="{{ value.param_name }}"
-                      value="{{ value.value }}"
-                      {% if value.active %}checked{% endif %}
-                      {% if value.count == 0 %}disabled{% endif %}
-                      form="filter-form-drawer"
-                      onchange="document.getElementById('filter-form-drawer').submit()">
-                    <span class="filter-swatch{% if value.active %} is-active{% endif %}" style="background:{{ value.swatch.color }};"></span>
-                    <span class="filter-swatch__label">{{ value.label }}</span>
-                  </label>
-                {%- endfor -%}
-              </div>
-            {%- else -%}
+        <div class="kl-fg__body">
+          {%- if filter.type == 'price_range' -%}
+            <div class="kl-price-inputs">
+              <label class="kl-price-field">
+                <span>£</span>
+                <input type="number" min="0" name="{{ filter.min_value.param_name }}"
+                  value="{{ filter.min_value.value }}" placeholder="0"
+                  form="kl-form-drawer"
+                  onchange="document.getElementById('kl-form-drawer').submit()">
+              </label>
+              <span class="kl-price-sep">–</span>
+              <label class="kl-price-field">
+                <span>£</span>
+                <input type="number" min="0" name="{{ filter.max_value.param_name }}"
+                  value="{{ filter.max_value.value }}"
+                  placeholder="{{ filter.range_max | money_without_currency }}"
+                  form="kl-form-drawer"
+                  onchange="document.getElementById('kl-form-drawer').submit()">
+              </label>
+            </div>
+          {%- elsif filter.type == 'list' and filter.presentation == 'swatch' -%}
+            <div class="kl-swatch-list">
               {%- for value in filter.values -%}
-                <label class="filter-option{% if value.count == 0 %} is-disabled{% endif %}">
-                  <input
-                    type="checkbox"
-                    name="{{ value.param_name }}"
-                    value="{{ value.value }}"
+                <label class="kl-swatch-item{% if value.count == 0 %} is-disabled{% endif %}">
+                  <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
                     {% if value.active %}checked{% endif %}
                     {% if value.count == 0 %}disabled{% endif %}
-                    form="filter-form-drawer"
-                    onchange="document.getElementById('filter-form-drawer').submit()">
-                  <span>{{ value.label }}</span>
-                  <span class="filter-option__count">{{ value.count }}</span>
+                    form="kl-form-drawer"
+                    onchange="document.getElementById('kl-form-drawer').submit()">
+                  <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
+                  <span class="kl-swatch-name">{{ value.label }}</span>
                 </label>
               {%- endfor -%}
-            {%- endif -%}
-          </div>
+            </div>
+          {%- else -%}
+            <div class="kl-check-list">
+              {%- for value in filter.values -%}
+                <label class="kl-check-item{% if value.count == 0 %} is-disabled{% endif %}">
+                  <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
+                    {% if value.active %}checked{% endif %}
+                    {% if value.count == 0 %}disabled{% endif %}
+                    form="kl-form-drawer"
+                    onchange="document.getElementById('kl-form-drawer').submit()">
+                  <span class="kl-check-label">{{ value.label }}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
         </div>
       </div>
     {%- endfor -%}
   </div>
 
-  <div class="filter-drawer__footer">
+  <div class="kl-drawer__foot">
     {%- if active_filter_count > 0 -%}
-      <a href="{{ collection.url }}" class="btn btn--outline filter-drawer__reset">Clear All</a>
+      <a href="{{ collection.url }}" class="kl-drawer__clear">Clear all</a>
     {%- endif -%}
-    <button class="btn btn--primary filter-drawer__apply" onclick="klCollectionCloseDrawer()" type="button">
-      Show {{ collection.products_count }} Products
+    <button class="btn btn--primary kl-drawer__apply" onclick="klCloseFilters()" type="button">
+      View {{ collection.products_count }} Products
     </button>
   </div>
 </aside>
 
-{%- comment -%} Hidden form for drawer filters {%- endcomment -%}
-<form id="filter-form-drawer" method="get" action="{{ collection.url }}">
+<form id="kl-form-drawer" method="get" action="{{ collection.url }}">
   <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
 </form>
 
 {%- comment -%} ================================================================
-    STICKY TOOLBAR
+    COLLECTION PAGE
     ================================================================ {%- endcomment -%}
-<div class="collection-sticky-toolbar" id="collection-toolbar">
-  <div class="container collection-sticky-toolbar__inner">
+<div class="kl-col-page">
+  <div class="container">
 
-    <div class="collection-sticky-toolbar__left">
-      {%- comment -%} Filter button (mobile / used on desktop too) {%- endcomment -%}
-      <button
-        class="collection-filter-btn"
-        id="filter-drawer-trigger"
-        onclick="klCollectionOpenDrawer()"
-        aria-expanded="false"
-        aria-controls="filter-drawer"
-        type="button">
-        <svg width="15" height="13" viewBox="0 0 16 14" fill="none" aria-hidden="true">
+    {%- comment -%} Mobile bar {%- endcomment -%}
+    <div class="kl-mobile-bar">
+      <button class="kl-mobile-filter-btn" onclick="klOpenFilters()" type="button">
+        <svg width="14" height="12" viewBox="0 0 16 14" fill="none" aria-hidden="true">
           <path d="M1 2h14M4 7h8M7 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         Filters
         {%- if active_filter_count > 0 -%}
-          <span class="collection-filter-btn__count">{{ active_filter_count }}</span>
+          <span class="kl-mobile-filter-btn__count">{{ active_filter_count }}</span>
         {%- endif -%}
       </button>
-
-      <span class="collection-toolbar-count">{{ collection.products_count }} products</span>
-
-      {%- comment -%} Active filter chips {%- endcomment -%}
-      {%- if active_filter_count > 0 -%}
-        <div class="collection-active-chips" role="list" aria-label="Active filters">
-          {%- for filter in collection.active_filters -%}
-            <a href="{{ filter.url_to_remove }}" class="active-filter-chip" role="listitem">
-              {{ filter.label }}: {{ filter.value }}
-              <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-                <path d="M2 2l6 6M8 2L2 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </a>
-          {%- endfor -%}
-          <a href="{{ collection.url }}" class="active-filter-chip active-filter-chip--clear">Clear all</a>
-        </div>
-      {%- endif -%}
-    </div>
-
-    <div class="collection-sticky-toolbar__right">
-      {%- comment -%} Sort {%- endcomment -%}
-      <div class="collection-sort">
+      <select class="kl-mobile-sort" aria-label="Sort products"
+        onchange="window.location.href='{{ collection.url }}?sort_by=' + this.value">
         {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
-        <select id="sort-select" name="sort_by" aria-label="Sort products" onchange="window.location.href='?sort_by=' + this.value + '{{ request.query_string | remove_first: 'sort_by=' | split: '&' | join: '&' | prepend: '&' }}'">
-          {%- for option in collection.sort_options -%}
-            <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>
-              {{ option.name }}
-            </option>
-          {%- endfor -%}
-        </select>
-      </div>
-
-      {%- comment -%} Grid toggle (desktop) {%- endcomment -%}
-      <div class="collection-grid-toggle" aria-label="Change grid layout" role="group">
-        <button class="grid-toggle-btn is-active" data-cols="3" onclick="klSetGridCols(3, this)" aria-label="3 columns" aria-pressed="true" type="button">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-            <rect x="0" y="0" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="5.5" y="0" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="11" y="0" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="0" y="5.5" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="5.5" y="5.5" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="11" y="5.5" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="0" y="11" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="5.5" y="11" width="4" height="4" rx="0.5" fill="currentColor"/>
-            <rect x="11" y="11" width="4" height="4" rx="0.5" fill="currentColor"/>
-          </svg>
-        </button>
-        <button class="grid-toggle-btn" data-cols="2" onclick="klSetGridCols(2, this)" aria-label="2 columns" aria-pressed="false" type="button">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
-            <rect x="0" y="0" width="6.5" height="6.5" rx="0.5" fill="currentColor"/>
-            <rect x="8.5" y="0" width="6.5" height="6.5" rx="0.5" fill="currentColor"/>
-            <rect x="0" y="8.5" width="6.5" height="6.5" rx="0.5" fill="currentColor"/>
-            <rect x="8.5" y="8.5" width="6.5" height="6.5" rx="0.5" fill="currentColor"/>
-          </svg>
-        </button>
-      </div>
+        {%- for option in collection.sort_options -%}
+          <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name }}</option>
+        {%- endfor -%}
+      </select>
     </div>
 
-  </div>
-</div>
+    <div class="kl-col-layout">
 
-{%- comment -%} ================================================================
-    MAIN CONTENT
-    ================================================================ {%- endcomment -%}
-<form id="collection-filters-form" method="get" action="{{ collection.url }}">
-  <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
-</form>
+      {%- comment -%} ---- LEFT SIDEBAR ----------------------------------------- {%- endcomment -%}
+      <aside class="kl-sidebar" aria-label="Filter products">
 
-<div class="collection-main">
-  <div class="container">
-    <div class="collection-layout">
+        {%- if active_filter_count > 0 -%}
+          <a href="{{ collection.url }}" class="kl-sidebar-clear">Clear all filters</a>
+        {%- endif -%}
 
-      {%- comment -%} ---- DESKTOP SIDEBAR ------------------------------------ {%- endcomment -%}
-      <aside class="collection-sidebar" aria-label="Filter products">
-        <div class="collection-sidebar__card">
-          <div class="collection-sidebar__head">
-            <span class="collection-sidebar__title">
-              <svg width="13" height="11" viewBox="0 0 16 14" fill="none" aria-hidden="true">
-                <path d="M1 2h14M4 7h8M7 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        {%- for filter in collection.filters -%}
+          <div class="kl-fg is-open" data-fg>
+            <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+              <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
-              Filters
-            </span>
-            {%- if active_filter_count > 0 -%}
-              <a href="{{ collection.url }}" class="collection-sidebar__clear">Clear ({{ active_filter_count }})</a>
-            {%- endif -%}
-          </div>
+              <span>{{ filter.label }}</span>
+              {%- if filter.active_values.size > 0 -%}
+                <span class="kl-fg__badge">{{ filter.active_values.size }}</span>
+              {%- endif -%}
+            </button>
 
-          {%- for filter in collection.filters -%}
-            <div class="filter-group is-open" data-filter-group>
-              <button
-                class="filter-group__header"
-                onclick="this.closest('[data-filter-group]').classList.toggle('is-open')"
-                type="button"
-                aria-expanded="true">
-                <span>{{ filter.label }}</span>
-                {%- if filter.active_values.size > 0 -%}
-                  <span class="filter-group__active-badge">{{ filter.active_values.size }}</span>
-                {%- endif -%}
-                <svg class="filter-group__icon" width="11" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                  <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <div class="filter-group__body">
-                <div class="filter-group__inner">
-                  {%- if filter.type == 'price_range' -%}
-                    <div class="filter-price-range">
-                      <label class="filter-price-range__field">
-                        <span>£</span>
-                        <input type="number" min="0" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value }}" placeholder="0" form="collection-filters-form" onchange="document.getElementById('collection-filters-form').submit()">
-                      </label>
-                      <span class="filter-price-range__sep">–</span>
-                      <label class="filter-price-range__field">
-                        <span>£</span>
-                        <input type="number" min="0" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value }}" placeholder="{{ filter.range_max | money_without_currency }}" form="collection-filters-form" onchange="document.getElementById('collection-filters-form').submit()">
-                      </label>
-                    </div>
-                    <p class="filter-price-range__hint">Up to {{ filter.range_max | money }}</p>
-                  {%- elsif filter.type == 'list' and filter.presentation == 'swatch' -%}
-                    <div class="filter-swatches">
-                      {%- for value in filter.values -%}
-                        <label class="filter-swatch-label{% if value.count == 0 %} is-disabled{% endif %}" title="{{ value.label }} ({{ value.count }})">
-                          <input
-                            type="checkbox"
-                            name="{{ value.param_name }}"
-                            value="{{ value.value }}"
-                            {% if value.active %}checked{% endif %}
-                            {% if value.count == 0 %}disabled{% endif %}
-                            form="collection-filters-form"
-                            onchange="document.getElementById('collection-filters-form').submit()">
-                          <span class="filter-swatch{% if value.active %} is-active{% endif %}" style="background:{{ value.swatch.color }};"></span>
-                          <span class="filter-swatch__label">{{ value.label }}</span>
-                        </label>
-                      {%- endfor -%}
-                    </div>
-                  {%- else -%}
-                    {%- for value in filter.values -%}
-                      <label class="filter-option{% if value.count == 0 %} is-disabled{% endif %}">
-                        <input
-                          type="checkbox"
-                          name="{{ value.param_name }}"
-                          value="{{ value.value }}"
-                          {% if value.active %}checked{% endif %}
-                          {% if value.count == 0 %}disabled{% endif %}
-                          form="collection-filters-form"
-                          onchange="document.getElementById('collection-filters-form').submit()">
-                        <span>{{ value.label }}</span>
-                        <span class="filter-option__count">{{ value.count }}</span>
-                      </label>
-                    {%- endfor -%}
-                  {%- endif -%}
+            <div class="kl-fg__body">
+
+              {%- if filter.type == 'price_range' -%}
+                {%- assign pr_min = filter.min_value.value | default: 0 -%}
+                {%- assign pr_max = filter.max_value.value | default: filter.range_max -%}
+                <div class="kl-slider-wrap"
+                     data-range="{{ filter.range_max }}"
+                     data-cur-min="{{ pr_min }}"
+                     data-cur-max="{{ pr_max }}">
+                  <div class="kl-slider-track">
+                    <div class="kl-slider-fill" id="kl-slider-fill"></div>
+                  </div>
+                  <input class="kl-slider-thumb kl-slider-thumb--min" type="range"
+                    id="kl-slider-min"
+                    min="0" max="{{ filter.range_max }}" value="{{ pr_min }}" step="1"
+                    aria-label="Minimum price">
+                  <input class="kl-slider-thumb kl-slider-thumb--max" type="range"
+                    id="kl-slider-max"
+                    min="0" max="{{ filter.range_max }}" value="{{ pr_max }}" step="1"
+                    aria-label="Maximum price">
                 </div>
-              </div>
-            </div>
-          {%- endfor -%}
+                <div class="kl-slider-labels">
+                  <span id="kl-price-min-label">{{ pr_min | money }}</span>
+                  <span id="kl-price-max-label">{{ pr_max | money }}</span>
+                </div>
+                <form id="kl-price-form" method="get" action="{{ collection.url }}">
+                  <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
+                  <input type="hidden" id="kl-price-min-val" name="{{ filter.min_value.param_name }}" value="{{ pr_min }}">
+                  <input type="hidden" id="kl-price-max-val" name="{{ filter.max_value.param_name }}" value="{{ pr_max }}">
+                  {%- comment -%} Preserve other active filters {%- endcomment -%}
+                  {%- for af in collection.active_filters -%}
+                    {%- unless af.param_name == filter.min_value.param_name or af.param_name == filter.max_value.param_name -%}
+                      <input type="hidden" name="{{ af.param_name }}" value="{{ af.value }}">
+                    {%- endunless -%}
+                  {%- endfor -%}
+                </form>
 
-          {%- if collection.filters.size == 0 -%}
-            <p class="collection-sidebar__no-filters">
-              Set up storefront filters in Shopify Admin → Navigation → Collection filtering to enable dynamic filters here.
-            </p>
-          {%- endif -%}
-        </div>
+              {%- elsif filter.type == 'list' and filter.presentation == 'swatch' -%}
+                <div class="kl-swatch-list">
+                  {%- for value in filter.values -%}
+                    <label class="kl-swatch-item{% if value.count == 0 %} is-disabled{% endif %}">
+                      <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
+                        {% if value.active %}checked{% endif %}
+                        {% if value.count == 0 %}disabled{% endif %}
+                        form="kl-form-sidebar"
+                        onchange="document.getElementById('kl-form-sidebar').submit()">
+                      <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
+                      <span class="kl-swatch-name">{{ value.label }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+
+              {%- else -%}
+                <div class="kl-check-list">
+                  {%- for value in filter.values -%}
+                    <label class="kl-check-item{% if value.count == 0 %} is-disabled{% endif %}">
+                      <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
+                        {% if value.active %}checked{% endif %}
+                        {% if value.count == 0 %}disabled{% endif %}
+                        form="kl-form-sidebar"
+                        onchange="document.getElementById('kl-form-sidebar').submit()">
+                      <span class="kl-check-label">{{ value.label }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+
+            </div>
+          </div>
+        {%- endfor -%}
+
+        <form id="kl-form-sidebar" method="get" action="{{ collection.url }}">
+          <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
+        </form>
       </aside>
 
-      {%- comment -%} ---- PRODUCT GRID --------------------------------------- {%- endcomment -%}
-      <div class="collection-content">
-        <div class="collection-grid" id="collection-grid" data-cols="3">
-          {%- for product in collection.products -%}
-            {%- render 'product-card', product: product -%}
-            {%- assign promo_tile_mod = forloop.index | modulo: 6 -%}
-            {%- if section.settings.show_promo_tile and promo_tile_mod == 0 and forloop.index != collection.products_count -%}
-              <a href="{{ section.settings.promo_tile_url | default: '#' }}" class="collection-promo-tile">
-                <span class="collection-promo-tile__kicker">{{ section.settings.promo_tile_kicker | default: 'Summer' }}</span>
-                <span class="collection-promo-tile__pct">{{ section.settings.promo_tile_pct | default: '25%' }}</span>
-                <span class="collection-promo-tile__off">OFF</span>
-                <span class="collection-promo-tile__code">Use code {{ section.settings.promo_tile_code | default: 'SAVE25' }}</span>
-                <span class="collection-promo-tile__cta">Shop Now →</span>
-              </a>
-            {%- endif -%}
-          {%- else -%}
-            <div class="collection-empty">
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
-                <circle cx="28" cy="28" r="24" stroke="var(--clr-alto)" stroke-width="2"/>
-                <path d="M18 28h20M28 18v20" stroke="var(--clr-alto)" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-              <p>No products match your current filters.</p>
-              <a href="{{ collection.url }}" class="btn btn--outline">Clear all filters</a>
+      {%- comment -%} ---- RIGHT CONTENT ---------------------------------------- {%- endcomment -%}
+      <div class="kl-col-content">
+
+        {%- comment -%} Collection title + description {%- endcomment -%}
+        <div class="kl-col-head">
+          <h1 class="kl-col-title">{{ collection.title }}</h1>
+          {%- if collection.description != blank -%}
+            <div class="kl-col-desc">{{ collection.description | strip_html }}</div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Sort bar {%- endcomment -%}
+        <div class="kl-sort-bar">
+          {%- if active_filter_count > 0 -%}
+            <div class="kl-chips" role="list" aria-label="Active filters">
+              {%- for filter in collection.active_filters -%}
+                <a href="{{ filter.url_to_remove }}" class="kl-chip" role="listitem">
+                  {{ filter.label }}: {{ filter.value }}
+                  <svg width="8" height="8" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <path d="M2 2l6 6M8 2L2 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </a>
+              {%- endfor -%}
+              <a href="{{ collection.url }}" class="kl-chip kl-chip--clear">Clear all</a>
             </div>
-          {%- endfor -%}
+          {%- endif -%}
+          <div class="kl-sort">
+            <label class="kl-sort__label" for="kl-sort-select">Sort by</label>
+            <select id="kl-sort-select" aria-label="Sort products"
+              onchange="window.location.href='{{ collection.url }}?sort_by=' + this.value">
+              {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </div>
         </div>
 
-        {%- comment -%} Pagination {%- endcomment -%}
-        {%- if paginate.pages > 1 -%}
-          <nav class="collection-pagination" role="navigation" aria-label="Collection pages">
-            {%- if paginate.previous -%}
-              <a href="{{ paginate.previous.url }}" class="collection-pagination__arrow" aria-label="Previous page">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
-            {%- endif -%}
-            {%- for part in paginate.parts -%}
-              {%- if part.is_link -%}
-                <a href="{{ part.url }}">{{ part.title }}</a>
-              {%- elsif part.title == paginate.current_page -%}
-                <span class="current" aria-current="page">{{ part.title }}</span>
-              {%- else -%}
-                <span>{{ part.title }}</span>
-              {%- endif -%}
+        {%- comment -%} Product grid {%- endcomment -%}
+        {%- if collection.products.size > 0 -%}
+          <div class="kl-grid">
+            {%- for product in collection.products -%}
+              {%- render 'product-card', product: product -%}
             {%- endfor -%}
-            {%- if paginate.next -%}
-              <a href="{{ paginate.next.url }}" class="collection-pagination__arrow" aria-label="Next page">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </a>
+          </div>
+
+          {%- comment -%} Pagination {%- endcomment -%}
+          {%- if paginate.pages > 1 -%}
+            <nav class="kl-pagination" aria-label="Pagination">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="kl-pagination__btn kl-pagination__btn--prev" aria-label="Previous page">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 4L6 8l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </a>
+              {%- endif -%}
+              <div class="kl-pagination__pages">
+                {%- for part in paginate.parts -%}
+                  {%- if part.is_link -%}
+                    <a href="{{ part.url }}" class="kl-pagination__page">{{ part.title }}</a>
+                  {%- elsif part.title == paginate.current_page -%}
+                    <span class="kl-pagination__page is-current" aria-current="page">{{ part.title }}</span>
+                  {%- else -%}
+                    <span class="kl-pagination__ellipsis">{{ part.title }}</span>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="kl-pagination__btn kl-pagination__btn--next" aria-label="Next page">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </a>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+
+        {%- else -%}
+          <div class="kl-no-results">
+            <p>No products found matching your selection.</p>
+            {%- if active_filter_count > 0 -%}
+              <a href="{{ collection.url }}" class="btn btn--primary" style="margin-top:16px;">Clear filters</a>
             {%- endif -%}
-          </nav>
+          </div>
         {%- endif -%}
-      </div>
 
-    </div>{%- comment -%}/.collection-layout{%- endcomment -%}
+        {%- comment -%} SEO content — always visible below grid {%- endcomment -%}
+        {%- if section.settings.show_seo_content and section.settings.seo_content != blank -%}
+          <div class="kl-seo">
+            <div class="kl-seo__inner rte">
+              {{ section.settings.seo_content }}
+            </div>
+          </div>
+        {%- endif -%}
 
-    {%- comment -%} ---- SEO CONTENT (visible below grid like Sonno) ---------- {%- endcomment -%}
-    {%- if section.settings.show_seo_content and section.settings.seo_content != blank -%}
-      <div class="collection-seo">
-        <div class="collection-seo__inner rte">
-          {{ section.settings.seo_content }}
-        </div>
-      </div>
-    {%- endif -%}
+      </div>{%- comment -%}/.kl-col-content{%- endcomment -%}
+
+    </div>{%- comment -%}/.kl-col-layout{%- endcomment -%}
 
   </div>
 </div>
@@ -405,55 +329,41 @@
     TRUST BAR
     ================================================================ {%- endcomment -%}
 {%- if section.settings.show_trust_bar -%}
-<div class="collection-trust-bar">
+<div class="kl-trust">
   <div class="container">
-    <div class="collection-trust-bar__inner">
-      <div class="collection-trust-item">
+    <div class="kl-trust__inner">
+      <div class="kl-trust__item">
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <path d="M14 3l2.8 5.6 6.2.9-4.5 4.4 1.1 6.1L14 17l-5.6 3 1.1-6.1L5 9.5l6.2-.9L14 3z" stroke="var(--clr-secondary)" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M14 3l2.8 5.6 6.2.9-4.5 4.4 1.1 6.1L14 17l-5.6 3 1.1-6.1L5 9.5l6.2-.9L14 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
         </svg>
-        <div>
-          <strong>5 Year Warranty</strong>
-          <span>On every bed frame</span>
-        </div>
+        <div><strong>5 Year Warranty</strong><span>On every bed frame</span></div>
       </div>
-      <div class="collection-trust-item">
+      <div class="kl-trust__item">
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <circle cx="14" cy="14" r="10" stroke="var(--clr-secondary)" stroke-width="1.5"/>
-          <path d="M14 9v5l3 3" stroke="var(--clr-secondary)" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="14" cy="14" r="10" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M14 9v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
-        <div>
-          <strong>60 Night Trial</strong>
-          <span>Sleep on it, risk free</span>
-        </div>
+        <div><strong>60 Night Trial</strong><span>Sleep on it, risk free</span></div>
       </div>
-      <div class="collection-trust-item">
+      <div class="kl-trust__item">
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <rect x="3" y="9" width="22" height="14" rx="2" stroke="var(--clr-secondary)" stroke-width="1.5"/>
-          <path d="M8 9V7a6 6 0 0 1 12 0v2" stroke="var(--clr-secondary)" stroke-width="1.5"/>
+          <path d="M4 20h20M4 20l3-8h14l3 8M10 20v-4m8 4v-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="22" r="1.5" stroke="currentColor" stroke-width="1.3"/>
+          <circle cx="20" cy="22" r="1.5" stroke="currentColor" stroke-width="1.3"/>
         </svg>
-        <div>
-          <strong>Free Delivery</strong>
-          <span>Room of your choice</span>
-        </div>
+        <div><strong>Free Delivery</strong><span>Room of your choice</span></div>
       </div>
-      <div class="collection-trust-item">
+      <div class="kl-trust__item">
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <path d="M14 4C9.6 4 6 7.6 6 12c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="var(--clr-secondary)" stroke-width="1.5"/>
+          <path d="M14 4C9.6 4 6 7.6 6 12c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8zm0 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="currentColor" stroke-width="1.5"/>
         </svg>
-        <div>
-          <strong>Handmade in UK</strong>
-          <span>Crafted to order</span>
-        </div>
+        <div><strong>Handmade in UK</strong><span>Crafted to order</span></div>
       </div>
-      <div class="collection-trust-item">
+      <div class="kl-trust__item">
         <svg width="26" height="26" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-          <path d="M14 4l3 6 6.5 1-4.75 4.5L20 22l-6-3-6 3 1.25-6.5L4.5 11 11 10z" stroke="var(--clr-secondary)" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M6 14h16M14 6l-8 8 8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <div>
-          <strong>0% Finance</strong>
-          <span>Spread the cost</span>
-        </div>
+        <div><strong>0% Finance</strong><span>Spread the cost</span></div>
       </div>
     </div>
   </div>
@@ -462,72 +372,77 @@
 
 {%- endpaginate -%}
 
-{%- comment -%} ================================================================
-    SECTION JAVASCRIPT
-    ================================================================ {%- endcomment -%}
 <script>
 (function () {
-  /* ---- Filter drawer ---------------------------------------- */
-  function klCollectionOpenDrawer() {
-    var drawer  = document.getElementById('filter-drawer');
-    var overlay = document.getElementById('filter-drawer-overlay');
-    var trigger = document.getElementById('filter-drawer-trigger');
-    if (!drawer) return;
-    drawer.classList.add('is-open');
-    overlay.classList.add('is-visible');
-    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+
+  /* ---- Mobile filter drawer --------------------------------- */
+  function klOpenFilters() {
+    document.getElementById('kl-drawer').classList.add('is-open');
+    document.getElementById('kl-overlay').classList.add('is-visible');
     document.body.style.overflow = 'hidden';
   }
-
-  function klCollectionCloseDrawer() {
-    var drawer  = document.getElementById('filter-drawer');
-    var overlay = document.getElementById('filter-drawer-overlay');
-    var trigger = document.getElementById('filter-drawer-trigger');
-    if (!drawer) return;
-    drawer.classList.remove('is-open');
-    overlay.classList.remove('is-visible');
-    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  function klCloseFilters() {
+    document.getElementById('kl-drawer').classList.remove('is-open');
+    document.getElementById('kl-overlay').classList.remove('is-visible');
     document.body.style.overflow = '';
   }
-
-  /* Expose globally (called from onclick attributes above) */
-  window.klCollectionOpenDrawer  = klCollectionOpenDrawer;
-  window.klCollectionCloseDrawer = klCollectionCloseDrawer;
-
+  window.klOpenFilters  = klOpenFilters;
+  window.klCloseFilters = klCloseFilters;
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') klCollectionCloseDrawer();
+    if (e.key === 'Escape') klCloseFilters();
   });
 
-  /* ---- Grid columns toggle ---------------------------------- */
-  function klSetGridCols(cols, btn) {
-    var grid = document.getElementById('collection-grid');
-    if (!grid) return;
-    grid.dataset.cols = cols;
-    document.querySelectorAll('.grid-toggle-btn').forEach(function (b) {
-      var active = parseInt(b.dataset.cols, 10) === cols;
-      b.classList.toggle('is-active', active);
-      b.setAttribute('aria-pressed', active ? 'true' : 'false');
-    });
-  }
-  window.klSetGridCols = klSetGridCols;
+  /* ---- Price range dual slider ------------------------------ */
+  var wrap = document.querySelector('.kl-slider-wrap');
+  if (wrap) {
+    var rangeMax  = parseInt(wrap.dataset.range, 10);
+    var thumbMin  = document.getElementById('kl-slider-min');
+    var thumbMax  = document.getElementById('kl-slider-max');
+    var fill      = document.getElementById('kl-slider-fill');
+    var labelMin  = document.getElementById('kl-price-min-label');
+    var labelMax  = document.getElementById('kl-price-max-label');
+    var valMin    = document.getElementById('kl-price-min-val');
+    var valMax    = document.getElementById('kl-price-max-val');
 
-  /* ---- Sticky toolbar sentinel ------------------------------ */
-  var toolbar = document.getElementById('collection-toolbar');
-  if (toolbar && typeof IntersectionObserver !== 'undefined') {
-    var sentinel = document.createElement('div');
-    sentinel.style.cssText = 'position:absolute;height:1px;width:100%;pointer-events:none;';
-    toolbar.parentNode.insertBefore(sentinel, toolbar);
-    new IntersectionObserver(function (entries) {
-      toolbar.classList.toggle('is-stuck', !entries[0].isIntersecting);
-    }, { threshold: 1 }).observe(sentinel);
+    function fmt(cents) {
+      return '£' + (cents / 100).toFixed(2);
+    }
+
+    function render() {
+      var lo = parseInt(thumbMin.value, 10);
+      var hi = parseInt(thumbMax.value, 10);
+      var loP = (lo / rangeMax) * 100;
+      var hiP = (hi / rangeMax) * 100;
+      fill.style.left  = loP + '%';
+      fill.style.width = (hiP - loP) + '%';
+      labelMin.textContent = fmt(lo);
+      labelMax.textContent = fmt(hi);
+      valMin.value = lo;
+      valMax.value = hi;
+    }
+
+    thumbMin.addEventListener('input', function () {
+      if (parseInt(thumbMin.value, 10) > parseInt(thumbMax.value, 10) - 50) {
+        thumbMin.value = parseInt(thumbMax.value, 10) - 50;
+      }
+      render();
+    });
+    thumbMax.addEventListener('input', function () {
+      if (parseInt(thumbMax.value, 10) < parseInt(thumbMin.value, 10) + 50) {
+        thumbMax.value = parseInt(thumbMin.value, 10) + 50;
+      }
+      render();
+    });
+    thumbMin.addEventListener('change', function () {
+      document.getElementById('kl-price-form').submit();
+    });
+    thumbMax.addEventListener('change', function () {
+      document.getElementById('kl-price-form').submit();
+    });
+
+    render();
   }
 
-  /* ---- Preserve sort_by param when filtering ---------------- */
-  document.querySelectorAll('input[form="collection-filters-form"]').forEach(function (input) {
-    input.addEventListener('change', function () {
-      document.getElementById('collection-filters-form').submit();
-    });
-  });
 })();
 </script>
 
@@ -553,23 +468,14 @@
     {
       "type": "richtext",
       "id": "seo_content",
-      "label": "SEO / FAQ content (displayed collapsed by default)"
+      "label": "SEO / FAQ content"
     },
     {
       "type": "checkbox",
       "id": "show_trust_bar",
       "label": "Show trust bar",
       "default": true
-    },
-    {
-      "type": "header",
-      "content": "Promo tile (inserted after every 6 products)"
-    },
-    { "type": "checkbox", "id": "show_promo_tile", "label": "Show promo tile", "default": true },
-    { "type": "url", "id": "promo_tile_url", "label": "Promo tile link" },
-    { "type": "text", "id": "promo_tile_kicker", "label": "Season label", "default": "Summer" },
-    { "type": "text", "id": "promo_tile_pct", "label": "Percentage off", "default": "25%" },
-    { "type": "text", "id": "promo_tile_code", "label": "Discount code", "default": "SAVE25" }
+    }
   ]
 }
 {% endschema %}
