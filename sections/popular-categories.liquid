@@ -4,8 +4,25 @@
     <div class="categories-grid">
       {%- for block in section.blocks -%}
         {%- if block.type == 'category' -%}
+
+          {%- comment -%} Pick a fallback image based on the category label {%- endcomment -%}
+          {%- case block.settings.label -%}
+            {%- when 'Beds' -%}
+              {%- assign fallback_img = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80' -%}
+            {%- when 'Mattresses' -%}
+              {%- assign fallback_img = 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=80' -%}
+            {%- when 'Sofas' -%}
+              {%- assign fallback_img = 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80' -%}
+            {%- when 'Headboards' -%}
+              {%- assign fallback_img = 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=600&q=80' -%}
+            {%- else -%}
+              {%- assign loop_imgs = 'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80,https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80,https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=600&q=80,https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=600&q=80' | split: ',' -%}
+              {%- assign fallback_img = loop_imgs[forloop.index0] -%}
+          {%- endcase -%}
+
           <a href="{{ block.settings.url | default: '/collections/all' }}" class="category-card" {{ block.shopify_attributes }}>
             <div class="category-card__img">
+
               {%- if block.settings.image != blank -%}
                 <img
                   src="{{ block.settings.image | image_url: width: 600 }}"
@@ -16,17 +33,10 @@
                   loading="lazy"
                   width="400"
                   height="533">
-              {%- elsif block.settings.ext_image != blank -%}
-                <img
-                  src="{{ block.settings.ext_image }}"
-                  alt="{{ block.settings.label | escape }}"
-                  loading="lazy"
-                  width="600"
-                  height="800"
-                  style="width:100%;height:100%;object-fit:cover;">
               {%- else -%}
-                <div class="category-card__placeholder"></div>
+                <div class="category-card__bg-img" style="background-image: url('{{ fallback_img }}');"></div>
               {%- endif -%}
+
               <div class="category-card__overlay" aria-hidden="true"></div>
               <div class="category-card__label">
                 <span class="category-card__name">{{ block.settings.label }}</span>
@@ -35,6 +45,7 @@
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 6h7M6.5 2.5L10 6l-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
               </div>
+
             </div>
           </a>
         {%- endif -%}
@@ -62,19 +73,14 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Category image (upload here)"
-        },
-        {
-          "type": "text",
-          "id": "ext_image",
-          "label": "Fallback image URL (external)",
-          "info": "Used when no image is uploaded above. Paste any HTTPS image URL."
+          "label": "Category image (upload your own)"
         },
         {
           "type": "text",
           "id": "label",
           "label": "Category name",
-          "default": "Divan Beds"
+          "info": "Use exactly: Beds, Mattresses, Sofas, or Headboards to auto-load matching image",
+          "default": "Beds"
         },
         {
           "type": "url",
@@ -88,10 +94,10 @@
     {
       "name": "Popular Categories",
       "blocks": [
-        { "type": "category", "settings": { "label": "Divan Beds",       "url": "/collections/divan-beds" } },
-        { "type": "category", "settings": { "label": "Ottoman Beds",     "url": "/collections/ottoman-beds" } },
-        { "type": "category", "settings": { "label": "Upholstered Beds", "url": "/collections/upholstered-beds" } },
-        { "type": "category", "settings": { "label": "Mattresses",       "url": "/collections/mattresses" } }
+        { "type": "category", "settings": { "label": "Beds",        "url": "/collections/beds" } },
+        { "type": "category", "settings": { "label": "Mattresses",  "url": "/collections/mattresses" } },
+        { "type": "category", "settings": { "label": "Sofas",       "url": "/collections/sofas" } },
+        { "type": "category", "settings": { "label": "Headboards",  "url": "/collections/headboards" } }
       ]
     }
   ]

@@ -2061,3 +2061,16 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 @media (max-width: 768px) {
   .category-card__name { font-size: 15px; }
 }
+
+/* ============================================================
+   CATEGORY CARD — BACKGROUND IMAGE DIV
+   ============================================================ */
+.category-card__bg-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+.category-card:hover .category-card__bg-img { transform: scale(1.06); }
+.category-card__img { position: relative; overflow: hidden; }
