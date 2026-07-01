@@ -1757,3 +1757,307 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   .header-search-trigger { max-width: auto; padding: 9px 12px; }
   .gallery-item { flex: 0 0 180px; }
 }
+
+/* ============================================================
+   HERO — SONNO-INSPIRED REDESIGN
+   ============================================================ */
+
+.hero-banner { min-height: 90vh; }
+
+.hero-banner__placeholder {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #e8d5c4 0%, #d0bba8 40%, #bda48e 100%);
+}
+
+.hero-banner__overlay {
+  background: linear-gradient(
+    105deg,
+    rgba(242,232,224,0.97) 0%,
+    rgba(242,232,224,0.88) 22%,
+    rgba(242,232,224,0.55) 45%,
+    rgba(242,232,224,0.12) 65%,
+    rgba(242,232,224,0) 100%
+  );
+}
+
+.hero-banner__content { max-width: 580px; }
+
+.hero-banner__heading {
+  font-size: clamp(54px, 8.5vw, 100px);
+  line-height: 0.92;
+  margin-bottom: 22px;
+  letter-spacing: -1px;
+}
+
+.hero-banner__promo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.hero-promo-icon {
+  width: 26px; height: 26px;
+  background: var(--clr-green);
+  border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hero-banner__sub {
+  font-family: var(--ff-secondary);
+  font-size: clamp(19px, 2.6vw, 28px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-secondary);
+  letter-spacing: -0.3px;
+}
+
+.hero-code-inline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--clr-white);
+  border: 1.5px solid var(--clr-secondary);
+  border-radius: var(--radius-full);
+  padding: 6px 16px 6px 12px;
+  margin-bottom: 28px;
+}
+.hero-code-label {
+  font-size: var(--fs-xxs); font-weight: var(--fw-bold);
+  text-transform: uppercase; letter-spacing: 1.2px; color: var(--clr-text-light);
+}
+.hero-code-value {
+  font-size: var(--fs-sm); font-weight: var(--fw-bold);
+  color: var(--clr-secondary); letter-spacing: 1.5px;
+}
+
+.hero-banner__buttons { gap: 10px; margin-bottom: 24px; align-items: center; }
+.hero-banner__buttons .btn--primary {
+  background: var(--clr-secondary) !important;
+  color: var(--clr-white) !important;
+  border-color: var(--clr-secondary) !important;
+  font-size: var(--fs-base);
+}
+.hero-banner__buttons .btn--primary:hover {
+  background: var(--clr-secondary-dark) !important;
+  border-color: var(--clr-secondary-dark) !important;
+}
+.btn--ghost-dark {
+  background: rgba(255,255,255,0.62);
+  color: var(--clr-text);
+  border: 1.5px solid rgba(71,69,70,0.28);
+  font-size: var(--fs-xs); padding: 9px 18px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.btn--ghost-dark:hover { background: var(--clr-secondary); color: var(--clr-white); border-color: var(--clr-secondary); }
+
+.hero-mini-trust { display: flex; align-items: center; gap: 9px; font-size: var(--fs-xs); color: var(--clr-text-light); font-weight: var(--fw-semibold); }
+.hero-mini-stars { display: flex; gap: 1px; }
+
+.hero-floating-badge {
+  position: absolute; top: 50%; right: 52px;
+  transform: translateY(-50%); z-index: 3; pointer-events: none;
+}
+.hero-floating-badge__inner {
+  width: 140px; height: 140px; border-radius: 50%;
+  background: var(--clr-secondary);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 14px 48px rgba(127,40,91,0.5);
+  color: white; text-align: center; gap: 1px;
+  animation: badge-pulse 3s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%, 100% { box-shadow: 0 14px 48px rgba(127,40,91,0.5); }
+  50%       { box-shadow: 0 18px 60px rgba(127,40,91,0.7); }
+}
+.hero-floating-badge__sale { font-size: 9px; font-weight: var(--fw-bold); text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+.hero-floating-badge__pct { font-family: var(--ff-primary); font-size: 52px; font-weight: var(--fw-bold); line-height: 1; }
+.hero-floating-badge__pct small { font-size: 24px; }
+.hero-floating-badge__off { font-size: var(--fs-xs); font-weight: var(--fw-bold); text-transform: uppercase; letter-spacing: 1.5px; margin-top: -4px; }
+.hero-floating-badge__code { font-size: 9px; font-weight: var(--fw-bold); background: rgba(255,255,255,0.22); padding: 2px 10px; border-radius: var(--radius-full); letter-spacing: 1px; margin-top: 4px; }
+
+@media (max-width: 992px) {
+  .hero-floating-badge { right: 24px; }
+  .hero-floating-badge__inner { width: 115px; height: 115px; }
+  .hero-floating-badge__pct { font-size: 42px; }
+  .hero-floating-badge__pct small { font-size: 20px; }
+}
+@media (max-width: 768px) {
+  .hero-banner { min-height: 78vh; }
+  .hero-banner__heading { font-size: 44px; letter-spacing: -0.5px; }
+  .hero-floating-badge { top: auto; bottom: 20px; right: 16px; transform: none; }
+  .hero-floating-badge__inner { width: 100px; height: 100px; }
+  .hero-floating-badge__pct { font-size: 34px; }
+  .hero-floating-badge__pct small { font-size: 16px; }
+}
+@media (max-width: 480px) {
+  .hero-banner { min-height: 65vh; }
+  .hero-floating-badge { display: none; }
+  .hero-banner__heading { font-size: 36px; }
+}
+
+/* ============================================================
+   CATEGORIES — EDITORIAL UPGRADE
+   ============================================================ */
+.popular-categories { padding: 72px 0; }
+.categories-grid { gap: 20px; }
+.category-card__img { aspect-ratio: 3 / 4; }
+.category-card__overlay { background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%); }
+.category-card__cta { font-size: var(--fs-sm); padding: 12px 18px; justify-content: space-between; letter-spacing: 0.2px; }
+.category-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+/* ============================================================
+   SOCIAL PROOF — ENHANCED
+   ============================================================ */
+.social-proof-bar { padding: 30px 0; }
+.social-proof-bar__text { font-size: clamp(18px, 2.2vw, 24px); }
+.review-card { border-radius: var(--radius-lg); padding: 20px; border: 1px solid var(--clr-ash); background: var(--clr-white); }
+.review-card__text { font-size: var(--fs-sm); line-height: 1.65; }
+
+/* ============================================================
+   FEATURE SECTIONS — PREMIUM POLISH
+   ============================================================ */
+.feature-section { padding: 88px 0; }
+.feature-section--white { padding: 88px 0; }
+.feature-section__grid { gap: 72px; }
+.feature-section__image { border-radius: 28px; aspect-ratio: 5 / 4; box-shadow: 0 24px 72px rgba(0,0,0,0.16); }
+.feature-heading { font-size: clamp(30px, 3.8vw, 44px); line-height: 1.15; }
+
+/* ============================================================
+   HOW IT WORKS — REFINED
+   ============================================================ */
+.how-it-works { background: var(--clr-primary); padding: 80px 0; }
+.step-card__icon { width: 88px; height: 88px; background: var(--clr-white); box-shadow: 0 0 0 2px var(--clr-secondary), 0 8px 24px rgba(127,40,91,0.15); }
+.step-card__icon-wrap { width: 88px; height: 88px; }
+.step-card__title { font-size: var(--fs-xl); margin-bottom: 14px; }
+.step-card__desc { font-size: var(--fs-sm); color: var(--clr-text-light); }
+
+/* ============================================================
+   FAQ — PREMIUM FEEL
+   ============================================================ */
+.faq-section { background: var(--clr-white); padding: 80px 0; }
+.faq-list { max-width: 800px; }
+.faq-trigger { font-size: var(--fs-base); padding: 22px 0; }
+.faq-icon { width: 32px; height: 32px; }
+
+/* ============================================================
+   SECTION TITLE — REFINED TYPOGRAPHY
+   ============================================================ */
+.section-title { font-size: clamp(28px, 3.2vw, 40px); letter-spacing: -0.5px; margin-bottom: 36px; }
+
+/* ============================================================
+   PROMO BANNER — BOLDER
+   ============================================================ */
+.promo-banner { padding: 16px 0; }
+.promo-marquee__item { font-size: var(--fs-base); gap: 18px; }
+.promo-code-pill { padding: 3px 14px; font-size: var(--fs-sm); }
+
+/* ============================================================
+   TRUST BADGES — PREMIUM ROW
+   ============================================================ */
+.trust-badges { padding: 40px 0; }
+.trust-badge__icon { width: 52px; height: 52px; }
+.trust-badge__text { font-size: var(--fs-sm); font-weight: var(--fw-bold); }
+
+/* ============================================================
+   SONNO COLOR SCHEME — OFF-WHITE / WHITE OVERRIDES
+   ============================================================ */
+:root {
+  --clr-primary:        #F2EDE7;
+  --clr-primary-shade:  #EAE4DC;
+  --clr-text:           #1A1816;
+  --clr-text-light:     #4A4744;
+  --clr-gray-dusty:     #8A8784;
+  --clr-wild-sand:      #F8F7F5;
+  --clr-white-linen:    #EDE8E0;
+  --clr-ash:            #EBEBEB;
+  --container-max:      1440px;
+}
+
+/* Clean white surfaces throughout */
+body                    { background: #FAFAF8; }
+.site-header            { background: #fff; box-shadow: 0 1px 0 rgba(0,0,0,0.07); }
+.header-nav             { background: #fff; }
+.header-benefits        { background: var(--clr-primary); }
+.social-proof-bar       { background: #F8F7F5; border-bottom: 1px solid var(--clr-ash); }
+.popular-categories     { background: #fff; }
+.new-trending           { background: #F8F7F5; }
+.how-it-works           { background: var(--clr-primary); }
+.faq-section            { background: #F8F7F5; }
+.feature-section        { background: var(--clr-primary); }
+.feature-section--white { background: #fff; }
+.trust-badges           { background: var(--clr-primary); border-top: 1px solid rgba(127,40,91,0.08); border-bottom: 1px solid rgba(127,40,91,0.08); }
+.loved-gallery          { background: #fff; }
+
+/* Typography sharpening */
+h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
+.section-title { color: var(--clr-text); letter-spacing: -0.6px; }
+.header-logo__text { letter-spacing: 6px; font-size: 40px; }
+
+/* Header search + nav links in white header */
+.header-search-trigger { background: var(--clr-wild-sand); border-color: var(--clr-ash); }
+.header-nav__link { color: var(--clr-text); font-weight: var(--fw-semibold); font-size: 13px; letter-spacing: 0.3px; }
+.header-dropdown { background: #fff; }
+.header-dropdown a { color: var(--clr-text); }
+
+/* ============================================================
+   CATEGORY CARD — REDESIGNED LABEL
+   ============================================================ */
+.category-card__label {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 20px 16px 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.category-card__name {
+  font-family: var(--ff-primary);
+  font-size: 18px;
+  font-weight: var(--fw-bold);
+  color: #fff;
+  line-height: 1.2;
+}
+.category-card__cta-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: rgba(255,255,255,0.82);
+  letter-spacing: 0.3px;
+  transition: gap 0.2s ease;
+}
+.category-card:hover .category-card__cta-text { gap: 8px; color: #fff; }
+.category-card__img { aspect-ratio: 3 / 4; position: relative; }
+.category-card__img img { width: 100%; height: 100%; object-fit: cover; }
+.category-card__placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #d8cfc5 0%, #c5baad 100%);
+}
+/* Remove old CTA pill style */
+.category-card__cta { display: none; }
+
+/* ============================================================
+   PRODUCT CARDS — SONNO CLEAN LOOK
+   ============================================================ */
+.product-card { border-radius: var(--radius-lg); box-shadow: none; border: 1px solid var(--clr-ash); }
+.product-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.10); border-color: transparent; }
+.product-card__img { background: var(--clr-wild-sand); }
+.product-card__info { padding: 16px; }
+.product-card__title { font-size: var(--fs-sm); letter-spacing: -0.2px; }
+.product-card__price { font-size: var(--fs-lg); font-weight: var(--fw-bold); }
+
+/* ============================================================
+   BUTTONS — SONNO CLEAN
+   ============================================================ */
+.btn--primary { border-radius: 6px; }
+.btn--outline  { border-radius: 6px; }
+.btn--lg       { padding: 15px 32px; font-size: var(--fs-base); }
+.new-trending__cta .btn--primary { border-radius: 6px; }
+
+/* ============================================================
+   FOOTER — SLIGHTLY LIGHTER
+   ============================================================ */
+.site-footer { background: #1E1C1A; }
+.footer-logo-text { letter-spacing: 4px; }
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 768px) {
+  .category-card__name { font-size: 15px; }
+}
