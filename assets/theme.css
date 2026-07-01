@@ -986,37 +986,63 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .feature-section__image svg.placeholder-svg { width: 55%; height: 55%; max-width: 200px; opacity: .5; }
 
 /* ============================================================
-   LOVED GALLERY — editorial CSS grid (no horizontal scroll)
+   LOVED GALLERY — horizontal scroll
    ============================================================ */
-.loved-gallery { padding: 80px 0; background: #F8F6F2; overflow: hidden; }
+.loved-gallery { padding: 64px 0; background: var(--clr-white); overflow: hidden; }
 .loved-gallery__track {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 14px;
-  overflow: visible;
-  cursor: default;
-  padding-bottom: 0;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+  cursor: grab;
 }
+.loved-gallery__track::-webkit-scrollbar { display: none; }
+.loved-gallery__track.is-dragging { cursor: grabbing; }
 .gallery-item {
-  border-radius: 14px;
+  flex: 0 0 240px;
+  scroll-snap-align: start;
+  border-radius: var(--radius-base);
   overflow: hidden;
   position: relative;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease;
 }
-.gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.13); }
-/* Featured: first item spans full left column (both rows) */
-.gallery-item:first-child { grid-row: 1 / span 2; }
-.gallery-item__img {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.gallery-item__img { aspect-ratio: 3/4; overflow: hidden; }
+.gallery-item__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.gallery-item:hover .gallery-item__img img { transform: scale(1.06); }
+.gallery-item__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.15);
 }
-.gallery-item__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-.gallery-item:hover .gallery-item__img img { transform: scale(1.05); }
-/* Hide scroll nav — grid doesn't need it */
-.loved-gallery__controls { display: none; }
+.gallery-play-btn {
+  width: 52px;
+  height: 52px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+.gallery-item:hover .gallery-play-btn { transform: scale(1.12); background: var(--clr-white); }
+.gallery-play-btn svg { margin-left: 3px; }
+.loved-gallery__controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 24px; }
+.gallery-nav-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-secondary);
+  transition: var(--transition);
+}
+.gallery-nav-btn:hover { background: var(--clr-secondary); color: var(--clr-white); }
 
 /* ============================================================
    PROMO BANNER (marquee)
@@ -1735,10 +1761,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   .header-action__label { display: none; }
   .header-search-input { display: none; }
   .header-search-form { max-width: 42px; padding: 0 12px; }
-  .loved-gallery__track { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-  .gallery-item:first-child { grid-row: auto; }
-  .gallery-item__bg { min-height: 200px; }
-  .gallery-item:first-child .gallery-item__bg { min-height: 200px; }
+  .gallery-item { flex: 0 0 180px; }
 }
 
 /* ============================================================
@@ -2141,16 +2164,13 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
    ============================================================ */
 .gallery-item__bg {
   width: 100%;
-  height: 100%;
-  min-height: 240px;
+  aspect-ratio: 3 / 4;
   background-size: cover;
   background-position: center;
   transition: transform 0.5s ease;
 }
-/* Featured tall item gets a taller min-height */
-.gallery-item:first-child .gallery-item__bg { min-height: 500px; }
 .gallery-item:hover .gallery-item__bg { transform: scale(1.05); }
-.gallery-item__img { overflow: hidden; width: 100%; height: 100%; }
+.gallery-item__img { overflow: hidden; border-radius: 8px; }
 
 /* ============================================================
    CATEGORY CARD — BACKGROUND IMAGE DIV
