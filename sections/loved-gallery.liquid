@@ -21,7 +21,7 @@
                   width="240"
                   height="320">
               {%- else -%}
-                {%- assign fallback_ids = 'photo-1505693416388-ac5ce068fe85,photo-1612196808214-b8e1d6145a8c,photo-1616046229478-9901c5536a45,photo-1557804506-669a67965ba0,photo-1588854337236-6889d631faa8,photo-1583845112203-ea7a403f7e83' | split: ',' -%}
+                {%- assign fallback_ids = 'photo-1631049307264-da0ec9d70304,photo-1505693416388-ac5ce068fe85,photo-1493663284031-b7e3aefcae8e,photo-1560448204-603b3fc33ddc,photo-1616046229478-9901c5536a45,photo-1586021581090-a40afef2c3d8' | split: ',' -%}
                 {%- assign fb_id = fallback_ids[forloop.index0] | default: 'photo-1505693416388-ac5ce068fe85' -%}
                 <div class="gallery-item__bg" style="background-image: url('https://images.unsplash.com/{{ fb_id }}?auto=format&fit=crop&w=480&q=85');"></div>
               {%- endif -%}
@@ -40,7 +40,7 @@
       {%- endfor -%}
 
       {%- if section.blocks.size == 0 -%}
-        {%- assign gallery_imgs = 'photo-1505693416388-ac5ce068fe85,photo-1612196808214-b8e1d6145a8c,photo-1616046229478-9901c5536a45,photo-1557804506-669a67965ba0,photo-1588854337236-6889d631faa8,photo-1583845112203-ea7a403f7e83' | split: ',' -%}
+        {%- assign gallery_imgs = 'photo-1631049307264-da0ec9d70304,photo-1505693416388-ac5ce068fe85,photo-1493663284031-b7e3aefcae8e,photo-1560448204-603b3fc33ddc,photo-1616046229478-9901c5536a45,photo-1586021581090-a40afef2c3d8' | split: ',' -%}
         {%- for img_id in gallery_imgs -%}
           <div class="gallery-item">
             <div class="gallery-item__img">

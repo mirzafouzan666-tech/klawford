@@ -1773,7 +1773,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .hero-banner__placeholder {
   position: absolute; inset: 0;
   background:
-    url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat,
+    url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat,
     linear-gradient(135deg, #e8d5c4 0%, #d0bba8 40%, #bda48e 100%);
 }
 
