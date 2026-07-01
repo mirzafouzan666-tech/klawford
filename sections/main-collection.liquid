@@ -7,25 +7,10 @@
 {%- endfor -%}
 
 {%- comment -%} ================================================================
-    COLLECTION HERO
+    COLLECTION PAGE HEADER (compact — Sonno-style, no hero image)
     ================================================================ {%- endcomment -%}
-<div class="collection-hero">
-  {%- if collection.image -%}
-    <div class="collection-hero__bg">
-      <img
-        src="{{ collection.image | image_url: width: 1600 }}"
-        alt="{{ collection.title | escape }}"
-        loading="eager"
-        width="1600"
-        height="500"
-        class="collection-hero__bg-img">
-    </div>
-    <div class="collection-hero__overlay"></div>
-  {%- else -%}
-    <div class="collection-hero__gradient"></div>
-  {%- endif -%}
-
-  <div class="container collection-hero__content">
+<div class="collection-page-header">
+  <div class="container">
     <nav class="collection-breadcrumb" aria-label="Breadcrumb">
       <a href="/" class="collection-breadcrumb__link">Home</a>
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
@@ -38,25 +23,23 @@
       <span class="collection-breadcrumb__current" aria-current="page">{{ collection.title }}</span>
     </nav>
 
-    <h1 class="collection-hero__title">{{ collection.title }}</h1>
-
-    {%- if collection.description != blank -%}
-      <p class="collection-hero__desc">{{ collection.description | strip_html | truncatewords: 28 }}</p>
-    {%- endif -%}
-
-    <div class="collection-hero__meta">
-      <span class="collection-hero__count">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <rect x="1" y="1" width="3.5" height="3.5" rx="0.5" fill="currentColor"/><rect x="5.5" y="1" width="3.5" height="3.5" rx="0.5" fill="currentColor"/><rect x="10" y="1" width="1" height="3.5" rx="0.5" fill="currentColor" style="display:none"/><rect x="1" y="5.5" width="3.5" height="3.5" rx="0.5" fill="currentColor"/><rect x="5.5" y="5.5" width="3.5" height="3.5" rx="0.5" fill="currentColor"/>
-        </svg>
-        {{ collection.products_count }} products
-      </span>
-      <a href="#collection-grid" class="btn btn--primary collection-hero__cta">
-        Shop Now
-        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+    <div class="collection-page-header__inner">
+      <div class="collection-page-header__text">
+        <h1 class="collection-page-header__title">{{ collection.title }}</h1>
+        {%- if collection.description != blank -%}
+          <div class="collection-page-header__desc">{{ collection.description | strip_html | truncatewords: 40 }}</div>
+        {%- endif -%}
+      </div>
+      {%- if collection.image -%}
+        <div class="collection-page-header__img">
+          <img
+            src="{{ collection.image | image_url: width: 600 }}"
+            alt="{{ collection.title | escape }}"
+            loading="eager"
+            width="600"
+            height="300">
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </div>
@@ -406,20 +389,12 @@
 
     </div>{%- comment -%}/.collection-layout{%- endcomment -%}
 
-    {%- comment -%} ---- SEO ACCORDION --------------------------------------- {%- endcomment -%}
+    {%- comment -%} ---- SEO CONTENT (visible below grid like Sonno) ---------- {%- endcomment -%}
     {%- if section.settings.show_seo_content and section.settings.seo_content != blank -%}
       <div class="collection-seo">
-        <details class="collection-seo__details">
-          <summary class="collection-seo__summary">
-            About {{ collection.title }}
-            <svg class="collection-seo__chevron" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
-              <path d="M1 1.5l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </summary>
-          <div class="collection-seo__body rte">
-            {{ section.settings.seo_content }}
-          </div>
-        </details>
+        <div class="collection-seo__inner rte">
+          {{ section.settings.seo_content }}
+        </div>
       </div>
     {%- endif -%}
 

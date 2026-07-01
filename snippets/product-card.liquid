@@ -7,7 +7,8 @@
 {%- if product.compare_at_price > product.price -%}
   {%- assign on_sale = true -%}
 {%- endif -%}
-{%- assign is_new = product.tags contains 'new' -%}
+{%- assign is_new = false -%}
+{%- if product.tags contains 'new' -%}{%- assign is_new = true -%}{%- endif -%}
 {%- assign has_alt_img = false -%}
 {%- if product.images.size > 1 -%}
   {%- assign has_alt_img = true -%}
@@ -107,6 +108,12 @@
 
   {%- comment -%} ---- INFO AREA --------------------------------------------- {%- endcomment -%}
   <div class="product-card__info">
+
+    {%- comment -%} Product type badge (e.g. "Divan Bed", "Ottoman Bed") {%- endcomment -%}
+    {%- if product.type != blank -%}
+      <span class="product-card__type">{{ product.type }}</span>
+    {%- endif -%}
+
     <a href="{{ product.url }}" class="product-card__title" itemprop="name">{{ product.title }}</a>
 
     {%- comment -%} Colour swatches (only if colour option exists) {%- endcomment -%}
@@ -121,12 +128,18 @@
       </div>
     {%- endif -%}
 
-    {%- comment -%} Pricing {%- endcomment -%}
+    {%- comment -%} Pricing — show "From" for multi-variant products {%- endcomment -%}
     <div class="product-card__pricing" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
       {%- if on_sale -%}
+        {%- if product.variants.size > 1 -%}
+          <span class="product-card__from">From</span>
+        {%- endif -%}
         <span class="product-card__price product-card__price--sale" itemprop="price" content="{{ product.price | divided_by: 100.0 }}">{{ product.price | money }}</span>
         <span class="product-card__compare">{{ product.compare_at_price | money }}</span>
       {%- else -%}
+        {%- if product.variants.size > 1 -%}
+          <span class="product-card__from">From</span>
+        {%- endif -%}
         <span class="product-card__price" itemprop="price" content="{{ product.price | divided_by: 100.0 }}">{{ product.price | money }}</span>
       {%- endif -%}
     </div>

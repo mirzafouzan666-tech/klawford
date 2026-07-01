@@ -942,6 +942,21 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .product-card__price--sale { color: var(--clr-secondary); }
 .product-card__compare { font-size: var(--fs-sm); color: var(--clr-gray-dusty); text-decoration: line-through; }
 .product-card__save { display: block; font-size: var(--fs-xs); font-weight: var(--fw-semibold); color: #2e7d32; margin-top: 3px; }
+.product-card__type {
+  display: block;
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--clr-gray-dusty);
+  margin-bottom: 4px;
+}
+.product-card__from {
+  font-size: var(--fs-xs);
+  color: var(--clr-gray-dusty);
+  font-weight: var(--fw-regular);
+  margin-right: 2px;
+}
 
 .collection-promo-tile {
   background: linear-gradient(135deg, var(--clr-primary-shade), var(--clr-white));
@@ -1625,74 +1640,55 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .product-services__item-desc { font-size: var(--fs-xs); color: var(--clr-text-light); line-height: 1.75; }
 
 /* ============================================================
-   COLLECTION HERO
+   COLLECTION PAGE HEADER (compact — Sonno-style)
    ============================================================ */
-.collection-hero {
-  position: relative;
-  min-height: 280px;
-  background: var(--clr-secondary-dark);
-  overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-}
-.collection-hero__bg { position: absolute; inset: 0; }
-.collection-hero__bg-img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; max-width: none; }
-.collection-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(10,3,6,0.18) 0%, rgba(10,3,6,0.68) 100%);
-}
-.collection-hero__gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #3D0F1C 0%, var(--clr-secondary) 55%, #8B4050 100%);
-}
-.collection-hero__content {
-  position: relative;
-  z-index: 2;
-  padding-top: 48px;
-  padding-bottom: 44px;
-  color: var(--clr-white);
+.collection-page-header {
+  background: var(--clr-primary);
+  border-bottom: 1px solid var(--clr-ash);
+  padding: 20px 0 26px;
 }
 .collection-breadcrumb {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   font-size: var(--fs-xs);
-  color: rgba(255,255,255,0.7);
+  color: var(--clr-gray-dusty);
   margin-bottom: 14px;
   flex-wrap: wrap;
 }
-.collection-breadcrumb__link { color: rgba(255,255,255,0.7); }
-.collection-breadcrumb__link:hover { color: var(--clr-white); }
-.collection-breadcrumb__current { color: var(--clr-white); font-weight: var(--fw-semibold); }
-.collection-hero__title {
+.collection-breadcrumb svg { flex-shrink: 0; color: var(--clr-alto); }
+.collection-breadcrumb__link { color: var(--clr-gray-dusty); }
+.collection-breadcrumb__link:hover { color: var(--clr-secondary); }
+.collection-breadcrumb__current { color: var(--clr-text); font-weight: var(--fw-semibold); }
+.collection-page-header__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+.collection-page-header__text { flex: 1; min-width: 0; }
+.collection-page-header__title {
   font-family: var(--ff-primary);
-  font-size: clamp(28px, 4vw, 48px);
+  font-size: clamp(26px, 3.5vw, 42px);
   font-weight: var(--fw-bold);
-  color: var(--clr-white);
+  color: var(--clr-text);
   line-height: 1.15;
   margin-bottom: 10px;
 }
-.collection-hero__desc {
+.collection-page-header__desc {
   font-size: var(--fs-sm);
-  color: rgba(255,255,255,0.82);
-  max-width: 540px;
-  line-height: 1.7;
-  margin-bottom: 20px;
+  color: var(--clr-text-light);
+  max-width: 680px;
+  line-height: 1.8;
 }
-.collection-hero__meta { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
-.collection-hero__count {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  color: rgba(255,255,255,0.7);
-  letter-spacing: 0.4px;
-  text-transform: uppercase;
+.collection-page-header__img {
+  flex-shrink: 0;
+  width: 220px;
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  display: none; /* shown only if collection.image is set */
 }
-.collection-hero__cta { font-size: var(--fs-sm); padding: 10px 24px; }
+.collection-page-header__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* ============================================================
    STICKY TOOLBAR
@@ -2172,50 +2168,32 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .collection-pagination__arrow { min-width: auto; padding: 0 12px; }
 
 /* ============================================================
-   SEO ACCORDION
+   SEO CONTENT (always visible)
    ============================================================ */
-.collection-seo { margin-top: 56px; border-top: 1px solid var(--clr-ash); padding-top: 32px; }
-.collection-seo__details {
-  background: var(--clr-primary);
-  border: 1px solid var(--clr-ash);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-.collection-seo__summary {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 28px;
-  font-family: var(--ff-primary);
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
-  color: var(--clr-text);
-  cursor: pointer;
-  list-style: none;
-  gap: 12px;
-  user-select: none;
-}
-.collection-seo__summary::-webkit-details-marker { display: none; }
-.collection-seo__chevron {
-  flex-shrink: 0;
-  transition: transform 0.25s ease !important;
-}
-.collection-seo__details[open] .collection-seo__chevron { transform: rotate(180deg); }
-.collection-seo__body {
-  padding: 4px 28px 28px;
+.collection-seo { margin-top: 56px; border-top: 1px solid var(--clr-ash); padding-top: 40px; }
+.collection-seo__inner {
   font-size: var(--fs-sm);
   color: var(--clr-text-light);
   line-height: 1.9;
+  max-width: 860px;
 }
-.collection-seo__body h3 {
+.collection-seo__inner h2 {
   font-family: var(--ff-primary);
-  font-size: var(--fs-base);
+  font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
   color: var(--clr-text);
-  margin-top: 20px;
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+.collection-seo__inner h3 {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  margin-top: 24px;
   margin-bottom: 8px;
 }
-.collection-seo__body p { margin-bottom: 12px; }
+.collection-seo__inner p { margin-bottom: 14px; }
 
 /* ============================================================
    TRUST BAR (enhanced)
