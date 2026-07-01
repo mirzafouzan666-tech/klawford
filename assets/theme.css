@@ -1693,33 +1693,37 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 }
 
 /* Filter group */
-.kl-fg { border-bottom: 1px solid var(--clr-ash); }
+.kl-fg { border-bottom: 1px solid #E8E3DC; }
 .kl-fg__head {
   display: flex; align-items: center; gap: 8px; width: 100%;
-  padding: 14px 0; font-size: var(--fs-sm); font-weight: var(--fw-semibold);
-  color: var(--clr-text); cursor: pointer; background: none; border: none; text-align: left;
+  padding: 16px 0; font-size: 13px; font-weight: 600;
+  color: #2D2D2D; cursor: pointer; background: none; border: none; text-align: left;
+  letter-spacing: 0.2px;
 }
-.kl-fg__head span { flex: 1; }
-.kl-fg__chevron { flex-shrink: 0; transition: transform 0.22s ease !important; color: var(--clr-gray-dusty); }
+.kl-fg__head span:first-of-type { flex: 1; }
+.kl-fg__chevron {
+  flex-shrink: 0; color: #5C1F2E;
+  transition: transform 0.22s ease !important;
+}
 .kl-fg.is-open .kl-fg__chevron { transform: rotate(180deg); }
 .kl-fg__badge {
   background: var(--clr-secondary); color: var(--clr-white);
   border-radius: 999px; font-size: 10px; font-weight: var(--fw-bold); padding: 1px 6px;
 }
-.kl-fg__body { display: none; padding-bottom: 16px; }
+.kl-fg__body { display: none; padding-bottom: 18px; }
 .kl-fg.is-open .kl-fg__body { display: block; }
 
 /* Price range slider */
 .kl-slider-wrap {
-  position: relative; height: 24px; margin: 10px 0 6px;
+  position: relative; height: 28px; margin: 12px 0 4px;
 }
 .kl-slider-track {
   position: absolute; top: 50%; transform: translateY(-50%);
-  width: 100%; height: 4px; background: #DDD8D2; border-radius: 2px;
+  width: 100%; height: 5px; background: #DDD8D2; border-radius: 3px;
 }
 .kl-slider-fill {
   position: absolute; height: 100%;
-  background: var(--clr-secondary); border-radius: 2px;
+  background: #5C1F2E; border-radius: 3px;
 }
 .kl-slider-thumb {
   position: absolute; width: 100%; height: 100%; top: 0; left: 0;
@@ -1728,18 +1732,18 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 }
 .kl-slider-thumb::-webkit-slider-thumb {
   appearance: none; -webkit-appearance: none;
-  width: 18px; height: 18px; border-radius: 50%;
-  background: var(--clr-secondary); border: 2px solid var(--clr-white);
-  box-shadow: 0 1px 5px rgba(0,0,0,.22); pointer-events: all; cursor: pointer;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #5C1F2E; border: 3px solid #fff;
+  box-shadow: 0 1px 6px rgba(92,31,46,.35); pointer-events: all; cursor: pointer;
 }
 .kl-slider-thumb::-moz-range-thumb {
-  width: 18px; height: 18px; border-radius: 50%;
-  background: var(--clr-secondary); border: 2px solid var(--clr-white);
-  box-shadow: 0 1px 5px rgba(0,0,0,.22); pointer-events: all; cursor: pointer; border: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #5C1F2E; border: 3px solid #fff;
+  box-shadow: 0 1px 6px rgba(92,31,46,.35); pointer-events: all; cursor: pointer;
 }
 .kl-slider-labels {
   display: flex; justify-content: space-between;
-  font-size: var(--fs-xs); color: var(--clr-text); margin-top: 8px;
+  font-size: 13px; color: #2D2D2D; font-weight: 500; margin-top: 10px;
 }
 /* Price number fallback inputs (drawer) */
 .kl-price-inputs { display: flex; align-items: center; gap: 8px; }
@@ -1752,45 +1756,36 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .kl-price-field input { border: none; outline: none; width: 100%; font-size: var(--fs-sm); color: var(--clr-text); background: transparent; }
 .kl-price-sep { color: var(--clr-gray-dusty); font-size: var(--fs-sm); }
 
-/* Colour swatches filter */
-.kl-swatch-list { display: flex; flex-direction: column; gap: 10px; }
+/* Swatch + checkbox list (used for ALL list filters) */
+.kl-swatch-list { display: flex; flex-direction: column; gap: 12px; }
 .kl-swatch-item {
   display: flex; align-items: center; gap: 10px; cursor: pointer;
-  font-size: var(--fs-sm); color: var(--clr-text);
+  font-size: 13px; color: #2D2D2D; line-height: 1.3;
 }
-.kl-swatch-item input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
-.kl-swatch-item.is-disabled { opacity: 0.4; cursor: not-allowed; }
-.kl-swatch-dot {
-  width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0;
-  border: 2px solid transparent; outline: 2px solid transparent;
-  transition: outline-color 0.15s;
-}
-.kl-swatch-dot.is-checked { outline: 2px solid var(--clr-secondary); outline-offset: 2px; }
-.kl-swatch-name { line-height: 1.3; }
-
-/* Checkbox filter */
-.kl-check-list { display: flex; flex-direction: column; gap: 10px; }
-.kl-check-item {
-  display: flex; align-items: center; gap: 10px; cursor: pointer;
-  font-size: var(--fs-sm); color: var(--clr-text);
-}
-.kl-check-item input[type="checkbox"] {
+.kl-swatch-item input[type="checkbox"] {
   appearance: none; -webkit-appearance: none;
   width: 16px; height: 16px; flex-shrink: 0;
-  border: 1.5px solid var(--clr-alto); border-radius: 3px;
-  background: var(--clr-white); cursor: pointer; transition: all 0.15s;
-  position: relative;
+  border: 1.5px solid #BEBEBE; border-radius: 2px;
+  background: #fff; cursor: pointer; position: relative;
+  transition: all 0.15s !important;
 }
-.kl-check-item input[type="checkbox"]:checked {
-  background: var(--clr-secondary); border-color: var(--clr-secondary);
+.kl-swatch-item input[type="checkbox"]:checked {
+  background: #5C1F2E; border-color: #5C1F2E;
 }
-.kl-check-item input[type="checkbox"]:checked::after {
-  content: ''; position: absolute; left: 4px; top: 2px;
-  width: 5px; height: 8px; border: 1.5px solid white;
+.kl-swatch-item input[type="checkbox"]:checked::after {
+  content: ''; position: absolute; left: 4px; top: 1px;
+  width: 5px; height: 9px; border: 2px solid #fff;
   border-top: none; border-left: none; transform: rotate(40deg);
 }
-.kl-check-item.is-disabled { opacity: 0.4; cursor: not-allowed; }
-.kl-check-label { flex: 1; line-height: 1.4; }
+.kl-swatch-item.is-disabled { opacity: 0.38; cursor: not-allowed; }
+.kl-swatch-dot {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  border: 2px solid rgba(0,0,0,0.12);
+  box-shadow: 0 0 0 0px #5C1F2E;
+  transition: box-shadow 0.15s !important;
+}
+.kl-swatch-dot.is-checked { box-shadow: 0 0 0 2px #5C1F2E, 0 0 0 4px #fff inset; }
+.kl-swatch-name { line-height: 1.4; }
 
 /* ---- CONTENT AREA ---- */
 .kl-col-head { margin-bottom: 24px; }

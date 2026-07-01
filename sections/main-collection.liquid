@@ -57,7 +57,10 @@
                   onchange="document.getElementById('kl-form-drawer').submit()">
               </label>
             </div>
-          {%- elsif filter.type == 'list' and filter.presentation == 'swatch' -%}
+          {%- elsif filter.type == 'list' -%}
+            {%- assign fl_lower_d = filter.label | downcase -%}
+            {%- assign is_colour_d = false -%}
+            {%- if fl_lower_d == 'color' or fl_lower_d == 'colour' -%}{%- assign is_colour_d = true -%}{%- endif -%}
             <div class="kl-swatch-list">
               {%- for value in filter.values -%}
                 <label class="kl-swatch-item{% if value.count == 0 %} is-disabled{% endif %}">
@@ -66,21 +69,12 @@
                     {% if value.count == 0 %}disabled{% endif %}
                     form="kl-form-drawer"
                     onchange="document.getElementById('kl-form-drawer').submit()">
-                  <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
+                  {%- if filter.presentation == 'swatch' -%}
+                    <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
+                  {%- elsif is_colour_d -%}
+                    <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: value.label -%};"></span>
+                  {%- endif -%}
                   <span class="kl-swatch-name">{{ value.label }}</span>
-                </label>
-              {%- endfor -%}
-            </div>
-          {%- else -%}
-            <div class="kl-check-list">
-              {%- for value in filter.values -%}
-                <label class="kl-check-item{% if value.count == 0 %} is-disabled{% endif %}">
-                  <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
-                    {% if value.active %}checked{% endif %}
-                    {% if value.count == 0 %}disabled{% endif %}
-                    form="kl-form-drawer"
-                    onchange="document.getElementById('kl-form-drawer').submit()">
-                  <span class="kl-check-label">{{ value.label }}</span>
                 </label>
               {%- endfor -%}
             </div>
@@ -188,7 +182,10 @@
                   {%- endfor -%}
                 </form>
 
-              {%- elsif filter.type == 'list' and filter.presentation == 'swatch' -%}
+              {%- elsif filter.type == 'list' -%}
+                {%- assign fl_lower = filter.label | downcase -%}
+                {%- assign is_colour = false -%}
+                {%- if fl_lower == 'color' or fl_lower == 'colour' -%}{%- assign is_colour = true -%}{%- endif -%}
                 <div class="kl-swatch-list">
                   {%- for value in filter.values -%}
                     <label class="kl-swatch-item{% if value.count == 0 %} is-disabled{% endif %}">
@@ -197,22 +194,12 @@
                         {% if value.count == 0 %}disabled{% endif %}
                         form="kl-form-sidebar"
                         onchange="document.getElementById('kl-form-sidebar').submit()">
-                      <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
+                      {%- if filter.presentation == 'swatch' -%}
+                        <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
+                      {%- elsif is_colour -%}
+                        <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: value.label -%};"></span>
+                      {%- endif -%}
                       <span class="kl-swatch-name">{{ value.label }}</span>
-                    </label>
-                  {%- endfor -%}
-                </div>
-
-              {%- else -%}
-                <div class="kl-check-list">
-                  {%- for value in filter.values -%}
-                    <label class="kl-check-item{% if value.count == 0 %} is-disabled{% endif %}">
-                      <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
-                        {% if value.active %}checked{% endif %}
-                        {% if value.count == 0 %}disabled{% endif %}
-                        form="kl-form-sidebar"
-                        onchange="document.getElementById('kl-form-sidebar').submit()">
-                      <span class="kl-check-label">{{ value.label }}</span>
                     </label>
                   {%- endfor -%}
                 </div>
