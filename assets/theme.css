@@ -986,63 +986,37 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .feature-section__image svg.placeholder-svg { width: 55%; height: 55%; max-width: 200px; opacity: .5; }
 
 /* ============================================================
-   LOVED GALLERY
+   LOVED GALLERY — editorial CSS grid (no horizontal scroll)
    ============================================================ */
-.loved-gallery { padding: 64px 0; background: var(--clr-white); overflow: hidden; }
+.loved-gallery { padding: 80px 0; background: #F8F6F2; overflow: hidden; }
 .loved-gallery__track {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  padding-bottom: 4px;
-  cursor: grab;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 14px;
+  overflow: visible;
+  cursor: default;
+  padding-bottom: 0;
 }
-.loved-gallery__track::-webkit-scrollbar { display: none; }
-.loved-gallery__track.is-dragging { cursor: grabbing; }
 .gallery-item {
-  flex: 0 0 240px;
-  scroll-snap-align: start;
-  border-radius: var(--radius-base);
+  border-radius: 14px;
   overflow: hidden;
   position: relative;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.4s ease;
 }
-.gallery-item__img { aspect-ratio: 3/4; overflow: hidden; }
-.gallery-item__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.gallery-item:hover .gallery-item__img img { transform: scale(1.06); }
-.gallery-item__play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0,0,0,0.15);
+.gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.13); }
+/* Featured: first item spans full left column (both rows) */
+.gallery-item:first-child { grid-row: 1 / span 2; }
+.gallery-item__img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-.gallery-play-btn {
-  width: 52px;
-  height: 52px;
-  background: rgba(255,255,255,0.92);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: var(--transition);
-}
-.gallery-item:hover .gallery-play-btn { transform: scale(1.12); background: var(--clr-white); }
-.gallery-play-btn svg { margin-left: 3px; }
-.loved-gallery__controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 24px; }
-.gallery-nav-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 2px solid var(--clr-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--clr-secondary);
-  transition: var(--transition);
-}
-.gallery-nav-btn:hover { background: var(--clr-secondary); color: var(--clr-white); }
+.gallery-item__img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.gallery-item:hover .gallery-item__img img { transform: scale(1.05); }
+/* Hide scroll nav — grid doesn't need it */
+.loved-gallery__controls { display: none; }
 
 /* ============================================================
    PROMO BANNER (marquee)
@@ -1761,7 +1735,10 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   .header-action__label { display: none; }
   .header-search-input { display: none; }
   .header-search-form { max-width: 42px; padding: 0 12px; }
-  .gallery-item { flex: 0 0 180px; }
+  .loved-gallery__track { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .gallery-item:first-child { grid-row: auto; }
+  .gallery-item__bg { min-height: 200px; }
+  .gallery-item:first-child .gallery-item__bg { min-height: 200px; }
 }
 
 /* ============================================================
@@ -1773,7 +1750,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .hero-banner__placeholder {
   position: absolute; inset: 0;
   background:
-    url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat,
+    url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat,
     linear-gradient(135deg, #e8d5c4 0%, #d0bba8 40%, #bda48e 100%);
 }
 
@@ -2073,6 +2050,86 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .footer-logo-text { letter-spacing: 4px; }
 
 /* ============================================================
+   LUXURY PALETTE & GLOBAL REFINEMENTS
+   ============================================================ */
+
+/* Warm section backgrounds — no harsh whites */
+.feature-section        { background: #FAF8F5; }
+.feature-section--white { background: #FFFFFF; }
+.popular-categories     { background: #FAF8F5; padding: 80px 0; }
+.new-trending           { background: #FFFFFF; }
+.trust-badges           { background: #FAF8F5; }
+.social-proof           { background: #F4F0EC; }
+.how-it-works           { background: #FAF8F5; }
+.faq-section            { background: #FFFFFF; }
+
+/* Category cards — luxury hover */
+.category-card {
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transition: transform 0.42s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.42s ease;
+}
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(127,40,91,0.14), 0 6px 20px rgba(0,0,0,0.08);
+}
+/* Warm tint on category overlay */
+.category-card__label {
+  background: linear-gradient(to top, rgba(20,10,6,0.80) 0%, rgba(20,10,6,0.20) 60%, transparent 100%);
+  padding: 28px 18px 18px;
+}
+.category-card__name { font-size: 20px; letter-spacing: 0.2px; }
+
+/* Feature section image — rounder, richer shadow */
+.feature-section__fallback-img {
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}
+.feature-section__image img {
+  border-radius: 20px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}
+
+/* Section headings — sharper luxury feel */
+.section-title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  letter-spacing: -0.5px;
+  margin-bottom: 40px;
+}
+
+/* Product cards — warmer, cleaner */
+.product-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+}
+
+/* Promo banner — richer gradient */
+.promo-banner {
+  background: linear-gradient(105deg, var(--clr-secondary) 0%, #9e3572 60%, #6b1f4a 100%);
+}
+
+/* Hero floating badge — more premium */
+.hero-floating-badge {
+  box-shadow: 0 12px 40px rgba(127,40,91,0.35);
+}
+
+/* Trust badges icons — warm accent */
+.trust-badge__icon { color: var(--clr-secondary); }
+
+/* Gallery section heading */
+.loved-gallery .section-title {
+  font-size: clamp(26px, 3vw, 38px);
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+/* ============================================================
    RESPONSIVE ADJUSTMENTS
    ============================================================ */
 @media (max-width: 768px) {
@@ -2084,13 +2141,16 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
    ============================================================ */
 .gallery-item__bg {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100%;
+  min-height: 240px;
   background-size: cover;
   background-position: center;
   transition: transform 0.5s ease;
 }
-.gallery-item:hover .gallery-item__bg { transform: scale(1.04); }
-.gallery-item__img { overflow: hidden; border-radius: 8px; }
+/* Featured tall item gets a taller min-height */
+.gallery-item:first-child .gallery-item__bg { min-height: 500px; }
+.gallery-item:hover .gallery-item__bg { transform: scale(1.05); }
+.gallery-item__img { overflow: hidden; width: 100%; height: 100%; }
 
 /* ============================================================
    CATEGORY CARD — BACKGROUND IMAGE DIV
