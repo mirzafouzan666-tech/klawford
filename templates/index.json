@@ -4,9 +4,9 @@
       "type": "hero-banner",
       "settings": {
         "heading": "Spring Sale",
-        "subheading": "EXTRA 25% OFF",
+        "subheading": "EXTRA 30% OFF",
         "badge_text": "Spring Sale",
-        "promo_code": "EXTRA25"
+        "promo_code": "EXTRA30"
       },
       "blocks": {
         "btn_mattresses": {
@@ -101,7 +101,7 @@
     },
     "promo_banner": {
       "type": "promo-banner",
-      "settings": { "discount": "25", "code": "EXTRA25" }
+      "settings": { "discount": "30", "code": "EXTRA30" }
     },
     "how_it_works": {
       "type": "how-it-works",
