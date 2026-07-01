@@ -21,7 +21,9 @@
                   width="240"
                   height="320">
               {%- else -%}
-                <div style="width:100%;aspect-ratio:3/4;background:var(--clr-primary);"></div>
+                {%- assign fallback_ids = 'photo-1505693416388-ac5ce068fe85,photo-1631049307264-da0ec9d70304,photo-1522771739844-6a9f6d5f14af,photo-1560448204-603b3fc33ddc,photo-1617806118233-18e1de247200,photo-1540518614846-7eded433c457' | split: ',' -%}
+                {%- assign fb_id = fallback_ids[forloop.index0] | default: 'photo-1505693416388-ac5ce068fe85' -%}
+                <div class="gallery-item__bg" style="background-image: url('https://images.unsplash.com/{{ fb_id }}?auto=format&fit=crop&w=480&q=85');"></div>
               {%- endif -%}
             </div>
             {%- if block.settings.show_play -%}
@@ -38,15 +40,11 @@
       {%- endfor -%}
 
       {%- if section.blocks.size == 0 -%}
-        {%- for i in (1..6) -%}
+        {%- assign gallery_imgs = 'photo-1505693416388-ac5ce068fe85,photo-1631049307264-da0ec9d70304,photo-1522771739844-6a9f6d5f14af,photo-1560448204-603b3fc33ddc,photo-1617806118233-18e1de247200,photo-1540518614846-7eded433c457' | split: ',' -%}
+        {%- for img_id in gallery_imgs -%}
           <div class="gallery-item">
             <div class="gallery-item__img">
-              <div style="width:100%;aspect-ratio:3/4;background:var(--clr-primary);"></div>
-            </div>
-            <div class="gallery-item__play" aria-hidden="true">
-              <div class="gallery-play-btn">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 3l11 6-11 6V3z" fill="var(--clr-secondary)"/></svg>
-              </div>
+              <div class="gallery-item__bg" style="background-image: url('https://images.unsplash.com/{{ img_id }}?auto=format&fit=crop&w=480&q=85');"></div>
             </div>
           </div>
         {%- endfor -%}

@@ -1766,7 +1766,18 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 
 .hero-banner__placeholder {
   position: absolute; inset: 0;
-  background: linear-gradient(135deg, #e8d5c4 0%, #d0bba8 40%, #bda48e 100%);
+  background:
+    url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1920&q=85') center/cover no-repeat,
+    linear-gradient(135deg, #e8d5c4 0%, #d0bba8 40%, #bda48e 100%);
+}
+
+.feature-section__fallback-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-lg, 16px);
+  overflow: hidden;
 }
 
 .hero-banner__overlay {
@@ -1894,7 +1905,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .popular-categories { padding: 72px 0; }
 .categories-grid { gap: 20px; }
 .category-card__img { aspect-ratio: 3 / 4; }
-.category-card__overlay { background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,0.7) 100%); }
+.category-card__overlay { background: linear-gradient(to bottom, rgba(26,16,8,0) 40%, rgba(26,16,8,0.82) 100%); }
 .category-card__cta { font-size: var(--fs-sm); padding: 12px 18px; justify-content: space-between; letter-spacing: 0.2px; }
 .category-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
 
@@ -2061,6 +2072,19 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 @media (max-width: 768px) {
   .category-card__name { font-size: 15px; }
 }
+
+/* ============================================================
+   GALLERY ITEM — BACKGROUND IMAGE DIV
+   ============================================================ */
+.gallery-item__bg {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover .gallery-item__bg { transform: scale(1.04); }
+.gallery-item__img { overflow: hidden; border-radius: 8px; }
 
 /* ============================================================
    CATEGORY CARD — BACKGROUND IMAGE DIV
