@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title -}}
+      {%- if current_page != 1 %} &mdash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &mdash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {%- if page_description -%}
+      <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+
+    {{ content_for_header }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body class="template-{{ template.name }}">
+
+    <div style="display:none"> {%- section 'header' -%} </div>
+
+    <main id="MainContent" class="main-content" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {%- section 'footer' -%}
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div id="cart-drawer" class="cart-drawer" aria-hidden="true" role="dialog" aria-label="My Basket">
+      <div class="cart-drawer__head">
+        <h3 class="cart-drawer__title">My Basket</h3>
+        <button class="cart-drawer__close" id="cart-close" aria-label="Close basket">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="cart-drawer__body" id="cart-drawer-body">
+        <div class="cart-drawer__delivery">
+          <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect x="1" y="2" width="11" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M12 5h3l2 3v3h-5V5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="4.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="13.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          <span><strong>Fast Free Delivery:</strong> Select date at checkout.</span>
+        </div>
+
+        {%- if cart.item_count == 0 -%}
+          <div class="cart-empty" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;gap:16px;text-align:center;">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M7 5h6l4 20M17 25h26l-3 16H20L17 25z" stroke="#dadada" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="46" r="2.5" stroke="#dadada" stroke-width="1.8"/><circle cx="38" cy="46" r="2.5" stroke="#dadada" stroke-width="1.8"/></svg>
+            <p style="font-size:var(--fs-sm);color:var(--clr-gray-dusty);">Your basket is empty</p>
+            <a href="/collections/all" class="btn btn--primary btn--sm">Continue Shopping</a>
+          </div>
+        {%- else -%}
+          {%- for item in cart.items -%}
+            <div class="cart-item-row" data-key="{{ item.key }}">
+              <div class="cart-item-row__img">
+                {%- if item.variant.compare_at_price > item.variant.price -%}
+                  {%- assign item_discount_pct = item.variant.compare_at_price | minus: item.variant.price | times: 100 | divided_by: item.variant.compare_at_price -%}
+                  <span class="cart-item-row__badge">{{ item_discount_pct }}% OFF</span>
+                {%- endif -%}
+                {%- if item.image -%}
+                  <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" width="80" height="80" loading="lazy">
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+              <div class="cart-item-row__info">
+                <p class="cart-item-row__name">{{ item.product.title }}</p>
+                {%- unless item.product.has_only_default_variant -%}
+                  <p class="cart-item-row__variant">{{ item.variant.title }}</p>
+                {%- endunless -%}
+                <div class="cart-item-row__pricing">
+                  <span class="cart-item-row__price">{{ item.final_line_price | money }}</span>
+                  {%- if item.variant.compare_at_price > item.variant.price -%}
+                    <span class="cart-item-row__compare">{{ item.variant.compare_at_price | times: item.quantity | money }}</span>
+                  {%- endif -%}
+                </div>
+                <div class="cart-item-row__qty">
+                  <button class="cart-qty-btn" data-action="decrease" data-key="{{ item.key }}" aria-label="Decrease quantity">&#8722;</button>
+                  <span>{{ item.quantity }}</span>
+                  <button class="cart-qty-btn" data-action="increase" data-key="{{ item.key }}" aria-label="Increase quantity">&#43;</button>
+                </div>
+              </div>
+              <button class="cart-item-row__remove" data-key="{{ item.key }}" aria-label="Remove {{ item.title | escape }}">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M5 4V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1m2 0l-.8 7a1 1 0 0 1-1 .9H4.8a1 1 0 0 1-1-.9L3 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      <div class="cart-drawer__foot">
+        <div class="cart-drawer__total">
+          <span class="cart-drawer__total-label">Total</span>
+          <span class="cart-drawer__total-price">{{ cart.total_price | money }}</span>
+        </div>
+        <div class="cart-drawer__btns">
+          <a href="/cart" class="btn btn--outline">View Basket</a>
+          <a href="/checkout" class="btn btn--primary">Checkout</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="search-overlay" aria-hidden="true">
+      <div class="search-overlay__bg" id="search-bg"></div>
+      <div class="search-overlay__wrap">
+        <form action="/search" method="get" role="search" class="search-overlay__form">
+          <input type="hidden" name="type" value="product">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="so-icon"><circle cx="8.5" cy="8.5" r="5.75" stroke="currentColor" stroke-width="1.5"/><path d="m13 13 4.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input id="search-input" name="q" type="search" placeholder="Search for beds, mattresses…" autocomplete="off" class="search-overlay__input">
+        </form>
+        <button id="search-close" class="search-overlay__close" aria-label="Close search">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </body>
+</html>

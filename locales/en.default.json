@@ -1,37 +1,18 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "general": {
-    "search": {
-      "title": "Search",
-      "placeholder": "Search for products…",
-      "no_results": "No results for \"{{ terms }}\"",
-      "results_with_count": {
-        "one": "{{ count }} result for \"{{ terms }}\"",
-        "other": "{{ count }} results for \"{{ terms }}\""
-      }
-    },
-    "pagination": {
-      "previous": "Previous",
-      "next": "Next",
-      "page": "Page {{ number }}"
-    }
-  },
-  "products": {
-    "product": {
-      "add_to_cart": "Add to Cart",
-      "sold_out": "Sold Out",
-      "unavailable": "Unavailable",
-      "sale": "Sale",
-      "new": "New",
-      "from": "From",
-      "regular_price": "Regular price",
-      "sale_price": "Sale price",
-      "unit_price": "Unit price",
-      "quantity": "Quantity"
-    },
-    "general": {
-      "title": "Products",
-      "no_results": "No products found."
-    }
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
   },
   "cart": {
     "title": "Your Cart",
@@ -66,10 +47,84 @@
       "details": "Account Details"
     }
   },
-  "accessibility": {
-    "skip_to_content": "Skip to content",
-    "close": "Close",
-    "open_menu": "Open menu",
-    "close_menu": "Close menu"
+  "general": {
+    "search": {
+      "title": "Search",
+      "placeholder": "Search for products…",
+      "no_results": "No results for \"{{ terms }}\"",
+      "results_with_count": {
+        "one": "{{ count }} result for \"{{ terms }}\"",
+        "other": "{{ count }} results for \"{{ terms }}\""
+      }
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{ number }}"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "sale": "Sale",
+      "new": "New",
+      "from": "From",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "unit_price": "Unit price",
+      "quantity": "Quantity"
+    },
+    "general": {
+      "title": "Products",
+      "no_results": "No products found."
+    }
+  },
+  "gempages": {
+    "Carousel": {
+      "no_slider": "No Slider"
+    },
+    "CarouselV3": {
+      "no_slider": "No Slider"
+    },
+    "Newsletter": {
+      "err_msg_default": "Can’t send email. Please try again later.",
+      "success_msg_default": "Thanks for subscribing"
+    },
+    "IconListV2": {
+      "icons_not_found": "Icons not found"
+    },
+    "IconList": {
+      "icons_not_found": "Icons not found"
+    },
+    "IconListHoz": {
+      "icons_not_found": "Icons not found"
+    },
+    "Product": {
+      "product_not_found": "Product not found"
+    },
+    "ProductList": {
+      "product_not_found": "Product Not Found!",
+      "no_products_found": "No products found!",
+      "no_related_products": "No related products!"
+    },
+    "ProductListV3": {
+      "product_not_found": "Product Not Found!",
+      "no_products_found": "No products found!",
+      "no_related_products": "No related products!"
+    },
+    "ProductTitle": {
+      "product_not_found": "Product Not Found"
+    },
+    "ProductVariants": {
+      "please_select": "Please select an option"
+    },
+    "StockCounter": {
+      "let_buy_now": "<mark>HURRY!</mark> LET BUY NOW"
+    },
+    "Breadcrumb": {
+      "home": "Home"
+    }
   }
 }

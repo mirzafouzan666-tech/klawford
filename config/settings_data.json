@@ -1,1 +1,30 @@
-{"current":{"color_primary":"#F2E8E0","color_secondary":"#7F285B","color_text":"#474546","heading_font":"'Playfair Display', serif","social_facebook":"","social_instagram":"","social_twitter":"","social_youtube":"","social_tiktok":""},"presets":{}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "color_primary": "#F2E8E0",
+    "color_secondary": "#7F285B",
+    "color_text": "#474546",
+    "heading_font": "'Playfair Display', serif",
+    "social_facebook": "",
+    "social_instagram": "",
+    "social_twitter": "",
+    "social_youtube": "",
+    "social_tiktok": "",
+    "blocks": {
+      "624431347712131912": {
+        "type": "shopify://apps//blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {}
+}
