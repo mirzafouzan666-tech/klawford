@@ -40,13 +40,11 @@
   function openSearch() {
     searchOverlay?.classList.add('is-open');
     searchOverlay?.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
     setTimeout(() => searchInput?.focus(), 280);
   }
   function closeSearch() {
     searchOverlay?.classList.remove('is-open');
     searchOverlay?.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
   }
 
   searchOpenBtn?.addEventListener('click', openSearch);

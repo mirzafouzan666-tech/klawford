@@ -393,33 +393,32 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .mobile-overlay.is-visible { display: block; }
 
 /* ============================================================
-   SEARCH OVERLAY
+   SEARCH — slide-down bar, page stays fully visible below
    ============================================================ */
 .search-overlay {
   position: fixed;
-  inset: 0;
-  z-index: 600;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.22s;
-}
-.search-overlay.is-open { opacity: 1; pointer-events: all; }
-.search-overlay__bg {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-}
-.search-overlay__wrap {
-  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  background: var(--clr-white);
-  padding: 20px 24px;
+  z-index: 650;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s;
+}
+/* is-open: bar itself interactive; page behind stays clickable */
+.search-overlay.is-open { opacity: 1; }
+/* Dark backdrop removed — page is visible at all times */
+.search-overlay__bg { display: none; }
+.search-overlay__wrap {
+  position: relative;
+  background: #fff;
+  padding: 16px 32px;
   display: flex;
   align-items: center;
   gap: 16px;
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 28px rgba(0,0,0,0.13);
+  border-bottom: 1px solid #eee;
+  pointer-events: all;
   transform: translateY(-100%);
   transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
 }
