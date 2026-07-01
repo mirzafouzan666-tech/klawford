@@ -1839,7 +1839,14 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   color: var(--clr-secondary); letter-spacing: 1.5px;
 }
 
-.hero-banner__buttons { gap: 10px; margin-bottom: 24px; align-items: center; }
+.hero-banner__buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+/* Primary CTA — full-width first row */
 .hero-banner__buttons .btn--primary {
   background: var(--clr-secondary) !important;
   color: var(--clr-white) !important;
@@ -1849,6 +1856,20 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .hero-banner__buttons .btn--primary:hover {
   background: var(--clr-secondary-dark) !important;
   border-color: var(--clr-secondary-dark) !important;
+}
+/* Category buttons — 2×2 grid below the primary button */
+.hero-banner__buttons .btn--ghost-dark {
+  display: none; /* hide individually, shown via grid wrapper */
+}
+.hero-banner__cat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.hero-banner__cat-grid .btn--ghost-dark {
+  display: inline-flex;
+  white-space: nowrap;
+  justify-content: center;
 }
 .btn--ghost-dark {
   background: rgba(255,255,255,0.62);

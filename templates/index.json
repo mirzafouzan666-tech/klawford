@@ -16,20 +16,24 @@
           "type": "button",
           "settings": { "label": "Shop Sale Now", "url": "/collections/all" }
         },
-        "btn_divan": {
+        "btn_beds": {
           "type": "button",
-          "settings": { "label": "Divan Beds", "url": "/collections/divan-beds" }
-        },
-        "btn_ottoman": {
-          "type": "button",
-          "settings": { "label": "Ottoman Beds", "url": "/collections/ottoman-beds" }
+          "settings": { "label": "Beds", "url": "/collections/beds" }
         },
         "btn_mattresses": {
           "type": "button",
           "settings": { "label": "Mattresses", "url": "/collections/mattresses" }
+        },
+        "btn_headboards": {
+          "type": "button",
+          "settings": { "label": "Headboards", "url": "/collections/headboards" }
+        },
+        "btn_sofas": {
+          "type": "button",
+          "settings": { "label": "Sofas", "url": "/collections/sofas" }
         }
       },
-      "block_order": ["btn_shop", "btn_divan", "btn_ottoman", "btn_mattresses"]
+      "block_order": ["btn_shop", "btn_beds", "btn_mattresses", "btn_headboards", "btn_sofas"]
     },
     "social_proof": {
       "type": "social-proof-bar",

@@ -55,21 +55,40 @@
 
         <div class="hero-banner__buttons">
           {%- assign btn_index = 0 -%}
+
+          {%- comment -%} Primary button first {%- endcomment -%}
           {%- for block in section.blocks -%}
-            {%- if block.type == 'button' -%}
+            {%- if block.type == 'button' and btn_index == 0 -%}
               {%- assign btn_index = btn_index | plus: 1 -%}
               <a href="{{ block.settings.url | default: '/collections/all' }}"
-                 class="btn {% if btn_index == 1 %}btn--primary btn--lg{% else %}btn--ghost-dark{% endif %}"
+                 class="btn btn--primary btn--lg"
                  {{ block.shopify_attributes }}>
                 {{ block.settings.label }}
-                {%- if btn_index == 1 -%}
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                {%- endif -%}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </a>
+            {%- elsif block.type == 'button' -%}
+              {%- assign btn_index = btn_index | plus: 1 -%}
             {%- endif -%}
           {%- endfor -%}
+
+          {%- comment -%} Category buttons in a 2×2 grid {%- endcomment -%}
+          <div class="hero-banner__cat-grid">
+            {%- assign cat_index = 0 -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'button' and cat_index > 0 -%}
+                <a href="{{ block.settings.url | default: '/collections/all' }}"
+                   class="btn btn--ghost-dark"
+                   {{ block.shopify_attributes }}>
+                  {{ block.settings.label }}
+                </a>
+              {%- endif -%}
+              {%- if block.type == 'button' -%}
+                {%- assign cat_index = cat_index | plus: 1 -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
         </div>
 
         {%- if section.settings.trust_text != blank -%}
