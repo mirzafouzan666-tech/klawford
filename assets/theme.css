@@ -1864,6 +1864,27 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .kl-seo__inner h3 { font-family: var(--ff-primary); font-size: var(--fs-lg); font-weight: var(--fw-bold); color: var(--clr-text); margin: 24px 0 8px; }
 .kl-seo__inner p { margin-bottom: 14px; }
 
+/* Reviews section */
+.kl-reviews {
+  background: #EDE8E1;
+  padding: 56px 0 60px;
+  text-align: center;
+}
+.kl-reviews__heading {
+  font-family: var(--ff-primary);
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  margin-bottom: 36px;
+}
+.kl-reviews__widget { max-width: 1100px; margin: 0 auto; }
+.kl-reviews__placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  padding: 40px 20px; max-width: 500px; margin: 0 auto;
+  color: var(--clr-text-light); font-size: var(--fs-sm); line-height: 1.7;
+}
+.kl-reviews__placeholder p { margin: 0; }
+
 /* Trust bar */
 .kl-trust { background: var(--clr-white); border-top: 1px solid var(--clr-ash); padding: 36px 0; }
 .kl-trust__inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }

@@ -313,6 +313,31 @@
 </div>
 
 {%- comment -%} ================================================================
+    REVIEWS SECTION (Trustpilot carousel concept)
+    ================================================================ {%- endcomment -%}
+{%- if section.settings.show_reviews -%}
+<div class="kl-reviews">
+  <div class="container">
+    <h2 class="kl-reviews__heading">{{ section.settings.reviews_heading | default: 'What Our Customers Say' }}</h2>
+    {%- if section.settings.trustpilot_widget != blank -%}
+      <div class="kl-reviews__widget">
+        {{ section.settings.trustpilot_widget }}
+      </div>
+    {%- else -%}
+      <div class="kl-reviews__placeholder">
+        <svg width="120" height="28" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Trustpilot">
+          <rect width="260" height="60" rx="4" fill="#00B67A"/>
+          <text x="16" y="40" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">★★★★★</text>
+          <text x="170" y="40" font-family="Arial,sans-serif" font-size="20" font-weight="600" fill="#fff">Trustpilot</text>
+        </svg>
+        <p>Paste your Trustpilot widget code in the theme customiser under <strong>Collection Main → Reviews widget code</strong> to show live customer reviews here.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}
+
+{%- comment -%} ================================================================
     TRUST BAR
     ================================================================ {%- endcomment -%}
 {%- if section.settings.show_trust_bar -%}
@@ -462,6 +487,28 @@
       "id": "show_trust_bar",
       "label": "Show trust bar",
       "default": true
+    },
+    {
+      "type": "header",
+      "content": "Reviews Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_reviews",
+      "label": "Show reviews section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "reviews_heading",
+      "label": "Reviews heading",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "html",
+      "id": "trustpilot_widget",
+      "label": "Trustpilot widget embed code",
+      "info": "Go to trustpilot.com/business → Get started → Widget Library → Carousel widget → Copy code and paste here"
     }
   ]
 }
