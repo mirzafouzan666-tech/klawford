@@ -1785,7 +1785,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   transition: box-shadow 0.15s !important;
 }
 .kl-swatch-dot.is-checked { box-shadow: 0 0 0 2px #5C1F2E, 0 0 0 4px #fff inset; }
-.kl-swatch-name { line-height: 1.4; }
+.kl-swatch-name { line-height: 1.4; color: var(--clr-secondary); font-size: 13px; }
 
 /* ---- CONTENT AREA ---- */
 .kl-col-head { margin-bottom: 24px; }
