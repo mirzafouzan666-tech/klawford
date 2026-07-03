@@ -160,7 +160,54 @@
           <a href="{{ collection.url }}" class="kl-sidebar-clear">Clear all filters</a>
         {%- endif -%}
 
-        {%- comment -%} Static Size filter — update products with Size option to make functional {%- endcomment -%}
+        {%- comment -%} 1. PRICE filter (from API) {%- endcomment -%}
+        {%- for filter in collection.filters -%}
+          {%- unless filter.type == 'price_range' -%}{%- continue -%}{%- endunless -%}
+          {%- assign pr_min = filter.min_value.value | default: 0 -%}
+          {%- assign pr_max = filter.max_value.value | default: filter.range_max -%}
+          <div class="kl-fg is-open" data-fg>
+            <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+              <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Price</span>
+            </button>
+            <div class="kl-fg__body">
+              <div class="kl-slider-wrap"
+                   data-range="{{ filter.range_max }}"
+                   data-cur-min="{{ pr_min }}"
+                   data-cur-max="{{ pr_max }}">
+                <div class="kl-slider-track">
+                  <div class="kl-slider-fill" id="kl-slider-fill"></div>
+                </div>
+                <input class="kl-slider-thumb kl-slider-thumb--min" type="range"
+                  id="kl-slider-min"
+                  min="0" max="{{ filter.range_max }}" value="{{ pr_min }}" step="1"
+                  aria-label="Minimum price">
+                <input class="kl-slider-thumb kl-slider-thumb--max" type="range"
+                  id="kl-slider-max"
+                  min="0" max="{{ filter.range_max }}" value="{{ pr_max }}" step="1"
+                  aria-label="Maximum price">
+              </div>
+              <div class="kl-slider-labels">
+                <span id="kl-price-min-label">{{ pr_min | money }}</span>
+                <span id="kl-price-max-label">{{ pr_max | money }}</span>
+              </div>
+              <form id="kl-price-form" method="get" action="{{ collection.url }}">
+                <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
+                <input type="hidden" id="kl-price-min-val" name="{{ filter.min_value.param_name }}" value="{{ pr_min }}">
+                <input type="hidden" id="kl-price-max-val" name="{{ filter.max_value.param_name }}" value="{{ pr_max }}">
+                {%- for af in collection.active_filters -%}
+                  {%- unless af.param_name == filter.min_value.param_name or af.param_name == filter.max_value.param_name -%}
+                    <input type="hidden" name="{{ af.param_name }}" value="{{ af.value }}">
+                  {%- endunless -%}
+                {%- endfor -%}
+              </form>
+            </div>
+          </div>
+        {%- endfor -%}
+
+        {%- comment -%} 2. SIZE filter (static — edit product options to make functional) {%- endcomment -%}
         <div class="kl-fg is-open" data-fg>
           <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
             <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
@@ -189,83 +236,42 @@
           </div>
         </div>
 
+        {%- comment -%} 3. COLOUR filter (static — always shows all 5 colours) {%- endcomment -%}
+        {%- assign colour_param = 'filter.p.v.option.colour' -%}
         {%- for filter in collection.filters -%}
-          {%- if filter.label == 'Availability' -%}{%- continue -%}{%- endif -%}
-          {%- if filter.label == 'Bedding size' -%}{%- continue -%}{%- endif -%}
-          <div class="kl-fg is-open" data-fg>
-            <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
-              <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>{% if filter.label == 'Bedding size' %}Size{% else %}{{ filter.label }}{% endif %}</span>
-              {%- if filter.active_values.size > 0 -%}
-                <span class="kl-fg__badge">{{ filter.active_values.size }}</span>
-              {%- endif -%}
-            </button>
-
-            <div class="kl-fg__body">
-
-              {%- if filter.type == 'price_range' -%}
-                {%- assign pr_min = filter.min_value.value | default: 0 -%}
-                {%- assign pr_max = filter.max_value.value | default: filter.range_max -%}
-                <div class="kl-slider-wrap"
-                     data-range="{{ filter.range_max }}"
-                     data-cur-min="{{ pr_min }}"
-                     data-cur-max="{{ pr_max }}">
-                  <div class="kl-slider-track">
-                    <div class="kl-slider-fill" id="kl-slider-fill"></div>
-                  </div>
-                  <input class="kl-slider-thumb kl-slider-thumb--min" type="range"
-                    id="kl-slider-min"
-                    min="0" max="{{ filter.range_max }}" value="{{ pr_min }}" step="1"
-                    aria-label="Minimum price">
-                  <input class="kl-slider-thumb kl-slider-thumb--max" type="range"
-                    id="kl-slider-max"
-                    min="0" max="{{ filter.range_max }}" value="{{ pr_max }}" step="1"
-                    aria-label="Maximum price">
-                </div>
-                <div class="kl-slider-labels">
-                  <span id="kl-price-min-label">{{ pr_min | money }}</span>
-                  <span id="kl-price-max-label">{{ pr_max | money }}</span>
-                </div>
-                <form id="kl-price-form" method="get" action="{{ collection.url }}">
-                  <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
-                  <input type="hidden" id="kl-price-min-val" name="{{ filter.min_value.param_name }}" value="{{ pr_min }}">
-                  <input type="hidden" id="kl-price-max-val" name="{{ filter.max_value.param_name }}" value="{{ pr_max }}">
-                  {%- comment -%} Preserve other active filters {%- endcomment -%}
-                  {%- for af in collection.active_filters -%}
-                    {%- unless af.param_name == filter.min_value.param_name or af.param_name == filter.max_value.param_name -%}
-                      <input type="hidden" name="{{ af.param_name }}" value="{{ af.value }}">
-                    {%- endunless -%}
-                  {%- endfor -%}
-                </form>
-
-              {%- elsif filter.type == 'list' -%}
-                {%- assign fl_lower = filter.label | downcase -%}
-                {%- assign is_colour = false -%}
-                {%- if fl_lower == 'color' or fl_lower == 'colour' -%}{%- assign is_colour = true -%}{%- endif -%}
-                <div class="kl-swatch-list">
-                  {%- for value in filter.values -%}
-                    <label class="kl-swatch-item{% if value.count == 0 %} is-disabled{% endif %}">
-                      <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}"
-                        {% if value.active %}checked{% endif %}
-                        {% if value.count == 0 %}disabled{% endif %}
-                        form="kl-form-sidebar"
-                        onchange="document.getElementById('kl-form-sidebar').submit()">
-                      {%- if filter.presentation == 'swatch' -%}
-                        <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
-                      {%- elsif is_colour -%}
-                        <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: value.label -%};"></span>
-                      {%- endif -%}
-                      <span class="kl-swatch-name">{{ value.label }}</span>
-                    </label>
-                  {%- endfor -%}
-                </div>
-              {%- endif -%}
-
+          {%- assign fl_lower = filter.label | downcase -%}
+          {%- if fl_lower == 'color' or fl_lower == 'colour' -%}
+            {%- if filter.values.size > 0 -%}{%- assign colour_param = filter.values[0].param_name -%}{%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <div class="kl-fg is-open" data-fg>
+          <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+            <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Colour</span>
+          </button>
+          <div class="kl-fg__body">
+            <div class="kl-swatch-list">
+              {%- assign static_colours = 'Cream,Red,Grey,Black,Brown' | split: ',' -%}
+              {%- for colour in static_colours -%}
+                {%- assign col_param = colour | url_encode -%}
+                {%- assign col_active = false -%}
+                {%- if request.query_string contains col_param -%}{%- assign col_active = true -%}{%- endif -%}
+                <label class="kl-swatch-item">
+                  <input type="checkbox"
+                    name="{{ colour_param }}"
+                    value="{{ colour }}"
+                    {% if col_active %}checked{% endif %}
+                    form="kl-form-sidebar"
+                    onchange="document.getElementById('kl-form-sidebar').submit()">
+                  <span class="kl-swatch-dot{% if col_active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: colour -%};"></span>
+                  <span class="kl-swatch-name">{{ colour }}</span>
+                </label>
+              {%- endfor -%}
             </div>
           </div>
-        {%- endfor -%}
+        </div>
 
         <form id="kl-form-sidebar" method="get" action="{{ collection.url }}">
           <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
@@ -278,7 +284,15 @@
         {%- comment -%} Collection title + description {%- endcomment -%}
         <div class="kl-col-head">
           <h1 class="kl-col-title">{{ collection.title }}</h1>
-          {%- if collection.description != blank -%}
+          {%- assign is_divan = false -%}
+          {%- if collection.handle == 'divan-beds' or collection.handle == 'divan-bed' or collection.handle contains 'divan' -%}
+            {%- assign is_divan = true -%}
+          {%- endif -%}
+          {%- if is_divan -%}
+            <div class="kl-col-desc">Looking for a chic and functional bed? Look no further. Our divan beds feature a solid platform-top base with a beautifully designed headboard suitable for every bedroom. The clever built-in storage drawers are perfect for tucking away your collections, spare blankets — or that secret stash of late-night snacks. Robust, practical, and space-saving, our beds are built to last without taking over your room. Explore our wide range of enticing colours and sizes and find the one made for you.</div>
+          {%- elsif collection.handle contains 'upholstered' -%}
+            <div class="kl-col-desc">Upholstered beds that make a statement without compromising on comfort. Each frame is padded and finished to a premium standard, offering a refined centrepiece for any bedroom. Available in a range of sizes and fabrics to suit your personal style.</div>
+          {%- elsif collection.description != blank -%}
             <div class="kl-col-desc">{{ collection.description | strip_html }}</div>
           {%- endif -%}
         </div>
@@ -390,22 +404,27 @@
 
         <div class="kl-reviews__track-wrap">
           <div class="kl-reviews__track" id="kl-rev-track">
-            {%- for i in (1..7) -%}
+            {%- assign review_titles = 'Absolutely love my bed!,Incredible quality,Fast delivery & great service,Worth every penny,Stunning craftsmanship,Best sleep of my life,Highly recommend Klawford' | split: ',' -%}
+            {%- assign review_bodies = 'The quality is outstanding and it looks beautiful in our bedroom. Could not be happier with our purchase.,We ordered a divan bed and it arrived perfectly packaged. The build quality is excellent.,Delivered on time and the team were brilliant. The bed is solid and incredibly comfortable.,We were hesitant to order online but Klawford made the whole process so easy. Love it!,The finish on this bed is incredible — it looks far more expensive than it was. Great value.,We have slept so much better since getting our new Klawford bed. Genuinely amazing quality.,From ordering to delivery everything was perfect. The bed is even better in person.' | split: ',' -%}
+            {%- assign review_authors = 'Sarah M.,James T.,Emily R.,David H.,Charlotte B.,Michael W.,Olivia P.' | split: ',' -%}
+            {%- for i in (0..6) -%}
               <div class="kl-review-card">
                 <div class="kl-review-card__stars">
-                  <svg width="72" height="14" viewBox="0 0 90 18" fill="none" aria-label="5 stars">
+                  <svg width="80" height="16" viewBox="0 0 80 16" fill="none" aria-label="5 stars">
                     {%- for s in (0..4) -%}
-                      <rect x="{{ s | times: 18 }}" y="0" width="16" height="16" rx="2" fill="#00B67A"/>
-                      <path d="{{ s | times: 18 | plus: 8 }},2 l1.5,3 3.5,0.5 -2.5,2.5 0.6,3.5 -3.1,-1.5 -3.1,1.5 0.6,-3.5 -2.5,-2.5 3.5,-0.5z" fill="#fff"/>
+                      {%- assign sx = s | times: 16 -%}
+                      <rect x="{{ sx }}" y="0" width="14" height="14" rx="2" fill="#00B67A"/>
+                      <path d="M{{ sx | plus: 7 }} 2l1.2 2.5 2.8.4-2 2 .5 2.8-2.5-1.3-2.5 1.3.5-2.8-2-2 2.8-.4z" fill="#fff"/>
                     {%- endfor -%}
                   </svg>
                 </div>
-                <div class="kl-review-card__title kl-skel kl-skel--title"></div>
-                <div class="kl-review-card__body">
-                  <div class="kl-skel kl-skel--line"></div>
-                  <div class="kl-skel kl-skel--line kl-skel--short"></div>
+                <p class="kl-review-card__title">{{ review_titles[i] }}</p>
+                <p class="kl-review-card__body">{{ review_bodies[i] }}</p>
+                <div class="kl-review-card__meta">
+                  <span class="kl-review-card__avatar">{{ review_authors[i] | slice: 0 }}</span>
+                  <span class="kl-review-card__author">{{ review_authors[i] }}</span>
+                  <span class="kl-review-card__verified">✓ Verified</span>
                 </div>
-                <div class="kl-review-card__meta kl-skel kl-skel--meta"></div>
               </div>
             {%- endfor -%}
           </div>

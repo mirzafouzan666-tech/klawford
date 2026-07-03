@@ -213,6 +213,8 @@
                       <div class="variant-card__img">
                         {%- if variant_img != blank -%}
                           <img src="{{ variant_img | image_url: width: 200 }}" alt="{{ value | escape }}" width="100" height="100" loading="lazy">
+                        {%- elsif is_colour -%}
+                          <span class="variant-card__colour-dot" style="background:{%- render 'swatch-color', name: value -%};"></span>
                         {%- elsif is_size -%}
                           <div class="variant-card__bed-icon">
                             <svg viewBox="0 0 80 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;color:var(--clr-secondary);">
