@@ -27,6 +27,7 @@
 
   <div class="kl-drawer__body">
     {%- for filter in collection.filters -%}
+      {%- if filter.label == 'Availability' -%}{%- continue -%}{%- endif -%}
       <div class="kl-fg is-open" data-fg>
         <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
           <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
@@ -134,6 +135,7 @@
         {%- endif -%}
 
         {%- for filter in collection.filters -%}
+          {%- if filter.label == 'Availability' -%}{%- continue -%}{%- endif -%}
           <div class="kl-fg is-open" data-fg>
             <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
               <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
