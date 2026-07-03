@@ -1876,14 +1876,72 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   font-weight: var(--fw-bold);
   color: var(--clr-text);
   margin-bottom: 36px;
+  letter-spacing: -0.3px;
 }
 .kl-reviews__widget { max-width: 1100px; margin: 0 auto; }
-.kl-reviews__placeholder {
-  display: flex; flex-direction: column; align-items: center; gap: 16px;
-  padding: 40px 20px; max-width: 500px; margin: 0 auto;
-  color: var(--clr-text-light); font-size: var(--fs-sm); line-height: 1.7;
+
+/* Carousel wrapper */
+.kl-reviews__carousel {
+  display: flex; align-items: center; gap: 12px;
+  position: relative; max-width: 1100px; margin: 0 auto 24px;
 }
-.kl-reviews__placeholder p { margin: 0; }
+.kl-reviews__track-wrap {
+  flex: 1; overflow: hidden;
+}
+.kl-reviews__track {
+  display: flex; gap: 16px;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1) !important;
+  will-change: transform;
+}
+
+/* Arrow buttons */
+.kl-reviews__arrow {
+  flex-shrink: 0; width: 36px; height: 36px;
+  border: 1px solid #D5CEC7; border-radius: 50%;
+  background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--clr-text); transition: all 0.18s !important;
+}
+.kl-reviews__arrow:hover:not(:disabled) { border-color: var(--clr-secondary); color: var(--clr-secondary); }
+.kl-reviews__arrow:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Individual review card */
+.kl-review-card {
+  flex: 0 0 calc(20% - 13px);
+  min-width: 180px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 18px 16px 16px;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.kl-review-card__stars { margin-bottom: 10px; }
+.kl-review-card__title { font-size: 13px; font-weight: 700; color: #1A1A1A; margin-bottom: 8px; }
+.kl-review-card__body { margin-bottom: 12px; }
+.kl-review-card__meta { font-size: 11px; color: #888; }
+
+/* Skeleton shimmer placeholders */
+@keyframes kl-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.kl-skel {
+  border-radius: 4px;
+  background: linear-gradient(90deg, #E8E3DC 25%, #F0EBE4 50%, #E8E3DC 75%);
+  background-size: 400px 100%;
+  animation: kl-shimmer 1.4s infinite;
+}
+.kl-skel--title  { height: 14px; width: 80%; margin-bottom: 8px; }
+.kl-skel--line   { height: 11px; width: 100%; margin-bottom: 5px; }
+.kl-skel--short  { width: 65%; }
+.kl-skel--meta   { height: 10px; width: 55%; margin-top: 4px; }
+
+/* Footer: rating + Trustpilot logo */
+.kl-reviews__footer {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 13px; color: #555; margin-top: 20px; flex-wrap: wrap;
+}
+.kl-reviews__tp-logo { vertical-align: middle; }
+.kl-reviews__tp-text strong { color: #1A1A1A; }
 
 /* Trust bar */
 .kl-trust { background: var(--clr-white); border-top: 1px solid var(--clr-ash); padding: 36px 0; }

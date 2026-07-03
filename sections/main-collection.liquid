@@ -319,19 +319,54 @@
 <div class="kl-reviews">
   <div class="container">
     <h2 class="kl-reviews__heading">{{ section.settings.reviews_heading | default: 'What Our Customers Say' }}</h2>
+
     {%- if section.settings.trustpilot_widget != blank -%}
-      <div class="kl-reviews__widget">
-        {{ section.settings.trustpilot_widget }}
-      </div>
+      <div class="kl-reviews__widget">{{ section.settings.trustpilot_widget }}</div>
     {%- else -%}
-      <div class="kl-reviews__placeholder">
-        <svg width="120" height="28" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Trustpilot">
-          <rect width="260" height="60" rx="4" fill="#00B67A"/>
-          <text x="16" y="40" font-family="Arial,sans-serif" font-size="28" font-weight="700" fill="#fff">★★★★★</text>
-          <text x="170" y="40" font-family="Arial,sans-serif" font-size="20" font-weight="600" fill="#fff">Trustpilot</text>
-        </svg>
-        <p>Paste your Trustpilot widget code in the theme customiser under <strong>Collection Main → Reviews widget code</strong> to show live customer reviews here.</p>
+
+      {%- comment -%} Visual carousel shell — replace with real Trustpilot widget later {%- endcomment -%}
+      <div class="kl-reviews__carousel" id="kl-rev-track-wrap">
+        <button class="kl-reviews__arrow kl-reviews__arrow--prev" id="kl-rev-prev" aria-label="Previous reviews" type="button">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="kl-reviews__track-wrap">
+          <div class="kl-reviews__track" id="kl-rev-track">
+            {%- for i in (1..7) -%}
+              <div class="kl-review-card">
+                <div class="kl-review-card__stars">
+                  <svg width="72" height="14" viewBox="0 0 90 18" fill="none" aria-label="5 stars">
+                    {%- for s in (0..4) -%}
+                      <rect x="{{ s | times: 18 }}" y="0" width="16" height="16" rx="2" fill="#00B67A"/>
+                      <path d="{{ s | times: 18 | plus: 8 }},2 l1.5,3 3.5,0.5 -2.5,2.5 0.6,3.5 -3.1,-1.5 -3.1,1.5 0.6,-3.5 -2.5,-2.5 3.5,-0.5z" fill="#fff"/>
+                    {%- endfor -%}
+                  </svg>
+                </div>
+                <div class="kl-review-card__title kl-skel kl-skel--title"></div>
+                <div class="kl-review-card__body">
+                  <div class="kl-skel kl-skel--line"></div>
+                  <div class="kl-skel kl-skel--line kl-skel--short"></div>
+                </div>
+                <div class="kl-review-card__meta kl-skel kl-skel--meta"></div>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <button class="kl-reviews__arrow kl-reviews__arrow--next" id="kl-rev-next" aria-label="Next reviews" type="button">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
+
+      <div class="kl-reviews__footer">
+        <span class="kl-reviews__tp-text">Rated <strong>4.8 / 5</strong> based on our reviews &nbsp;|&nbsp;</span>
+        <svg class="kl-reviews__tp-logo" width="80" height="20" viewBox="0 0 130 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Trustpilot">
+          <rect x="0" y="4" width="24" height="24" rx="2" fill="#00B67A"/>
+          <path d="M12 7l1.8 3.6 4,.6-2.9 2.8.7 3.9L12 16l-3.6 1.9.7-3.9L6.2 11.2l4-.6z" fill="#fff"/>
+          <text x="30" y="22" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#191919">Trustpilot</text>
+        </svg>
+      </div>
+
     {%- endif -%}
   </div>
 </div>
@@ -454,6 +489,31 @@
 
     render();
   }
+
+  /* ---- Reviews carousel ------------------------------------ */
+  (function () {
+    var track = document.getElementById('kl-rev-track');
+    var prev  = document.getElementById('kl-rev-prev');
+    var next  = document.getElementById('kl-rev-next');
+    if (!track || !prev || !next) return;
+    var pos = 0;
+    function cardW() {
+      var c = track.querySelector('.kl-review-card');
+      return c ? c.offsetWidth + 16 : 220;
+    }
+    function maxPos() {
+      return Math.max(0, track.scrollWidth - track.parentElement.offsetWidth);
+    }
+    function go(dir) {
+      pos = Math.min(Math.max(0, pos + dir * cardW()), maxPos());
+      track.style.transform = 'translateX(-' + pos + 'px)';
+      prev.disabled = pos <= 0;
+      next.disabled = pos >= maxPos();
+    }
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    prev.disabled = true;
+  })();
 
 })();
 </script>
