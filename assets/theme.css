@@ -81,7 +81,7 @@
   --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
   --shadow-lg: 0 16px 48px rgba(0,0,0,0.16);
   --transition: all 0.2s ease-in-out;
-  --header-h: 120px;
+  --header-h: 148px;
 }
 
 /* ---- Reset ------------------------------------------------- */
@@ -168,7 +168,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
    HEADER BENEFITS STRIP
    ============================================================ */
 .header-benefits { background: var(--clr-primary); }
-.header-benefits__inner { display: flex; align-items: center; justify-content: center; gap: 56px; padding: 16px 0; flex-wrap: wrap; }
+.header-benefits__inner { display: flex; align-items: center; justify-content: center; gap: 56px; padding: 17px 0; flex-wrap: wrap; }
 .header-benefit { display: flex; align-items: center; gap: 8px; font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--clr-text); white-space: nowrap; }
 .header-benefit svg { color: var(--clr-secondary); flex-shrink: 0; }
 
@@ -185,8 +185,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 
 /* Top bar */
 .header-top {
-  border-bottom: 1px solid var(--clr-ash);
-  padding: 14px 0;
+  padding: 22px 0;
 }
 .header-top__inner {
   display: grid;
@@ -305,7 +304,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   display: flex;
   align-items: center;
   gap: 5px;
-  padding: 14px 18px;
+  padding: 15px 18px;
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
   color: var(--clr-text);
@@ -2371,9 +2370,9 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 
 /* Clean white surfaces throughout */
 body                    { background: #FFFFFF; }
-.site-header            { background: #fff; box-shadow: 0 1px 0 rgba(0,0,0,0.07); }
-.header-nav             { background: #fff; }
-.header-benefits        { background: var(--clr-primary); }
+.site-header            { background: var(--clr-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.header-nav             { background: var(--clr-primary); }
+.header-benefits        { background: var(--clr-primary); border-top: 1px solid rgba(0,0,0,0.07); }
 .social-proof-bar       { background: #F8F7F5; border-bottom: 1px solid var(--clr-ash); }
 .popular-categories     { background: #fff; }
 .new-trending           { background: #F8F7F5; }
@@ -2389,8 +2388,8 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .section-title { color: var(--clr-text); letter-spacing: -0.6px; }
 .header-logo__text { letter-spacing: 6px; font-size: 40px; }
 
-/* Header search + nav links in white header */
-.header-search-form { background: var(--clr-wild-sand); border-color: var(--clr-ash); }
+/* Header search: white pill on the off-white surface, wider like Sonno */
+.header-search-form { background: #fff; border-color: var(--clr-ash); max-width: 340px; }
 .header-nav__link { color: var(--clr-text); font-weight: var(--fw-semibold); font-size: 13px; letter-spacing: 0.3px; }
 .header-dropdown { background: #fff; }
 .header-dropdown a { color: var(--clr-text); }
