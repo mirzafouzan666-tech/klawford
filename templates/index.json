@@ -3,11 +3,13 @@
     "hero_banner": {
       "type": "hero-banner",
       "settings": {
-        "heading": "Summer Sale",
-        "subheading": "EXTRA 30% OFF",
-        "badge_text": "Summer Sale",
+        "heading": "Sale",
+        "subheading": "+ Extra 30% OFF with",
+        "badge_text": "Summer",
         "promo_code": "EXTRA30",
-        "trust_text": "Rated 4.9 / 5 by over 12,400 happy customers",
+        "trust_text": "Auto Applies At Checkout",
+        "cta_label": "Shop Sale Now",
+        "cta_url": "/collections/all",
         "show_floating_badge": true,
         "floating_pct": "30"
       },

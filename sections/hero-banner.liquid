@@ -1,109 +1,79 @@
 <section class="hero-banner">
 
-  <div class="hero-banner__bg">
+  <!-- Full-bleed background: uses background-image div to bypass img{height:auto} -->
+  <div class="hero-banner__bg" aria-hidden="true">
     {%- if section.settings.image != blank -%}
-      <img
-        src="{{ section.settings.image | image_url: width: 1920 }}"
-        srcset="{{ section.settings.image | image_url: width: 768 }} 768w,
-                {{ section.settings.image | image_url: width: 1280 }} 1280w,
-                {{ section.settings.image | image_url: width: 1920 }} 1920w"
-        sizes="100vw"
-        alt="{{ section.settings.image.alt | escape | default: shop.name }}"
-        loading="eager"
-        fetchpriority="high"
-        width="1920"
-        height="1080">
+      <div class="hero-banner__bg-img" style="background-image: url('{{ section.settings.image | image_url: width: 1920 }}');"></div>
     {%- else -%}
-      <div class="hero-banner__placeholder" style="background-image: url('{{ 'klawford_hero_banner_modern_bedroom.jpg' | asset_url }}'), linear-gradient(135deg, #e8d5c4 0%, #d0bba8 40%, #bda48e 100%);" aria-hidden="true"></div>
+      <div class="hero-banner__bg-img" style="background-image: url('{{ 'klawford_hero_banner_modern_bedroom.jpg' | asset_url }}');"></div>
     {%- endif -%}
   </div>
 
+  <!-- Cream overlay — left panel solid, fades to transparent on right -->
   <div class="hero-banner__overlay" aria-hidden="true"></div>
 
+  <!-- Main content — left-aligned text -->
   <div class="hero-banner__inner">
     <div class="container">
       <div class="hero-banner__content">
 
+        <!-- "Summer" — small word above big "Sale" -->
         {%- if section.settings.badge_text != blank -%}
-          <div class="hero-badge">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
-              <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            {{ section.settings.badge_text }}
-          </div>
+          <span class="hero-word-small">{{ section.settings.badge_text }}</span>
         {%- endif -%}
 
+        <!-- "Sale" — huge heading -->
         <h1 class="hero-banner__heading">{{ section.settings.heading }}</h1>
 
-        {%- if section.settings.subheading != blank -%}
-          <div class="hero-banner__promo-row">
-            <span class="hero-promo-icon" aria-hidden="true">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M2 6l3 3.5 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-            <span class="hero-banner__sub">{{ section.settings.subheading }}</span>
-          </div>
-        {%- endif -%}
-
-        {%- if section.settings.promo_code != blank -%}
-          <div class="hero-code-inline">
-            <span class="hero-code-label">USE CODE</span>
-            <span class="hero-code-value">{{ section.settings.promo_code }}</span>
-          </div>
-        {%- endif -%}
-
-        <div class="hero-banner__buttons">
-          {%- assign btn_index = 0 -%}
-
-          {%- comment -%} Primary button first {%- endcomment -%}
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'button' and btn_index == 0 -%}
-              {%- assign btn_index = btn_index | plus: 1 -%}
-              <a href="{{ block.settings.url | default: '/collections/all' }}"
-                 class="btn btn--primary btn--lg"
-                 {{ block.shopify_attributes }}>
-                {{ block.settings.label }}
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            {%- elsif block.type == 'button' -%}
-              {%- assign btn_index = btn_index | plus: 1 -%}
+        {%- if section.settings.subheading != blank or section.settings.promo_code != blank -%}
+          <p class="hero-banner__sub">
+            {%- if section.settings.subheading != blank -%}{{ section.settings.subheading }}{%- endif -%}
+            {%- if section.settings.promo_code != blank -%}
+              <span class="hero-code-chip">{{ section.settings.promo_code }}</span>
             {%- endif -%}
-          {%- endfor -%}
-
-          {%- comment -%} Category buttons in a 2×2 grid {%- endcomment -%}
-          <div class="hero-banner__cat-grid">
-            {%- assign cat_index = 0 -%}
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'button' and cat_index > 0 -%}
-                <a href="{{ block.settings.url | default: '/collections/all' }}"
-                   class="btn btn--ghost-dark"
-                   {{ block.shopify_attributes }}>
-                  {{ block.settings.label }}
-                </a>
-              {%- endif -%}
-              {%- if block.type == 'button' -%}
-                {%- assign cat_index = cat_index | plus: 1 -%}
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        </div>
+          </p>
+        {%- endif -%}
 
         {%- if section.settings.trust_text != blank -%}
           <div class="hero-mini-trust">
-            <div class="hero-mini-stars" aria-label="Rated 5 stars">
-              {%- for i in (1..5) -%}
-                <svg width="13" height="13" viewBox="0 0 12 12" fill="#f5a623" aria-hidden="true">
-                  <path d="M6 1l1.24 2.54 2.8.41-2.02 1.96.48 2.77L6 7.39 3.5 8.68l.48-2.77L2 3.95l2.76-.41L6 1z"/>
-                </svg>
-              {%- endfor -%}
-            </div>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <circle cx="7" cy="7" r="6" fill="var(--clr-secondary)"/>
+              <path d="M4.5 7l2 2 3-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
             <span>{{ section.settings.trust_text }}</span>
           </div>
         {%- endif -%}
 
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="hero-cta-btn">
+            {{ section.settings.cta_label }}
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Category buttons — bottom bar, skip the CTA button that's already in content -->
+  <div class="hero-banner__cats-bar">
+    <div class="container">
+      <div class="hero-cats-row">
+        {%- assign cta_lower = section.settings.cta_label | downcase | strip -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'button' -%}
+            {%- assign block_lower = block.settings.label | downcase | strip -%}
+            {%- unless block_lower == cta_lower -%}
+              <a href="{{ block.settings.url | default: '/collections/all' }}"
+                 class="hero-cat-btn"
+                 {{ block.shopify_attributes }}>
+                {{ block.settings.label }}
+              </a>
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
       </div>
     </div>
   </div>
@@ -112,9 +82,7 @@
     <div class="hero-floating-badge" aria-hidden="true">
       <div class="hero-floating-badge__inner">
         <span class="hero-floating-badge__sale">SALE</span>
-        <span class="hero-floating-badge__pct">
-          {{ section.settings.floating_pct | default: '30' }}<small>%</small>
-        </span>
+        <span class="hero-floating-badge__pct">{{ section.settings.floating_pct | default: '30' }}<small>%</small></span>
         <span class="hero-floating-badge__off">OFF</span>
         <span class="hero-floating-badge__code">{{ section.settings.promo_code }}</span>
       </div>
@@ -131,13 +99,13 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image",
-      "info": "Recommended: 1920 × 1080px. Use a premium lifestyle bedroom photo."
+      "label": "Hero background image",
+      "info": "Recommended: wide landscape bedroom photo. Leave blank to use default."
     },
     {
       "type": "text",
       "id": "badge_text",
-      "label": "Top badge text",
+      "label": "Badge text",
       "default": "Summer Sale"
     },
     {
@@ -149,24 +117,35 @@
     {
       "type": "text",
       "id": "subheading",
-      "label": "Promo line (e.g. EXTRA 30% OFF)",
-      "default": "EXTRA 30% OFF"
+      "label": "Promo line (e.g. Extra 30% OFF with Code: EXTRA30)",
+      "default": "Extra 30% OFF with Code: EXTRA30"
     },
     {
       "type": "text",
       "id": "promo_code",
-      "label": "Promo code",
+      "label": "Promo code pill",
       "default": "EXTRA30"
     },
     {
       "type": "text",
       "id": "trust_text",
-      "label": "Mini trust line (below buttons)",
-      "default": "Rated 4.9 / 5 by over 12,400 happy customers"
+      "label": "Trust line",
+      "default": "Auto Applies At Checkout"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA button label",
+      "default": "Shop Sale Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA button link"
     },
     {
       "type": "header",
-      "content": "Floating Sale Badge"
+      "content": "Sale Badge"
     },
     {
       "type": "checkbox",
@@ -177,25 +156,25 @@
     {
       "type": "text",
       "id": "floating_pct",
-      "label": "Badge percentage number",
+      "label": "Badge percentage",
       "default": "30"
     }
   ],
   "blocks": [
     {
       "type": "button",
-      "name": "Button",
+      "name": "Category Button",
       "settings": [
         {
           "type": "text",
           "id": "label",
-          "label": "Button label",
-          "default": "Shop Sale Now"
+          "label": "Label",
+          "default": "Beds"
         },
         {
           "type": "url",
           "id": "url",
-          "label": "Button link"
+          "label": "Link"
         }
       ]
     }
@@ -204,10 +183,10 @@
     {
       "name": "Hero Banner",
       "blocks": [
-        { "type": "button", "settings": { "label": "Shop Sale Now", "url": "/collections/all" } },
+        { "type": "button", "settings": { "label": "Mattresses", "url": "/collections/mattresses" } },
         { "type": "button", "settings": { "label": "Divan Beds", "url": "/collections/divan-beds" } },
         { "type": "button", "settings": { "label": "Ottoman Beds", "url": "/collections/ottoman-beds" } },
-        { "type": "button", "settings": { "label": "Mattresses", "url": "/collections/mattresses" } }
+        { "type": "button", "settings": { "label": "Headboards", "url": "/collections/headboards" } }
       ]
     }
   ]
