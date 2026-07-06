@@ -23,22 +23,25 @@
   {%- endif -%}
 {%- endfor -%}
 
-{%- comment -%} If a colour filter is active, find the variant image for that colour {%- endcomment -%}
+{%- comment -%} If a colour filter is active, find the colour-matched image {%- endcomment -%}
 {%- assign card_primary_img = product.featured_image -%}
 {%- assign card_alt_img = product.images[1] -%}
 {%- if filter_colour != blank -%}
+  {%- assign _colour_img_found = false -%}
+
+  {%- comment -%} Path 1: variant has an image assigned directly {%- endcomment -%}
   {%- for variant in product.variants -%}
     {%- assign v_opt1 = variant.option1 | downcase -%}
     {%- assign v_opt2 = variant.option2 | downcase -%}
     {%- assign v_opt3 = variant.option3 | downcase -%}
     {%- if v_opt1 == filter_colour or v_opt2 == filter_colour or v_opt3 == filter_colour -%}
       {%- if variant.featured_image -%}
-        {%- assign card_primary_img = variant.featured_image -%}
-        {%- comment -%} Try to find a second image from the same colour for alt hover {%- endcomment -%}
-        {%- assign card_alt_img = nil -%}
+        {%- assign card_primary_img    = variant.featured_image -%}
+        {%- assign card_alt_img        = nil -%}
+        {%- assign _colour_img_found   = true -%}
         {%- for img in product.images -%}
-          {%- assign img_colour = img.alt | split: '–' | last | strip | downcase -%}
-          {%- if img_colour == filter_colour and img.id != card_primary_img.id -%}
+          {%- assign _ialt = img.alt | split: '–' | last | strip | downcase -%}
+          {%- if _ialt == filter_colour and img.id != card_primary_img.id -%}
             {%- assign card_alt_img = img -%}
             {%- break -%}
           {%- endif -%}
@@ -47,6 +50,33 @@
       {%- break -%}
     {%- endif -%}
   {%- endfor -%}
+
+  {%- comment -%}
+    Path 2 (fallback): no variant image — scan product images by alt text.
+    Matches "Product Name – Colour" pattern OR any alt text containing the colour word.
+  {%- endcomment -%}
+  {%- unless _colour_img_found -%}
+    {%- for img in product.images -%}
+      {%- assign _ialt = img.alt | downcase -%}
+      {%- assign _ialt_colour = _ialt | split: '–' | last | strip -%}
+      {%- if _ialt_colour == filter_colour or _ialt contains filter_colour -%}
+        {%- assign card_primary_img  = img -%}
+        {%- assign card_alt_img      = nil -%}
+        {%- assign _colour_img_found = true -%}
+        {%- for img2 in product.images -%}
+          {%- if img2.id != card_primary_img.id -%}
+            {%- assign _i2alt = img2.alt | downcase -%}
+            {%- assign _i2alt_colour = _i2alt | split: '–' | last | strip -%}
+            {%- if _i2alt_colour == filter_colour or _i2alt contains filter_colour -%}
+              {%- assign card_alt_img = img2 -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endunless -%}
 {%- endif -%}
 
 <article class="product-card" itemscope itemtype="https://schema.org/Product">
