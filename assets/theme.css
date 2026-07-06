@@ -2374,7 +2374,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 body                    { background: #FFFFFF; }
 .site-header            { background: var(--clr-primary); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 .header-nav             { background: var(--clr-primary); }
-.header-benefits        { background: var(--clr-primary); border-top: 1px solid rgba(0,0,0,0.07); }
+.header-benefits        { background: var(--clr-primary); }
 .social-proof-bar       { background: #F8F7F5; border-bottom: 1px solid var(--clr-ash); }
 .popular-categories     { background: #fff; }
 .new-trending           { background: #F8F7F5; }
