@@ -2971,6 +2971,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   .hero-cta-btn         { font-size: 16px; padding: 14px 28px; margin-top: 2px; }
 
   /* Cat buttons — horizontal scroll strip */
+  .hero-banner__cats-bar { padding-bottom: 24px !important; }
   .hero-cats-row {
     gap: 8px;
     overflow-x: auto;
@@ -2982,8 +2983,8 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   .hero-cats-row::-webkit-scrollbar { display: none; }
   .hero-cat-btn {
     font-size: 13px;
-    min-width: 110px;
-    height: 36px;
+    min-width: 140px;
+    height: 34px;
     padding: 0 14px;
     flex-shrink: 0;
     border-radius: 6px;
@@ -3064,9 +3065,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   .footer-address   { font-size: 14px !important; }
 
   /* --- Header benefits strip --- */
-  .header-benefits__inner { padding: 10px 0 !important; }
-  .header-benefit { font-size: 13px !important; gap: 6px !important; }
-  .header-benefit svg { width: 16px !important; height: 16px !important; }
+  .header-benefits__inner { padding: 10px 16px !important; flex-wrap: wrap !important; gap: 8px 0 !important; justify-content: space-around !important; }
+  .header-benefit { font-size: 12px !important; gap: 5px !important; }
+  .header-benefit svg { width: 14px !important; height: 14px !important; }
 
   /* --- Buttons --- */
   .btn    { padding: 14px 24px !important; font-size: 15px !important; min-height: 48px; }
