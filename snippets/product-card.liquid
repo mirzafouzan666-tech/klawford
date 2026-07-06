@@ -79,7 +79,18 @@
   {%- endunless -%}
 {%- endif -%}
 
-<article class="product-card" itemscope itemtype="https://schema.org/Product">
+{%- comment -%} Collect every variant option value for client-side colour/size filtering {%- endcomment -%}
+{%- assign _card_opts = '' -%}
+{%- for variant in product.variants -%}
+  {%- if variant.option1 != blank -%}{%- assign _card_opts = _card_opts | append: '|' | append: variant.option1 | downcase -%}{%- endif -%}
+  {%- if variant.option2 != blank -%}{%- assign _card_opts = _card_opts | append: '|' | append: variant.option2 | downcase -%}{%- endif -%}
+  {%- if variant.option3 != blank -%}{%- assign _card_opts = _card_opts | append: '|' | append: variant.option3 | downcase -%}{%- endif -%}
+{%- endfor -%}
+{%- assign _card_opts = _card_opts | append: '|' -%}
+
+<article class="product-card" itemscope itemtype="https://schema.org/Product"
+  data-opts="{{ _card_opts }}"
+  data-product-id="{{ product.id }}">
 
   {%- comment -%} ---- IMAGE + OVERLAY AREA ---------------------------------- {%- endcomment -%}
   <div class="product-card__img-wrap">
