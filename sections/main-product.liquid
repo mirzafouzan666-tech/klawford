@@ -168,6 +168,18 @@
                 </button>
                 {%- assign tab_first = false -%}
               {%- endfor -%}
+              {%- comment -%} Headboard tab — always shown, stored as line item property {%- endcomment -%}
+              <button
+                type="button"
+                class="variant-option-tab"
+                data-option-panel="headboard"
+                aria-label="Select Headboard">
+                <div class="variant-option-tab__icon">
+                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M3 19h16M7 19v-4M15 19v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                </div>
+                <p class="variant-option-tab__name">Headboard</p>
+                <p class="variant-option-tab__value" id="opt-tab-headboard">No Headboard</p>
+              </button>
             </div>
 
             {%- comment -%} Variant panels — one per allowed option {%- endcomment -%}
@@ -253,6 +265,40 @@
               </div>
               {%- assign panel_first = false -%}
             {%- endfor -%}
+
+            {%- comment -%} Headboard panel — 3 hardcoded options stored as line item property {%- endcomment -%}
+            <input type="hidden" name="properties[Headboard]" id="headboard-property" value="No Headboard">
+            <div class="variant-panel hidden" id="vpanel-headboard">
+              <div class="variant-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <button type="button" class="variant-card active" aria-pressed="true" data-hb-value="No Headboard">
+                  <div class="variant-card__check">✓</div>
+                  <div class="variant-card__img">
+                    <div class="variant-card__type-icon">
+                      <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);"><rect x="2" y="10" width="18" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M2 15h18" stroke="currentColor" stroke-width="1.3"/><path d="M6 10V8M16 10V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+                  <span class="variant-card__name">No Headboard</span>
+                </button>
+                <button type="button" class="variant-card" aria-pressed="false" data-hb-value="Standard Headboard">
+                  <div class="variant-card__check">✓</div>
+                  <div class="variant-card__img">
+                    <div class="variant-card__type-icon">
+                      <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);"><rect x="3" y="4" width="16" height="9" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M3 18h16M7 18v-5M15 18v-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+                  <span class="variant-card__name">Standard Headboard</span>
+                </button>
+                <button type="button" class="variant-card" aria-pressed="false" data-hb-value="Wingback Headboard">
+                  <div class="variant-card__check">✓</div>
+                  <div class="variant-card__img">
+                    <div class="variant-card__type-icon">
+                      <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);"><path d="M2 13V8a2 2 0 0 1 2-2h1.5c.8 0 1.5.6 1.5 1.5V10h9V7.5C16 6.6 16.7 6 17.5 6H19a2 2 0 0 1 2 2v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 18h18M6 18v-5M16 18v-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+                  <span class="variant-card__name">Wingback Headboard</span>
+                </button>
+              </div>
+            </div>
 
           {%- endunless -%}
 
@@ -446,10 +492,26 @@
     }
   }
 
+  // Headboard card selection (line item property)
+  document.querySelectorAll('[data-hb-value]').forEach(function(card){
+    card.addEventListener('click', function(){
+      var grid = card.closest('.variant-grid');
+      grid.querySelectorAll('.variant-card').forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-pressed','false'); });
+      card.classList.add('active');
+      card.setAttribute('aria-pressed','true');
+      var val = card.getAttribute('data-hb-value');
+      var inp = document.getElementById('headboard-property');
+      if (inp) inp.value = val;
+      var tabVal = document.getElementById('opt-tab-headboard');
+      if (tabVal) tabVal.textContent = val;
+    });
+  });
+
   // Variant card selection
   var productOptions = {{ product.options | json }};
   document.querySelectorAll('.variant-card').forEach(function(card){
     card.addEventListener('click', function(){
+      if (card.hasAttribute('data-hb-value')) return; // headboard handled above
       var idx = parseInt(card.getAttribute('data-option-index'));
       var val = card.getAttribute('data-value');
       var grid = card.closest('.variant-grid');
@@ -534,7 +596,7 @@
 </script>
 
 <script>
-// ---- Headboard tab: bridge Infinite Options into the tab-panel design ----
+// ---- Headboard tab switching (panel is now hardcoded in Liquid) ----
 (function(){
   var HB_ICON = '<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M3 19h16M7 19v-4M15 19v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
 
