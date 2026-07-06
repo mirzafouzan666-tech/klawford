@@ -153,7 +153,7 @@
       "blocks": {
         "step1": { "type": "step", "settings": { "icon": "product",  "title": "Select Your Bed",  "description": "Browse our full range and choose your colour, size, storage and headboard options to create your dream bedroom." } },
         "step2": { "type": "step", "settings": { "icon": "payment",  "title": "Easy, Secure Payment",    "description": "Pay securely online with Klarna, Visa, Mastercard, Apple Pay and more. 0% interest options available at checkout." } },
-        "step3": { "type": "step", "settings": { "icon": "delivery", "title": "2-Man White Glove Delivery",  "description": "Our 2-man team delivers your bed directly to your room and assembles everything, leaving you to enjoy it straight away." } }
+        "step3": { "type": "step", "settings": { "icon": "delivery", "title": "Fast & Free Delivery",  "description": "We deliver straight to your door quickly and for free. You'll receive full tracking information once your order is dispatched." } }
       },
       "block_order": ["step1", "step2", "step3"]
     },
