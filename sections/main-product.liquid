@@ -140,7 +140,7 @@
 
           {%- unless product.has_only_default_variant -%}
             {%- comment -%} Option tab bar — show only Colour, Size, Storage {%- endcomment -%}
-            {%- assign allowed_opts = 'colour,color,size,storage' | split: ',' -%}
+            {%- assign allowed_opts = 'colour,color,size,storage,headboard' | split: ',' -%}
             <div class="variant-options-bar" id="variant-options-bar">
               {%- assign tab_first = true -%}
               {%- for option in product.options_with_values -%}
@@ -159,6 +159,8 @@
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="7" width="18" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 7V5M11 7V4M16 7V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
                       {%- when 'storage' -%}
                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="6" width="18" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M2 11h18" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="14" r="1" fill="currentColor"/></svg>
+                      {%- when 'headboard' -%}
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M3 19h16M7 19v-4M15 19v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
                     {%- endcase -%}
                   </div>
                   <p class="variant-option-tab__name">{{ option.name }}</p>
