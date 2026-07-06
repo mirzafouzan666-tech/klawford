@@ -2884,17 +2884,16 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .product-card__title { font-size: clamp(20px, 1.8vw, 26px) !important; margin-bottom: 10px !important; }
 .product-card__price { font-size: 22px !important; }
 
-/* --- Product page text: 2x bigger --- */
-.product-info__title  { font-size: clamp(40px, 4.5vw, 60px) !important; }
-.product-info__price  { font-size: 52px !important; }
-.product-info__compare { font-size: 28px !important; }
-.product-info__pct-pill { font-size: 20px !important; padding: 6px 18px !important; }
-.product-info__subtitle { font-size: 22px !important; }
-.product-info__vendor { font-size: 16px !important; }
-.variant-card__name { font-size: 18px !important; }
-.product-info__review-count { font-size: 18px !important; }
-.product-post-atc span, .product-post-atc p { font-size: 18px !important; }
-.btn--atc { font-size: 22px !important; padding: 20px 32px !important; }
+/* --- Product page text --- */
+.product-info__title  { font-size: clamp(22px, 2.5vw, 32px) !important; }
+.product-info__price  { font-size: 28px !important; }
+.product-info__compare { font-size: 16px !important; }
+.product-info__pct-pill { font-size: 13px !important; padding: 4px 12px !important; }
+.product-info__subtitle { font-size: 15px !important; }
+.product-info__vendor { font-size: 12px !important; }
+.variant-card__name { font-size: 12px !important; }
+.product-info__review-count { font-size: 14px !important; }
+.btn--atc { font-size: 16px !important; padding: 14px 24px !important; }
 
 
 /* --- Header benefits strip: bigger text + more spacing --- */
