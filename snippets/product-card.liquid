@@ -205,4 +205,7 @@
     {%- endif -%}
   </div>
 
+  {%- comment -%} Image data for JS colour swap — s=src, a=alt {%- endcomment -%}
+  <script type="application/json" class="kl-card-imgs">[{%- for img in product.images -%}{"s":{{ img | image_url: width: 600 | json }},"a":{{ img.alt | default: '' | json }}}{% unless forloop.last %},{%- endunless -%}{%- endfor -%}]</script>
+
 </article>

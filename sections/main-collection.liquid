@@ -240,47 +240,71 @@
           </div>
         {%- endfor -%}
 
-        {%- comment -%} 2+. DYNAMIC filters from Shopify (Size, Colour, any other option) {%- endcomment -%}
-        {%- for filter in collection.filters -%}
-          {%- if filter.type == 'price_range' -%}{%- continue -%}{%- endif -%}
-          {%- if filter.label == 'Availability' -%}{%- continue -%}{%- endif -%}
-          {%- if filter.label == 'Bedding size' -%}{%- continue -%}{%- endif -%}
-          {%- assign fl_lower = filter.label | downcase -%}
-          {%- assign is_colour_f = false -%}
-          {%- if fl_lower == 'color' or fl_lower == 'colour' -%}{%- assign is_colour_f = true -%}{%- endif -%}
-          <div class="kl-fg is-open" data-fg>
-            <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
-              <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-              <span>{{ filter.label }}</span>
-              {%- if filter.active_values.size > 0 -%}
-                <span class="kl-fg__badge">{{ filter.active_values.size }}</span>
-              {%- endif -%}
-            </button>
-            <div class="kl-fg__body">
-              <div class="kl-swatch-list">
-                {%- for value in filter.values -%}
-                  <label class="kl-swatch-item{% if value.count == 0 %} is-disabled{% endif %}">
-                    <input type="checkbox"
-                      name="{{ value.param_name }}"
-                      value="{{ value.value }}"
-                      {% if value.active %}checked{% endif %}
-                      {% if value.count == 0 %}disabled{% endif %}
-                      form="kl-form-sidebar"
-                      onchange="document.getElementById('kl-form-sidebar').submit()">
-                    {%- if filter.presentation == 'swatch' -%}
-                      <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{{ value.swatch.color }};"></span>
-                    {%- elsif is_colour_f -%}
-                      <span class="kl-swatch-dot{% if value.active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: value.label -%};"></span>
-                    {%- endif -%}
-                    <span class="kl-swatch-name">{{ value.label }}</span>
-                  </label>
-                {%- endfor -%}
-              </div>
+        {%- comment -%} 2. SIZE filter {%- endcomment -%}
+        <div class="kl-fg is-open" data-fg>
+          <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+            <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Size</span>
+          </button>
+          <div class="kl-fg__body">
+            <div class="kl-swatch-list">
+              {%- assign bed_sizes = 'Small Single 2FT6,Single 3FT,Small Double 4FT,Double 4FT6,King 5FT,Super King 6FT' | split: ',' -%}
+              {%- for size in bed_sizes -%}
+                {%- assign _sl = size | downcase -%}
+                {%- assign size_active = false -%}
+                {%- if kl_active_sizes contains _sl -%}{%- assign size_active = true -%}{%- endif -%}
+                <label class="kl-swatch-item">
+                  <input type="checkbox"
+                    name="filter.p.v.option.size"
+                    value="{{ size }}"
+                    {% if size_active %}checked{% endif %}
+                    form="kl-form-sidebar"
+                    onchange="document.getElementById('kl-form-sidebar').submit()">
+                  <span class="kl-swatch-name">{{ size }}</span>
+                </label>
+              {%- endfor -%}
             </div>
           </div>
+        </div>
+
+        {%- comment -%} 3. COLOUR filter — 5 fixed colours {%- endcomment -%}
+        {%- assign colour_param = 'filter.p.v.option.colour' -%}
+        {%- for filter in collection.filters -%}
+          {%- assign fl_lower = filter.label | downcase -%}
+          {%- if fl_lower == 'color' or fl_lower == 'colour' -%}
+            {%- if filter.values.size > 0 -%}{%- assign colour_param = filter.values[0].param_name -%}{%- endif -%}
+          {%- endif -%}
         {%- endfor -%}
+        <div class="kl-fg is-open" data-fg>
+          <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+            <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Colour</span>
+          </button>
+          <div class="kl-fg__body">
+            <div class="kl-swatch-list">
+              {%- assign static_colours = 'Cream,Red,Grey,Black,Brown' | split: ',' -%}
+              {%- for colour in static_colours -%}
+                {%- assign _cl = colour | downcase -%}
+                {%- assign col_active = false -%}
+                {%- if kl_active_colour == _cl -%}{%- assign col_active = true -%}{%- endif -%}
+                <label class="kl-swatch-item">
+                  <input type="checkbox"
+                    name="{{ colour_param }}"
+                    value="{{ colour }}"
+                    {% if col_active %}checked{% endif %}
+                    form="kl-form-sidebar"
+                    onchange="document.getElementById('kl-form-sidebar').submit()">
+                  <span class="kl-swatch-dot{% if col_active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: colour -%};"></span>
+                  <span class="kl-swatch-name">{{ colour }}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
 
         <form id="kl-form-sidebar" method="get" action="{{ collection.url }}">
           <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
@@ -622,6 +646,52 @@
     prev.addEventListener('click', function () { go(-1); });
     next.addEventListener('click', function () { go(1); });
     prev.disabled = true;
+  })();
+
+  /* ---- Colour image swap ------------------------------------------- */
+  (function () {
+    var qs = window.location.search;
+    var m  = qs.match(/filter\.p\.v\.option\.colou?r=([^&]+)/i);
+    if (!m) return;
+    var activeColour = decodeURIComponent(m[1].replace(/\+/g, ' ')).toLowerCase().trim();
+    if (!activeColour) return;
+
+    document.querySelectorAll('.product-card').forEach(function (card) {
+      var el = card.querySelector('.kl-card-imgs');
+      if (!el) return;
+      var images;
+      try { images = JSON.parse(el.textContent); } catch (e) { return; }
+
+      var found = null;
+      for (var i = 0; i < images.length; i++) {
+        var alt = (images[i].a || '').toLowerCase();
+        /* try exact colour after "–" separator */
+        var parts     = alt.split('–');
+        var altColour = parts.length > 1 ? parts[parts.length - 1].trim() : '';
+        if (altColour === activeColour || alt.indexOf(activeColour) !== -1) {
+          found = images[i];
+          break;
+        }
+      }
+      if (!found) return;
+
+      var pri = card.querySelector('.product-card__img--primary');
+      if (pri) { pri.src = found.s; pri.srcset = found.s + ' 600w'; if (found.a) pri.alt = found.a; }
+      var sec = card.querySelector('.product-card__img--alt');
+      /* look for a second image of the same colour for hover */
+      var found2 = null;
+      for (var j = 0; j < images.length; j++) {
+        if (images[j].s === found.s) continue;
+        var alt2 = (images[j].a || '').toLowerCase();
+        var parts2 = alt2.split('–');
+        var col2   = parts2.length > 1 ? parts2[parts2.length - 1].trim() : '';
+        if (col2 === activeColour || alt2.indexOf(activeColour) !== -1) { found2 = images[j]; break; }
+      }
+      if (sec) {
+        if (found2) { sec.src = found2.s; sec.srcset = found2.s + ' 600w'; sec.style.display = ''; }
+        else        { sec.style.display = 'none'; }
+      }
+    });
   })();
 
 })();
