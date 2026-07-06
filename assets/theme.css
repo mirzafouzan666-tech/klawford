@@ -168,7 +168,8 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
    HEADER BENEFITS STRIP
    ============================================================ */
 .header-benefits { background: var(--clr-primary); }
-.header-benefits__inner { display: flex; align-items: center; justify-content: center; gap: 56px; padding: 17px 0; flex-wrap: wrap; }
+.header-benefits__inner { display: flex; align-items: center; justify-content: space-between; padding: 17px 0; }
+.header-benefits__group { display: flex; align-items: center; gap: 48px; }
 .header-benefit { display: flex; align-items: center; gap: 8px; font-size: var(--fs-sm); font-weight: var(--fw-semibold); color: var(--clr-text); white-space: nowrap; }
 .header-benefit svg { color: var(--clr-secondary); flex-shrink: 0; }
 
@@ -3064,7 +3065,8 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   .footer-address   { font-size: 14px !important; }
 
   /* --- Header benefits strip --- */
-  .header-benefits__inner { gap: 20px !important; padding: 10px 0 !important; }
+  .header-benefits__inner { padding: 10px 0 !important; }
+  .header-benefits__group { gap: 16px !important; }
   .header-benefit { font-size: 13px !important; gap: 6px !important; }
   .header-benefit svg { width: 16px !important; height: 16px !important; }
 
