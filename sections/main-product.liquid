@@ -41,10 +41,13 @@
         {%- if product.images.size > 1 -%}
           <div class="product-gallery__thumbs" id="product-thumbs">
             {%- for image in product.images -%}
+              {%- assign img_colour = image.alt | split: '–' | last | strip | downcase -%}
               <button
                 class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
                 type="button"
                 data-src="{{ image | image_url: width: 900 }}"
+                data-colour="{{ img_colour }}"
+                data-img-id="{{ image.id }}"
                 aria-label="View image {{ forloop.index }}">
                 <img
                   src="{{ image | image_url: width: 160 }}"
@@ -418,6 +421,40 @@
     });
   });
 
+  // Filter thumbnails to show only images matching the selected colour
+  function filterThumbs(colourVal) {
+    var colourLower = colourVal ? colourVal.toLowerCase() : '';
+    var thumbs = document.querySelectorAll('.product-gallery__thumb');
+    var hasColourThumbs = false;
+    thumbs.forEach(function(t) {
+      var tc = t.getAttribute('data-colour') || '';
+      if (colourLower && tc === colourLower) { hasColourThumbs = true; }
+    });
+    thumbs.forEach(function(t) {
+      var tc = t.getAttribute('data-colour') || '';
+      if (hasColourThumbs) {
+        t.style.display = (tc === colourLower) ? '' : 'none';
+      } else {
+        t.style.display = '';
+      }
+      t.classList.remove('active');
+    });
+    // Activate first visible thumb and set main image
+    var firstVisible = null;
+    thumbs.forEach(function(t) {
+      if (!firstVisible && t.style.display !== 'none') { firstVisible = t; }
+    });
+    if (firstVisible) {
+      firstVisible.classList.add('active');
+      var mainImg = document.getElementById('product-main-img');
+      if (mainImg) {
+        mainImg.removeAttribute('srcset');
+        mainImg.removeAttribute('sizes');
+        mainImg.src = firstVisible.getAttribute('data-src');
+      }
+    }
+  }
+
   // Variant card selection
   document.querySelectorAll('.variant-card').forEach(function(card){
     card.addEventListener('click', function(){
@@ -433,35 +470,38 @@
       if(tabId){ var el = document.getElementById(tabId); if(el) el.textContent = val; }
       var variant = findVariant();
       if(variant) updatePrice(variant);
-      // Swap main image if variant has image
-      if(variant && variant.featured_image){
+      // Check if this is a colour option — filter gallery thumbnails
+      var panelEl = card.closest('.variant-panel');
+      var optIdx = panelEl ? parseInt(panelEl.getAttribute('data-option-index')) : -1;
+      var optName = {{ product.options | json }}[optIdx] || '';
+      var isColour = optName.toLowerCase() === 'colour' || optName.toLowerCase() === 'color';
+      if (isColour) {
+        filterThumbs(val);
+      } else if (variant && variant.featured_image) {
+        // Non-colour option: just swap main image
         var mainImg = document.getElementById('product-main-img');
         if(mainImg){
           mainImg.removeAttribute('srcset');
           mainImg.removeAttribute('sizes');
           mainImg.src = variant.featured_image.src;
         }
-        // Keep the gallery thumbnail strip in sync with the new image
-        document.querySelectorAll('.product-gallery__thumb').forEach(function(t){
-          t.classList.toggle('active', t.getAttribute('data-src') === (variant.featured_image.src));
-        });
       }
     });
   });
 
   // Thumbnail switcher
-  document.querySelectorAll('.product-gallery__thumb').forEach(function(thumb){
-    thumb.addEventListener('click', function(){
-      var src = thumb.getAttribute('data-src');
-      var mainImg = document.getElementById('product-main-img');
-      if(mainImg && src){
-        mainImg.removeAttribute('srcset');
-        mainImg.removeAttribute('sizes');
-        mainImg.src = src;
-      }
-      document.querySelectorAll('.product-gallery__thumb').forEach(function(t){ t.classList.remove('active'); });
-      thumb.classList.add('active');
-    });
+  document.getElementById('product-thumbs') && document.getElementById('product-thumbs').addEventListener('click', function(e){
+    var thumb = e.target.closest('.product-gallery__thumb');
+    if (!thumb) return;
+    var src = thumb.getAttribute('data-src');
+    var mainImg = document.getElementById('product-main-img');
+    if(mainImg && src){
+      mainImg.removeAttribute('srcset');
+      mainImg.removeAttribute('sizes');
+      mainImg.src = src;
+    }
+    document.querySelectorAll('.product-gallery__thumb').forEach(function(t){ t.classList.remove('active'); });
+    thumb.classList.add('active');
   });
 
   // Qty buttons (if present)
