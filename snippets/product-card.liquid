@@ -79,7 +79,7 @@
   {%- endunless -%}
 {%- endif -%}
 
-{%- comment -%} Collect every variant option value for client-side colour/size filtering {%- endcomment -%}
+{%- comment -%} All variant option values for filtering (pipe-delimited, lowercase) {%- endcomment -%}
 {%- assign _card_opts = '' -%}
 {%- for variant in product.variants -%}
   {%- if variant.option1 != blank -%}{%- assign _card_opts = _card_opts | append: '|' | append: variant.option1 | downcase -%}{%- endif -%}
@@ -88,8 +88,20 @@
 {%- endfor -%}
 {%- assign _card_opts = _card_opts | append: '|' -%}
 
+{%- comment -%} Ordered colour values for positional image matching {%- endcomment -%}
+{%- assign _card_colours = '' -%}
+{%- for opt in product.options_with_values -%}
+  {%- assign _on = opt.name | downcase -%}
+  {%- if _on == 'colour' or _on == 'color' -%}
+    {%- for val in opt.values -%}
+      {%- assign _card_colours = _card_colours | append: val | downcase | append: '|' -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+
 <article class="product-card" itemscope itemtype="https://schema.org/Product"
   data-opts="{{ _card_opts }}"
+  data-colours="{{ _card_colours }}"
   data-product-id="{{ product.id }}">
 
   {%- comment -%} ---- IMAGE + OVERLAY AREA ---------------------------------- {%- endcomment -%}

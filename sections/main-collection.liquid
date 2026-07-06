@@ -656,12 +656,22 @@
       if (!el) return null;
       var imgs;
       try { imgs = JSON.parse(el.textContent); } catch (e) { return null; }
+      if (!imgs.length) return null;
+
+      /* Method 1: alt-text match (split on "–" or contains) */
       for (var i = 0; i < imgs.length; i++) {
         var alt = (imgs[i].a || '').toLowerCase();
-        var colPart = alt.split('–').pop().trim(); /* en dash split */
+        var colPart = alt.split('–').pop().trim(); /* en dash */
         if (colPart === colour || alt.indexOf(colour) !== -1) return imgs[i];
       }
-      return null;
+
+      /* Method 2: positional — colour index in variant option order → image index */
+      var colList = (card.dataset.colours || '').split('|').filter(Boolean);
+      var colIdx  = colList.indexOf(colour);
+      if (colIdx >= 0 && colIdx < imgs.length) return imgs[colIdx];
+
+      /* Method 3: just return first image so SOMETHING shows */
+      return imgs[0];
     }
 
     function swapImages(card, colour) {
