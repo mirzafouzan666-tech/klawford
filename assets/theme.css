@@ -3117,7 +3117,8 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 72px;
   align-items: center;
   height: 52px;
 }
@@ -3149,7 +3150,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 /* Tablet: slightly smaller */
 @media (max-width: 1200px) {
   .header-cats-row__link { font-size: 17px !important; }
-  .header-cats-row__list { height: 46px; }
+  .header-cats-row__list { height: 46px; gap: 48px; }
 }
 
 /* Mobile: collapse into hamburger menu, hide the row */
