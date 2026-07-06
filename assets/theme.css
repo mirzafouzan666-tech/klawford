@@ -795,11 +795,11 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   display: block;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: var(--clr-primary-shade);
+  background: #fff;
   position: relative;
 }
 /* Legacy: any bare img inside .product-card__img (placeholder SVG fallback) */
-.product-card__img img { width: 100%; height: 100%; object-fit: cover; }
+.product-card__img img { width: 100%; height: 100%; object-fit: contain; }
 
 /* Primary image */
 .product-card__img--primary {
@@ -807,7 +807,8 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   z-index: 1;
   opacity: 1;
   transition: transform 0.5s ease, opacity 0.35s ease !important;
@@ -818,13 +819,14 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
   z-index: 2;
   opacity: 0;
   transition: opacity 0.35s ease !important;
 }
-/* Zoom primary on hover (no alt image case) */
-.product-card:hover .product-card__img--primary { transform: scale(1.06); }
+/* Subtle scale on hover */
+.product-card:hover .product-card__img--primary { transform: scale(1.03); }
 /* When alt image present: fade out primary, reveal alt */
 .product-card:hover .product-card__img.has-alt-img .product-card__img--primary { opacity: 0; }
 .product-card:hover .product-card__img--alt { opacity: 1; }
