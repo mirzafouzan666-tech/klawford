@@ -1503,13 +1503,13 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .product-info__price-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: var(--gap-md); padding-bottom: var(--gap-md); border-bottom: 1px solid var(--clr-ash); }
 .product-info__pct-pill { background: var(--clr-secondary); color: #fff; font-size: var(--fs-xs); font-weight: var(--fw-bold); padding: 3px 10px; border-radius: var(--radius-full); }
 .variant-options-bar { display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); border: 1.5px solid var(--clr-ash); border-radius: var(--radius-base); overflow: hidden; margin-bottom: 0; }
-.variant-option-tab { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 10px 6px; border: none; border-right: 1px solid var(--clr-ash); background: var(--clr-white); cursor: pointer; transition: background var(--transition); font-family: inherit; position: relative; }
+.variant-option-tab { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 8px; border: none; border-right: 1px solid var(--clr-ash); background: var(--clr-white); cursor: pointer; transition: background var(--transition); font-family: inherit; position: relative; }
 .variant-option-tab:last-child { border-right: none; }
 .variant-option-tab.active { background: var(--clr-primary-shade); }
 .variant-option-tab.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2.5px; background: var(--clr-secondary); }
-.variant-option-tab__icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; color: var(--clr-secondary); }
-.variant-option-tab__name { font-size: 9px; color: var(--clr-gray-dusty); text-transform: uppercase; letter-spacing: 0.3px; margin: 0; font-weight: var(--fw-bold); }
-.variant-option-tab__value { font-size: 10px; font-weight: var(--fw-bold); color: var(--clr-text); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90px; text-align: center; }
+.variant-option-tab__icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; color: var(--clr-secondary); }
+.variant-option-tab__name { font-size: 11px; color: var(--clr-gray-dusty); text-transform: uppercase; letter-spacing: 0.3px; margin: 0; font-weight: var(--fw-bold); }
+.variant-option-tab__value { font-size: 12px; font-weight: var(--fw-bold); color: var(--clr-text); margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px; text-align: center; }
 .variant-panel { margin: 10px 0 14px; }
 .variant-panel.hidden { display: none; }
 .variant-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
