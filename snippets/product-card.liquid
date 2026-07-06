@@ -1,6 +1,6 @@
 {%- comment -%}
   Premium product card.
-  Usage: {% render 'product-card', product: product %}
+  Usage: {% render 'product-card', product: product, filter_colour: filter_colour %}
 {%- endcomment -%}
 
 {%- assign on_sale = false -%}
@@ -22,6 +22,32 @@
     {%- assign color_option = option -%}
   {%- endif -%}
 {%- endfor -%}
+
+{%- comment -%} If a colour filter is active, find the variant image for that colour {%- endcomment -%}
+{%- assign card_primary_img = product.featured_image -%}
+{%- assign card_alt_img = product.images[1] -%}
+{%- if filter_colour != blank -%}
+  {%- for variant in product.variants -%}
+    {%- assign v_opt1 = variant.option1 | downcase -%}
+    {%- assign v_opt2 = variant.option2 | downcase -%}
+    {%- assign v_opt3 = variant.option3 | downcase -%}
+    {%- if v_opt1 == filter_colour or v_opt2 == filter_colour or v_opt3 == filter_colour -%}
+      {%- if variant.featured_image -%}
+        {%- assign card_primary_img = variant.featured_image -%}
+        {%- comment -%} Try to find a second image from the same colour for alt hover {%- endcomment -%}
+        {%- assign card_alt_img = nil -%}
+        {%- for img in product.images -%}
+          {%- assign img_colour = img.alt | split: '–' | last | strip | downcase -%}
+          {%- if img_colour == filter_colour and img.id != card_primary_img.id -%}
+            {%- assign card_alt_img = img -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
 
 <article class="product-card" itemscope itemtype="https://schema.org/Product">
 
@@ -56,24 +82,24 @@
        tabindex="-1"
        aria-label="{{ product.title | escape }}"
        aria-hidden="true">
-      {%- if product.featured_image -%}
+      {%- if card_primary_img -%}
         <img
           class="product-card__img--primary"
-          src="{{ product.featured_image | image_url: width: 600 }}"
-          srcset="{{ product.featured_image | image_url: width: 300 }} 300w,
-                  {{ product.featured_image | image_url: width: 600 }} 600w,
-                  {{ product.featured_image | image_url: width: 900 }} 900w"
+          src="{{ card_primary_img | image_url: width: 600 }}"
+          srcset="{{ card_primary_img | image_url: width: 300 }} 300w,
+                  {{ card_primary_img | image_url: width: 600 }} 600w,
+                  {{ card_primary_img | image_url: width: 900 }} 900w"
           sizes="(max-width: 480px) 50vw, (max-width: 768px) 50vw, (max-width: 1100px) 33vw, 22vw"
-          alt="{{ product.featured_image.alt | escape | default: product.title }}"
+          alt="{{ card_primary_img.alt | escape | default: product.title }}"
           loading="lazy"
           width="600"
           height="450"
           itemprop="image">
-        {%- if has_alt_img -%}
+        {%- if card_alt_img -%}
           <img
             class="product-card__img--alt"
-            src="{{ product.images[1] | image_url: width: 600 }}"
-            alt="{{ product.images[1].alt | escape | default: product.title }}"
+            src="{{ card_alt_img | image_url: width: 600 }}"
+            alt="{{ card_alt_img.alt | escape | default: product.title }}"
             loading="lazy"
             width="600"
             height="450">

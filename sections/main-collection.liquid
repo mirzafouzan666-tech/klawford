@@ -324,11 +324,20 @@
           </div>
         </div>
 
+        {%- comment -%} Detect active colour filter so card can show the right image {%- endcomment -%}
+        {%- assign filter_colour = nil -%}
+        {%- for af in collection.active_filters -%}
+          {%- assign af_label = af.label | downcase -%}
+          {%- if af_label == 'colour' or af_label == 'color' -%}
+            {%- assign filter_colour = af.value | downcase -%}
+          {%- endif -%}
+        {%- endfor -%}
+
         {%- comment -%} Product grid {%- endcomment -%}
         {%- if collection.products.size > 0 -%}
           <div class="kl-grid">
             {%- for product in collection.products -%}
-              {%- render 'product-card', product: product -%}
+              {%- render 'product-card', product: product, filter_colour: filter_colour -%}
             {%- endfor -%}
           </div>
 
