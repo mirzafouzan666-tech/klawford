@@ -421,37 +421,38 @@
     });
   });
 
-  // Filter thumbnails to show only images matching the selected colour
-  function filterThumbs(colourVal) {
+  // Filter thumbnails to show only images for selected colour, swap main image instantly
+  function filterThumbs(colourVal, preferredSrc) {
     var colourLower = colourVal ? colourVal.toLowerCase() : '';
     var thumbs = document.querySelectorAll('.product-gallery__thumb');
     var hasColourThumbs = false;
     thumbs.forEach(function(t) {
-      var tc = t.getAttribute('data-colour') || '';
-      if (colourLower && tc === colourLower) { hasColourThumbs = true; }
+      if ((t.getAttribute('data-colour') || '') === colourLower) hasColourThumbs = true;
     });
+    var activated = false;
     thumbs.forEach(function(t) {
       var tc = t.getAttribute('data-colour') || '';
-      if (hasColourThumbs) {
-        t.style.display = (tc === colourLower) ? '' : 'none';
-      } else {
-        t.style.display = '';
-      }
+      t.style.display = hasColourThumbs ? (tc === colourLower ? '' : 'none') : '';
       t.classList.remove('active');
     });
-    // Activate first visible thumb and set main image
-    var firstVisible = null;
+    // Set main image to the variant's linked image (front-facing shot)
+    var mainImg = document.getElementById('product-main-img');
+    if (mainImg && preferredSrc) {
+      mainImg.removeAttribute('srcset');
+      mainImg.removeAttribute('sizes');
+      mainImg.src = preferredSrc;
+    }
+    // Activate the thumbnail matching preferredSrc, else first visible
     thumbs.forEach(function(t) {
-      if (!firstVisible && t.style.display !== 'none') { firstVisible = t; }
-    });
-    if (firstVisible) {
-      firstVisible.classList.add('active');
-      var mainImg = document.getElementById('product-main-img');
-      if (mainImg) {
-        mainImg.removeAttribute('srcset');
-        mainImg.removeAttribute('sizes');
-        mainImg.src = firstVisible.getAttribute('data-src');
+      if (!activated && t.style.display !== 'none') {
+        var match = preferredSrc && t.getAttribute('data-src') === preferredSrc;
+        if (match || !preferredSrc) { t.classList.add('active'); activated = true; }
       }
+    });
+    if (!activated) {
+      thumbs.forEach(function(t) {
+        if (!activated && t.style.display !== 'none') { t.classList.add('active'); activated = true; }
+      });
     }
   }
 
@@ -476,7 +477,8 @@
       var optName = {{ product.options | json }}[optIdx] || '';
       var isColour = optName.toLowerCase() === 'colour' || optName.toLowerCase() === 'color';
       if (isColour) {
-        filterThumbs(val);
+        var preferredSrc = (variant && variant.featured_image) ? variant.featured_image.src : null;
+        filterThumbs(val, preferredSrc);
       } else if (variant && variant.featured_image) {
         // Non-colour option: just swap main image
         var mainImg = document.getElementById('product-main-img');

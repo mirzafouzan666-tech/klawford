@@ -1469,8 +1469,8 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .product-breadcrumb span { color: var(--clr-text-light); }
 .product-main__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
 .product-gallery__main { position: relative; aspect-ratio: 1/1; border-radius: var(--radius-lg); overflow: hidden; background: #fff; margin-bottom: 12px; }
-.product-gallery__main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; }
-.product-gallery__main:hover img { transform: scale(1.03); }
+.product-gallery__main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
+.product-gallery__main:hover img { transform: scale(1.02); }
 .product-gallery__badge { position: absolute; top: 14px; left: 14px; background: var(--clr-secondary); color: var(--clr-white); font-size: var(--fs-xs); font-weight: var(--fw-bold); padding: 4px 12px; border-radius: var(--radius-full); z-index: 2; }
 .product-gallery__thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
 .product-gallery__thumb { width: 76px; height: 76px; border-radius: var(--radius-sm); overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: var(--transition); background: #fff; padding: 0; }
