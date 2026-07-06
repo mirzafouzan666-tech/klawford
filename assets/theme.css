@@ -2670,7 +2670,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   text-shadow: 0 2px 20px rgba(242,237,231,0.6) !important;
 }
 .hero-banner__sub {
-  font-size: clamp(34px, 3.4vw, 44px) !important;
+  font-size: clamp(44px, 4.4vw, 57px) !important;
   color: var(--clr-text) !important;
   font-weight: 500 !important;
   display: flex !important;
@@ -2686,10 +2686,10 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   align-items: center;
   background: var(--clr-secondary);
   color: #fff;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  padding: 4px 14px;
+  padding: 6px 18px;
   border-radius: 100px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -2700,7 +2700,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  font-size: 17px !important;
+  font-size: 22px !important;
   font-weight: 700 !important;
   color: var(--clr-text) !important;
   text-shadow: 0 1px 6px rgba(242,237,231,0.5);
@@ -2710,7 +2710,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .hero-word-small {
   display: block;
   font-family: var(--ff-secondary);
-  font-size: clamp(29px, 3vw, 42px);
+  font-size: clamp(38px, 4vw, 55px);
   font-weight: 400;
   letter-spacing: 6px;
   text-transform: uppercase;
@@ -2728,9 +2728,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   background: var(--clr-secondary);
   color: #fff;
   font-family: var(--ff-secondary);
-  font-size: 17px;
+  font-size: 22px;
   font-weight: 700;
-  padding: 15px 32px;
+  padding: 18px 40px;
   border-radius: 6px;
   text-decoration: none;
   letter-spacing: 0.3px;
