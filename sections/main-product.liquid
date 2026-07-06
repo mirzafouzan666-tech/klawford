@@ -533,6 +533,138 @@
 })();
 </script>
 
+<script>
+// ---- Headboard tab: bridge Infinite Options into the tab-panel design ----
+(function(){
+  var HB_ICON = '<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M3 19h16M7 19v-4M15 19v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>';
+
+  function tryInit() {
+    // Skip if headboard already exists as a native Shopify option
+    if (document.getElementById('vpanel-headboard')) return true;
+
+    // Find Infinite Options headboard radio buttons or select
+    var hbRadios = Array.from(document.querySelectorAll('input[type="radio"]')).filter(function(r){
+      return r.name && r.name.toLowerCase().indexOf('headboard') !== -1;
+    });
+    var hbSelect = Array.from(document.querySelectorAll('select')).find(function(s){
+      return s.name && s.name.toLowerCase().indexOf('headboard') !== -1;
+    });
+
+    if (!hbRadios.length && !hbSelect) return false;
+
+    var values = [], getVal, setVal, groupEl;
+
+    if (hbRadios.length) {
+      hbRadios.forEach(function(r){ if (r.value) values.push({ value: r.value, label: r.value }); });
+      groupEl = hbRadios[0].closest('.spo-option, .spf-option, .option-container, [class*="shoppad"]') ||
+                hbRadios[0].parentElement.parentElement.parentElement;
+      if (!hbRadios.some(function(r){ return r.checked; }) && hbRadios[0]) hbRadios[0].checked = true;
+      getVal = function(){ var c = hbRadios.find(function(r){ return r.checked; }); return c ? c.value : values[0].value; };
+      setVal = function(v){ hbRadios.forEach(function(r){ if(r.value===v){ r.checked=true; r.dispatchEvent(new Event('change',{bubbles:true})); } }); };
+    } else {
+      hbSelect.querySelectorAll('option').forEach(function(o){ if(o.value) values.push({ value: o.value, label: o.text.trim() }); });
+      groupEl = hbSelect.closest('.spo-option, .spf-option, .option-container') || hbSelect.parentElement;
+      getVal = function(){ return hbSelect.value; };
+      setVal = function(v){ hbSelect.value = v; hbSelect.dispatchEvent(new Event('change',{bubbles:true})); };
+    }
+
+    if (!values.length) return false;
+
+    // Hide the Infinite Options headboard field group
+    if (groupEl) groupEl.style.display = 'none';
+
+    // If native storage panel exists, also hide IO storage field to avoid duplication
+    if (document.getElementById('vpanel-storage')) {
+      var storIO = Array.from(document.querySelectorAll('input[type="radio"], select')).find(function(el){
+        return el.name && el.name.toLowerCase().indexOf('storage') !== -1;
+      });
+      if (storIO) {
+        var storGrp = storIO.closest('.spo-option, .spf-option, .option-container, [class*="shoppad"]') || storIO.parentElement.parentElement;
+        if (storGrp) storGrp.style.display = 'none';
+      }
+    }
+
+    // Hide entire IO wrapper if now empty
+    var ioWrap = document.querySelector('#shoppad-infinite-options, .spo-container, .spf-container, [id*="infinite-options"]');
+    if (ioWrap) {
+      var visible = Array.from(ioWrap.querySelectorAll('input, select, textarea')).some(function(el){
+        return el.closest('[style*="display: none"]') === null && el.closest('[style*="display:none"]') === null;
+      });
+      if (!visible) ioWrap.style.display = 'none';
+    }
+
+    // Build tab button
+    var tabBar = document.getElementById('variant-options-bar');
+    if (!tabBar) return false;
+    var currentVal = getVal ? getVal() : values[0].value;
+
+    var tab = document.createElement('button');
+    tab.type = 'button';
+    tab.className = 'variant-option-tab';
+    tab.setAttribute('data-option-panel', 'headboard');
+    tab.setAttribute('aria-label', 'Select Headboard');
+    tab.innerHTML =
+      '<div class="variant-option-tab__icon">' + HB_ICON + '</div>' +
+      '<p class="variant-option-tab__name">Headboard</p>' +
+      '<p class="variant-option-tab__value" id="opt-tab-headboard">' + (currentVal || 'Select') + '</p>';
+    tabBar.appendChild(tab);
+
+    // Build panel
+    var panel = document.createElement('div');
+    panel.className = 'variant-panel hidden';
+    panel.id = 'vpanel-headboard';
+
+    var cols = Math.min(values.length, 3);
+    var grid = document.createElement('div');
+    grid.className = 'variant-grid';
+    grid.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+
+    values.forEach(function(v){
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'variant-card' + (v.value === currentVal ? ' active' : '');
+      card.setAttribute('aria-pressed', v.value === currentVal ? 'true' : 'false');
+      card.innerHTML =
+        '<div class="variant-card__check">✓</div>' +
+        '<div class="variant-card__img"><div class="variant-card__type-icon">' + HB_ICON + '</div></div>' +
+        '<span class="variant-card__name">' + v.label + '</span>';
+      card.addEventListener('click', function(){
+        grid.querySelectorAll('.variant-card').forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-pressed','false'); });
+        card.classList.add('active');
+        card.setAttribute('aria-pressed','true');
+        if (setVal) setVal(v.value);
+        var tabVal = document.getElementById('opt-tab-headboard');
+        if (tabVal) tabVal.textContent = v.label;
+      });
+      grid.appendChild(card);
+    });
+
+    panel.appendChild(grid);
+
+    // Insert panel after last existing variant-panel (inside the form)
+    var allPanels = document.querySelectorAll('.variant-panel');
+    var last = allPanels[allPanels.length - 1];
+    if (last) { last.parentNode.insertBefore(panel, last.nextSibling); }
+    else { tabBar.parentNode.insertBefore(panel, tabBar.nextSibling); }
+
+    // Tab click handler
+    tab.addEventListener('click', function(){
+      document.querySelectorAll('.variant-option-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      document.querySelectorAll('.variant-panel').forEach(function(p){ p.classList.add('hidden'); });
+      panel.classList.remove('hidden');
+    });
+
+    return true;
+  }
+
+  // Try immediately; poll up to 5 s for async Infinite Options load
+  if (!tryInit()) {
+    var n = 0, iv = setInterval(function(){ if (tryInit() || ++n > 25) clearInterval(iv); }, 200);
+  }
+})();
+</script>
+
 {% schema %}
 {
   "name": "Product Main",
