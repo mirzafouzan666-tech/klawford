@@ -795,36 +795,36 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   display: block;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #f8f7f5;
+  background: #fff;
   position: relative;
-  padding: 6%;
+  padding: 0;
 }
 /* Legacy: any bare img inside .product-card__img (placeholder SVG fallback) */
-.product-card__img img { width: 100%; height: 100%; object-fit: contain; }
+.product-card__img img { width: 100%; height: 100%; object-fit: cover; }
 
 /* Primary image */
 .product-card__img--primary {
   position: absolute;
-  inset: 6%;
-  width: calc(100% - 12%);
-  height: calc(100% - 12%);
-  object-fit: contain;
-  object-position: center;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
   z-index: 1;
   opacity: 1;
-  transition: transform 0.5s ease, opacity 0.35s ease !important;
+  transition: transform 0.4s ease, opacity 0.3s ease !important;
 }
 /* Alt/hover image */
 .product-card__img--alt {
   position: absolute;
-  inset: 6%;
-  width: calc(100% - 12%);
-  height: calc(100% - 12%);
-  object-fit: contain;
-  object-position: center;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
   z-index: 2;
   opacity: 0;
-  transition: opacity 0.35s ease !important;
+  transition: opacity 0.3s ease !important;
 }
 /* Subtle scale on hover */
 .product-card:hover .product-card__img--primary { transform: scale(1.04); }
@@ -1422,7 +1422,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .product-main { padding: 48px 0; }
 .product-main__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: flex-start; }
 .product-gallery__main { border-radius: var(--radius-lg); overflow: hidden; background: #fff; margin-bottom: 12px; }
-.product-gallery__main img { width: 100%; aspect-ratio: 1/1; object-fit: contain; }
+.product-gallery__main img { width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: center 20%; }
 .product-gallery__thumbs { display: flex; gap: 10px; flex-wrap: wrap; }
 .product-gallery__thumb { width: 80px; height: 80px; border-radius: var(--radius-base); overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: var(--transition); background: #fff; flex-shrink: 0; }
 .product-gallery__thumb img { width: 100%; height: 100%; object-fit: contain; }
@@ -2873,14 +2873,28 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .category-card      { border-radius: 20px !important; overflow: hidden; }
 .category-card__img { aspect-ratio: 4 / 5 !important; border-radius: 20px !important; }
 
-/* --- Product card: 4:3 image box, full product visible, 20px radius --- */
+/* --- Product card: 4:3 image box, fills full box, 20px radius --- */
 .product-card      { border-radius: 20px !important; box-shadow: 0 4px 18px rgba(0,0,0,0.07) !important; }
-.product-card__img { aspect-ratio: 4 / 3 !important; border-radius: 0 !important; }
+.product-card__img { aspect-ratio: 4 / 3 !important; border-radius: 0 !important; padding: 0 !important; }
+.product-card__img--primary,
+.product-card__img--alt { inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center 20% !important; }
 
 /* --- Product card info: 32px padding, larger title --- */
 .product-card__info  { padding: 24px 24px 20px !important; }
-.product-card__title { font-size: clamp(18px, 1.6vw, 24px) !important; margin-bottom: 10px !important; }
-.product-card__price { font-size: 21px !important; }
+.product-card__title { font-size: clamp(20px, 1.8vw, 26px) !important; margin-bottom: 10px !important; }
+.product-card__price { font-size: 22px !important; }
+
+/* --- Product page text: 2x bigger --- */
+.product-info__title  { font-size: clamp(40px, 4.5vw, 60px) !important; }
+.product-info__price  { font-size: 52px !important; }
+.product-info__compare { font-size: 28px !important; }
+.product-info__pct-pill { font-size: 20px !important; padding: 6px 18px !important; }
+.product-info__subtitle { font-size: 22px !important; }
+.product-info__vendor { font-size: 16px !important; }
+.variant-card__name { font-size: 18px !important; }
+.product-info__review-count { font-size: 18px !important; }
+.product-post-atc span, .product-post-atc p { font-size: 18px !important; }
+.btn--atc { font-size: 22px !important; padding: 20px 32px !important; }
 
 
 /* --- Header benefits strip: bigger text + more spacing --- */
