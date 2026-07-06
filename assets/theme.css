@@ -1505,7 +1505,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .product-info__subtitle { font-size: var(--fs-base); color: var(--clr-text-light); margin: -10px 0 14px; }
 .product-info__price-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: var(--gap-md); padding-bottom: var(--gap-md); border-bottom: 1px solid var(--clr-ash); }
 .product-info__pct-pill { background: var(--clr-secondary); color: #fff; font-size: var(--fs-xs); font-weight: var(--fw-bold); padding: 3px 10px; border-radius: var(--radius-full); }
-.variant-options-bar { display: grid; grid-template-columns: repeat(5, 1fr); border: 1.5px solid var(--clr-ash); border-radius: var(--radius-base); overflow: hidden; margin-bottom: 0; }
+.variant-options-bar { display: grid; grid-template-columns: repeat(3, 1fr); border: 1.5px solid var(--clr-ash); border-radius: var(--radius-base); overflow: hidden; margin-bottom: 0; }
 .variant-option-tab { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 10px 6px; border: none; border-right: 1px solid var(--clr-ash); background: var(--clr-white); cursor: pointer; transition: background var(--transition); font-family: inherit; position: relative; }
 .variant-option-tab:last-child { border-right: none; }
 .variant-option-tab.active { background: var(--clr-primary-shade); }
