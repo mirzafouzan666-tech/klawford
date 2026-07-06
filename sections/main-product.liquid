@@ -138,132 +138,51 @@
         {%- form 'product', product, id: 'product-form', data-variants: variants_json_attr -%}
 
           {%- unless product.has_only_default_variant -%}
-            {%- comment -%} 5-column option selector bar {%- endcomment -%}
-            <div class="variant-options-bar" id="variant-options-bar">
+            {%- comment -%} Sonno-style inline variant selectors: Colour, Size, Storage only {%- endcomment -%}
+            <div class="snno-opts">
               {%- for option in product.options_with_values -%}
                 {%- assign opt_handle = option.name | handleize -%}
-                {%- assign opt_icons = 'colour,size,storage,headboard,base' | split: ',' -%}
-                <button
-                  type="button"
-                  class="variant-option-tab {% if forloop.first %}active{% endif %}"
-                  data-option-panel="{{ opt_handle }}"
-                  aria-label="Select {{ option.name }}">
-                  <div class="variant-option-tab__icon">
-                    {%- case opt_handle -%}
-                      {%- when 'colour', 'color' -%}
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="4.5" fill="currentColor" opacity=".6"/><circle cx="4" cy="11" r="3" stroke="currentColor" stroke-width="1.3"/><circle cx="18" cy="11" r="3" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="4" r="3" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="18" r="3" stroke="currentColor" stroke-width="1.3"/></svg>
-                      {%- when 'size' -%}
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="7" width="18" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 7V5M11 7V4M16 7V5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                      {%- when 'storage' -%}
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="6" width="18" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M2 11h18" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="14" r="1" fill="currentColor"/></svg>
-                      {%- when 'headboard' -%}
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M3 19h16M7 19v-4M15 19v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                      {%- else -%}
-                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="9" width="18" height="7" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 9V7M11 9V7M17 9V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4 16v3M18 16v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                    {%- endcase -%}
+                {%- assign is_colour  = false -%}
+                {%- assign is_size    = false -%}
+                {%- assign is_storage = false -%}
+                {%- if opt_handle == 'colour' or opt_handle == 'color' -%}{%- assign is_colour = true -%}{%- endif -%}
+                {%- if opt_handle == 'size' -%}{%- assign is_size = true -%}{%- endif -%}
+                {%- if opt_handle == 'storage' -%}{%- assign is_storage = true -%}{%- endif -%}
+                {%- unless is_colour or is_size or is_storage -%}{%- continue -%}{%- endunless -%}
+
+                <div class="snno-opt-group">
+                  <div class="snno-opt-group__hd">
+                    <span class="snno-opt-group__name">{{ option.name }}:</span>
+                    <span class="snno-opt-group__val" id="snno-val-{{ forloop.index }}">{{ option.selected_value }}</span>
                   </div>
-                  <p class="variant-option-tab__name">{{ option.name }}</p>
-                  <p class="variant-option-tab__value" id="opt-tab-{{ forloop.index }}">{{ option.selected_value }}</p>
-                </button>
-              {%- endfor -%}
-            </div>
-
-            {%- comment -%} Variant panels — one per option {%- endcomment -%}
-            {%- assign size_bed_icons = 'M26 2h28a2.5 2.5 0 0 1 2.5 2.5V12H23.5V4.5A2.5 2.5 0 0 1 26 2zM22 12h36v28a2 2 0 0 1-2 2H24a2 2 0 0 1-2-2V12zM29 14h22v8H29zM26 40v9M54 40v9,M20 2h40a2.5 2.5 0 0 1 2.5 2.5V12H17.5V4.5A2.5 2.5 0 0 1 20 2zM16 12h48v28a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2V12zM23 14h34v8H23zM20 40v9M60 40v9,M14 2h52a2.5 2.5 0 0 1 2.5 2.5V12H11.5V4.5A2.5 2.5 0 0 1 14 2zM10 12h60v28a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V12zM13 14h24v8H13zM43 14h24v8H43zM14 40v9M66 40v9,M10 2h60a2.5 2.5 0 0 1 2.5 2.5V12H7.5V4.5A2.5 2.5 0 0 1 10 2zM6 12h68v28a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V12zM10 14h26v8H10zM44 14h26v8H44zM10 40v9M70 40v9,M6 2h68a2.5 2.5 0 0 1 2.5 2.5V12H3.5V4.5A2.5 2.5 0 0 1 6 2zM2 12h76v28a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12zM6 14h30v8H6zM44 14h30v8H44zM6 40v9M74 40v9,M2 2h76a2.5 2.5 0 0 1 2.5 2.5V12H-.5V4.5A2.5 2.5 0 0 1 2 2zM1 12h78v28a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V12zM5 14h33v8H5zM42 14h33v8H42zM4 40v9M76 40v9' | split: ',' -%}
-
-            {%- for option in product.options_with_values -%}
-              {%- assign opt_handle = option.name | handleize -%}
-              {%- assign is_size = false -%}
-              {%- if opt_handle == 'size' -%}{%- assign is_size = true -%}{%- endif -%}
-              {%- assign opt_value_count = option.values.size -%}
-              {%- if is_size -%}
-                {%- assign grid_cols = 3 -%}
-              {%- elsif opt_value_count <= 4 -%}
-                {%- assign grid_cols = opt_value_count -%}
-              {%- else -%}
-                {%- assign grid_cols = 5 -%}
-              {%- endif -%}
-              <div class="variant-panel {% unless forloop.first %}hidden{% endunless %}" id="vpanel-{{ opt_handle }}" data-option-index="{{ forloop.index0 }}">
-                <div class="variant-grid" style="grid-template-columns: repeat({{ grid_cols }}, 1fr);">
-                  {%- for value in option.values -%}
-                    {%- assign is_colour = false -%}
-                    {%- if opt_handle == 'colour' or opt_handle == 'color' -%}{%- assign is_colour = true -%}{%- endif -%}
-                    {%- assign variant_img = blank -%}
-                    {%- if is_colour -%}
+                  <div class="snno-opt-group__row">
+                    {%- for value in option.values -%}
+                      {%- assign price_mod = 0 -%}
                       {%- for v in product.variants -%}
                         {%- if v.option1 == value or v.option2 == value or v.option3 == value -%}
-                          {%- if v.image -%}{%- assign variant_img = v.image -%}{%- break -%}{%- endif -%}
+                          {%- assign price_mod = v.price | minus: product.price_min -%}
+                          {%- break -%}
                         {%- endif -%}
                       {%- endfor -%}
-                    {%- endif -%}
-                    {%- comment -%} Find the variant matching this value to compute its price difference vs. the cheapest variant {%- endcomment -%}
-                    {%- assign price_mod = 0 -%}
-                    {%- assign base_price = product.price_min -%}
-                    {%- for v in product.variants -%}
-                      {%- if v.option1 == value or v.option2 == value or v.option3 == value -%}
-                        {%- assign price_mod = v.price | minus: base_price -%}
-                        {%- break -%}
-                      {%- endif -%}
-                    {%- endfor -%}
-                    <button
-                      type="button"
-                      class="variant-card {% if option.selected_value == value %}active{% endif %}"
-                      data-option-index="{{ forloop.parentloop.index0 }}"
-                      data-value="{{ value | escape }}"
-                      data-option-tab-id="opt-tab-{{ forloop.parentloop.index }}"
-                      aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">
-                      <div class="variant-card__check">✓</div>
-                      <div class="variant-card__img">
-                        {%- if variant_img != blank -%}
-                          <img src="{{ variant_img | image_url: width: 200 }}" alt="{{ value | escape }}" width="100" height="100" loading="lazy">
-                        {%- elsif is_colour -%}
-                          <span class="variant-card__colour-dot" style="background:{%- render 'swatch-color', name: value -%};"></span>
-                        {%- elsif is_size -%}
-                          <div class="variant-card__bed-icon">
-                            <svg viewBox="0 0 80 52" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;color:var(--clr-secondary);">
-                              <path d="{{ size_bed_icons[forloop.index0] }}" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                            </svg>
-                          </div>
+                      <button
+                        type="button"
+                        class="variant-card snno-chip {% if is_colour %}snno-chip--dot{% else %}snno-chip--pill{% endif %} {% if option.selected_value == value %}active{% endif %}"
+                        data-option-index="{{ forloop.parentloop.index0 }}"
+                        data-value="{{ value | escape }}"
+                        data-snno-val-id="snno-val-{{ forloop.parentloop.index }}"
+                        aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}"
+                        title="{{ value | escape }}">
+                        {%- if is_colour -%}
+                          <span class="snno-dot" style="background:{%- render 'swatch-color', name: value -%};"></span>
                         {%- else -%}
-                          <div class="variant-card__type-icon">
-                            <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);">
-                              {%- case opt_handle -%}
-                                {%- when 'storage' -%}
-                                  <rect x="2" y="6" width="18" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M2 11h18" stroke="currentColor" stroke-width="1.3"/><circle cx="11" cy="14" r="1" fill="currentColor"/>
-                                {%- when 'headboard' -%}
-                                  <rect x="3" y="3" width="16" height="12" rx="3" stroke="currentColor" stroke-width="1.3"/><path d="M3 19h16M7 19v-4M15 19v-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                                {%- when 'base' -%}
-                                  <rect x="2" y="9" width="18" height="7" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 9V7M11 9V7M17 9V7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4 16v3M18 16v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
-                                {%- else -%}
-                                  <rect x="2" y="2" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.3"/>
-                              {%- endcase -%}
-                            </svg>
-                          </div>
+                          <span class="snno-chip__txt">{{ value }}{%- if price_mod > 0 -%} <small>+{{ price_mod | money }}</small>{%- endif -%}</span>
                         {%- endif -%}
-                      </div>
-                      <span class="variant-card__name">{{ value }}</span>
-                      {%- if price_mod > 0 -%}
-                        <span class="variant-card__price-mod">+{{ price_mod | money }}</span>
-                      {%- endif -%}
-                    </button>
-                  {%- endfor -%}
+                      </button>
+                    {%- endfor -%}
+                  </div>
                 </div>
-                {%- if is_size -%}
-                  <div class="variant-panel__footer">
-                    <a href="#product-dimensions" class="btn--dims">View Dimensions</a>
-                  </div>
-                {%- elsif opt_handle == 'storage' -%}
-                  <div class="variant-panel__footer">
-                    <a href="#product-dimensions" class="btn--dims">Storage Dimensions</a>
-                  </div>
-                {%- elsif opt_handle == 'base' -%}
-                  <div class="variant-panel__footer">
-                    <a href="#product-faq" class="btn--dims">Read more</a>
-                  </div>
-                {%- endif -%}
-              </div>
-            {%- endfor -%}
-
+              {%- endfor -%}
+            </div>
           {%- endunless -%}
 
           <input type="hidden" name="id" id="product-variant-id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -409,18 +328,6 @@
     return '£' + (cents / 100).toFixed(2).replace(/\.00$/, '');
   }
 
-  // Option tab panel switching
-  document.querySelectorAll('.variant-option-tab').forEach(function(tab){
-    tab.addEventListener('click', function(){
-      document.querySelectorAll('.variant-option-tab').forEach(function(t){ t.classList.remove('active'); });
-      tab.classList.add('active');
-      var panel = tab.getAttribute('data-option-panel');
-      document.querySelectorAll('.variant-panel').forEach(function(p){ p.classList.add('hidden'); });
-      var el = document.getElementById('vpanel-' + panel);
-      if(el) el.classList.remove('hidden');
-    });
-  });
-
   // Filter thumbnails to show only images for selected colour, swap main image instantly
   function filterThumbs(colourVal, preferredSrc) {
     var colourLower = colourVal ? colourVal.toLowerCase() : '';
@@ -456,31 +363,32 @@
     }
   }
 
-  // Variant card selection
+  // Variant card selection (Sonno-style inline chips)
+  var productOptions = {{ product.options | json }};
   document.querySelectorAll('.variant-card').forEach(function(card){
     card.addEventListener('click', function(){
       var idx = parseInt(card.getAttribute('data-option-index'));
       var val = card.getAttribute('data-value');
-      var grid = card.closest('.variant-grid');
-      grid.querySelectorAll('.variant-card').forEach(function(c){ c.classList.remove('active'); c.setAttribute('aria-pressed','false'); });
+      // Deactivate all chips for this option index
+      document.querySelectorAll('.variant-card[data-option-index="' + idx + '"]').forEach(function(c){
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
       card.classList.add('active');
-      card.setAttribute('aria-pressed','true');
+      card.setAttribute('aria-pressed', 'true');
       selectedOptions[idx] = val;
-      // Update tab value display
-      var tabId = card.getAttribute('data-option-tab-id');
-      if(tabId){ var el = document.getElementById(tabId); if(el) el.textContent = val; }
+      // Update inline label
+      var valId = card.getAttribute('data-snno-val-id');
+      if(valId){ var el = document.getElementById(valId); if(el) el.textContent = val; }
       var variant = findVariant();
       if(variant) updatePrice(variant);
-      // Check if this is a colour option — filter gallery thumbnails
-      var panelEl = card.closest('.variant-panel');
-      var optIdx = panelEl ? parseInt(panelEl.getAttribute('data-option-index')) : -1;
-      var optName = {{ product.options | json }}[optIdx] || '';
+      // Filter gallery thumbnails on colour change
+      var optName = productOptions[idx] || '';
       var isColour = optName.toLowerCase() === 'colour' || optName.toLowerCase() === 'color';
       if (isColour) {
         var preferredSrc = (variant && variant.featured_image) ? variant.featured_image.src : null;
         filterThumbs(val, preferredSrc);
       } else if (variant && variant.featured_image) {
-        // Non-colour option: just swap main image
         var mainImg = document.getElementById('product-main-img');
         if(mainImg){
           mainImg.removeAttribute('srcset');

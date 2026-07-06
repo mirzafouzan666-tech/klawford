@@ -3077,6 +3077,105 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 }
 
 /* ============================================================
+   SONNO-STYLE INLINE VARIANT SELECTORS (product page)
+   ============================================================ */
+.snno-opts { display: flex; flex-direction: column; gap: 18px; margin: 18px 0 22px; }
+
+.snno-opt-group { display: flex; flex-direction: column; gap: 10px; }
+
+.snno-opt-group__hd {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 14px;
+}
+.snno-opt-group__name {
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  text-transform: capitalize;
+}
+.snno-opt-group__val {
+  color: var(--clr-secondary);
+  font-weight: var(--fw-semi);
+}
+
+.snno-opt-group__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Base chip — resets variant-card box look for the new inline style */
+.snno-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--clr-ash);
+  background: var(--clr-white);
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+  position: relative;
+  padding: 0;
+}
+.snno-chip:hover { border-color: var(--clr-gray-dusty); }
+.snno-chip.active { border-color: var(--clr-secondary); background: var(--clr-white-linen); }
+
+/* Colour circle swatch */
+.snno-chip--dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  padding: 3px;
+  overflow: visible;
+}
+.snno-chip--dot.active::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid var(--clr-secondary);
+  pointer-events: none;
+}
+.snno-dot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.10);
+}
+
+/* Size / Storage pill */
+.snno-chip--pill {
+  padding: 8px 14px;
+  border-radius: 6px;
+  min-width: 80px;
+}
+.snno-chip__txt {
+  font-size: 13px;
+  font-weight: var(--fw-semi);
+  color: var(--clr-text);
+  line-height: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+.snno-chip--pill.active .snno-chip__txt { color: var(--clr-secondary); }
+.snno-chip__txt small {
+  font-size: 11px;
+  font-weight: var(--fw-normal);
+  color: var(--clr-gray-dusty);
+}
+
+@media (max-width: 768px) {
+  .snno-opt-group__row { gap: 8px; }
+  .snno-chip--pill { min-width: 68px; padding: 7px 10px; }
+  .snno-chip--dot { width: 32px; height: 32px; }
+}
+
+/* ============================================================
    DESKTOP TEXT SIZE — tablet and above only (≥769px)
    ============================================================ */
 @media (min-width: 769px) {
