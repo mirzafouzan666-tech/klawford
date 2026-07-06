@@ -5,6 +5,39 @@
   {%- assign active_filter_count = active_filter_count | plus: 1 -%}
 {%- endfor -%}
 
+{%- comment -%}
+  Build active colour/size lookup from Shopify's filter API first,
+  then fall back to raw query string parsing (works even when the filter
+  is not configured in Search & Discovery).
+  Sizes stored as "|value|value|…" so a substring match is unambiguous.
+{%- endcomment -%}
+{%- assign kl_active_colour = nil -%}
+{%- assign kl_active_sizes  = '' -%}
+{%- for af in collection.active_filters -%}
+  {%- assign _afl = af.label | downcase -%}
+  {%- if _afl == 'colour' or _afl == 'color' -%}
+    {%- assign kl_active_colour = af.value | downcase -%}
+  {%- endif -%}
+  {%- if _afl == 'size' -%}
+    {%- assign kl_active_sizes = kl_active_sizes | append: '|' | append: af.value | downcase | append: '|' -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- comment -%} Query-string fallback: browser sends spaces as "+" which url_encode does not produce {%- endcomment -%}
+{%- assign _qs_pairs = request.query_string | split: '&' -%}
+{%- for _pair in _qs_pairs -%}
+  {%- assign _kv = _pair | split: '=' -%}
+  {%- assign _k  = _kv[0] | downcase -%}
+  {%- assign _v  = _kv[1] | replace: '+', ' ' | downcase -%}
+  {%- if _k contains 'colour' or _k contains 'color' -%}
+    {%- if kl_active_colour == nil -%}{%- assign kl_active_colour = _v -%}{%- endif -%}
+  {%- endif -%}
+  {%- if _k contains '.size' -%}
+    {%- unless kl_active_sizes contains _v -%}
+      {%- assign kl_active_sizes = kl_active_sizes | append: '|' | append: _v | append: '|' -%}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endfor -%}
+
 {%- comment -%} ================================================================
     MOBILE FILTER DRAWER
     ================================================================ {%- endcomment -%}
@@ -219,9 +252,9 @@
             <div class="kl-swatch-list">
               {%- assign bed_sizes = 'Small Single 2FT6,Single 3FT,Small Double 4FT,Double 4FT6,King 5FT,Super King 6FT' | split: ',' -%}
               {%- for size in bed_sizes -%}
-                {%- assign size_param = size | url_encode -%}
+                {%- assign _sl = size | downcase -%}
                 {%- assign size_active = false -%}
-                {%- if request.query_string contains size_param -%}{%- assign size_active = true -%}{%- endif -%}
+                {%- if kl_active_sizes contains _sl -%}{%- assign size_active = true -%}{%- endif -%}
                 <label class="kl-swatch-item">
                   <input type="checkbox"
                     name="filter.p.v.option.size"
@@ -255,9 +288,9 @@
             <div class="kl-swatch-list">
               {%- assign static_colours = 'Cream,Red,Grey,Black,Brown' | split: ',' -%}
               {%- for colour in static_colours -%}
-                {%- assign col_param = colour | url_encode -%}
+                {%- assign _cl = colour | downcase -%}
                 {%- assign col_active = false -%}
-                {%- if request.query_string contains col_param -%}{%- assign col_active = true -%}{%- endif -%}
+                {%- if kl_active_colour == _cl -%}{%- assign col_active = true -%}{%- endif -%}
                 <label class="kl-swatch-item">
                   <input type="checkbox"
                     name="{{ colour_param }}"
@@ -275,6 +308,13 @@
 
         <form id="kl-form-sidebar" method="get" action="{{ collection.url }}">
           <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
+          {%- comment -%} Preserve active price filter when submitting a size/colour change {%- endcomment -%}
+          {%- for af in collection.active_filters -%}
+            {%- assign _afl = af.label | downcase -%}
+            {%- unless _afl == 'colour' or _afl == 'color' or _afl == 'size' -%}
+              <input type="hidden" name="{{ af.param_name }}" value="{{ af.value }}">
+            {%- endunless -%}
+          {%- endfor -%}
         </form>
       </aside>
 
@@ -324,14 +364,8 @@
           </div>
         </div>
 
-        {%- comment -%} Detect active colour filter so card can show the right image {%- endcomment -%}
-        {%- assign filter_colour = nil -%}
-        {%- for af in collection.active_filters -%}
-          {%- assign af_label = af.label | downcase -%}
-          {%- if af_label == 'colour' or af_label == 'color' -%}
-            {%- assign filter_colour = af.value | downcase -%}
-          {%- endif -%}
-        {%- endfor -%}
+        {%- comment -%} Active colour — pre-built at top of section from API + query string {%- endcomment -%}
+        {%- assign filter_colour = kl_active_colour -%}
 
         {%- comment -%} Product grid {%- endcomment -%}
         {%- if collection.products.size > 0 -%}
