@@ -19,30 +19,12 @@
 
 <header class="site-header" id="site-header" role="banner">
 
-  <!-- Top row: search | logo | actions -->
-  <div class="header-top">
+  <!-- Single main row: logo | 4 category links | search + basket -->
+  <div class="site-header__main">
     <div class="container">
-      <div class="header-top__inner">
+      <div class="site-header__inner">
 
-        <!-- Inline search form -->
-        <div class="header-search">
-          <form action="/search" method="get" role="search" class="header-search-form">
-            <input type="hidden" name="type" value="product">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="header-search-icon">
-              <circle cx="6.5" cy="6.5" r="4.75" stroke="currentColor" stroke-width="1.4"/>
-              <path d="m10 10 3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-            <input
-              type="search"
-              name="q"
-              placeholder="Search for beds, mattresses…"
-              autocomplete="off"
-              class="header-search-input"
-              aria-label="Search products">
-          </form>
-        </div>
-
-        <!-- Logo -->
+        <!-- Logo — left anchor -->
         <div class="header-logo">
           <a href="/" aria-label="{{ shop.name }} home">
             {%- if section.settings.logo != blank -%}
@@ -59,11 +41,39 @@
           </a>
         </div>
 
-        <!-- Actions -->
+        <!-- 4 Category links — spread between logo and basket -->
+        <nav class="header-cats" aria-label="Shop categories">
+          <ul class="header-cats__list" role="list">
+            <li><a href="/collections/beds"        class="header-cats__link">Beds</a></li>
+            <li><a href="/collections/mattresses"  class="header-cats__link">Mattresses</a></li>
+            <li><a href="/collections/sofas"       class="header-cats__link">Sofas</a></li>
+            <li><a href="/collections/headboards"  class="header-cats__link">Headboards</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: search input + basket + mobile toggle -->
         <div class="header-actions">
+
+          <!-- Inline search -->
+          <form action="/search" method="get" role="search" class="header-search-form">
+            <input type="hidden" name="type" value="product">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" class="header-search-icon">
+              <circle cx="6.5" cy="6.5" r="4.75" stroke="currentColor" stroke-width="1.4"/>
+              <path d="m10 10 3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+            <input
+              type="search"
+              name="q"
+              placeholder="Search…"
+              autocomplete="off"
+              class="header-search-input"
+              aria-label="Search products">
+          </form>
+
+          <!-- Basket -->
           <button class="header-action" id="cart-open-btn" data-cart-open aria-label="Open cart">
             <span class="header-action__icon-wrap">
-              <svg width="34" height="34" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 22 22" fill="none" aria-hidden="true">
                 <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
                 <line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.4"/>
                 <path d="M16 10a5 5 0 0 1-10 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -72,51 +82,19 @@
                 {{ cart.item_count }}
               </span>
             </span>
-            <span class="header-action__label">My Basket</span>
+            <span class="header-action__label">Basket</span>
           </button>
 
-          <!-- Mobile menu button -->
+          <!-- Mobile hamburger -->
           <button class="header-mobile-btn" id="mobile-menu-open" aria-label="Open navigation menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
+
         </div>
 
       </div>
     </div>
   </div>
-
-  <!-- Desktop navigation -->
-  <nav class="header-nav" aria-label="Main navigation">
-    <div class="container">
-      <ul class="header-nav__list" role="list">
-        {%- for link in linklists[section.settings.menu].links -%}
-          <li class="header-nav__item{% if link.links.size > 0 %} has-dropdown{% endif %}{% if link.active %} is-active{% endif %}">
-            {%- if link.links.size > 0 -%}
-              <button class="header-nav__link" type="button" aria-haspopup="true" aria-expanded="false">
-                {{ link.title }}
-                <svg width="10" height="7" viewBox="0 0 10 7" fill="none" aria-hidden="true">
-                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <div class="header-dropdown" role="region">
-                <ul role="list">
-                  {%- for child in link.links -%}
-                    <li>
-                      <a href="{{ child.url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              </div>
-            {%- else -%}
-              <a href="{{ link.url }}" class="header-nav__link" {% if link.active %}aria-current="page"{% endif %}>
-                {{ link.title }}
-              </a>
-            {%- endif -%}
-          </li>
-        {%- endfor -%}
-      </ul>
-    </div>
-  </nav>
 
   <!-- Benefits strip -->
   {%- if section.settings.show_benefits -%}
@@ -129,7 +107,7 @@
         </span>
         <span class="header-benefit">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1" y="4" width="12" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M4 4V3a3 3 0 0 1 6 0v1" stroke="currentColor" stroke-width="1.3"/></svg>
-          {{ section.settings.benefit_2 | default: "Fast Free delivery" }}
+          {{ section.settings.benefit_2 | default: "Fast Free Delivery" }}
         </span>
         <span class="header-benefit">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1l1.5 3 3.5.5-2.5 2.5.6 3.5L7 9l-3.1 1.5.6-3.5L2 4.5l3.5-.5L7 1z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
@@ -156,33 +134,51 @@
       </svg>
     </button>
   </div>
+
+  <!-- Search in mobile menu -->
+  <div class="mobile-menu__search">
+    <form action="/search" method="get" role="search">
+      <input type="hidden" name="type" value="product">
+      <div class="mobile-search-wrap">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="6.5" cy="6.5" r="4.75" stroke="currentColor" stroke-width="1.4"/><path d="m10 10 3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <input type="search" name="q" placeholder="Search products…" autocomplete="off" aria-label="Search products" class="mobile-search-input">
+      </div>
+    </form>
+  </div>
+
   <ul class="mobile-menu__list" role="list">
+    <li class="mobile-menu__item"><a href="/collections/beds"       class="mobile-menu__link">Beds</a></li>
+    <li class="mobile-menu__item"><a href="/collections/mattresses" class="mobile-menu__link">Mattresses</a></li>
+    <li class="mobile-menu__item"><a href="/collections/sofas"      class="mobile-menu__link">Sofas</a></li>
+    <li class="mobile-menu__item"><a href="/collections/headboards" class="mobile-menu__link">Headboards</a></li>
     {%- for link in linklists[section.settings.menu].links -%}
-      <li class="mobile-menu__item{% if link.links.size > 0 %} has-sub{% endif %}">
-        {%- if link.links.size > 0 -%}
-          <button class="mobile-menu__link mobile-menu__toggle" type="button" aria-expanded="false"
-            onclick="var sub=this.nextElementSibling;var open=sub.classList.toggle('is-open');this.setAttribute('aria-expanded',open);">
-            {{ link.title }}
-            <svg class="mobile-menu__toggle-icon" width="11" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-              <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-          <ul class="mobile-menu__sub" role="list">
-            {%- for child in link.links -%}
-              <li><a href="{{ child.url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
-            {%- endfor -%}
-          </ul>
-        {%- else -%}
-          <a href="{{ link.url }}" class="mobile-menu__link">{{ link.title }}</a>
-        {%- endif -%}
-      </li>
+      {%- assign link_lower = link.title | downcase -%}
+      {%- unless link_lower == 'beds' or link_lower == 'mattresses' or link_lower == 'sofas' or link_lower == 'headboards' -%}
+        <li class="mobile-menu__item{% if link.links.size > 0 %} has-sub{% endif %}">
+          {%- if link.links.size > 0 -%}
+            <button class="mobile-menu__link mobile-menu__toggle" type="button" aria-expanded="false"
+              onclick="var sub=this.nextElementSibling;var open=sub.classList.toggle('is-open');this.setAttribute('aria-expanded',open);">
+              {{ link.title }}
+              <svg class="mobile-menu__toggle-icon" width="11" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <ul class="mobile-menu__sub" role="list">
+              {%- for child in link.links -%}
+                <li><a href="{{ child.url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          {%- else -%}
+            <a href="{{ link.url }}" class="mobile-menu__link">{{ link.title }}</a>
+          {%- endif -%}
+        </li>
+      {%- endunless -%}
     {%- endfor -%}
   </ul>
 </div>
 <div class="mobile-overlay" id="mobile-overlay"></div>
 
 <script>
-  // Wire up mobile menu (inline so it works before theme.js loads)
   (function() {
     var open    = document.getElementById('mobile-menu-open');
     var close   = document.getElementById('mobile-menu-close');
@@ -194,22 +190,10 @@
     if (open)    open.addEventListener('click', openM);
     if (close)   close.addEventListener('click', closeM);
     if (overlay) overlay.addEventListener('click', closeM);
-    // Cart drawer open
     if (cart) cart.addEventListener('click', function() {
       var drawer = document.getElementById('cart-drawer');
       if (drawer) { drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
     });
-    // Search
-    var searchBtn = document.getElementById('search-open');
-    var searchOverlay = document.getElementById('search-overlay');
-    if (searchBtn && searchOverlay) {
-      searchBtn.addEventListener('click', function() {
-        searchOverlay.classList.add('is-open');
-        searchOverlay.setAttribute('aria-hidden','false');
-        document.body.style.overflow='hidden';
-        setTimeout(function(){ document.getElementById('search-input')?.focus(); }, 280);
-      });
-    }
   })();
 </script>
 
@@ -252,7 +236,7 @@
     },
     { "type": "checkbox", "id": "show_benefits", "label": "Show benefits strip", "default": true },
     { "type": "text", "id": "benefit_1", "label": "Benefit 1", "default": "60 Night Risk-Free Trial" },
-    { "type": "text", "id": "benefit_2", "label": "Benefit 2", "default": "Fast Free delivery" },
+    { "type": "text", "id": "benefit_2", "label": "Benefit 2", "default": "Fast Free Delivery" },
     { "type": "text", "id": "benefit_3", "label": "Benefit 3", "default": "Handmade In UK" },
     { "type": "text", "id": "benefit_4", "label": "Benefit 4", "default": "Pay Monthly" }
   ]
