@@ -2779,7 +2779,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   text-decoration: none;
   letter-spacing: 0.3px;
   white-space: nowrap;
-  min-width: 140px;
+  min-width: 210px;
   height: 30px;
   transition: background 0.2s ease, transform 0.15s ease;
 }
@@ -2923,7 +2923,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   .hero-banner__content { max-width: 380px; gap: 8px; }
 
   /* Cat buttons */
-  .hero-cat-btn { font-size: 11px; min-width: 110px; height: 28px; }
+  .hero-cat-btn { font-size: 11px; min-width: 165px; height: 28px; }
 
   /* Global body */
   body { font-size: 14px; }
