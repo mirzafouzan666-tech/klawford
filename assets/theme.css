@@ -1465,18 +1465,15 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .product-breadcrumb a:hover { color: var(--clr-secondary); }
 .product-breadcrumb span { color: var(--clr-text-light); }
 .product-main__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
-.product-gallery__main { position: relative; aspect-ratio: 1/1; border-radius: var(--radius-lg); overflow: hidden; background: #fff; margin-bottom: 0; }
+.product-gallery__main { position: relative; aspect-ratio: 1/1; border-radius: var(--radius-lg); overflow: hidden; background: #fff; margin-bottom: 12px; }
 .product-gallery__main img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transition: transform 0.3s ease; }
 .product-gallery__main:hover img { transform: scale(1.02); }
 .product-gallery__badge { position: absolute; top: 14px; left: 14px; background: var(--clr-secondary); color: var(--clr-white); font-size: var(--fs-xs); font-weight: var(--fw-bold); padding: 4px 12px; border-radius: var(--radius-full); z-index: 2; }
-.product-gallery__thumb-nav { display: flex; align-items: center; gap: 6px; margin-top: 8px; }
-.product-gallery__thumbs { display: flex; gap: 6px; flex-wrap: nowrap; overflow-x: hidden; scroll-behavior: smooth; flex: 1; min-width: 0; }
-.product-gallery__thumb { width: 76px; height: 76px; flex-shrink: 0; border-radius: var(--radius-sm); overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: var(--transition); background: #fff; padding: 0; }
+.product-gallery__thumbs { display: flex; gap: 8px; flex-wrap: wrap; }
+.product-gallery__thumb { width: 76px; height: 76px; border-radius: var(--radius-sm); overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: var(--transition); background: #fff; padding: 0; }
 .product-gallery__thumb img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
 .product-gallery__thumb:hover { border-color: var(--clr-gray-dusty); }
 .product-gallery__thumb.active { border-color: var(--clr-secondary); }
-.product-gallery__thumb-arrow { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; border: 1.5px solid var(--clr-ash); background: var(--clr-white); cursor: pointer; color: var(--clr-text); transition: border-color var(--transition), opacity var(--transition); }
-.product-gallery__thumb-arrow:hover { border-color: var(--clr-secondary); color: var(--clr-secondary); }
 .product-upsell { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
 .product-upsell__btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 16px; border: 1.5px solid var(--clr-secondary); border-radius: var(--radius-full); font-size: var(--fs-xs); font-weight: var(--fw-semibold); color: var(--clr-secondary); cursor: pointer; transition: var(--transition); }
 .product-upsell__btn:hover { background: var(--clr-secondary); color: var(--clr-white); }
