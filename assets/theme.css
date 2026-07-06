@@ -2772,15 +2772,15 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   background: var(--clr-secondary);
   color: #fff;
   font-family: var(--ff-secondary);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   padding: 0;
   border-radius: 6px;
   text-decoration: none;
   letter-spacing: 0.3px;
   white-space: nowrap;
-  min-width: 280px;
-  height: 40px;
+  min-width: 350px;
+  height: 30px;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 .hero-cat-btn:hover {
