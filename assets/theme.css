@@ -2751,7 +2751,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .hero-banner__cats-bar {
   position: relative;
   z-index: 2;
-  padding-bottom: 28px;
+  padding-bottom: 70px;
 }
 /* Left-align the cats row to match the text content above */
 .hero-banner__cats-bar .container {
