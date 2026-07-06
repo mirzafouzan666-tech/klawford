@@ -157,7 +157,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 /* ============================================================
    ANNOUNCEMENT BAR
    ============================================================ */
-.promo-bar { background: var(--clr-secondary); color: #fff; text-align: center; padding: 10px 16px; font-size: 13px; font-weight: var(--fw-semibold); display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.promo-bar { background: var(--clr-secondary); color: #fff; text-align: center; padding: 16px 16px; font-size: 13px; font-weight: var(--fw-semibold); display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
 .promo-bar__text { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; font-size: 13px; }
 .promo-bar__countdown-group { display: inline-flex; align-items: center; gap: 6px; }
 .promo-bar__countdown { display: inline-flex; align-items: center; background: rgba(255,255,255,.15); border-radius: var(--radius-full); padding: 3px 10px; font-weight: var(--fw-bold); letter-spacing: .5px; font-variant-numeric: tabular-nums; font-size: 13px; }
