@@ -157,11 +157,11 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 /* ============================================================
    ANNOUNCEMENT BAR
    ============================================================ */
-.promo-bar { background: var(--clr-secondary); color: #fff; text-align: center; padding: 16px 16px; font-size: 16px; font-weight: var(--fw-semibold); display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.promo-bar__text { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; font-size: 16px; }
-.promo-bar__countdown-group { display: inline-flex; align-items: center; gap: 8px; }
-.promo-bar__countdown { display: inline-flex; align-items: center; background: rgba(255,255,255,.15); border-radius: var(--radius-full); padding: 4px 14px; font-weight: var(--fw-bold); letter-spacing: .5px; font-variant-numeric: tabular-nums; font-size: 16px; }
-.promo-bar__code { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--clr-secondary); font-size: 14px; font-weight: var(--fw-bold); padding: 5px 14px; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; font-family: inherit; transition: var(--transition); }
+.promo-bar { background: var(--clr-secondary); color: #fff; text-align: center; padding: 10px 16px; font-size: 13px; font-weight: var(--fw-semibold); display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.promo-bar__text { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; font-size: 13px; }
+.promo-bar__countdown-group { display: inline-flex; align-items: center; gap: 6px; }
+.promo-bar__countdown { display: inline-flex; align-items: center; background: rgba(255,255,255,.15); border-radius: var(--radius-full); padding: 3px 10px; font-weight: var(--fw-bold); letter-spacing: .5px; font-variant-numeric: tabular-nums; font-size: 13px; }
+.promo-bar__code { display: inline-flex; align-items: center; gap: 6px; background: #fff; color: var(--clr-secondary); font-size: 12px; font-weight: var(--fw-bold); padding: 4px 10px; border-radius: var(--radius-sm); text-transform: uppercase; letter-spacing: 1px; border: none; cursor: pointer; font-family: inherit; transition: var(--transition); }
 .promo-bar__code:hover { opacity: .85; }
 
 /* ============================================================
@@ -226,10 +226,10 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .header-logo a { display: inline-block; }
 .header-logo__text {
   font-family: var(--ff-primary);
-  font-size: 42px;
+  font-size: 28px;
   font-weight: var(--fw-bold);
   color: var(--clr-text);
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 .header-logo__img { max-height: 64px; width: auto; margin: 0 auto; }
@@ -239,8 +239,8 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 24px;
-  padding-right: 120px;
+  gap: 16px;
+  padding-right: 80px;
 }
 .header-action {
   display: flex;
@@ -2703,7 +2703,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   display: flex !important;
   align-items: center !important;
   gap: 8px !important;
-  font-size: 26px !important;
+  font-size: 17px !important;
   font-weight: 700 !important;
   color: var(--clr-text) !important;
   text-shadow: 0 1px 6px rgba(242,237,231,0.5);
@@ -2713,7 +2713,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .hero-word-small {
   display: block;
   font-family: var(--ff-secondary);
-  font-size: clamp(44px, 4.5vw, 62px);
+  font-size: clamp(29px, 3vw, 42px);
   font-weight: 400;
   letter-spacing: 6px;
   text-transform: uppercase;
@@ -2731,9 +2731,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   background: var(--clr-secondary);
   color: #fff;
   font-family: var(--ff-secondary);
-  font-size: 26px;
+  font-size: 17px;
   font-weight: 700;
-  padding: 22px 48px;
+  padding: 15px 32px;
   border-radius: 6px;
   text-decoration: none;
   letter-spacing: 0.3px;
@@ -2760,7 +2760,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .hero-banner__cats-bar .container {
   max-width: none !important;
   margin-left: 0 !important;
-  padding-left: 110px !important;
+  padding-left: 74px !important;
 }
 .hero-cats-row {
   display: flex;
@@ -2775,15 +2775,15 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   background: var(--clr-secondary);
   color: #fff;
   font-family: var(--ff-secondary);
-  font-size: 15px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 10px 0;
-  border-radius: 8px;
+  padding: 0;
+  border-radius: 6px;
   text-decoration: none;
   letter-spacing: 0.3px;
   white-space: nowrap;
-  min-width: 210px;
-  height: 42px;
+  min-width: 140px;
+  height: 30px;
   transition: background 0.2s ease, transform 0.15s ease;
 }
 .hero-cat-btn:hover {
@@ -2799,9 +2799,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 
 /* --- Hero heading: huge bold serif --- */
 .hero-banner__heading {
-  font-size: clamp(210px, 21vw, 290px) !important;
+  font-size: clamp(140px, 14vw, 195px) !important;
   line-height: 0.88 !important;
-  letter-spacing: -6px !important;
+  letter-spacing: -4px !important;
   color: var(--clr-text) !important;
   margin: 0 !important;
 }
@@ -2809,27 +2809,27 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 /* --- Hero subtitle --- */
 .hero-banner__promo-row .hero-banner__sub,
 .hero-banner__sub {
-  font-size: clamp(34px, 3.4vw, 44px) !important;
+  font-size: clamp(23px, 2.3vw, 30px) !important;
   color: var(--clr-text) !important;
   font-weight: 500 !important;
   margin: 0 !important;
 }
 .hero-promo-accent { color: var(--clr-secondary); font-weight: 700; }
 
-/* --- Buttons: 16px / 600 / 54px height --- */
+/* --- Buttons: 14px / 600 / 38px height --- */
 .btn {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
-  padding: 17px 32px !important;
-  min-height: 54px;
+  padding: 12px 24px !important;
+  min-height: 38px;
 }
-.btn--lg { padding: 17px 40px !important; font-size: 16px !important; min-height: 54px; }
-.btn--sm { font-size: 14px !important; padding: 10px 20px !important; min-height: auto; }
+.btn--lg { padding: 12px 28px !important; font-size: 14px !important; min-height: 38px; }
+.btn--sm { font-size: 13px !important; padding: 8px 16px !important; min-height: auto; }
 
-/* --- Section spacing: 120px --- */
-.popular-categories { padding: 120px 0 !important; }
-.new-trending       { padding: 120px 0 !important; }
-.feature-section    { padding: 120px 0 !important; }
+/* --- Section spacing: 80px --- */
+.popular-categories { padding: 80px 0 !important; }
+.new-trending       { padding: 80px 0 !important; }
+.feature-section    { padding: 80px 0 !important; }
 .trust-badges       { padding: 36px 0 !important; background: #fff !important; border-top: 1px solid #ece8e3 !important; border-bottom: 1px solid #ece8e3 !important; }
 .trust-badges__grid {
   display: flex !important;
@@ -2857,17 +2857,17 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 }
 .trust-badge__icon svg { width: 28px !important; height: 28px !important; }
 .trust-badge__text { font-size: 14px !important; font-weight: 600 !important; line-height: 1.3 !important; color: var(--clr-text) !important; }
-.social-proof-bar   { padding: 120px 0 80px; }
+.social-proof-bar   { padding: 80px 0 54px; }
 
-/* --- Section title: larger to fill space --- */
+/* --- Section title: appropriately sized --- */
 .section-title {
-  font-size: clamp(40px, 4.2vw, 56px) !important;
-  margin-bottom: 48px !important;
+  font-size: clamp(27px, 2.8vw, 38px) !important;
+  margin-bottom: 32px !important;
 }
 
-/* --- Grid: 3 columns on desktop so cards are bigger --- */
-.products-grid   { grid-template-columns: repeat(3, 1fr) !important; gap: 28px !important; }
-.categories-grid { gap: 28px !important; }
+/* --- Grid: 3 columns on desktop --- */
+.products-grid   { grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; }
+.categories-grid { gap: 20px !important; }
 
 /* --- Category card: 4:5 portrait ratio, 20px radius --- */
 .category-card      { border-radius: 20px !important; overflow: hidden; }
@@ -2879,10 +2879,10 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .product-card__img--primary,
 .product-card__img--alt { inset: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center 20% !important; }
 
-/* --- Product card info: 32px padding, larger title --- */
-.product-card__info  { padding: 24px 24px 20px !important; }
-.product-card__title { font-size: clamp(20px, 1.8vw, 26px) !important; margin-bottom: 10px !important; }
-.product-card__price { font-size: 22px !important; }
+/* --- Product card info: tighter padding, scaled title --- */
+.product-card__info  { padding: 16px 16px 14px !important; }
+.product-card__title { font-size: clamp(14px, 1.2vw, 17px) !important; margin-bottom: 7px !important; }
+.product-card__price { font-size: 15px !important; }
 
 /* --- Product page text --- */
 .product-info__title  { font-size: clamp(22px, 2.5vw, 32px) !important; }
@@ -2893,61 +2893,61 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .product-info__vendor { font-size: 12px !important; }
 .variant-card__name { font-size: 12px !important; }
 .product-info__review-count { font-size: 14px !important; }
-.btn--atc { font-size: 16px !important; padding: 14px 24px !important; }
+.btn--atc { font-size: 14px !important; padding: 12px 22px !important; }
 
 
-/* --- Header benefits strip: bigger text + more spacing --- */
+/* --- Header benefits strip: scaled text + spacing --- */
 .header-benefits__inner {
-  gap: 120px !important;
-  padding: 14px 0 !important;
+  gap: 80px !important;
+  padding: 10px 0 !important;
 }
 .header-benefit {
-  font-size: 20px !important;
-  gap: 12px !important;
+  font-size: 14px !important;
+  gap: 8px !important;
   font-weight: 600 !important;
 }
-.header-benefit svg { width: 20px !important; height: 20px !important; }
+.header-benefit svg { width: 14px !important; height: 14px !important; }
 
 /* ============================================================
    TABLET — 769px to 1200px
    ============================================================ */
 @media (min-width: 769px) and (max-width: 1200px) {
   /* Hero height + padding */
-  .hero-banner { height: 580px !important; min-height: 580px !important; max-height: 580px !important; }
-  .hero-banner__inner .container  { padding-left: 60px !important; }
-  .hero-banner__cats-bar .container { padding-left: 60px !important; }
+  .hero-banner { height: 420px !important; min-height: 420px !important; max-height: 420px !important; }
+  .hero-banner__inner .container  { padding-left: 40px !important; }
+  .hero-banner__cats-bar .container { padding-left: 40px !important; }
 
   /* Hero text */
-  .hero-banner__heading { font-size: clamp(110px, 13vw, 170px) !important; }
-  .hero-word-small      { font-size: clamp(28px, 3.2vw, 40px); }
-  .hero-banner__sub     { font-size: clamp(20px, 2.4vw, 28px) !important; }
-  .hero-mini-trust      { font-size: 17px !important; }
-  .hero-cta-btn         { font-size: 18px; padding: 16px 36px; }
-  .hero-banner__content { max-width: 520px; gap: 10px; }
+  .hero-banner__heading { font-size: clamp(74px, 8.7vw, 114px) !important; }
+  .hero-word-small      { font-size: clamp(19px, 2.1vw, 27px); }
+  .hero-banner__sub     { font-size: clamp(14px, 1.6vw, 19px) !important; }
+  .hero-mini-trust      { font-size: 12px !important; }
+  .hero-cta-btn         { font-size: 13px; padding: 11px 24px; }
+  .hero-banner__content { max-width: 380px; gap: 8px; }
 
   /* Cat buttons */
-  .hero-cat-btn { font-size: 13px; min-width: 150px; height: 38px; }
+  .hero-cat-btn { font-size: 11px; min-width: 110px; height: 28px; }
 
   /* Global body */
-  body { font-size: 18px; }
+  body { font-size: 14px; }
 
   /* Section titles */
-  .section-title { font-size: clamp(32px, 3.8vw, 48px) !important; }
+  .section-title { font-size: clamp(22px, 2.5vw, 32px) !important; }
 
   /* Feature */
-  .feature-heading { font-size: clamp(28px, 3vw, 40px) !important; }
+  .feature-heading { font-size: clamp(19px, 2vw, 27px) !important; }
 
   /* Spacing */
-  .popular-categories { padding: 80px 0 !important; }
-  .new-trending       { padding: 80px 0 !important; }
-  .feature-section    { padding: 80px 0 !important; }
-  .social-proof-bar   { padding: 80px 0 60px; }
+  .popular-categories { padding: 56px 0 !important; }
+  .new-trending       { padding: 56px 0 !important; }
+  .feature-section    { padding: 56px 0 !important; }
+  .social-proof-bar   { padding: 56px 0 40px; }
 
   /* Product grid — 2 columns on tablet */
-  .products-grid   { grid-template-columns: repeat(2, 1fr) !important; gap: 20px !important; }
-  .categories-grid { gap: 20px !important; }
+  .products-grid   { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  .categories-grid { gap: 16px !important; }
   .product-card__img { aspect-ratio: 4 / 3 !important; }
-  .product-card__title { font-size: clamp(15px, 1.4vw, 20px) !important; }
+  .product-card__title { font-size: clamp(12px, 1.1vw, 15px) !important; }
 }
 
 /* ============================================================
@@ -3077,71 +3077,71 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 }
 
 /* ============================================================
-   DESKTOP TEXT SIZE BOOST — tablet and above only (≥769px)
+   DESKTOP TEXT SIZE — tablet and above only (≥769px)
    ============================================================ */
 @media (min-width: 769px) {
   :root {
-    --fs-base:       20px;
-    --fs-sm:         18px;
-    --fs-lg:         23px;
-    --fs-xl:         27px;
-    --fs-2xl:        30px;
-    --fs-3xl:        40px;
-    --fs-desktop-p:  18px;
-    --fs-desktop-h2: 44px;
-    --fs-desktop-h3: 28px;
+    --fs-base:       14px;
+    --fs-sm:         13px;
+    --fs-lg:         15px;
+    --fs-xl:         18px;
+    --fs-2xl:        20px;
+    --fs-3xl:        27px;
+    --fs-desktop-p:  13px;
+    --fs-desktop-h2: 29px;
+    --fs-desktop-h3: 19px;
   }
-  body { font-size: 20px; }
+  body { font-size: 14px; }
 
-  .section-title         { font-size: clamp(40px, 4.2vw, 56px) !important; }
-  .product-card__title   { font-size: clamp(18px, 1.6vw, 24px) !important; }
-  .product-card__price   { font-size: 21px !important; }
-  .category-card__name   { font-size: 21px !important; }
-  .trust-badge__text     { font-size: 15px !important; }
-  .social-proof-bar__text { font-size: 28px !important; font-weight: 700 !important; }
-  .tp-label              { font-size: 19px !important; }
-  .review-card__text     { font-size: 18px !important; line-height: 1.6 !important; }
-  .review-card__meta     { font-size: 16px !important; }
-  .feature-label         { font-size: 16px !important; }
-  .feature-heading       { font-size: clamp(32px, 3.2vw, 46px) !important; }
-  .feature-item__title   { font-size: 21px !important; font-weight: 700 !important; }
-  .feature-item__desc    { font-size: 18px !important; line-height: 1.65 !important; }
-  .step-card__title      { font-size: 22px !important; font-weight: 700 !important; }
-  .step-card__desc       { font-size: 18px !important; line-height: 1.65 !important; }
-  .how-it-works > .container > p { font-size: 20px !important; }
-  .faq-trigger           { font-size: 20px !important; font-weight: 600 !important; }
-  .faq-body__inner       { font-size: 18px !important; line-height: 1.7 !important; }
-  .footer-col-title      { font-size: 20px !important; font-weight: 700 !important; }
-  .footer-nav__link      { font-size: 17px !important; }
-  .footer-about          { font-size: 17px !important; line-height: 1.7 !important; }
-  .footer-address        { font-size: 17px !important; }
-  .footer-logo-text      { font-size: 26px !important; }
-  .header-benefit        { font-size: 20px !important; }
+  .section-title         { font-size: clamp(27px, 2.8vw, 38px) !important; }
+  .product-card__title   { font-size: clamp(13px, 1.1vw, 16px) !important; }
+  .product-card__price   { font-size: 14px !important; }
+  .category-card__name   { font-size: 14px !important; }
+  .trust-badge__text     { font-size: 12px !important; }
+  .social-proof-bar__text { font-size: 19px !important; font-weight: 700 !important; }
+  .tp-label              { font-size: 13px !important; }
+  .review-card__text     { font-size: 12px !important; line-height: 1.6 !important; }
+  .review-card__meta     { font-size: 11px !important; }
+  .feature-label         { font-size: 11px !important; }
+  .feature-heading       { font-size: clamp(22px, 2.1vw, 31px) !important; }
+  .feature-item__title   { font-size: 14px !important; font-weight: 700 !important; }
+  .feature-item__desc    { font-size: 12px !important; line-height: 1.65 !important; }
+  .step-card__title      { font-size: 15px !important; font-weight: 700 !important; }
+  .step-card__desc       { font-size: 12px !important; line-height: 1.65 !important; }
+  .how-it-works > .container > p { font-size: 14px !important; }
+  .faq-trigger           { font-size: 14px !important; font-weight: 600 !important; }
+  .faq-body__inner       { font-size: 12px !important; line-height: 1.7 !important; }
+  .footer-col-title      { font-size: 14px !important; font-weight: 700 !important; }
+  .footer-nav__link      { font-size: 12px !important; }
+  .footer-about          { font-size: 12px !important; line-height: 1.7 !important; }
+  .footer-address        { font-size: 12px !important; }
+  .footer-logo-text      { font-size: 17px !important; }
+  .header-benefit        { font-size: 14px !important; }
 }
 
 /* ============================================================
    HEADER NAV — full link list, links spread across, bigger text
    ============================================================ */
 
-/* Nav links centered with fixed gap — closer together */
+/* Nav links centered with fixed gap */
 .header-nav__list {
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 64px !important;
+  gap: 44px !important;
 }
 
-/* Nav link size boost */
+/* Nav link size */
 .header-nav__link {
-  font-size: 20px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   letter-spacing: 0.2px !important;
 }
 
 /* Tablet: shrink slightly */
 @media (max-width: 1200px) {
-  .header-nav__link { font-size: 17px !important; }
-  .header-nav__list { gap: 40px !important; }
+  .header-nav__link { font-size: 12px !important; }
+  .header-nav__list { gap: 28px !important; }
 }
 
 /* Mobile: nav row hidden, hamburger takes over */
