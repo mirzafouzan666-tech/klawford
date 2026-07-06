@@ -15,28 +15,6 @@
 
       {%- comment -%}---- GALLERY ----{%- endcomment -%}
       <div class="product-gallery">
-        <div class="product-gallery__main" id="product-gallery-main">
-          {%- if product.featured_image -%}
-            <img
-              id="product-main-img"
-              src="{{ product.featured_image | image_url: width: 900 }}"
-              srcset="{{ product.featured_image | image_url: width: 600 }} 600w,
-                      {{ product.featured_image | image_url: width: 900 }} 900w,
-                      {{ product.featured_image | image_url: width: 1200 }} 1200w"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              alt="{{ product.featured_image.alt | escape | default: product.title }}"
-              width="900"
-              height="900"
-              loading="eager"
-              fetchpriority="high">
-          {%- else -%}
-            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-          {%- endif -%}
-          <span class="product-gallery__badge" style="background:var(--clr-green);display:inline-flex;align-items:center;gap:6px;">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            60 Night Risk Free Trial
-          </span>
-        </div>
 
         {%- if product.images.size > 1 -%}
           <div class="product-gallery__thumbs" id="product-thumbs">
@@ -59,6 +37,29 @@
             {%- endfor -%}
           </div>
         {%- endif -%}
+
+        <div class="product-gallery__main" id="product-gallery-main">
+          {%- if product.featured_image -%}
+            <img
+              id="product-main-img"
+              src="{{ product.featured_image | image_url: width: 900 }}"
+              srcset="{{ product.featured_image | image_url: width: 600 }} 600w,
+                      {{ product.featured_image | image_url: width: 900 }} 900w,
+                      {{ product.featured_image | image_url: width: 1200 }} 1200w"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              alt="{{ product.featured_image.alt | escape | default: product.title }}"
+              width="900"
+              height="900"
+              loading="eager"
+              fetchpriority="high">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+          <span class="product-gallery__badge" style="background:var(--clr-green);display:inline-flex;align-items:center;gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            60 Night Risk Free Trial
+          </span>
+        </div>
 
         {%- if section.settings.show_upsell -%}
           <div class="product-upsell">
