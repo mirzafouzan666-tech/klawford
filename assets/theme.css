@@ -3102,60 +3102,32 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 }
 
 /* ============================================================
-   HEADER CATEGORY ROW — 4 links spread full-width below top bar
-   (search | logo | basket top bar is UNCHANGED)
+   HEADER NAV — full link list, links spread across, bigger text
    ============================================================ */
 
-/* Category nav row sits between the top bar and benefits strip */
-.header-cats-row {
-  background: var(--clr-primary);
-  border-top: 1px solid rgba(92,31,46,0.08);
-  border-bottom: 1px solid rgba(92,31,46,0.08);
+/* Spread all nav links evenly across the nav bar */
+.header-nav__list {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 0 !important;
 }
-.header-cats-row__list {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: center;
-  gap: 72px;
-  align-items: center;
-  height: 52px;
-}
-.header-cats-row__link {
-  font-family: var(--ff-secondary);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--clr-text);
-  text-decoration: none;
-  letter-spacing: 0.3px;
-  white-space: nowrap;
-  padding: 4px 0;
-  position: relative;
-  transition: color 0.2s ease;
-}
-.header-cats-row__link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px; left: 0; right: 0;
-  height: 2px;
-  background: var(--clr-secondary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.2s ease;
-}
-.header-cats-row__link:hover { color: var(--clr-secondary); }
-.header-cats-row__link:hover::after { transform: scaleX(1); }
 
-/* Tablet: slightly smaller */
+/* Nav link size boost */
+.header-nav__link {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px !important;
+}
+
+/* Tablet: shrink slightly */
 @media (max-width: 1200px) {
-  .header-cats-row__link { font-size: 17px !important; }
-  .header-cats-row__list { height: 46px; gap: 48px; }
+  .header-nav__link { font-size: 17px !important; }
 }
 
-/* Mobile: collapse into hamburger menu, hide the row */
+/* Mobile: nav row hidden, hamburger takes over */
 @media (max-width: 768px) {
-  .header-cats-row { display: none !important; }
+  .header-nav { display: none !important; }
 }
 
 /* ============================================================

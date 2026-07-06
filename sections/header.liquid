@@ -85,14 +85,35 @@
     </div>
   </div>
 
-  <!-- Category nav row: 4 links spread from search-side to basket-side -->
-  <nav class="header-cats-row" aria-label="Shop categories">
+  <!-- Desktop navigation — full link list with all subcategories/dropdowns -->
+  <nav class="header-nav" aria-label="Main navigation">
     <div class="container">
-      <ul class="header-cats-row__list" role="list">
-        <li><a href="/collections/beds"       class="header-cats-row__link">Beds</a></li>
-        <li><a href="/collections/mattresses" class="header-cats-row__link">Mattresses</a></li>
-        <li><a href="/collections/sofas"      class="header-cats-row__link">Sofas</a></li>
-        <li><a href="/collections/headboards" class="header-cats-row__link">Headboards</a></li>
+      <ul class="header-nav__list" role="list">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li class="header-nav__item{% if link.links.size > 0 %} has-dropdown{% endif %}{% if link.active %} is-active{% endif %}">
+            {%- if link.links.size > 0 -%}
+              <button class="header-nav__link" type="button" aria-haspopup="true" aria-expanded="false">
+                {{ link.title }}
+                <svg width="10" height="7" viewBox="0 0 10 7" fill="none" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="header-dropdown" role="region">
+                <ul role="list">
+                  {%- for child in link.links -%}
+                    <li>
+                      <a href="{{ child.url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- else -%}
+              <a href="{{ link.url }}" class="header-nav__link" {% if link.active %}aria-current="page"{% endif %}>
+                {{ link.title }}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
       </ul>
     </div>
   </nav>
@@ -136,32 +157,25 @@
     </button>
   </div>
   <ul class="mobile-menu__list" role="list">
-    <li class="mobile-menu__item"><a href="/collections/beds"       class="mobile-menu__link">Beds</a></li>
-    <li class="mobile-menu__item"><a href="/collections/mattresses" class="mobile-menu__link">Mattresses</a></li>
-    <li class="mobile-menu__item"><a href="/collections/sofas"      class="mobile-menu__link">Sofas</a></li>
-    <li class="mobile-menu__item"><a href="/collections/headboards" class="mobile-menu__link">Headboards</a></li>
     {%- for link in linklists[section.settings.menu].links -%}
-      {%- assign link_lower = link.title | downcase -%}
-      {%- unless link_lower == 'beds' or link_lower == 'mattresses' or link_lower == 'sofas' or link_lower == 'headboards' -%}
-        <li class="mobile-menu__item{% if link.links.size > 0 %} has-sub{% endif %}">
-          {%- if link.links.size > 0 -%}
-            <button class="mobile-menu__link mobile-menu__toggle" type="button" aria-expanded="false"
-              onclick="var sub=this.nextElementSibling;var open=sub.classList.toggle('is-open');this.setAttribute('aria-expanded',open);">
-              {{ link.title }}
-              <svg class="mobile-menu__toggle-icon" width="11" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </button>
-            <ul class="mobile-menu__sub" role="list">
-              {%- for child in link.links -%}
-                <li><a href="{{ child.url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
-              {%- endfor -%}
-            </ul>
-          {%- else -%}
-            <a href="{{ link.url }}" class="mobile-menu__link">{{ link.title }}</a>
-          {%- endif -%}
-        </li>
-      {%- endunless -%}
+      <li class="mobile-menu__item{% if link.links.size > 0 %} has-sub{% endif %}">
+        {%- if link.links.size > 0 -%}
+          <button class="mobile-menu__link mobile-menu__toggle" type="button" aria-expanded="false"
+            onclick="var sub=this.nextElementSibling;var open=sub.classList.toggle('is-open');this.setAttribute('aria-expanded',open);">
+            {{ link.title }}
+            <svg class="mobile-menu__toggle-icon" width="11" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+              <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <ul class="mobile-menu__sub" role="list">
+            {%- for child in link.links -%}
+              <li><a href="{{ child.url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- else -%}
+          <a href="{{ link.url }}" class="mobile-menu__link">{{ link.title }}</a>
+        {%- endif -%}
+      </li>
     {%- endfor -%}
   </ul>
 </div>
@@ -183,6 +197,16 @@
       var drawer = document.getElementById('cart-drawer');
       if (drawer) { drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
     });
+    var searchBtn = document.getElementById('search-open');
+    var searchOverlay = document.getElementById('search-overlay');
+    if (searchBtn && searchOverlay) {
+      searchBtn.addEventListener('click', function() {
+        searchOverlay.classList.add('is-open');
+        searchOverlay.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+        setTimeout(function(){ document.getElementById('search-input')?.focus(); }, 280);
+      });
+    }
   })();
 </script>
 
