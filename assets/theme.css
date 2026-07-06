@@ -3105,12 +3105,12 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
    HEADER NAV — full link list, links spread across, bigger text
    ============================================================ */
 
-/* Spread all nav links evenly across the nav bar */
+/* Nav links centered with fixed gap — closer together */
 .header-nav__list {
   display: flex !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   align-items: center !important;
-  gap: 0 !important;
+  gap: 64px !important;
 }
 
 /* Nav link size boost */
@@ -3123,6 +3123,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 /* Tablet: shrink slightly */
 @media (max-width: 1200px) {
   .header-nav__link { font-size: 17px !important; }
+  .header-nav__list { gap: 40px !important; }
 }
 
 /* Mobile: nav row hidden, hamburger takes over */
