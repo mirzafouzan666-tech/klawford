@@ -16,28 +16,6 @@
       {%- comment -%}---- GALLERY ----{%- endcomment -%}
       <div class="product-gallery">
 
-        {%- if product.images.size > 1 -%}
-          <div class="product-gallery__thumbs" id="product-thumbs">
-            {%- for image in product.images -%}
-              {%- assign img_colour = image.alt | split: '–' | last | strip | downcase -%}
-              <button
-                class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
-                type="button"
-                data-src="{{ image | image_url: width: 900 }}"
-                data-colour="{{ img_colour }}"
-                data-img-id="{{ image.id }}"
-                aria-label="View image {{ forloop.index }}">
-                <img
-                  src="{{ image | image_url: width: 160 }}"
-                  alt="{{ image.alt | escape | default: product.title }}"
-                  width="80"
-                  height="80"
-                  loading="lazy">
-              </button>
-            {%- endfor -%}
-          </div>
-        {%- endif -%}
-
         <div class="product-gallery__main" id="product-gallery-main">
           {%- if product.featured_image -%}
             <img
@@ -60,6 +38,36 @@
             60 Night Risk Free Trial
           </span>
         </div>
+
+        {%- if product.images.size > 1 -%}
+          <div class="product-gallery__thumb-nav">
+            <button class="product-gallery__thumb-arrow" id="thumb-prev" type="button" aria-label="Previous">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="product-gallery__thumbs" id="product-thumbs">
+              {%- for image in product.images -%}
+                {%- assign img_colour = image.alt | split: '–' | last | strip | downcase -%}
+                <button
+                  class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
+                  type="button"
+                  data-src="{{ image | image_url: width: 900 }}"
+                  data-colour="{{ img_colour }}"
+                  data-img-id="{{ image.id }}"
+                  aria-label="View image {{ forloop.index }}">
+                  <img
+                    src="{{ image | image_url: width: 160 }}"
+                    alt="{{ image.alt | escape | default: product.title }}"
+                    width="80"
+                    height="80"
+                    loading="lazy">
+                </button>
+              {%- endfor -%}
+            </div>
+            <button class="product-gallery__thumb-arrow" id="thumb-next" type="button" aria-label="Next">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        {%- endif -%}
 
         {%- if section.settings.show_upsell -%}
           <div class="product-upsell">
@@ -491,6 +499,26 @@
     document.querySelectorAll('.product-gallery__thumb').forEach(function(t){ t.classList.remove('active'); });
     thumb.classList.add('active');
   });
+
+  // Thumbnail strip arrow navigation
+  (function(){
+    var strip = document.getElementById('product-thumbs');
+    var prevBtn = document.getElementById('thumb-prev');
+    var nextBtn = document.getElementById('thumb-next');
+    if (!strip || !prevBtn || !nextBtn) return;
+    var scrollStep = 300;
+    function updateArrows(){
+      prevBtn.style.opacity = strip.scrollLeft <= 2 ? '0.35' : '1';
+      prevBtn.style.pointerEvents = strip.scrollLeft <= 2 ? 'none' : '';
+      var atEnd = strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 2;
+      nextBtn.style.opacity = atEnd ? '0.35' : '1';
+      nextBtn.style.pointerEvents = atEnd ? 'none' : '';
+    }
+    prevBtn.addEventListener('click', function(){ strip.scrollBy({ left: -scrollStep, behavior: 'smooth' }); });
+    nextBtn.addEventListener('click', function(){ strip.scrollBy({ left: scrollStep, behavior: 'smooth' }); });
+    strip.addEventListener('scroll', updateArrows, { passive: true });
+    updateArrows();
+  })();
 
   // Qty buttons (if present)
   document.querySelectorAll('[data-qty-action]').forEach(function(btn){
