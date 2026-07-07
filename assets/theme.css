@@ -3273,11 +3273,11 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .variant-option-tab__name { color: #8C7B72 !important; }
 
 /* Variant panel — warm white card */
-.variant-panel { background: #FFFCFA; border: 1.5px solid #E5DAD2; border-radius: 10px; padding: 16px; margin: 10px 0 16px; }
+.variant-panel { background: #F5EDE2; border: 1.5px solid #D4C4B5; border-radius: 10px; padding: 16px; margin: 10px 0 16px; }
 
 /* Variant cards */
-.variant-card { border-color: #DDD5CC !important; background: #FFFCFA !important; }
+.variant-card { border-color: #C8B8A8 !important; background: #EDE0CF !important; }
 .variant-card.active { border-color: var(--clr-secondary) !important; background: #fff !important; box-shadow: 0 0 0 1px var(--clr-secondary) !important; }
 .variant-card:hover { border-color: #9B7B71 !important; }
-.variant-card__bed-icon { background: #F5F0EB; }
-.variant-card__type-icon { background: #F5F0EB !important; }
+.variant-card__bed-icon { background: #E2D0BC; }
+.variant-card__type-icon { background: #E2D0BC !important; }
