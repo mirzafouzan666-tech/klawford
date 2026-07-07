@@ -526,39 +526,25 @@
     });
   });
 
-  // Filter thumbnails to show only images for selected colour, swap main image instantly
+  // Swap main image to the colour's front-facing shot; all thumbs stay visible
   function filterThumbs(colourVal, preferredSrc) {
-    var colourLower = colourVal ? colourVal.toLowerCase() : '';
-    var thumbs = document.querySelectorAll('.product-gallery__thumb');
-    var hasColourThumbs = false;
-    thumbs.forEach(function(t) {
-      if ((t.getAttribute('data-colour') || '') === colourLower) hasColourThumbs = true;
-    });
-    var activated = false;
-    thumbs.forEach(function(t) {
-      var tc = t.getAttribute('data-colour') || '';
-      t.style.display = hasColourThumbs ? (tc === colourLower ? '' : 'none') : '';
-      t.classList.remove('active');
-    });
-    // Set main image to the variant's linked image (front-facing shot)
     var mainImg = document.getElementById('product-main-img');
     if (mainImg && preferredSrc) {
       mainImg.removeAttribute('srcset');
       mainImg.removeAttribute('sizes');
       mainImg.src = preferredSrc;
     }
-    // Activate the thumbnail matching preferredSrc, else first visible
+    // Highlight the matching thumbnail
+    var thumbs = document.querySelectorAll('.product-gallery__thumb');
+    var activated = false;
     thumbs.forEach(function(t) {
-      if (!activated && t.style.display !== 'none') {
-        var match = preferredSrc && t.getAttribute('data-src') === preferredSrc;
-        if (match || !preferredSrc) { t.classList.add('active'); activated = true; }
+      t.classList.remove('active');
+      if (!activated && preferredSrc && t.getAttribute('data-src') === preferredSrc) {
+        t.classList.add('active');
+        activated = true;
       }
     });
-    if (!activated) {
-      thumbs.forEach(function(t) {
-        if (!activated && t.style.display !== 'none') { t.classList.add('active'); activated = true; }
-      });
-    }
+    if (!activated && thumbs.length) thumbs[0].classList.add('active');
   }
 
   // Headboard card selection (line item property)
@@ -662,7 +648,7 @@
     });
   });
 
-  // On page load: filter thumbnails to default selected colour
+  // On page load: set main image to the default selected colour's front-angle shot
   (function(){
     var opts = {{ product.options | json }};
     var colourIdx = -1;
@@ -670,7 +656,10 @@
     if(colourIdx >= 0 && selectedOptions[colourIdx]) {
       var defVariant = findVariant();
       var defSrc = (defVariant && defVariant.featured_image) ? defVariant.featured_image.src : null;
-      filterThumbs(selectedOptions[colourIdx], defSrc);
+      if (defSrc) {
+        var mainImg = document.getElementById('product-main-img');
+        if (mainImg) { mainImg.removeAttribute('srcset'); mainImg.removeAttribute('sizes'); mainImg.src = defSrc; }
+      }
     }
   })();
 })();
