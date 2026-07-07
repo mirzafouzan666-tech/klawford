@@ -40,32 +40,24 @@
         </div>
 
         {%- if product.images.size > 1 -%}
-          <div class="product-gallery__thumbs-wrap">
-            <button class="gallery-arrow gallery-arrow--prev" id="gallery-prev" aria-label="Previous">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="product-gallery__thumbs" id="product-thumbs">
-              {%- for image in product.images -%}
-                {%- assign img_colour = image.alt | split: ' - ' | last | strip | downcase -%}
-                <button
-                  class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
-                  type="button"
-                  data-src="{{ image | image_url: width: 900 }}"
-                  data-colour="{{ img_colour }}"
-                  data-img-id="{{ image.id }}"
-                  aria-label="View image {{ forloop.index }}">
-                  <img
-                    src="{{ image | image_url: width: 160 }}"
-                    alt="{{ image.alt | escape | default: product.title }}"
-                    width="80"
-                    height="80"
-                    loading="lazy">
-                </button>
-              {%- endfor -%}
-            </div>
-            <button class="gallery-arrow gallery-arrow--next" id="gallery-next" aria-label="Next">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+          <div class="product-gallery__thumbs" id="product-thumbs">
+            {%- for image in product.images -%}
+              {%- assign img_colour = image.alt | split: ' - ' | last | strip | downcase -%}
+              <button
+                class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
+                type="button"
+                data-src="{{ image | image_url: width: 900 }}"
+                data-colour="{{ img_colour }}"
+                data-img-id="{{ image.id }}"
+                aria-label="View image {{ forloop.index }}">
+                <img
+                  src="{{ image | image_url: width: 160 }}"
+                  alt="{{ image.alt | escape | default: product.title }}"
+                  width="80"
+                  height="80"
+                  loading="lazy">
+              </button>
+            {%- endfor -%}
           </div>
         {%- endif -%}
 
@@ -603,23 +595,6 @@
       }
     });
   });
-
-  // Thumbnail arrow navigation
-  (function(){
-    var strip = document.getElementById('product-thumbs');
-    var prev  = document.getElementById('gallery-prev');
-    var next  = document.getElementById('gallery-next');
-    if (!strip || !prev || !next) return;
-    var scrollAmt = 76 * 3 + 8 * 3; // scroll 3 thumbs at a time
-    function updateArrows() {
-      prev.classList.toggle('hidden', strip.scrollLeft <= 4);
-      next.classList.toggle('hidden', strip.scrollLeft + strip.clientWidth >= strip.scrollWidth - 4);
-    }
-    prev.addEventListener('click', function(){ strip.scrollBy({ left: -scrollAmt, behavior: 'smooth' }); });
-    next.addEventListener('click', function(){ strip.scrollBy({ left:  scrollAmt, behavior: 'smooth' }); });
-    strip.addEventListener('scroll', updateArrows);
-    updateArrows();
-  })();
 
   // Thumbnail switcher
   document.getElementById('product-thumbs') && document.getElementById('product-thumbs').addEventListener('click', function(e){
