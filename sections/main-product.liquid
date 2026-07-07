@@ -240,13 +240,49 @@
                           </div>
                         {%- elsif opt_handle == 'storage' -%}
                           <div class="variant-card__bed-icon">
-                            <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
+                            <svg viewBox="0 0 100 72" fill="none" style="width:100%;color:var(--clr-secondary);">
                               {%- if value == 'No Storage' -%}
-                                <path d="M6 2h68a2.5 2.5 0 0 1 2.5 2.5V12H3.5V4.5A2.5 2.5 0 0 1 6 2zM2 12h76v26a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12zM5 14h33v8H5zM42 14h33v8H42zM4 38v10M76 38v10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                                <!-- headboard -->
+                                <rect x="22" y="2" width="56" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/>
+                                <!-- bed base -->
+                                <rect x="4" y="20" width="92" height="30" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                                <!-- platform line -->
+                                <line x1="4" y1="28" x2="96" y2="28" stroke="currentColor" stroke-width="1.1"/>
+                                <!-- legs -->
+                                <line x1="12" y1="50" x2="12" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                <line x1="88" y1="50" x2="88" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
                               {%- elsif value == '2 Drawers Left Side' -%}
-                                <path d="M6 2h68a2.5 2.5 0 0 1 2.5 2.5V12H3.5V4.5A2.5 2.5 0 0 1 6 2zM2 12h76v26a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12zM5 14h33v8H5zM42 14h33v8H42zM4 38v10M76 38v10M3 27h36v11H3zM3 33h36" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                                <!-- headboard -->
+                                <rect x="22" y="2" width="56" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/>
+                                <!-- bed base -->
+                                <rect x="4" y="20" width="92" height="30" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                                <!-- platform line -->
+                                <line x1="4" y1="28" x2="96" y2="28" stroke="currentColor" stroke-width="1.1"/>
+                                <!-- legs -->
+                                <line x1="12" y1="50" x2="12" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                <line x1="88" y1="50" x2="88" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                <!-- left drawer 1 -->
+                                <rect x="6" y="30" width="40" height="9" rx="1" stroke="currentColor" stroke-width="1.1"/>
+                                <line x1="22" y1="34" x2="30" y2="34" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                                <!-- left drawer 2 -->
+                                <rect x="6" y="40" width="40" height="9" rx="1" stroke="currentColor" stroke-width="1.1"/>
+                                <line x1="22" y1="44" x2="30" y2="44" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
                               {%- else -%}
-                                <path d="M6 2h68a2.5 2.5 0 0 1 2.5 2.5V12H3.5V4.5A2.5 2.5 0 0 1 6 2zM2 12h76v26a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12zM5 14h33v8H5zM42 14h33v8H42zM4 38v10M76 38v10M41 27h36v11H41zM41 33h36" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                                <!-- headboard -->
+                                <rect x="22" y="2" width="56" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/>
+                                <!-- bed base -->
+                                <rect x="4" y="20" width="92" height="30" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                                <!-- platform line -->
+                                <line x1="4" y1="28" x2="96" y2="28" stroke="currentColor" stroke-width="1.1"/>
+                                <!-- legs -->
+                                <line x1="12" y1="50" x2="12" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                <line x1="88" y1="50" x2="88" y2="64" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                                <!-- right drawer 1 -->
+                                <rect x="54" y="30" width="40" height="9" rx="1" stroke="currentColor" stroke-width="1.1"/>
+                                <line x1="70" y1="34" x2="78" y2="34" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                                <!-- right drawer 2 -->
+                                <rect x="54" y="40" width="40" height="9" rx="1" stroke="currentColor" stroke-width="1.1"/>
+                                <line x1="70" y1="44" x2="78" y2="44" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
                               {%- endif -%}
                             </svg>
                           </div>
@@ -286,8 +322,16 @@
                   <div class="variant-card__check">✓</div>
                   <div class="variant-card__img">
                     <div class="variant-card__bed-icon">
-                      <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
-                        <path d="M4 20h72v18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V20zM4 38v10M76 38v10M16 20v-5M64 20v-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                      <svg viewBox="0 0 100 72" fill="none" style="width:100%;color:var(--clr-secondary);">
+                        <!-- bed base only, no headboard -->
+                        <rect x="4" y="18" width="92" height="30" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                        <line x1="4" y1="26" x2="96" y2="26" stroke="currentColor" stroke-width="1.1"/>
+                        <!-- two short side posts where headboard would be -->
+                        <line x1="18" y1="18" x2="18" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="82" y1="18" x2="82" y2="8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <!-- legs -->
+                        <line x1="12" y1="48" x2="12" y2="62" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="88" y1="48" x2="88" y2="62" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
                       </svg>
                     </div>
                   </div>
@@ -297,8 +341,17 @@
                   <div class="variant-card__check">✓</div>
                   <div class="variant-card__img">
                     <div class="variant-card__bed-icon">
-                      <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
-                        <path d="M20 2h40a2 2 0 0 1 2 2v12H18V4a2 2 0 0 1 2-2zM4 14h72v24a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V14zM4 38v10M76 38v10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                      <svg viewBox="0 0 100 72" fill="none" style="width:100%;color:var(--clr-secondary);">
+                        <!-- compact panel headboard (26" = shorter) -->
+                        <rect x="18" y="2" width="64" height="16" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                        <!-- inner panel detail line -->
+                        <rect x="24" y="6" width="52" height="8" rx="1" stroke="currentColor" stroke-width="0.9"/>
+                        <!-- bed base -->
+                        <rect x="4" y="18" width="92" height="30" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                        <line x1="4" y1="26" x2="96" y2="26" stroke="currentColor" stroke-width="1.1"/>
+                        <!-- legs -->
+                        <line x1="12" y1="48" x2="12" y2="62" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="88" y1="48" x2="88" y2="62" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
                       </svg>
                     </div>
                   </div>
@@ -308,8 +361,20 @@
                   <div class="variant-card__check">✓</div>
                   <div class="variant-card__img">
                     <div class="variant-card__bed-icon">
-                      <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
-                        <path d="M12 1h56a2 2 0 0 1 2 2v15H10V3a2 2 0 0 1 2-2zM4 16h72v22a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V16zM4 38v10M76 38v10M14 18v30M66 18v30" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                      <svg viewBox="0 0 100 72" fill="none" style="width:100%;color:var(--clr-secondary);">
+                        <!-- tall floor-standing headboard (54" = full height) -->
+                        <rect x="10" y="1" width="80" height="23" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                        <!-- inner panel detail -->
+                        <rect x="16" y="5" width="68" height="15" rx="1" stroke="currentColor" stroke-width="0.9"/>
+                        <!-- bed base -->
+                        <rect x="4" y="24" width="92" height="24" rx="2" stroke="currentColor" stroke-width="1.4"/>
+                        <line x1="4" y1="32" x2="96" y2="32" stroke="currentColor" stroke-width="1.1"/>
+                        <!-- floor-standing legs (go past bed base to floor) -->
+                        <line x1="18" y1="24" x2="18" y2="62" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="82" y1="24" x2="82" y2="62" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <!-- short bed legs -->
+                        <line x1="30" y1="48" x2="30" y2="58" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                        <line x1="70" y1="48" x2="70" y2="58" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
                       </svg>
                     </div>
                   </div>
