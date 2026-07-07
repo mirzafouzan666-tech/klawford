@@ -3261,161 +3261,23 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 @media (max-width: 768px) { .hero-floating-badge { top: auto; bottom: 80px; right: 16px; transform: none; } }
 
 /* ============================================================
-   PRODUCT PAGE — SONNO-INSPIRED CREAM THEME
+   VARIANT SELECTOR — CREAM COLOUR THEME
    ============================================================ */
 
-/* Warm cream page background */
-.product-main { background: #FAF7F3; padding: 32px 0 60px; }
+/* Tab bar border — warm cream tone */
+.variant-options-bar { border-color: #DDD5CC !important; }
 
-/* Gallery — white card floating on cream */
-.product-gallery__main {
-  background: #fff;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.07);
-  border-radius: 14px;
-  margin-bottom: 12px;
-}
-
-/* Gallery thumb strip — no-wrap + smooth scroll */
-.product-gallery__thumbs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 2px;
-}
-.product-gallery__thumbs::-webkit-scrollbar { display: none; }
-.product-gallery__thumb {
-  flex-shrink: 0;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-}
-
-/* Sticky gallery on desktop — scrolls with page naturally, info scrolls past */
-@media (min-width: 992px) {
-  .product-gallery { position: sticky; top: 24px; }
-}
-
-/* Tab bar — warmer border + rounded */
-.variant-options-bar {
-  border: 1.5px solid #DDD5CC !important;
-  border-radius: 12px !important;
-  overflow: hidden !important;
-  margin-bottom: 14px !important;
-}
-
-/* Tabs */
-.variant-option-tab {
-  background: #fff !important;
-  border-right-color: #DDD5CC !important;
-  padding: 12px 8px !important;
-}
+/* Individual tabs */
+.variant-option-tab { background: #FFFCFA !important; border-right-color: #DDD5CC !important; }
 .variant-option-tab.active { background: #F5EBE0 !important; }
 .variant-option-tab__name { color: #8C7B72 !important; }
 
-/* Variant panel — inset card */
-.variant-panel {
-  background: #fff;
-  border: 1.5px solid #E8DDD5;
-  border-radius: 10px;
-  padding: 16px;
-  margin: 10px 0 16px;
-}
+/* Variant panel — warm white card */
+.variant-panel { background: #FFFCFA; border: 1.5px solid #E5DAD2; border-radius: 10px; padding: 16px; margin: 10px 0 16px; }
 
 /* Variant cards */
-.variant-card { border-color: #DDD5CC !important; background: #FAFAF8 !important; }
+.variant-card { border-color: #DDD5CC !important; background: #FFFCFA !important; }
 .variant-card.active { border-color: var(--clr-secondary) !important; background: #fff !important; box-shadow: 0 0 0 1px var(--clr-secondary) !important; }
 .variant-card:hover { border-color: #9B7B71 !important; }
 .variant-card__bed-icon { background: #F5F0EB; }
 .variant-card__type-icon { background: #F5F0EB !important; }
-
-/* ATC button — full width, taller, prominent */
-.btn--atc {
-  width: 100% !important;
-  padding: 18px 24px !important;
-  font-size: 17px !important;
-  border-radius: 10px !important;
-  letter-spacing: 0.2px !important;
-  margin-bottom: 16px !important;
-}
-
-/* Post-ATC info box */
-.product-post-atc {
-  background: #FAF7F3;
-  border: 1px solid #E8DDD5;
-  border-radius: 10px;
-  padding: 16px 18px;
-}
-
-/* Price row border */
-.product-info__price-row { border-bottom-color: #E8DDD5 !important; }
-
-/* ============================================================
-   PRODUCT PAGE — MOBILE (max 768px)
-   ============================================================ */
-@media (max-width: 768px) {
-
-  /* Page spacing */
-  .product-main { padding: 14px 0 40px !important; }
-  .product-main__grid { gap: 18px !important; }
-
-  /* Breadcrumb */
-  .product-breadcrumb { font-size: 12px !important; margin-bottom: 12px !important; }
-
-  /* Title + price */
-  .product-info__title { font-size: clamp(19px, 5.5vw, 26px) !important; margin-bottom: 10px !important; }
-  .product-info__price { font-size: 26px !important; }
-  .product-info__pct-pill { font-size: 12px !important; }
-
-  /* Gallery thumb strip */
-  .product-gallery__thumb { width: 64px !important; height: 64px !important; }
-
-  /* Tab bar — horizontal scroll strip on mobile */
-  .variant-options-bar {
-    display: flex !important;
-    grid-template-columns: none !important;
-    overflow-x: auto !important;
-    flex-wrap: nowrap !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    border-radius: 10px !important;
-  }
-  .variant-options-bar::-webkit-scrollbar { display: none; }
-  .variant-option-tab { min-width: 68px !important; flex-shrink: 0 !important; padding: 10px 6px !important; }
-  .variant-option-tab__icon { width: 24px !important; height: 24px !important; }
-  .variant-option-tab__icon svg { width: 22px !important; height: 22px !important; }
-  .variant-option-tab__name { font-size: 9px !important; }
-  .variant-option-tab__value { font-size: 10px !important; max-width: 64px !important; }
-
-  /* Variant panel */
-  .variant-panel { padding: 12px !important; margin: 8px 0 12px !important; }
-
-  /* Variant cards — max 2 columns on mobile */
-  .variant-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
-
-  /* Headboard panel — 1 column on very small screens */
-  #vpanel-headboard .variant-grid { grid-template-columns: repeat(1, 1fr) !important; }
-
-  /* Card text */
-  .variant-card__name { font-size: 11px !important; padding: 5px 4px 6px !important; }
-  .variant-card__price-mod { font-size: 11px !important; }
-  .variant-card__bed-icon { padding: 10px 8px !important; }
-
-  /* ATC button */
-  .btn--atc { padding: 18px 16px !important; font-size: 16px !important; }
-
-  /* Post-ATC */
-  .product-post-atc { padding: 14px !important; }
-  .product-post-atc .product-post-atc__delivery { font-size: 13px !important; }
-
-  /* Finance rows */
-  .product-finance-row { padding: 10px 0 !important; }
-  .product-finance-logo { font-size: 16px !important; }
-  .product-finance-info { font-size: 12px !important; }
-
-  /* Stars + review count */
-  .product-info__rating { gap: 6px !important; margin-bottom: 12px !important; }
-  .product-info__review-count { font-size: 13px !important; }
-}
