@@ -81,21 +81,6 @@
                 </div>
               </div>
             {%- endif -%}
-            {%- if section.settings.show_assembly -%}
-              <div class="product-upsell-card">
-                <div class="product-upsell-card__icons">
-                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M6 22l2-2 2.5 2.5 10-14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="8" r="5" stroke="currentColor" stroke-width="1.4"/><path d="M17 8h6M20 5v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                </div>
-                <div class="product-upsell-card__body">
-                  <p class="product-upsell-card__title">{{ section.settings.assembly_label | default: 'Professional Assembly' }}</p>
-                  <p class="product-upsell-card__desc">{{ section.settings.assembly_desc | default: 'Our team will deliver your bed and mattress to your room and professionally assemble it for you.' }}</p>
-                </div>
-                <div class="product-upsell-card__action">
-                  <span class="product-upsell-card__price">{{ section.settings.assembly_price | default: '£39.99' }}</span>
-                  <button type="button" class="btn btn--primary product-upsell-card__add" data-assembly-add>Add</button>
-                </div>
-              </div>
-            {%- endif -%}
           </div>
         {%- endif -%}
       </div>
