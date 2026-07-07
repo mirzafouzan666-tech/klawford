@@ -238,6 +238,18 @@
                               <path d="{{ size_bed_icons[forloop.index0] }}" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
                             </svg>
                           </div>
+                        {%- elsif opt_handle == 'storage' -%}
+                          <div class="variant-card__bed-icon">
+                            <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
+                              {%- if value == 'No Storage' -%}
+                                <path d="M6 2h68a2.5 2.5 0 0 1 2.5 2.5V12H3.5V4.5A2.5 2.5 0 0 1 6 2zM2 12h76v26a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12zM5 14h33v8H5zM42 14h33v8H42zM4 38v10M76 38v10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                              {%- elsif value == '2 Drawers Left Side' -%}
+                                <path d="M6 2h68a2.5 2.5 0 0 1 2.5 2.5V12H3.5V4.5A2.5 2.5 0 0 1 6 2zM2 12h76v26a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12zM5 14h33v8H5zM42 14h33v8H42zM4 38v10M76 38v10M3 27h36v11H3zM3 33h36" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                              {%- else -%}
+                                <path d="M6 2h68a2.5 2.5 0 0 1 2.5 2.5V12H3.5V4.5A2.5 2.5 0 0 1 6 2zM2 12h76v26a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V12zM5 14h33v8H5zM42 14h33v8H42zM4 38v10M76 38v10M41 27h36v11H41zM41 33h36" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                              {%- endif -%}
+                            </svg>
+                          </div>
                         {%- else -%}
                           <div class="variant-card__type-icon">
                             <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);">
@@ -273,8 +285,10 @@
                 <button type="button" class="variant-card active" aria-pressed="true" data-hb-value="No Headboard">
                   <div class="variant-card__check">✓</div>
                   <div class="variant-card__img">
-                    <div class="variant-card__type-icon">
-                      <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);"><rect x="2" y="10" width="18" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M2 15h18" stroke="currentColor" stroke-width="1.3"/><path d="M6 10V8M16 10V8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    <div class="variant-card__bed-icon">
+                      <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
+                        <path d="M4 20h72v18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V20zM4 38v10M76 38v10M16 20v-5M64 20v-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                      </svg>
                     </div>
                   </div>
                   <span class="variant-card__name">No Headboard</span>
@@ -282,8 +296,10 @@
                 <button type="button" class="variant-card" aria-pressed="false" data-hb-value='FREE 26" Headboard'>
                   <div class="variant-card__check">✓</div>
                   <div class="variant-card__img">
-                    <div class="variant-card__type-icon">
-                      <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);"><rect x="3" y="4" width="16" height="9" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M3 18h16M7 18v-5M15 18v-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    <div class="variant-card__bed-icon">
+                      <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
+                        <path d="M20 2h40a2 2 0 0 1 2 2v12H18V4a2 2 0 0 1 2-2zM4 14h72v24a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V14zM4 38v10M76 38v10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                      </svg>
                     </div>
                   </div>
                   <span class="variant-card__name">FREE 26&quot; Headboard</span>
@@ -291,8 +307,10 @@
                 <button type="button" class="variant-card" aria-pressed="false" data-hb-value='54" Floor Standing Headboard'>
                   <div class="variant-card__check">✓</div>
                   <div class="variant-card__img">
-                    <div class="variant-card__type-icon">
-                      <svg width="32" height="32" viewBox="0 0 22 22" fill="none" style="color:var(--clr-secondary);"><path d="M2 13V8a2 2 0 0 1 2-2h1.5c.8 0 1.5.6 1.5 1.5V10h9V7.5C16 6.6 16.7 6 17.5 6H19a2 2 0 0 1 2 2v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2 18h18M6 18v-5M16 18v-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    <div class="variant-card__bed-icon">
+                      <svg viewBox="0 0 80 52" fill="none" style="width:100%;color:var(--clr-secondary);">
+                        <path d="M12 1h56a2 2 0 0 1 2 2v15H10V3a2 2 0 0 1 2-2zM4 16h72v22a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V16zM4 38v10M76 38v10M14 18v30M66 18v30" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                      </svg>
                     </div>
                   </div>
                   <span class="variant-card__name">54&quot; Floor Standing Headboard</span>
