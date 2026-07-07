@@ -661,6 +661,18 @@
       });
     });
   });
+
+  // On page load: filter thumbnails to default selected colour
+  (function(){
+    var opts = {{ product.options | json }};
+    var colourIdx = -1;
+    opts.forEach(function(o, i){ if(o.toLowerCase()==='colour'||o.toLowerCase()==='color') colourIdx=i; });
+    if(colourIdx >= 0 && selectedOptions[colourIdx]) {
+      var defVariant = findVariant();
+      var defSrc = (defVariant && defVariant.featured_image) ? defVariant.featured_image.src : null;
+      filterThumbs(selectedOptions[colourIdx], defSrc);
+    }
+  })();
 })();
 </script>
 
