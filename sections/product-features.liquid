@@ -22,16 +22,16 @@
               width="800"
               height="600"
               style="width:100%;height:100%;object-fit:cover;display:block;">
-          {%- elsif _fimgs[_fi] != blank -%}
-            <img
-              src="{{ _cdn }}{{ _fimgs[_fi] }}"
-              alt="{{ block.settings.title | escape }}"
-              loading="lazy"
-              width="800"
-              height="600"
-              style="width:100%;height:100%;object-fit:cover;display:block;">
           {%- else -%}
-            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- for _fsrc in _fimgs limit: 1 offset: _fi -%}
+              <img
+                src="{{ _cdn }}{{ _fsrc }}"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="800"
+                height="600"
+                style="width:100%;height:100%;object-fit:cover;display:block;">
+            {%- endfor -%}
           {%- endif -%}
         </div>
         <div class="product-feature-row__text">

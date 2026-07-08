@@ -13,37 +13,18 @@
 
   <div class="container" style="padding-right:0;overflow:hidden;">
     <div class="loved-gallery__track" id="product-gallery-track">
-      {%- for block in section.blocks -%}
-        {%- assign _i = forloop.index0 -%}
-        <div class="gallery-item" {{ block.shopify_attributes }}>
+      {%- for _img in _imgs -%}
+        {%- assign _ai = forloop.index0 -%}
+        <div class="gallery-item">
           <div class="gallery-item__img">
-            {%- if block.settings.image != blank -%}
-              <img
-                src="{{ block.settings.image | image_url: width: 800 }}"
-                alt="{{ block.settings.alt | escape | default: 'Klawford bed lifestyle' }}"
-                loading="lazy"
-                width="800"
-                height="533"
-                style="width:100%;height:100%;object-fit:cover;display:block;">
-            {%- elsif _imgs[_i] != blank -%}
-              <img
-                src="{{ _cdn }}{{ _imgs[_i] }}"
-                alt="{{ _alts[_i] | default: 'Klawford bed lifestyle' }}"
-                loading="lazy"
-                width="800"
-                height="533"
-                style="width:100%;height:100%;object-fit:cover;display:block;">
-            {%- else -%}
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-            {%- endif -%}
+            <img
+              src="{{ _cdn }}{{ _img }}"
+              alt="{{ _alts[_ai] | default: 'Klawford bed lifestyle' }}"
+              loading="lazy"
+              width="800"
+              height="533"
+              style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
-          {%- if block.settings.show_play -%}
-            <div class="gallery-item__play">
-              <div class="gallery-play-btn">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 3l11 6-11 6V3z" fill="var(--clr-secondary)"/></svg>
-              </div>
-            </div>
-          {%- endif -%}
         </div>
       {%- endfor -%}
     </div>
