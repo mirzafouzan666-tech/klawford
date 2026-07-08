@@ -3590,6 +3590,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 /* Upsell cards — a touch more breathing room */
 .product-upsell-card { padding: 16px 18px !important; }
 
+/* Product page stars — real green */
+.product-info__star { background: #00B67A !important; }
+
 /* Trustpilot + Happy Sleepers strip */
 .kl-tp-strip {
   display: flex;
