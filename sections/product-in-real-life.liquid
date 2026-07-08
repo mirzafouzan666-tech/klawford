@@ -13,11 +13,19 @@
           <div class="gallery-item__img">
             {%- if block.settings.image != blank -%}
               <img
-                src="{{ block.settings.image | image_url: width: 400 }}"
+                src="{{ block.settings.image | image_url: width: 800 }}"
                 alt="{{ block.settings.alt | escape | default: 'Customer photo' }}"
                 loading="lazy"
-                width="400"
+                width="800"
                 height="533">
+            {%- elsif block.settings.image_src != blank -%}
+              <img
+                src="{{ block.settings.image_src }}"
+                alt="{{ block.settings.alt | escape | default: 'Klawford bed lifestyle' }}"
+                loading="lazy"
+                width="800"
+                height="533"
+                style="width:100%;height:100%;object-fit:cover;display:block;">
             {%- else -%}
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             {%- endif -%}
@@ -59,6 +67,7 @@
       "name": "Photo",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "url", "id": "image_src", "label": "Image URL (fallback)" },
         { "type": "text", "id": "alt", "label": "Alt text" },
         { "type": "checkbox", "id": "show_play", "label": "Show play button", "default": false }
       ]
