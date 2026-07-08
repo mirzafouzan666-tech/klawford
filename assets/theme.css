@@ -3385,20 +3385,20 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
    PRODUCT GALLERY — SONNO-STYLE (main image + arrow thumbnail strip)
    ============================================================ */
 
-/* Constrain gallery column — Sonno-style compact left panel */
+/* Gallery column — wider for bigger image */
 .product-main__grid {
-  grid-template-columns: 480px 1fr !important;
+  grid-template-columns: 580px 1fr !important;
   gap: 48px !important;
 }
 
-/* Main image: fixed compact size, flush to thumbnail strip */
+/* Main image — bigger, contained */
 .product-gallery__main {
   position: relative !important;
   overflow: hidden !important;
   margin-bottom: 0 !important;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
   aspect-ratio: 1 / 1 !important;
-  max-height: 480px !important;
+  max-height: 580px !important;
   background: #fff !important;
 }
 .product-gallery__main img {
@@ -3456,19 +3456,19 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 }
 .product-gallery__thumbs::-webkit-scrollbar { display: none; }
 
-/* Individual thumbnails */
+/* Individual thumbnails — bigger */
 .product-gallery__thumb {
   flex-shrink: 0 !important;
   scroll-snap-align: start;
-  width: 72px !important;
-  height: 72px !important;
+  width: 94px !important;
+  height: 94px !important;
   border-radius: var(--radius-sm) !important;
   border: 2px solid transparent !important;
   overflow: hidden;
   background: var(--clr-wild-sand) !important;
   padding: 0 !important;
 }
-.product-gallery__thumb img { width: 100% !important; height: 100% !important; object-fit: contain !important; padding: 3px !important; }
+.product-gallery__thumb img { width: 100% !important; height: 100% !important; object-fit: contain !important; padding: 4px !important; }
 .product-gallery__thumb:hover { border-color: var(--clr-gray-dusty) !important; }
 .product-gallery__thumb.active { border-color: var(--clr-secondary) !important; }
 
@@ -3563,3 +3563,20 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   .faq-trigger { font-size: 16px !important; padding: 18px 0 !important; }
   .faq-body    { font-size: 15px !important; }
 }
+
+/* ============================================================
+   PRODUCT PAGE — BIGGER THUMBNAIL + VARIANT BOXES
+   ============================================================ */
+
+/* Colour-dot variant cards — bigger */
+.variant-card__colour-dot { width: 68px !important; height: 68px !important; }
+
+/* Variant grid — slightly more gap */
+.variant-grid { gap: 10px !important; }
+
+/* Variant option tabs (size/mattress type bar) — taller padding */
+.variant-option-tab { padding: 16px 12px !important; }
+.variant-option-tab__icon { width: 38px !important; height: 38px !important; }
+
+/* Upsell cards — a touch more breathing room */
+.product-upsell-card { padding: 16px 18px !important; }
