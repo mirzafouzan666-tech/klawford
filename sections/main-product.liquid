@@ -40,24 +40,32 @@
         </div>
 
         {%- if product.images.size > 1 -%}
-          <div class="product-gallery__thumbs" id="product-thumbs">
-            {%- for image in product.images -%}
-              {%- assign img_colour = image.alt | split: ' - ' | last | strip | downcase -%}
-              <button
-                class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
-                type="button"
-                data-src="{{ image | image_url: width: 900 }}"
-                data-colour="{{ img_colour }}"
-                data-img-id="{{ image.id }}"
-                aria-label="View image {{ forloop.index }}">
-                <img
-                  src="{{ image | image_url: width: 160 }}"
-                  alt="{{ image.alt | escape | default: product.title }}"
-                  width="80"
-                  height="80"
-                  loading="lazy">
-              </button>
-            {%- endfor -%}
+          <div class="product-gallery__thumb-wrap">
+            <button class="gallery-arrow gallery-arrow--prev" id="thumb-prev" aria-label="Previous images" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="product-gallery__thumbs" id="product-thumbs">
+              {%- for image in product.images -%}
+                {%- assign img_colour = image.alt | split: ' - ' | last | strip | downcase -%}
+                <button
+                  class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
+                  type="button"
+                  data-src="{{ image | image_url: width: 900 }}"
+                  data-colour="{{ img_colour }}"
+                  data-img-id="{{ image.id }}"
+                  aria-label="View image {{ forloop.index }}">
+                  <img
+                    src="{{ image | image_url: width: 160 }}"
+                    alt="{{ image.alt | escape | default: product.title }}"
+                    width="80"
+                    height="80"
+                    loading="lazy">
+                </button>
+              {%- endfor -%}
+            </div>
+            <button class="gallery-arrow gallery-arrow--next" id="thumb-next" aria-label="Next images" type="button">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
           </div>
         {%- endif -%}
 
@@ -795,6 +803,30 @@
   if (!tryInit()) {
     var n = 0, iv = setInterval(function(){ if (tryInit() || ++n > 25) clearInterval(iv); }, 200);
   }
+})();
+</script>
+
+<script>
+// ---- Thumbnail strip arrow navigation ----
+(function(){
+  var strip = document.getElementById('product-thumbs');
+  var prev  = document.getElementById('thumb-prev');
+  var next  = document.getElementById('thumb-next');
+  if (!strip || !prev || !next) return;
+  var scrollAmount = 78 * 3; // scroll 3 thumbs at a time
+  prev.addEventListener('click', function(){
+    strip.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  next.addEventListener('click', function(){
+    strip.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+  // Show/hide arrows based on scroll position
+  function updateArrows(){
+    prev.style.opacity = strip.scrollLeft > 4 ? '1' : '0.3';
+    next.style.opacity = (strip.scrollLeft + strip.clientWidth < strip.scrollWidth - 4) ? '1' : '0.3';
+  }
+  strip.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
 })();
 </script>
 

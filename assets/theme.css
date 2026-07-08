@@ -3376,40 +3376,77 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 }
 
 /* ============================================================
-   PRODUCT GALLERY — HORIZONTAL THUMBNAIL STRIP
+   PRODUCT GALLERY — SONNO-STYLE (main image + arrow thumbnail strip)
    ============================================================ */
 
-/* Zero gap between main image and thumbnail row */
-.product-gallery__main { margin-bottom: 0 !important; border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; }
+/* Main image: contained, no gap below */
+.product-gallery__main {
+  margin-bottom: 0 !important;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
+  aspect-ratio: 1 / 1 !important;
+  background: #fff !important;
+}
 
-/* Single horizontal scrolling strip */
+/* Wrapper: arrow | strip | arrow */
+.product-gallery__thumb-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid var(--clr-ash);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: 8px 8px;
+}
+
+/* Arrow buttons */
+.gallery-arrow {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--clr-ash);
+  background: var(--clr-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--clr-text);
+  transition: var(--transition);
+  padding: 0;
+}
+.gallery-arrow:hover { background: var(--clr-secondary); border-color: var(--clr-secondary); color: #fff; }
+
+/* Thumbnail scroll strip — hidden scrollbar, arrows do the scrolling */
 .product-gallery__thumbs {
   display: flex !important;
   flex-wrap: nowrap !important;
   gap: 6px !important;
   overflow-x: auto !important;
-  overflow-y: hidden;
+  overflow-y: hidden !important;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: 6px 6px 6px !important;
-  background: #fff;
-  border: 1px solid var(--clr-ash);
-  border-top: none;
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  scrollbar-width: thin;
-  scrollbar-color: var(--clr-secondary) var(--clr-ash);
+  scrollbar-width: none;
+  flex: 1;
+  padding: 2px 0 !important;
 }
-.product-gallery__thumbs::-webkit-scrollbar { height: 4px; }
-.product-gallery__thumbs::-webkit-scrollbar-track { background: var(--clr-ash); border-radius: 2px; }
-.product-gallery__thumbs::-webkit-scrollbar-thumb { background: var(--clr-secondary); border-radius: 2px; }
+.product-gallery__thumbs::-webkit-scrollbar { display: none; }
 
-/* Thumbnails — fixed size, no shrinking */
+/* Individual thumbnails */
 .product-gallery__thumb {
   flex-shrink: 0 !important;
   scroll-snap-align: start;
   width: 72px !important;
   height: 72px !important;
+  border-radius: var(--radius-sm) !important;
+  border: 2px solid transparent !important;
+  overflow: hidden;
+  background: var(--clr-wild-sand) !important;
+  padding: 0 !important;
 }
+.product-gallery__thumb img { width: 100% !important; height: 100% !important; object-fit: contain !important; padding: 3px !important; }
+.product-gallery__thumb:hover { border-color: var(--clr-gray-dusty) !important; }
+.product-gallery__thumb.active { border-color: var(--clr-secondary) !important; }
 
 /* ============================================================
    PRODUCT PAGE — TYPOGRAPHY UPGRADE (Sonno-level scale)
