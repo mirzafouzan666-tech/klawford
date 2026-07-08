@@ -3376,6 +3376,42 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 }
 
 /* ============================================================
+   PRODUCT GALLERY — HORIZONTAL THUMBNAIL STRIP
+   ============================================================ */
+
+/* Zero gap between main image and thumbnail row */
+.product-gallery__main { margin-bottom: 0 !important; border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important; }
+
+/* Single horizontal scrolling strip */
+.product-gallery__thumbs {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 6px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 6px 6px !important;
+  background: #fff;
+  border: 1px solid var(--clr-ash);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  scrollbar-width: thin;
+  scrollbar-color: var(--clr-secondary) var(--clr-ash);
+}
+.product-gallery__thumbs::-webkit-scrollbar { height: 4px; }
+.product-gallery__thumbs::-webkit-scrollbar-track { background: var(--clr-ash); border-radius: 2px; }
+.product-gallery__thumbs::-webkit-scrollbar-thumb { background: var(--clr-secondary); border-radius: 2px; }
+
+/* Thumbnails — fixed size, no shrinking */
+.product-gallery__thumb {
+  flex-shrink: 0 !important;
+  scroll-snap-align: start;
+  width: 72px !important;
+  height: 72px !important;
+}
+
+/* ============================================================
    PRODUCT PAGE — TYPOGRAPHY UPGRADE (Sonno-level scale)
    ============================================================ */
 
