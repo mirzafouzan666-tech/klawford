@@ -3415,9 +3415,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: center center !important;
-  padding: 8px !important;
+  padding: 0 !important;
 }
 
 /* Wrapper: arrow | strip | arrow */
