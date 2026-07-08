@@ -3281,3 +3281,95 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .variant-card:hover { border-color: #9B7B71 !important; }
 .variant-card__bed-icon { background: #F5F0EB; }
 .variant-card__type-icon { background: #F5F0EB !important; }
+
+/* ============================================================
+   PRODUCT PAGE — TYPOGRAPHY UPGRADE (Sonno-level scale)
+   ============================================================ */
+
+/* Section headings — bigger, more confident */
+.section-title { font-size: clamp(32px, 4vw, 48px) !important; letter-spacing: -0.5px; }
+
+/* Product title and description */
+.product-info__title { font-size: clamp(28px, 3vw, 40px) !important; }
+.product-info__desc  { font-size: 17px !important; line-height: 1.85 !important; }
+.product-info__subtitle { font-size: 17px !important; }
+
+/* "Why Choose" feature rows */
+.product-feature-row__title { font-size: clamp(24px, 2.5vw, 32px) !important; margin-bottom: 18px; }
+.product-feature-row__desc  { font-size: 17px !important; line-height: 2 !important; max-width: 460px; }
+
+/* "In Real Life" subheading */
+.product-real-life__sub { font-size: 17px !important; }
+
+/* "Shop Now, Pay Later" finance section */
+.product-finance__heading   { font-size: clamp(28px, 3vw, 40px) !important; margin-bottom: 12px; }
+.product-finance__sub       { font-size: 17px !important; line-height: 1.75; }
+.product-finance__point strong { font-size: 17px !important; }
+.product-finance__point p   { font-size: 16px !important; line-height: 1.75; }
+
+/* "Sleep Specialists" services section */
+.product-services__heading     { font-size: clamp(28px, 3vw, 40px) !important; }
+.product-services__item-title  { font-size: 17px !important; }
+.product-services__item-desc   { font-size: 16px !important; line-height: 1.8; }
+
+/* FAQ */
+.faq-trigger { font-size: 17px !important; }
+.faq-body    { font-size: 16px !important; line-height: 1.85; }
+
+/* Dimensions table */
+.dimensions-table td { font-size: 16px !important; }
+.dimensions-table th { font-size: 14px !important; }
+
+/* Social proof bar */
+.social-proof-bar__text { font-size: clamp(20px, 2.5vw, 26px) !important; }
+.review-card__text      { font-size: 16px !important; }
+
+/* ============================================================
+   PRODUCT PAGE — MOBILE FIXES
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* "Why Choose" — stack image above text */
+  .product-feature-row {
+    grid-template-columns: 1fr !important;
+    min-height: unset !important;
+    direction: ltr !important;
+  }
+  .product-feature-row--reverse { direction: ltr !important; }
+  .product-feature-row__image img { min-height: 260px !important; }
+  .product-feature-row__text { padding: 36px 24px !important; }
+  .product-feature-row__title { font-size: 24px !important; }
+  .product-feature-row__desc  { font-size: 16px !important; max-width: 100%; }
+
+  /* Finance — stack text above image */
+  .product-finance__grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .product-finance { padding: 48px 0 !important; }
+  .product-finance__heading { font-size: 26px !important; }
+  .product-finance__image { max-height: 280px; overflow: hidden; }
+
+  /* Services — stack image above text */
+  .product-services__grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .product-services { padding: 48px 0 !important; }
+  .product-services__heading { font-size: 26px !important; }
+  .product-services__image { max-height: 280px; overflow: hidden; }
+
+  /* Section titles */
+  .section-title { font-size: 28px !important; }
+
+  /* Product main info */
+  .product-info__title { font-size: 26px !important; }
+  .product-info__price { font-size: 26px !important; }
+
+  /* In Real Life gallery */
+  .product-real-life { padding: 40px 0 !important; }
+
+  /* FAQ */
+  .faq-trigger { font-size: 16px !important; padding: 18px 0 !important; }
+  .faq-body    { font-size: 15px !important; }
+}
