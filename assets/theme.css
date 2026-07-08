@@ -3353,6 +3353,12 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .kl-cart-empty__links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
 .kl-cart-empty__trust { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; font-size: 14px; color: var(--clr-text-light); font-weight: var(--fw-semibold); }
 
+/* Product gallery mobile */
+@media (max-width: 1024px) {
+  .product-main__grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .product-gallery__main { max-height: 420px !important; }
+}
+
 /* Mobile */
 @media (max-width: 900px) {
   .kl-cart-layout { grid-template-columns: 1fr; gap: 32px; }
@@ -3379,12 +3385,30 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
    PRODUCT GALLERY — SONNO-STYLE (main image + arrow thumbnail strip)
    ============================================================ */
 
-/* Main image: contained, no gap below */
+/* Constrain gallery column — Sonno-style compact left panel */
+.product-main__grid {
+  grid-template-columns: 480px 1fr !important;
+  gap: 48px !important;
+}
+
+/* Main image: fixed compact size, flush to thumbnail strip */
 .product-gallery__main {
+  position: relative !important;
+  overflow: hidden !important;
   margin-bottom: 0 !important;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0 !important;
   aspect-ratio: 1 / 1 !important;
+  max-height: 480px !important;
   background: #fff !important;
+}
+.product-gallery__main img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  padding: 8px !important;
 }
 
 /* Wrapper: arrow | strip | arrow */
