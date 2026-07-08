@@ -3428,7 +3428,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   background: #fff;
   border: 1px solid var(--clr-ash);
   border-top: none;
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  border-radius: 0 !important;
   padding: 8px 8px;
 }
 
@@ -3589,3 +3589,40 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 
 /* Upsell cards — a touch more breathing room */
 .product-upsell-card { padding: 16px 18px !important; }
+
+/* Trustpilot + Happy Sleepers strip */
+.kl-tp-strip {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid var(--clr-ash);
+  border-top: none;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  font-size: 13px;
+  flex-wrap: wrap;
+  row-gap: 6px;
+}
+.kl-tp-strip__tp {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.kl-tp-strip__label { font-weight: 700; color: var(--clr-text); }
+.kl-tp-strip__score { color: #00B67A; font-weight: 700; }
+.kl-tp-strip__dot { color: var(--clr-ash); }
+.kl-tp-strip__count { color: var(--clr-text-light); }
+.kl-tp-strip__sep {
+  width: 1px;
+  height: 18px;
+  background: var(--clr-ash);
+  flex-shrink: 0;
+}
+.kl-tp-strip__sleepers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #1A8A4A;
+}
