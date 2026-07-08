@@ -189,14 +189,24 @@
     const btn = e.target.closest('[data-add-to-cart]');
     if (!btn) return;
     e.preventDefault();
-    const variantId = btn.dataset.variantId || btn.dataset.addToCart;
+    // Read variant ID from data attr, or fall back to the form's hidden #id input
+    const form = btn.closest('form');
+    const variantId = btn.dataset.variantId
+      || btn.dataset.addToCart
+      || form?.querySelector('[name="id"]')?.value;
     const qty = parseInt(btn.dataset.qty || '1', 10);
     if (variantId) {
       btn.disabled = true;
-      btn.textContent = 'Adding…';
+      // Preserve the SVG icon — only swap the label text node
+      const label = btn.querySelector('.atc-label');
+      if (label) label.textContent = 'Adding…';
+      else btn.lastChild.textContent = ' Adding…';
       addToCart(variantId, qty).finally(() => {
         btn.disabled = false;
-        btn.textContent = btn.dataset.originalText || 'Add to Cart';
+        if (label) label.textContent = 'Add to Basket';
+        else btn.lastChild.textContent = ' Add to Basket';
+        // refresh cart count badge
+        fetchCart();
       });
     }
   });

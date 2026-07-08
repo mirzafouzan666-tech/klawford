@@ -1,101 +1,256 @@
-<div class="cart-page">
-  <div class="container">
-    <h1 class="cart-page__title">Your Cart</h1>
+<div class="kl-cart-page">
 
-    {%- if cart.item_count > 0 -%}
-      <div class="cart-page__grid">
+  {%- if cart.item_count > 0 -%}
 
-        <!-- Items -->
-        <div>
-          <div class="cart-table-head" aria-hidden="true">
+    <div class="kl-cart-header">
+      <div class="container">
+        <div class="kl-cart-header__inner">
+          <div>
+            <h1 class="kl-cart-title">Your Basket</h1>
+            <p class="kl-cart-count">{{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %} in your order</p>
+          </div>
+          <a href="/collections/all" class="kl-cart-continue">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Continue Shopping
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="kl-cart-layout">
+
+        {%- comment -%} ---- LEFT: Items ---- {%- endcomment -%}
+        <div class="kl-cart-items">
+
+          {%- comment -%} Trust bar {%- endcomment -%}
+          <div class="kl-cart-trust">
+            <div class="kl-cart-trust__item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 4h4l1.5 8h9L18 7H6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="16.5" r="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="15" cy="16.5" r="1.5" stroke="currentColor" stroke-width="1.4"/></svg>
+              <span>Free 2-Man Delivery</span>
+            </div>
+            <div class="kl-cart-trust__item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l1.8 5.5H18l-4.9 3.6 1.9 5.7L10 13.5l-5 3.3 1.9-5.7L2 7.5h6.2L10 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+              <span>60-Night Risk Free Trial</span>
+            </div>
+            <div class="kl-cart-trust__item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h6l-5 3.6 1.9 5.9L10 14l-4.9 3.5L7 11.6 2 8h6L10 2z" stroke="none"/><path d="M10 3C5 3 2 7 2 10s3 7 8 7 8-3 8-7-3-7-8-7z" stroke="currentColor" stroke-width="1.4"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              <span>Handmade in the UK</span>
+            </div>
+            <div class="kl-cart-trust__item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 9h16" stroke="currentColor" stroke-width="1.4"/></svg>
+              <span>0% Interest Finance</span>
+            </div>
+          </div>
+
+          {%- comment -%} Column headers (desktop) {%- endcomment -%}
+          <div class="kl-cart-cols-head">
             <span>Product</span>
             <span>Price</span>
-            <span>Quantity</span>
-            <span></span>
+            <span>Qty</span>
+            <span>Total</span>
           </div>
 
-          {%- form 'cart', cart -%}
+          {%- form 'cart', cart, id: 'kl-cart-form' -%}
             {%- for item in cart.items -%}
-              <div class="cart-table-row">
-                <div class="cart-row__product">
-                  <a href="{{ item.url }}" class="cart-row__img">
-                    {%- if item.image -%}
-                      <img src="{{ item.image | image_url: width: 180 }}" alt="{{ item.title | escape }}" width="90" height="90" loading="lazy">
-                    {%- endif -%}
-                  </a>
-                  <div>
-                    <a href="{{ item.url }}" class="cart-row__name">{{ item.product.title }}</a>
-                    {%- unless item.product.has_only_default_variant -%}
-                      <p class="cart-row__variant">{{ item.variant.title }}</p>
-                    {%- endunless -%}
-                  </div>
+              <div class="kl-cart-row" data-key="{{ item.key }}">
+
+                <a href="{{ item.url }}" class="kl-cart-row__img">
+                  {%- if item.image -%}
+                    <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="100" height="100" loading="lazy">
+                  {%- endif -%}
+                </a>
+
+                <div class="kl-cart-row__info">
+                  <a href="{{ item.url }}" class="kl-cart-row__name">{{ item.product.title }}</a>
+                  {%- unless item.product.has_only_default_variant -%}
+                    <p class="kl-cart-row__variant">{{ item.variant.title | replace: ' / ', ' · ' }}</p>
+                  {%- endunless -%}
+                  {%- if item.variant.sku != blank -%}
+                    <p class="kl-cart-row__sku">SKU: {{ item.variant.sku }}</p>
+                  {%- endif -%}
+                  <button
+                    type="button"
+                    class="kl-cart-row__remove"
+                    data-cart-remove="{{ item.key }}"
+                    aria-label="Remove {{ item.title | escape }}">
+                    Remove
+                  </button>
                 </div>
-                <span class="cart-row__price">{{ item.price | money }}</span>
-                <div class="cart-row__qty">
-                  <button type="button" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.dispatchEvent(new Event('change'))">&#8722;</button>
-                  <input
-                    type="number"
-                    name="updates[]"
-                    id="updates_{{ item.key }}"
-                    value="{{ item.quantity }}"
-                    min="0"
-                    data-key="{{ item.key }}"
-                    aria-label="Quantity for {{ item.title | escape }}">
-                  <button type="button" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.dispatchEvent(new Event('change'))">&#43;</button>
+
+                <span class="kl-cart-row__price">{{ item.price | money }}</span>
+
+                <div class="kl-cart-row__qty">
+                  <button type="button" class="kl-qty-btn" data-action="decrease" data-key="{{ item.key }}" aria-label="Decrease quantity">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
+                  <span class="kl-qty-val">{{ item.quantity }}</span>
+                  <button type="button" class="kl-qty-btn" data-action="increase" data-key="{{ item.key }}" aria-label="Increase quantity">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2 6h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  </button>
                 </div>
-                <div class="cart-row__remove">
-                  <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" aria-label="Remove {{ item.title | escape }}">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 4L4 12M4 4l8 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                  </a>
-                </div>
+
+                <span class="kl-cart-row__total">{{ item.line_price | money }}</span>
+
               </div>
             {%- endfor -%}
-
-            <div style="margin-top:20px;">
-              <button type="submit" name="update" class="btn btn--outline btn--sm">Update Cart</button>
-            </div>
           {%- endform -%}
+
         </div>
 
-        <!-- Summary -->
-        <div class="cart-summary">
-          <h2 class="cart-summary__title">Order Summary</h2>
-          <div class="cart-summary__row">
-            <span>Subtotal ({{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %})</span>
-            <span>{{ cart.total_price | money }}</span>
+        {%- comment -%} ---- RIGHT: Order Summary ---- {%- endcomment -%}
+        <div class="kl-cart-summary">
+          <div class="kl-cart-summary__card">
+            <h2 class="kl-cart-summary__title">Order Summary</h2>
+
+            <div class="kl-cart-summary__row">
+              <span>Subtotal ({{ cart.item_count }} {% if cart.item_count == 1 %}item{% else %}items{% endif %})</span>
+              <span class="kl-cart-summary__price" id="kl-cart-subtotal">{{ cart.total_price | money }}</span>
+            </div>
+            <div class="kl-cart-summary__row">
+              <span>Delivery</span>
+              <span class="kl-cart-summary__free">FREE</span>
+            </div>
+            <div class="kl-cart-summary__row kl-cart-summary__row--total">
+              <span>Total</span>
+              <span id="kl-cart-total">{{ cart.total_price | money }}</span>
+            </div>
+
+            <p class="kl-cart-summary__vat">Taxes included. Shipping calculated at checkout.</p>
+
+            <a href="/checkout" class="btn btn--primary btn--block kl-cart-checkout-btn">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h2.5L6 11.5H13M7 13.5a1 1 0 1 0 2 0 1 1 0 0 0-2 0zM12 13.5a1 1 0 1 0 2 0 1 1 0 0 0-2 0z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Proceed to Checkout
+            </a>
+
+            <a href="/collections/all" class="kl-cart-summary__continue">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              Continue Shopping
+            </a>
+
+            <div class="kl-cart-summary__trust">
+              <div class="kl-cart-summary__trust-item">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1l1.6 5H17l-4.4 3.2 1.7 5.2L9 11.4l-5.3 3 1.7-5.2L1 6h6.4L9 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                <span>4.9/5 Trustpilot</span>
+              </div>
+              <div class="kl-cart-summary__trust-item">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2C5 2 2 5 2 9s3 7 7 7 7-3 7-7-3-7-7-7z" stroke="currentColor" stroke-width="1.3"/><path d="M6 9l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                <span>60-Night Trial</span>
+              </div>
+              <div class="kl-cart-summary__trust-item">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 4h12v8H2V4z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M2 7h12" stroke="currentColor" stroke-width="1.3"/></svg>
+                <span>0% Finance</span>
+              </div>
+            </div>
+
+            <div class="kl-cart-payment-icons">
+              {%- render 'payment-icons' -%}
+            </div>
           </div>
-          <div class="cart-summary__row">
-            <span>Shipping</span>
-            <span>Calculated at checkout</span>
-          </div>
-          <div class="cart-summary__row cart-summary__row--total">
-            <span>Total</span>
-            <span>{{ cart.total_price | money }}</span>
-          </div>
-          <p class="cart-summary__note">Taxes included. Shipping calculated at checkout.</p>
-          <a href="/checkout" class="btn btn--primary btn--block btn--lg">Proceed to Checkout</a>
-          <a href="/collections/all" class="btn btn--outline btn--block">Continue Shopping</a>
         </div>
 
-      </div>
-    {%- else -%}
-      <div style="text-align:center;padding:80px 20px;">
-        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="margin:0 auto 20px;" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10 8h8l5.5 28M23 36h38l-4.5 22.5H27.5L23 36z" stroke="#dadada" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="32" cy="65" r="4" stroke="#dadada" stroke-width="2.5"/>
-          <circle cx="55" cy="65" r="4" stroke="#dadada" stroke-width="2.5"/>
+      </div>{%- comment -%} /kl-cart-layout {%- endcomment -%}
+    </div>
+
+  {%- else -%}
+
+    {%- comment -%} Empty state {%- endcomment -%}
+    <div class="kl-cart-empty">
+      <div class="kl-cart-empty__icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8 6h6.5l5 24M19 30h28l-4 18H23L19 30z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="26" cy="53" r="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="43" cy="53" r="3" stroke="currentColor" stroke-width="2"/>
         </svg>
-        <h2 style="font-family:var(--ff-primary);font-size:28px;margin-bottom:12px;">Your cart is empty</h2>
-        <p style="color:var(--clr-gray-dusty);margin-bottom:28px;">Looks like you haven't added anything yet.</p>
-        <a href="/collections/all" class="btn btn--primary btn--lg">Start Shopping</a>
       </div>
-    {%- endif -%}
-  </div>
+      <h1 class="kl-cart-empty__title">Your Basket is Empty</h1>
+      <p class="kl-cart-empty__sub">Looks like you haven't added anything yet. Let's change that.</p>
+      <div class="kl-cart-empty__links">
+        <a href="/collections/divan-beds" class="btn btn--primary btn--lg">Shop Divan Beds</a>
+        <a href="/collections/all" class="btn btn--outline btn--lg">Browse All Beds</a>
+      </div>
+      <div class="kl-cart-empty__trust">
+        <span>⭐ 4.9/5 Trustpilot</span>
+        <span>🚚 Free 2-Man Delivery</span>
+        <span>✓ 60-Night Trial</span>
+        <span>🇬🇧 Handmade in the UK</span>
+      </div>
+    </div>
+
+  {%- endif -%}
+
 </div>
+
+<script>
+(function(){
+  function cartFetch(url, body){
+    return fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    }).then(function(r){ return r.json(); });
+  }
+
+  function refreshCartTotals(cart){
+    var sub = document.getElementById('kl-cart-subtotal');
+    var tot = document.getElementById('kl-cart-total');
+    if(!sub||!tot||!cart) return;
+    var fmt = function(c){ return '£' + (c/100).toFixed(2).replace(/\.00$/,''); };
+    sub.textContent = fmt(cart.total_price);
+    tot.textContent = fmt(cart.total_price);
+  }
+
+  function removeRow(key){
+    var row = document.querySelector('[data-key="'+key+'"]');
+    if(row){ row.style.opacity='0'; row.style.transition='opacity .2s'; setTimeout(function(){ row.remove(); },200); }
+  }
+
+  // Remove item
+  document.querySelectorAll('[data-cart-remove]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-cart-remove');
+      cartFetch('/cart/change.js', { id: key, quantity: 0 }).then(function(cart){
+        removeRow(key);
+        refreshCartTotals(cart);
+        if(cart.item_count === 0) location.reload();
+      });
+    });
+  });
+
+  // Qty change
+  document.querySelectorAll('.kl-qty-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var key = btn.getAttribute('data-key');
+      var row = btn.closest('.kl-cart-row');
+      var valEl = row ? row.querySelector('.kl-qty-val') : null;
+      if(!valEl) return;
+      var current = parseInt(valEl.textContent) || 1;
+      var next = btn.getAttribute('data-action') === 'increase' ? current + 1 : Math.max(0, current - 1);
+      if(next === 0){
+        cartFetch('/cart/change.js', { id: key, quantity: 0 }).then(function(cart){
+          removeRow(key);
+          refreshCartTotals(cart);
+          if(cart.item_count === 0) location.reload();
+        });
+      } else {
+        valEl.textContent = next;
+        cartFetch('/cart/change.js', { id: key, quantity: next }).then(function(cart){
+          var totalEl = row ? row.querySelector('.kl-cart-row__total') : null;
+          if(cart && cart.items){
+            var item = cart.items.find(function(i){ return i.key === key; });
+            if(item && totalEl){ totalEl.textContent = '£' + (item.line_price/100).toFixed(2).replace(/\.00$/,''); }
+          }
+          refreshCartTotals(cart);
+        });
+      }
+    });
+  });
+})();
+</script>
 
 {% schema %}
 {
-  "name": "Cart Main",
+  "name": "Cart Page",
   "settings": []
 }
 {% endschema %}
