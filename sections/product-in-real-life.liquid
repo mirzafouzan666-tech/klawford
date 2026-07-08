@@ -6,18 +6,10 @@
     {%- endif -%}
   </div>
 
-  {%- comment -%} Lifestyle images per product {%- endcomment -%}
+  {%- comment -%} Lifestyle images from Klawford premium visual assets {%- endcomment -%}
   {%- assign _cdn = 'https://cdn.shopify.com/s/files/1/0960/5588/6153/files/' -%}
-  {%- if product.handle == 'panel-lines-divan-bed-with-mattress-and-optional-storage-drawers' -%}
-    {%- assign _imgs = 'image_2.jpg|image_6.jpg|image_4.jpg|image_1.jpg|image_3.jpg|image_5.jpg' | split: '|' -%}
-    {%- assign _alts = 'Storage drawers lifestyle|Couple relaxing in bed|Family reading in bed|Luxury bedroom|Ottoman storage interior|Professional assembly' | split: '|' -%}
-  {%- elsif product.handle == 'alexander-wing-back-luxury-bed-and-mattress-set' -%}
-    {%- assign _imgs = 'image_1.jpg|image_6.jpg|image_4.jpg|image_2.jpg|image_3.jpg|image_5.jpg' | split: '|' -%}
-    {%- assign _alts = 'Luxury grey wingback bedroom|Couple relaxing in bed|Family reading in bed|Storage drawers lifestyle|Ottoman storage interior|Professional assembly' | split: '|' -%}
-  {%- else -%}
-    {%- assign _imgs = '' | split: ',' -%}
-    {%- assign _alts = '' | split: ',' -%}
-  {%- endif -%}
+  {%- assign _imgs = 'image_2.jpg|image_6.jpg|image_4.jpg|image_1.jpg|image_3.jpg|image_5.jpg' | split: '|' -%}
+  {%- assign _alts = 'Storage drawers lifestyle|Couple relaxing in bed|Family reading in bed|Luxury bedroom|Ottoman storage interior|Professional assembly' | split: '|' -%}
 
   <div class="container" style="padding-right:0;overflow:hidden;">
     <div class="loved-gallery__track" id="product-gallery-track">

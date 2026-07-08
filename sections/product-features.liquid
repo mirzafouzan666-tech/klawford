@@ -1,13 +1,7 @@
 <section class="product-features-section">
-  {%- comment -%} Feature images per product {%- endcomment -%}
+  {%- comment -%} Feature images from Klawford premium visual assets {%- endcomment -%}
   {%- assign _cdn = 'https://cdn.shopify.com/s/files/1/0960/5588/6153/files/' -%}
-  {%- if product.handle == 'panel-lines-divan-bed-with-mattress-and-optional-storage-drawers' -%}
-    {%- assign _fimgs = 'image_6.jpg|image_2.jpg|image_1.jpg|image_4.jpg|image_5.jpg' | split: '|' -%}
-  {%- elsif product.handle == 'alexander-wing-back-luxury-bed-and-mattress-set' -%}
-    {%- assign _fimgs = 'image_1.jpg|image_3.jpg|image_6.jpg|image_4.jpg|image_5.jpg' | split: '|' -%}
-  {%- else -%}
-    {%- assign _fimgs = '' | split: ',' -%}
-  {%- endif -%}
+  {%- assign _fimgs = 'image_6.jpg|image_2.jpg|image_1.jpg|image_4.jpg|image_5.jpg' | split: '|' -%}
 
   <div class="container">
     <h2 class="section-title">{{ section.settings.heading | default: 'Why Choose A Klawford Divan Bed?' }}</h2>
