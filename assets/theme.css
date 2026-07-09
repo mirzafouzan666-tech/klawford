@@ -3814,7 +3814,8 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-gallery__main-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .klm-gallery__placeholder { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 40px; color: var(--clr-ash); text-align: center; }
 .klm-gallery__placeholder p { font-size: 13px; color: var(--clr-gray-dusty); max-width: 200px; }
-.klm-gallery__badge { position: absolute; top: 14px; left: 14px; background: #1A8A4A; color: #fff; font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; }
+.klm-gallery__badge { position: absolute; top: 14px; left: 14px; background: #1A8A4A; color: #fff; font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; z-index: 2; }
+.klm-gallery__expand { position: absolute; bottom: 14px; right: 50%; transform: translateX(50%); background: rgba(0,0,0,.55); color: #fff; border: none; border-radius: 20px; font-size: 11px; font-weight: 600; padding: 6px 14px; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
 
 /* thumbnails */
 .klm-gallery__thumb-wrap { display: flex; align-items: center; gap: 6px; margin-top: 10px; }
@@ -3822,20 +3823,19 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-gallery__thumbs::-webkit-scrollbar { display: none; }
 .klm-gallery__thumb { flex-shrink: 0; width: 72px; height: 72px; border: 2px solid var(--clr-ash); border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color .15s; background: #f5f3f1; padding: 0; }
 .klm-gallery__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.klm-gallery__thumb.is-active, .klm-gallery__thumb:hover { border-color: var(--clr-secondary); }
+.klm-gallery__thumb.is-active,.klm-gallery__thumb:hover { border-color: var(--clr-secondary); }
 .klm-gallery__arrow { width: 30px; height: 30px; border: 1px solid var(--clr-ash); border-radius: 50%; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--clr-text); transition: border-color .15s; }
 .klm-gallery__arrow:hover { border-color: var(--clr-secondary); color: var(--clr-secondary); }
-/* empty thumbnail placeholders */
-.klm-gallery__thumb-empty { display: flex; gap: 8px; margin-top: 10px; }
-.klm-gallery__thumb-ph { width: 72px; height: 72px; border: 2px dashed var(--clr-ash); border-radius: 8px; background: #f5f3f1; display: flex; align-items: center; justify-content: center; color: var(--clr-ash); }
+.klm-gallery__thumb-ph { width: 72px; height: 72px; border: 2px dashed var(--clr-ash); border-radius: 8px; background: #f5f3f1; display: flex; align-items: center; justify-content: center; color: var(--clr-ash); flex-shrink: 0; }
 
 /* ── Product Info ─────────────────────────── */
-.klm-info { display: flex; flex-direction: column; gap: 0; }
+.klm-info { display: flex; flex-direction: column; }
 
 /* Stars */
 .klm-info__rating { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .klm-stars { display: flex; gap: 2px; }
 .klm-star { width: 14px; height: 14px; color: #F4A200; }
+.klm-star--lg { width: 22px; height: 22px; }
 .klm-info__review-link { font-size: 13px; color: var(--clr-gray-dusty); text-decoration: none; }
 .klm-info__review-link:hover { color: var(--clr-secondary); text-decoration: underline; }
 
@@ -3853,10 +3853,11 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-size-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .klm-size-header__label { font-size: 13px; font-weight: 600; color: var(--clr-text); text-transform: uppercase; letter-spacing: 0.05em; }
 .klm-size-header__current { font-size: 13px; font-weight: 700; color: var(--clr-secondary); }
-.klm-size-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-.klm-size-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px 8px; border: 1.5px solid var(--clr-ash); border-radius: 10px; background: #fff; cursor: pointer; transition: border-color .15s, background .15s; width: 100%; }
+.klm-size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.klm-size-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 6px 10px; border: 1.5px solid var(--clr-ash); border-radius: 8px; background: #fff; cursor: pointer; transition: border-color .15s, background .15s; width: 100%; }
 .klm-size-btn:hover { border-color: var(--clr-secondary); }
-.klm-size-btn.is-active { border-color: var(--clr-secondary); background: rgba(92,31,46,.05); }
+.klm-size-btn.is-active { border-color: var(--clr-secondary); background: rgba(92,31,46,.05); position: relative; }
+.klm-size-btn.is-active::after { content: '✓'; position: absolute; top: 5px; right: 7px; font-size: 10px; color: var(--clr-secondary); font-weight: 700; }
 .klm-size-btn.is-soldout { opacity: .5; cursor: not-allowed; }
 .klm-size-btn__icon { width: 50px; height: 28px; color: var(--clr-ash); }
 .klm-size-btn__icon svg { width: 100%; height: 100%; }
@@ -3881,12 +3882,19 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 
 /* ── Trust Strip ────────────────────────── */
 .klm-trust-strip { background: #f5f3f1; border-top: 1px solid var(--clr-ash); border-bottom: 1px solid var(--clr-ash); padding: 24px 0; }
-.klm-trust-strip__inner { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.klm-trust-strip__inner { display: flex; justify-content: center; gap: 36px; flex-wrap: wrap; }
 .klm-trust-item { display: flex; align-items: center; gap: 10px; }
 .klm-trust-item svg { color: var(--clr-secondary); flex-shrink: 0; }
 .klm-trust-item div { display: flex; flex-direction: column; gap: 1px; }
 .klm-trust-item strong { font-size: 13px; font-weight: 700; color: var(--clr-text); }
 .klm-trust-item span { font-size: 12px; color: var(--clr-gray-dusty); }
+
+/* ── Rating Banner ──────────────────────── */
+.klm-rating-banner { background: #fff; padding: 48px 0 40px; border-bottom: 1px solid var(--clr-ash); }
+.klm-rating-banner__inner { text-align: center; }
+.klm-rating-banner__heading { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: var(--clr-text); margin: 0 0 16px; }
+.klm-rating-banner__stars { display: flex; justify-content: center; gap: 4px; margin-bottom: 10px; }
+.klm-rating-banner__sub { font-size: 14px; color: var(--clr-gray-dusty); margin: 0; }
 
 /* ── Shared Section Styles ───────────────── */
 .klm-section { padding: 60px 0; }
@@ -3898,63 +3906,136 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-overview__body p { margin-bottom: 1em; }
 .klm-overview__body ul { padding-left: 1.4em; }
 .klm-overview__body li { margin-bottom: 0.4em; }
-.klm-overview__body strong { font-weight: 700; color: var(--clr-secondary); }
+.klm-overview__body strong { font-weight: 700; }
 
-/* ── Features ───────────────────────────── */
-.klm-features { background: #f5f3f1; }
-.klm-features__icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; margin-bottom: 32px; }
-.klm-feat { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; padding: 8px; }
-.klm-feat__circle { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--clr-ash); background: #fff; display: flex; align-items: center; justify-content: center; color: var(--clr-gray-dusty); transition: border-color .15s, color .15s, background .15s; }
-.klm-feat:hover .klm-feat__circle, .klm-feat.is-active .klm-feat__circle { border-color: var(--clr-secondary); color: var(--clr-secondary); background: rgba(92,31,46,.06); }
-.klm-feat__label { font-size: 11px; font-weight: 600; color: var(--clr-text); text-align: center; max-width: 64px; line-height: 1.3; }
+/* ── Features (Sonno-style: image left + icon tabs right) ──────── */
+.klm-features { background: #f5f3f1; padding: 60px 0; }
+.klm-features .klm-section__heading { margin-bottom: 36px; }
+.klm-features__body { display: flex; gap: 40px; align-items: flex-start; }
+.klm-features__image { flex: 0 0 45%; max-width: 45%; }
+.klm-features__image-img { width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover; aspect-ratio: 4/3; }
+.klm-features__image-ph { background: #e8e4de; border-radius: 12px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #999; }
+.klm-features__image-ph span { font-size: 12px; text-align: center; max-width: 160px; color: #aaa; }
+.klm-features__right { flex: 1; min-width: 0; }
+
+/* Icon tab row — rectangular boxes like Sonno */
+.klm-features__icon-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
+.klm-feat { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px 10px; border: none; border-right: 1px solid #ddd; background: #fff; cursor: pointer; transition: background .15s; }
+.klm-feat:nth-child(4),.klm-feat:nth-child(8) { border-right: none; }
+.klm-feat:nth-child(n+5) { border-top: 1px solid #ddd; }
+.klm-feat__icon { color: #888; transition: color .15s; }
+.klm-feat__icon svg { display: block; }
+.klm-feat__label { font-size: 10px; font-weight: 600; text-align: center; line-height: 1.3; color: var(--clr-text); }
+.klm-feat:hover { background: #faf7f7; }
+.klm-feat.is-active { background: #fdf4f5; }
+.klm-feat.is-active .klm-feat__icon { color: var(--clr-secondary); }
 .klm-feat.is-active .klm-feat__label { color: var(--clr-secondary); }
-.klm-features__detail { max-width: 520px; margin: 0 auto; text-align: center; padding: 28px 32px; background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--clr-ash); }
-.klm-features__detail-title { font-size: 17px; font-weight: 700; color: var(--clr-secondary); margin-bottom: 10px; }
-.klm-features__detail-body { font-size: 14px; line-height: 1.7; color: var(--clr-text); }
 
-/* ── Finance ────────────────────────────── */
-.klm-finance { background: var(--clr-secondary); }
-.klm-finance .klm-section__heading { color: #fff; }
-.klm-finance__inner { max-width: 560px; margin: 0 auto; }
-.klm-finance__card { background: #fff; border-radius: var(--radius-lg); padding: 36px 40px; }
-.klm-finance__logo { font-size: 22px; font-weight: 800; color: var(--clr-text); margin-bottom: 6px; }
+/* Indicator track + pip */
+.klm-features__track { position: relative; height: 2px; background: #333; margin: 0 0 24px; }
+.klm-features__pip { position: absolute; top: -7px; left: 0; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-bottom: 9px solid var(--clr-secondary); transform: translateX(-50%); transition: left .2s ease; }
+
+/* Feature detail text */
+.klm-features__detail { text-align: center; }
+.klm-features__detail-title { font-size: 17px; font-weight: 700; color: var(--clr-text); margin-bottom: 8px; }
+.klm-features__detail-body { font-size: 14px; line-height: 1.7; color: var(--clr-gray-dusty); }
+
+/* ── Sleep Technology ───────────────────── */
+.klm-sleep-tech { background: #f5f0ea; padding: 72px 0; }
+.klm-sleep-tech__inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.klm-sleep-tech__icon { color: var(--clr-text); margin-bottom: 16px; display: flex; justify-content: center; }
+.klm-sleep-tech__heading { font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 700; color: var(--clr-text); margin: 0 0 16px; }
+.klm-sleep-tech__body { font-size: 15px; color: var(--clr-gray-dusty); line-height: 1.7; margin: 0 0 36px; }
+.klm-sleep-tech__sub { font-size: 1.15rem; font-weight: 700; color: var(--clr-text); margin: 0 0 24px; }
+.klm-sleep-tech__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 20px; text-align: left; }
+.klm-sleep-tech__list li { display: flex; align-items: flex-start; gap: 14px; }
+.klm-sleep-tech__bullet-icon { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--clr-secondary); color: #fff; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.klm-sleep-tech__list li span { font-size: 14px; line-height: 1.7; color: var(--clr-text); padding-top: 8px; }
+
+/* ── Mattress Layers ────────────────────── */
+.klm-layers { background: #fff; }
+.klm-layers__intro { text-align: center; font-size: 15px; color: var(--clr-gray-dusty); margin: -20px auto 40px; max-width: 560px; }
+.klm-layers__diagram { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.klm-layer { display: flex; align-items: center; gap: 20px; }
+.klm-layer__num { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #888; flex-shrink: 0; }
+.klm-layer__bar { flex: 1; border-radius: 4px; }
+.klm-layer__bar--thin { height: 14px; }
+.klm-layer__bar--med { height: 22px; }
+.klm-layer__bar--thick { height: 44px; }
+.klm-layer__bar--c1 { background: #f0ede6; border: 1px solid #ddd; }
+.klm-layer__bar--c2 { background: #e2ddd6; border: 1px solid #ccc; }
+.klm-layer__bar--c3 { background: #cec8bf; border: 1px solid #bbb; }
+.klm-layer__bar--c4 { background: #afa8a0; border: 1px solid #999; }
+.klm-layer__bar--c5 { background: #b8b0a8; border: 1px solid #aaa; }
+.klm-layer__lbl { width: 240px; font-size: 13px; color: var(--clr-text); font-weight: 500; flex-shrink: 0; }
+.klm-layer--assembled { margin-top: 4px; }
+.klm-layer__bar--assembled { height: 60px; background: linear-gradient(to bottom, #e8e3db 0%, #b0a89e 50%, #c0b8b0 100%); border: 1.5px solid #999; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+
+/* ── Finance (full-width split layout) ──── */
+.klm-finance { display: flex; min-height: 340px; }
+.klm-finance__bg-half { flex: 1; background: linear-gradient(135deg, var(--clr-secondary) 0%, #3d0e1a 100%); display: flex; align-items: center; }
+.klm-finance__content-side { flex: 0 0 50%; max-width: 600px; margin: 0 0 0 auto; padding: 60px 48px 60px 0; }
+.klm-finance__card { background: #fff; border-radius: 12px; padding: 36px 40px; box-shadow: 0 8px 40px rgba(0,0,0,.18); }
+.klm-finance__intro { font-size: 14px; font-weight: 600; color: var(--clr-text); margin: 0 0 4px; }
+.klm-finance__logo { font-size: 22px; font-weight: 800; color: var(--clr-text); margin-bottom: 14px; }
 .klm-finance__logo em { color: var(--clr-secondary); font-style: normal; }
-.klm-finance__headline { font-size: 18px; font-weight: 700; color: var(--clr-secondary); margin-bottom: 20px; }
-.klm-finance__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
-.klm-finance__list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.55; color: var(--clr-text); }
+.klm-finance__banner { display: inline-block; background: var(--clr-secondary); color: #fff; font-size: 13px; font-weight: 800; padding: 8px 16px; margin-bottom: 24px; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
+.klm-finance__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+.klm-finance__list li { display: flex; align-items: flex-start; gap: 12px; }
 .klm-finance__list li svg { flex-shrink: 0; color: var(--clr-secondary); margin-top: 2px; }
+.klm-finance__list li div { display: flex; flex-direction: column; gap: 2px; }
+.klm-finance__list li strong { font-size: 14px; font-weight: 700; color: var(--clr-text); }
+.klm-finance__list li span { font-size: 13px; color: var(--clr-gray-dusty); line-height: 1.5; }
 
-/* ── Service ────────────────────────────── */
-.klm-service { background: #fff; }
-.klm-service__inner { max-width: 680px; margin: 0 auto 36px; }
-.klm-service__points { display: flex; flex-direction: column; gap: 24px; }
+/* ── Service (image left + points right) ── */
+.klm-service { background: #fff; padding: 60px 0; }
+.klm-service__inner { display: flex; gap: 48px; align-items: flex-start; margin-bottom: 48px; }
+.klm-service__image { flex: 0 0 42%; max-width: 42%; }
+.klm-service__image-img { width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover; aspect-ratio: 4/3; }
+.klm-service__image-ph { background: #f0ede6; border-radius: 12px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #999; }
+.klm-service__image-ph span { font-size: 12px; color: #aaa; text-align: center; max-width: 160px; }
+.klm-service__points { flex: 1; display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
 .klm-service__point { display: flex; align-items: flex-start; gap: 16px; }
-.klm-service__point svg { flex-shrink: 0; color: var(--clr-secondary); margin-top: 3px; }
-.klm-service__point strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
-.klm-service__point p { font-size: 14px; line-height: 1.6; color: var(--clr-gray-dusty); margin: 0; }
+.klm-service__point-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--clr-ash); display: flex; align-items: center; justify-content: center; color: var(--clr-secondary); background: #fdf4f5; }
+.klm-service__point strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--clr-text); }
+.klm-service__point p { font-size: 14px; line-height: 1.65; color: var(--clr-gray-dusty); margin: 0; }
 .klm-service__atc { text-align: center; }
-.klm-service__atc-btn { max-width: 360px; margin: 0 auto 16px; display: flex; }
+.klm-service__atc-btn { max-width: 380px; margin: 0 auto 20px; display: flex; }
 .klm-service__payment-icons { display: flex; justify-content: center; }
 
 /* ── FAQ ────────────────────────────────── */
-.klm-faq { background: #f5f3f1; }
-.klm-faq__list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
-.klm-faq__item { border: 1px solid var(--clr-ash); border-radius: 8px; overflow: hidden; background: #fff; }
-.klm-faq__q { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; font-size: 14px; font-weight: 600; cursor: pointer; list-style: none; color: var(--clr-text); }
+.klm-faq { background: #f5f3f1; padding: 60px 0; }
+.klm-faq__list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; }
+.klm-faq__item { border-bottom: 1px solid var(--clr-ash); background: transparent; }
+.klm-faq__item:first-child { border-top: 1px solid var(--clr-ash); }
+.klm-faq__q { display: flex; align-items: center; justify-content: space-between; padding: 18px 4px; font-size: 14px; font-weight: 600; cursor: pointer; list-style: none; color: var(--clr-text); }
 .klm-faq__q::-webkit-details-marker { display: none; }
-.klm-faq__q::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--clr-secondary); flex-shrink: 0; margin-left: 12px; }
-details[open] .klm-faq__q::after { content: '\2212'; }
-.klm-faq__a { padding: 0 20px 18px; font-size: 14px; line-height: 1.7; color: var(--clr-gray-dusty); }
+.klm-faq__q::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--clr-secondary); flex-shrink: 0; margin-left: 12px; }
+details[open] > .klm-faq__q { color: var(--clr-secondary); }
+details[open] > .klm-faq__q::after { content: '\2212'; }
+.klm-faq__a { padding: 0 4px 18px; font-size: 14px; line-height: 1.7; color: var(--clr-gray-dusty); }
 
 /* ── Responsive ────────────────────────── */
+@media (max-width: 1024px) {
+  .klm-finance__content-side { padding: 40px 32px 40px 0; }
+}
 @media (max-width: 900px) {
   .klm-top { grid-template-columns: 1fr; gap: 28px; }
-  .klm-trust-strip__inner { gap: 20px 32px; }
+  .klm-trust-strip__inner { gap: 20px 28px; }
+  .klm-features__body { flex-direction: column; }
+  .klm-features__image { flex: none; max-width: 100%; width: 100%; }
+  .klm-service__inner { flex-direction: column; }
+  .klm-service__image { flex: none; max-width: 100%; width: 100%; }
+  .klm-finance { flex-direction: column; }
+  .klm-finance__content-side { flex: none; max-width: 100%; padding: 40px 24px; }
+  .klm-finance__bg-half { min-height: 0; }
 }
-@media (max-width: 600px) {
-  .klm-size-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 640px) {
+  .klm-size-grid { grid-template-columns: repeat(2, 1fr); }
+  .klm-features__icon-row { grid-template-columns: repeat(4, 1fr); }
   .klm-finance__card { padding: 24px 20px; }
-  .klm-features__icons { gap: 6px 10px; }
   .klm-trust-strip__inner { gap: 16px 20px; }
-  .klm-trust-item { flex-basis: 45%; }
+  .klm-trust-item { flex-basis: 44%; }
+  .klm-layer__lbl { width: 140px; font-size: 12px; }
+  .klm-sleep-tech__list li { flex-direction: column; }
 }

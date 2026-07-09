@@ -1,4 +1,4 @@
-{%- comment -%} Dedicated mattress product page — layout based on Sonno design reference {%- endcomment -%}
+{%- comment -%} Dedicated mattress product page — layout: Sonno reference, Klawford branding {%- endcomment -%}
 
 {%- assign kl_first_variant = product.selected_or_first_available_variant -%}
 {%- assign kl_on_sale = false -%}
@@ -7,9 +7,6 @@
 {%- if kl_on_sale -%}
   {%- assign kl_sale_pct = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price | round -%}
 {%- endif -%}
-
-{%- comment -%} Build variants JSON for JS {%- endcomment -%}
-{%- assign klm_variants_json = product.variants | json -%}
 
 <div class="klm-page">
 
@@ -59,6 +56,10 @@
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
           60 Night Risk-Free Trial
         </span>
+        <button class="klm-gallery__expand" id="klm-expand" type="button" aria-label="Expand image">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M1 6V1h5M10 1h5v5M15 10v5h-5M6 15H1v-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Click To Expand
+        </button>
       </div>
 
       {%- if product.images.size > 1 -%}
@@ -81,8 +82,8 @@
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 2l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
         </div>
-      {%- elsif product.images.size == 0 -%}
-        <div class="klm-gallery__thumb-empty">
+      {%- else -%}
+        <div class="klm-gallery__thumb-wrap">
           {%- for i in (1..5) -%}
             <div class="klm-gallery__thumb-ph">
               <svg width="24" height="18" viewBox="0 0 80 60" fill="none" aria-hidden="true"><rect x="4" y="8" width="72" height="44" rx="4" stroke="currentColor" stroke-width="3"/><circle cx="28" cy="26" r="7" stroke="currentColor" stroke-width="2.5"/><path d="M16 46l18-18 14 12 10-10 10 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
@@ -95,7 +96,6 @@
     {%- comment -%} ── PRODUCT INFO ──────────────────────────────────────── {%- endcomment -%}
     <div class="klm-info">
 
-      {%- comment -%} Stars + rating {%- endcomment -%}
       <div class="klm-info__rating">
         <div class="klm-stars" aria-label="4.8 out of 5">
           {%- for i in (1..5) -%}
@@ -109,7 +109,6 @@
 
       <h1 class="klm-info__title">{{ product.title }}</h1>
 
-      {%- comment -%} Price row {%- endcomment -%}
       <div class="klm-info__price-row" id="klm-price-row">
         <span class="klm-info__price" id="klm-price">{{ kl_first_variant.price | money }}</span>
         {%- if kl_on_sale -%}
@@ -157,9 +156,9 @@
                       <div class="klm-size-btn__icon" aria-hidden="true">
                         <svg viewBox="0 0 56 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <rect x="1" y="1" width="54" height="5" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-                          <rect x="1" y="6" width="54" height="8" rx="0" stroke="currentColor" stroke-width="1"/>
+                          <rect x="1" y="6" width="54" height="8" stroke="currentColor" stroke-width="1"/>
                           <path d="M14 6v8M28 6v8M42 6v8" stroke="currentColor" stroke-width="0.7"/>
-                          <rect x="1" y="14" width="54" height="13" rx="0" stroke="currentColor" stroke-width="1"/>
+                          <rect x="1" y="14" width="54" height="13" stroke="currentColor" stroke-width="1"/>
                           <path d="M9 14v13M19 14v13M28 14v13M37 14v13M47 14v13" stroke="currentColor" stroke-width="0.6" stroke-dasharray="1.5 1.5"/>
                           <rect x="1" y="27" width="54" height="6" rx="1" stroke="currentColor" stroke-width="1"/>
                         </svg>
@@ -184,14 +183,12 @@
           class="btn btn--primary btn--full klm-atc"
           id="klm-atc-btn"
           data-add-to-cart
-          data-variant-id="{{ kl_first_variant.id }}"
           {%- unless kl_first_variant.available -%}disabled{%- endunless -%}>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M1 1h2.5l1.7 8.6a2 2 0 0 0 2 1.4h7.3a2 2 0 0 0 2-1.6L17.5 4H4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="15.5" r="1.5" stroke="currentColor" stroke-width="1.4"/><circle cx="13.5" cy="15.5" r="1.5" stroke="currentColor" stroke-width="1.4"/></svg>
           <span id="klm-atc-label">{%- if kl_first_variant.available -%}Add to Basket{%- else -%}Sold Out{%- endif -%}</span>
         </button>
       {%- endform -%}
 
-      {%- comment -%} Payment info {%- endcomment -%}
       <div class="klm-payment-info">
         <div class="klm-payment-info__row">
           <svg width="16" height="12" viewBox="0 0 18 14" fill="none" aria-hidden="true"><path d="M1 2h11v9H1V2z" stroke="currentColor" stroke-width="1.3"/><path d="M12 5h3l2 3v3h-5V5z" stroke="currentColor" stroke-width="1.3"/><circle cx="4" cy="12" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="14" cy="12" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
@@ -212,7 +209,6 @@
 
     </div>
   </div>
-
 </div>
 
 {%- comment -%} ── TRUST STRIP ─────────────────────────────────────────────── {%- endcomment -%}
@@ -220,7 +216,7 @@
   <div class="container">
     <div class="klm-trust-strip__inner">
       <div class="klm-trust-item">
-        <svg width="24" height="24" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 2l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6L8 17.2l1-5.5L5 7.8l5.5-.8L13 2z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <svg width="24" height="24" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 3l2.5 5 5.5.8-4 3.9 1 5.5-5-2.6L8 17.2l1-5.5L5 7.8l5.5-.8L13 3z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
         <div><strong>5 Year Warranty</strong><span>On every mattress</span></div>
       </div>
       <div class="klm-trust-item">
@@ -236,12 +232,95 @@
         <div><strong>Fast Free Delivery</strong><span>Room of your choice</span></div>
       </div>
       <div class="klm-trust-item">
-        <svg width="24" height="24" viewBox="0 0 26 26" fill="none" aria-hidden="true"><path d="M13 3C8 3 4 7 4 12v1l1.5 7h15L22 13v-1c0-5-4-9-9-9z" stroke="currentColor" stroke-width="1.4"/><path d="M9 20v2m8-2v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg width="24" height="24" viewBox="0 0 26 26" fill="none" aria-hidden="true"><rect x="4" y="6" width="18" height="3" rx="1" stroke="currentColor" stroke-width="1.4"/><rect x="3" y="9" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M9 15h8M9 18h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
         <div><strong>UK Quality Materials</strong><span>Built to last</span></div>
       </div>
     </div>
   </div>
 </div>
+
+{%- comment -%} ── RATING BANNER ────────────────────────────────────────────── {%- endcomment -%}
+<div class="klm-rating-banner">
+  <div class="container">
+    <div class="klm-rating-banner__inner">
+      <h2 class="klm-rating-banner__heading">Over {{ section.settings.customer_count | default: '10,000' }} Happy Customers</h2>
+      <div class="klm-rating-banner__stars">
+        {%- for i in (1..5) -%}
+          <svg class="klm-star klm-star--lg" viewBox="0 0 14 13" fill="currentColor" aria-hidden="true"><path d="M7 .5l1.76 3.56L13 4.75l-3 2.92.71 4.12L7 9.77l-3.71 2.02.71-4.12L1 4.75l4.24-.69L7 .5z"/></svg>
+        {%- endfor -%}
+      </div>
+      <p class="klm-rating-banner__sub">Rated 4.8/5 based on {{ section.settings.review_count | default: '4,210' }} verified reviews</p>
+    </div>
+  </div>
+</div>
+
+{%- comment -%} ── WHAT MAKES OUR MATTRESS GREAT ───────────────────────────── {%- endcomment -%}
+<section class="klm-features" id="klm-features">
+  <div class="container">
+    <h2 class="klm-section__heading">What Makes Our Mattress Great</h2>
+    <div class="klm-features__body">
+
+      {%- comment -%} Left: product image {%- endcomment -%}
+      <div class="klm-features__image">
+        {%- if product.featured_image -%}
+          <img
+            src="{{ product.featured_image | image_url: width: 700 }}"
+            alt="{{ product.title }}"
+            width="700" height="560"
+            loading="lazy"
+            class="klm-features__image-img">
+        {%- else -%}
+          <div class="klm-features__image-ph">
+            <svg width="64" height="48" viewBox="0 0 80 60" fill="none" aria-hidden="true"><rect x="4" y="8" width="72" height="44" rx="4" stroke="currentColor" stroke-width="2.5"/><circle cx="28" cy="28" r="8" stroke="currentColor" stroke-width="2"/><path d="M16 44l16-16 14 12 10-10 10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Upload a product image to display here</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Right: icon tabs + indicator + detail {%- endcomment -%}
+      <div class="klm-features__right">
+        <div class="klm-features__icon-row" id="klm-feat-icons" role="tablist">
+          {%- assign _feat_names = 'Air Vents,Hypoallergenic,Orthopaedic,Washable Cover,Pressure Relief,Temp Regulation,Motion Isolation,UK Quality' | split: ',' -%}
+          {%- for f in _feat_names -%}
+            <button class="klm-feat{% if forloop.first %} is-active{% endif %}" role="tab" data-feat="{{ forloop.index0 }}" type="button" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+              <div class="klm-feat__icon" aria-hidden="true">
+                {%- case forloop.index0 -%}
+                  {%- when 0 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 9c2.5 0 3.5 2.5 6 2.5S13.5 9 16 9s3.5 2.5 6 2.5M4 15c2.5 0 3.5 2.5 6 2.5S13.5 15 16 15s3.5 2.5 6 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  {%- when 1 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.8 5.5H19l-4.6 3.4 1.8 5.5L12 13l-4.2 3.4 1.8-5.5L5 7.5h5.2L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                  {%- when 2 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3c-1.5 4-5 6-5 10a5 5 0 0 0 10 0c0-4-3.5-6-5-10z" stroke="currentColor" stroke-width="1.5"/><path d="M9 17h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  {%- when 3 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4m0 4h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                  {%- when 4 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 11V8a6 6 0 0 1 12 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="15" r="1.5" fill="currentColor"/></svg>
+                  {%- when 5 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 0 0 9 9A9 9 0 0 1 12 21 9 9 0 0 1 3 12 9 9 0 0 0 12 3z" stroke="currentColor" stroke-width="1.5"/></svg>
+                  {%- when 6 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="9" width="20" height="8" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 9V6a5 5 0 0 1 10 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="13" r="1.5" fill="currentColor"/></svg>
+                  {%- when 7 -%}
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18M8 6V4m8 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                {%- endcase -%}
+              </div>
+              <span class="klm-feat__label">{{ f }}</span>
+            </button>
+          {%- endfor -%}
+        </div>
+
+        <div class="klm-features__track" aria-hidden="true">
+          <span class="klm-features__pip" id="klm-feat-pip"></span>
+        </div>
+
+        <div class="klm-features__detail">
+          <h3 class="klm-features__detail-title" id="klm-feat-title">Air Vents</h3>
+          <p class="klm-features__detail-body" id="klm-feat-body">Built-in ventilation channels draw heat and moisture away from the mattress core, keeping the sleeping surface fresh and breathable throughout the night.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 {%- comment -%} ── OVERVIEW ────────────────────────────────────────────────── {%- endcomment -%}
 <section class="klm-section klm-overview">
@@ -253,97 +332,166 @@
   </div>
 </section>
 
-{%- comment -%} ── WHAT MAKES OUR MATTRESS GREAT ───────────────────────────── {%- endcomment -%}
-<section class="klm-section klm-features">
+{%- comment -%} ── SLEEP TECHNOLOGY ─────────────────────────────────────────── {%- endcomment -%}
+<section class="klm-sleep-tech">
   <div class="container">
-    <h2 class="klm-section__heading">What Makes Our Mattress Great</h2>
-    <div class="klm-features__icons" id="klm-feat-icons" role="tablist">
-      {%- assign _feat_names = 'Air Vents,Pocket Springs,Cool Gel,Hypoallergenic,Motion Isolation,Orthopaedic,Washable Cover,UK Quality' | split: ',' -%}
-      {%- for f in _feat_names -%}
-        <button class="klm-feat{% if forloop.first %} is-active{% endif %}" role="tab" data-feat="{{ forloop.index0 }}" type="button" aria-label="{{ f }}">
-          <div class="klm-feat__circle">
-            {%- case forloop.index0 -%}
-              {%- when 0 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 8c2 0 3 2 5 2s3-2 5-2 3 2 5 2M4 13c2 0 3 2 5 2s3-2 5-2 3 2 5 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-              {%- when 1 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="8" width="18" height="7" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M5 8V5m4 3V4m4 4V5m4 3V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M5 15v3m4-3v2m4-2v3m4-3v2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              {%- when 2 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3C8 3 5 5.7 5 9c0 4 6 10 6 10s6-6 6-10c0-3.3-3-6-6-6zm0 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" stroke="currentColor" stroke-width="1.3"/></svg>
-              {%- when 3 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2l1.8 5.5H18l-4.6 3.4 1.8 5.5L11 13l-4.2 3.4 1.8-5.5L4 7.5h5.2L11 2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-              {%- when 4 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2" y="10" width="18" height="8" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 10V8a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="11" cy="14" r="1.5" fill="currentColor"/></svg>
-              {%- when 5 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3c-1 3-4 5-4 8a4 4 0 0 0 8 0c0-3-3-5-4-8z" stroke="currentColor" stroke-width="1.3"/><path d="M8 15h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              {%- when 6 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.3"/><path d="M8 11h6M11 8v6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              {%- when 7 -%}
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="5" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M8 5V3m6 2V3M3 9h16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            {%- endcase -%}
+    <div class="klm-sleep-tech__inner">
+      <div class="klm-sleep-tech__icon" aria-hidden="true">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M28 8a20 20 0 0 0 20 20A20 20 0 0 1 28 48 20 20 0 0 1 8 28 20 20 0 0 0 28 8z" stroke="currentColor" stroke-width="2"/><circle cx="38" cy="16" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="44" cy="22" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+      </div>
+      <h2 class="klm-sleep-tech__heading">Get Ready for Your Best Night's Sleep</h2>
+      <p class="klm-sleep-tech__body">Every Klawford mattress is engineered around one goal — helping you sleep longer, deeper, and more comfortably, every single night.</p>
+      <h3 class="klm-sleep-tech__sub">What Our Comfort System Delivers</h3>
+      <ul class="klm-sleep-tech__list">
+        <li>
+          <div class="klm-sleep-tech__bullet-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="7" width="16" height="6" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M4 7V5m3 2V4m3 3V5m3 2V4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4 13v2m3-2v1m3-1v2m3-2v1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
           </div>
-          <span class="klm-feat__label">{{ f }}</span>
-        </button>
-      {%- endfor -%}
-    </div>
-
-    <div class="klm-features__detail" id="klm-feat-detail">
-      <h3 class="klm-features__detail-title" id="klm-feat-title">Air Vents</h3>
-      <p class="klm-features__detail-body" id="klm-feat-body">Built-in ventilation channels draw heat and moisture away from the mattress core, keeping the sleeping surface fresh and breathable throughout the night.</p>
+          <span>Comfort layers are calibrated to cushion pressure points at your hips, shoulders, and lower back — so you wake up without stiffness, whatever position you sleep in.</span>
+        </li>
+        <li>
+          <div class="klm-sleep-tech__bullet-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 0 0 8 8A8 8 0 0 1 10 18 8 8 0 0 1 2 10 8 8 0 0 0 10 2z" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
+          <span>Temperature-regulating materials work through the night to keep you at the ideal sleep temperature — not too warm, not too cool, all night long.</span>
+        </li>
+        <li>
+          <div class="klm-sleep-tech__bullet-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M4 6l4 4-4 4M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span>Motion isolation ensures that movement on one side of the mattress stays there — you sleep undisturbed, even if your partner shifts or gets up during the night.</span>
+        </li>
+      </ul>
     </div>
   </div>
 </section>
 
-{%- comment -%} ── FINANCE SECTION ──────────────────────────────────────────── {%- endcomment -%}
-<section class="klm-section klm-finance">
+{%- comment -%} ── MATTRESS LAYERS ──────────────────────────────────────────── {%- endcomment -%}
+<section class="klm-section klm-layers">
   <div class="container">
-    <div class="klm-finance__inner">
-      <div class="klm-finance__card">
-        <div class="klm-finance__logo">Divide<em>Buy</em></div>
-        <p class="klm-finance__headline">0% Interest-Free Instalments</p>
-        <ul class="klm-finance__list">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M4 8h8M4 11h5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-            Pay in monthly instalments over up to 12 months
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            Zero interest rate — every purchase is entirely interest-free
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M3 5h10M3 11h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-            No early repayment charges — pay it off whenever suits you
-          </li>
-        </ul>
+    <h2 class="klm-section__heading">What's Inside Your Mattress</h2>
+    <p class="klm-layers__intro">Quality materials, layered for comfort, support and durability — every Klawford mattress is built to last.</p>
+    <div class="klm-layers__diagram">
+      <div class="klm-layer">
+        <div class="klm-layer__num">1</div>
+        <div class="klm-layer__bar klm-layer__bar--thin klm-layer__bar--c1"></div>
+        <div class="klm-layer__lbl">Breathable, Anti-Allergy Sleep Cover</div>
+      </div>
+      <div class="klm-layer">
+        <div class="klm-layer__num">2</div>
+        <div class="klm-layer__bar klm-layer__bar--med klm-layer__bar--c2"></div>
+        <div class="klm-layer__lbl">Comfort Foam Layer</div>
+      </div>
+      <div class="klm-layer">
+        <div class="klm-layer__num">3</div>
+        <div class="klm-layer__bar klm-layer__bar--med klm-layer__bar--c3"></div>
+        <div class="klm-layer__lbl">Transition & Support Layer</div>
+      </div>
+      <div class="klm-layer">
+        <div class="klm-layer__num">4</div>
+        <div class="klm-layer__bar klm-layer__bar--thick klm-layer__bar--c4"></div>
+        <div class="klm-layer__lbl">Spring or Foam Support Core</div>
+      </div>
+      <div class="klm-layer">
+        <div class="klm-layer__num">5</div>
+        <div class="klm-layer__bar klm-layer__bar--med klm-layer__bar--c3"></div>
+        <div class="klm-layer__lbl">Foundation Foam Layer</div>
+      </div>
+      <div class="klm-layer">
+        <div class="klm-layer__num">6</div>
+        <div class="klm-layer__bar klm-layer__bar--thin klm-layer__bar--c5"></div>
+        <div class="klm-layer__lbl">Non-Slip Base</div>
+      </div>
+      <div class="klm-layer klm-layer--assembled">
+        <div class="klm-layer__num" aria-hidden="true"></div>
+        <div class="klm-layer__bar klm-layer__bar--assembled"></div>
+        <div class="klm-layer__lbl"></div>
       </div>
     </div>
   </div>
 </section>
 
+{%- comment -%} ── FINANCE SECTION ──────────────────────────────────────────── {%- endcomment -%}
+<div class="klm-finance">
+  <div class="klm-finance__bg-half">
+    <div class="klm-finance__content-side">
+      <div class="klm-finance__card">
+        <p class="klm-finance__intro">Shop Now, Pay Later with</p>
+        <div class="klm-finance__logo">Divide<em>Buy</em></div>
+        <div class="klm-finance__banner">0% INTEREST-FREE<br>INSTALMENTS</div>
+        <ul class="klm-finance__list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 10h10M5 13h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <div><strong>Pay In Monthly Instalments</strong><span>Spread the cost of your order for up to 12 months.</span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><strong>Zero Interest Rate</strong><span>Every purchase is entirely interest-free, no matter the price or term length.</span></div>
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M5 8l5-5 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><strong>No Early Repayment Charges</strong><span>The recurring card payments are collected monthly until your balance is paid.</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 {%- comment -%} ── SERVICE SECTION + SECOND ATC ─────────────────────────────── {%- endcomment -%}
-<section class="klm-section klm-service">
+<section class="klm-service">
   <div class="container">
-    <h2 class="klm-section__heading">We Go the Extra Mile</h2>
+    <h2 class="klm-section__heading">Sleep Specialists At Your Service</h2>
     <div class="klm-service__inner">
+      <div class="klm-service__image">
+        {%- if product.images.size > 1 -%}
+          <img
+            src="{{ product.images[1] | image_url: width: 600 }}"
+            alt="{{ product.images[1].alt | escape | default: product.title }}"
+            width="600" height="480"
+            loading="lazy"
+            class="klm-service__image-img">
+        {%- elsif product.featured_image -%}
+          <img
+            src="{{ product.featured_image | image_url: width: 600 }}"
+            alt="{{ product.title }}"
+            width="600" height="480"
+            loading="lazy"
+            class="klm-service__image-img">
+        {%- else -%}
+          <div class="klm-service__image-ph">
+            <svg width="64" height="48" viewBox="0 0 80 60" fill="none" aria-hidden="true"><rect x="4" y="8" width="72" height="44" rx="4" stroke="currentColor" stroke-width="2.5"/><circle cx="28" cy="28" r="8" stroke="currentColor" stroke-width="2"/><path d="M16 44l16-16 14 12 10-10 10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Upload product images to display here</span>
+          </div>
+        {%- endif -%}
+      </div>
+
       <div class="klm-service__points">
         <div class="klm-service__point">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 18h18M3 18l3-8h14l3 8M9 18v-4m6 4v-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6" cy="20" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="18" cy="20" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
+          <div class="klm-service__point-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 20h20M4 20l3-8h14l3 8M10 20v-3m8 3v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="22" r="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="21" cy="22" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
+          </div>
           <div>
             <strong>Delivered to Your Room</strong>
-            <p>We deliver straight to the room of your choice. Choose your preferred delivery date at checkout.</p>
+            <p>We deliver with a 2-man team straight to the room of your choice. Choose your preferred delivery date at checkout.</p>
           </div>
         </div>
         <div class="klm-service__point">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="8" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M7 8V6a5 5 0 0 1 10 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/><circle cx="12" cy="14" r="2" stroke="currentColor" stroke-width="1.4"/></svg>
+          <div class="klm-service__point-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="10" width="22" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 10V8a6 6 0 0 1 12 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="14" cy="17" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+          </div>
           <div>
             <strong>Hassle-Free Returns</strong>
-            <p>Not right for you? Contact us within your 60-night trial window and we will arrange a return.</p>
+            <p>Not right for you? Contact us within your 60-night trial window and we will arrange a collection and full refund.</p>
           </div>
         </div>
         <div class="klm-service__point">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M22 16.9v2.6a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.5 5.2 2 2 0 0 1 5.5 3h2.6a2 2 0 0 1 2 1.7c.13 1 .37 1.98.7 2.9a2 2 0 0 1-.45 2.1L9.4 10.7a16 16 0 0 0 8.9 8.9l1-1.5a2 2 0 0 1 2.1-.45c.92.33 1.9.57 2.9.7a2 2 0 0 1 1.7 2z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="klm-service__point-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M25 19.4v3a2 2 0 0 1-2.2 2 23 23 0 0 1-9.8-3.5 22.6 22.6 0 0 1-6.8-6.8 23 23 0 0 1-3.5-9.9A2 2 0 0 1 4.6 2h3a2 2 0 0 1 2 1.7c.13 1.07.37 2.13.72 3.16a2 2 0 0 1-.45 2.1l-1.27 1.28a16 16 0 0 0 5.84 5.84l1.28-1.28a2 2 0 0 1 2.1-.45c1.03.35 2.09.59 3.16.72A2 2 0 0 1 25 19.4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
           <div>
-            <strong>We're Just a Call Away</strong>
-            <p>Got questions? Our team are ready to help. Call or email us and we will get back to you same day.</p>
+            <strong>We're Just a Phone Call Away</strong>
+            <p>Got questions or need recommendations? Call us at 01924 926117 and we'll be happy to help you find the right mattress.</p>
           </div>
         </div>
       </div>
@@ -366,41 +514,45 @@
 </section>
 
 {%- comment -%} ── FAQ ─────────────────────────────────────────────────────── {%- endcomment -%}
-<section class="klm-section klm-faq" id="klm-faq">
+<section class="klm-faq" id="klm-faq">
   <div class="container">
     <h2 class="klm-section__heading">Frequently Asked Questions</h2>
     <div class="klm-faq__list">
       <details class="klm-faq__item">
+        <summary class="klm-faq__q">Do your products conform to UK fire safety regulations?</summary>
+        <div class="klm-faq__a">Yes — all Klawford mattresses meet UK fire safety regulations under The Furniture and Furnishings (Fire Safety) Regulations 1988 (amended). You can sleep safely and confidently in every mattress we sell.</div>
+      </details>
+      <details class="klm-faq__item">
         <summary class="klm-faq__q">What sizes are available?</summary>
-        <div class="klm-faq__a">Our mattresses are available in Single (3ft), Small Double (4ft), Double (4ft 6), King (5ft), and Super King (6ft) — all standard UK sizes. Select your size using the size grid on this page.</div>
+        <div class="klm-faq__a">Our mattresses are available in Single (3ft), Small Double (4ft), Double (4ft 6), King (5ft), and Super King (6ft) — all standard UK sizes. Select your size using the size grid at the top of this page.</div>
       </details>
       <details class="klm-faq__item">
-        <summary class="klm-faq__q">Is delivery really free?</summary>
-        <div class="klm-faq__a">Yes — free delivery is included on every Klawford mattress, with no hidden charges added at checkout. We deliver direct to the room of your choice and you can select a date that suits you.</div>
+        <summary class="klm-faq__q">How long does delivery take once I have placed my order?</summary>
+        <div class="klm-faq__a">We typically deliver within 3–7 working days. You will be contacted to choose a delivery date that suits you, and our 2-man team will bring the mattress straight to your room of choice.</div>
       </details>
       <details class="klm-faq__item">
-        <summary class="klm-faq__q">What is the 60-night risk-free trial?</summary>
-        <div class="klm-faq__a">We give you 60 nights to sleep on your new mattress before making your final decision. If it is not right for you within that period, contact our team and we will arrange a return and full refund — no questions asked.</div>
+        <summary class="klm-faq__q">What is a 60-night risk-free trial, and what does this mean?</summary>
+        <div class="klm-faq__a">We give you 60 nights to sleep on your new mattress before making your final decision. If it is not right for you within that period, contact our team and we will arrange a return and a full refund — no questions asked.</div>
       </details>
       <details class="klm-faq__item">
-        <summary class="klm-faq__q">Is the mattress vacuum-packed for delivery?</summary>
-        <div class="klm-faq__a">Yes — your mattress is vacuum-rolled and compressed for easy handling so you can get it upstairs without difficulty. Simply unroll, remove the packaging, and it will expand to full size within a few hours.</div>
+        <summary class="klm-faq__q">Can I place my order over the phone?</summary>
+        <div class="klm-faq__a">Yes — call us on 01924 926117 and one of our team will be happy to take your order, help you choose the right size and firmness, and arrange delivery at a time that works for you.</div>
       </details>
       <details class="klm-faq__item">
-        <summary class="klm-faq__q">Are your mattresses suitable for allergy sufferers?</summary>
-        <div class="klm-faq__a">Yes — all Klawford mattresses use hypoallergenic fillings and covers that resist dust mites and common allergens, making them an ideal choice for anyone with allergies, asthma, or sensitive skin.</div>
+        <summary class="klm-faq__q">What does the 5-year warranty cover?</summary>
+        <div class="klm-faq__a">The 5-year warranty covers manufacturing defects and structural issues — including sagging, spring failure, and cover defects that arise from normal use. If anything goes wrong, contact us and we will repair or replace it at no cost to you.</div>
       </details>
       <details class="klm-faq__item">
-        <summary class="klm-faq__q">Can I pay in instalments?</summary>
-        <div class="klm-faq__a">Yes — we offer 0% interest-free financing through DivideBuy, letting you spread the cost over up to 12 months with no extra charges. Klarna is also available for pay later or 3-payment options.</div>
+        <summary class="klm-faq__q">Can I pay monthly or through financing options?</summary>
+        <div class="klm-faq__a">Yes — we offer 0% interest-free financing through DivideBuy, letting you spread the cost over up to 12 months with no extra charges. Klarna is also available for pay-later or 3-payment options at checkout.</div>
       </details>
       <details class="klm-faq__item">
         <summary class="klm-faq__q">Is the cover removable and washable?</summary>
-        <div class="klm-faq__a">Our memory foam mattresses come with a removable zip cover that is machine washable at 40°C. This makes it easy to keep your sleep environment clean and fresh without having to flip or move the whole mattress.</div>
+        <div class="klm-faq__a">Our mattresses come with a removable zip cover that is machine washable. This makes it easy to keep your sleep environment clean and fresh without having to move the whole mattress.</div>
       </details>
       <details class="klm-faq__item">
-        <summary class="klm-faq__q">What warranty comes with the mattress?</summary>
-        <div class="klm-faq__a">Every Klawford mattress comes with a 5-year warranty covering manufacturing defects and structural issues. If anything goes wrong as a result of a manufacturing fault, we will repair or replace it at no cost to you.</div>
+        <summary class="klm-faq__q">Where are your products manufactured?</summary>
+        <div class="klm-faq__a">Our mattresses are built using quality UK-sourced materials to ensure consistent comfort, durability, and safety standards in every product we sell.</div>
       </details>
     </div>
   </div>
@@ -425,11 +577,9 @@
       var compare = parseInt(btn.dataset.compare, 10);
       var name    = btn.dataset.size;
 
-      /* Update size label */
       var nameEl = document.getElementById('klm-size-name');
       if (nameEl) nameEl.textContent = name;
 
-      /* Update price display */
       var priceEl   = document.getElementById('klm-price');
       var compareEl = document.getElementById('klm-compare');
       var pctEl     = document.getElementById('klm-pct');
@@ -447,18 +597,13 @@
         }
       }
 
-      /* Update form variant */
       var inp = document.getElementById('klm-variant-id');
       if (inp) inp.value = vid;
 
-      /* Update ATC buttons */
       var atcBtns = document.querySelectorAll('.klm-atc');
       var variant = variants.find(function(v){ return String(v.id) === String(vid); });
       var avail = variant ? variant.available : true;
-      atcBtns.forEach(function(b){
-        b.disabled = !avail;
-        b.dataset.variantId = vid;
-      });
+      atcBtns.forEach(function(b){ b.disabled = !avail; });
       var labelEl = document.getElementById('klm-atc-label');
       if (labelEl) labelEl.textContent = avail ? 'Add to Basket' : 'Sold Out';
     });
@@ -484,34 +629,59 @@
     });
   }
 
-  /* Arrow scroll */
   var prevBtn = document.getElementById('klm-thumb-prev');
   var nextBtn = document.getElementById('klm-thumb-next');
   if (prevBtn && thumbsEl) prevBtn.addEventListener('click', function(){ thumbsEl.scrollBy({ left: -200, behavior: 'smooth' }); });
   if (nextBtn && thumbsEl) nextBtn.addEventListener('click', function(){ thumbsEl.scrollBy({ left: 200, behavior: 'smooth' }); });
 
-  /* ── Features icon selector ──────────────────────────────────── */
+  /* ── Features icon selector + indicator pip ─────────────────── */
   var featData = [
     { name: 'Air Vents', body: 'Built-in ventilation channels draw heat and moisture away from the mattress core, keeping the sleeping surface fresh and breathable throughout the night.' },
-    { name: 'Pocket Springs', body: 'Individually nested pocket springs respond independently to your body\'s weight and movement, giving precise targeted support across your back, hips, and shoulders.' },
-    { name: 'Cool Gel', body: 'Our gel-infused memory foam layer actively draws warmth away from the surface so you stay cool and comfortable from the moment you lie down.' },
-    { name: 'Hypoallergenic', body: 'All fillings and covers are hypoallergenic and dust mite resistant — the ideal choice for allergy sufferers, asthma, and sensitive skin.' },
-    { name: 'Motion Isolation', body: 'Each spring or foam zone responds only to the pressure applied directly to it, so your partner\'s movement at night will not carry across to your side.' },
-    { name: 'Orthopaedic', body: 'Engineered to keep your spine in neutral alignment and relieve pressure on hips, shoulders, and lower back — so you wake up feeling genuinely rested.' },
-    { name: 'Washable Cover', body: 'The removable zip cover is machine washable at 40°C, making it easy to keep your sleep environment clean and fresh without moving the entire mattress.' },
-    { name: 'UK Quality', body: 'Every material in our mattresses is selected for quality, durability, and long-lasting performance — built to a standard, not a price point.' }
+    { name: 'Hypoallergenic', body: 'All fillings and covers are hypoallergenic and dust mite resistant — the ideal choice for allergy sufferers, those with asthma, or anyone with sensitive skin.' },
+    { name: 'Orthopaedic Support', body: 'Engineered to keep your spine in neutral alignment and relieve pressure on hips, shoulders, and lower back — so you wake up feeling genuinely rested, not stiff.' },
+    { name: 'Washable Cover', body: 'The removable zip cover is machine washable, making it easy to keep your sleep environment clean and fresh without having to move the entire mattress.' },
+    { name: 'Pressure Relief', body: 'Targeted comfort zones respond to the specific weight of your body, cushioning pressure points at the hips and shoulders so you sleep through the night without discomfort.' },
+    { name: 'Temperature Regulation', body: 'Heat and moisture-wicking materials draw warmth away from the sleep surface through the night, keeping you at the ideal temperature so you stay comfortable from dusk to dawn.' },
+    { name: 'Motion Isolation', body: 'Each zone of the mattress responds only to the pressure directly applied to it, so your partner\'s movement at night will not carry across to your side.' },
+    { name: 'UK Quality', body: 'Every material is selected for quality, durability, and long-lasting performance — built to a standard, not a price point, so your mattress keeps delivering night after night.' }
   ];
 
   var titleEl = document.getElementById('klm-feat-title');
   var bodyEl  = document.getElementById('klm-feat-body');
+  var pipEl   = document.getElementById('klm-feat-pip');
+
+  function movePip(activeBtn) {
+    if (!pipEl) return;
+    var track = document.querySelector('.klm-features__track');
+    if (!track) return;
+    var trackRect = track.getBoundingClientRect();
+    var btnRect   = activeBtn.getBoundingClientRect();
+    var center    = btnRect.left + btnRect.width / 2 - trackRect.left;
+    pipEl.style.left = center + 'px';
+  }
 
   document.querySelectorAll('.klm-feat').forEach(function(btn, i){
     btn.addEventListener('click', function(){
-      document.querySelectorAll('.klm-feat').forEach(function(b){ b.classList.remove('is-active'); });
+      document.querySelectorAll('.klm-feat').forEach(function(b){
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
       if (titleEl && featData[i]) titleEl.textContent = featData[i].name;
       if (bodyEl  && featData[i]) bodyEl.textContent  = featData[i].body;
+      movePip(btn);
     });
+  });
+
+  /* Set initial pip position */
+  var firstFeat = document.querySelector('.klm-feat.is-active');
+  if (firstFeat) {
+    setTimeout(function(){ movePip(firstFeat); }, 50);
+  }
+  window.addEventListener('resize', function(){
+    var activeFeat = document.querySelector('.klm-feat.is-active');
+    if (activeFeat) movePip(activeFeat);
   });
 
   /* ── FAQ accordion: close others when one opens ──────────────── */
@@ -532,9 +702,10 @@
 {
   "name": "Mattress Product",
   "settings": [
-    { "type": "text", "id": "review_count", "label": "Review count (display only)", "default": "4,210" },
-    { "type": "text", "id": "dividebuy_text", "label": "DivideBuy line", "default": "Spread the cost interest-free over 12 months, 0% credit." },
-    { "type": "text", "id": "klarna_text", "label": "Klarna line", "default": "Pay later in 30 days or split into 3 interest-free payments." }
+    { "type": "text", "id": "review_count", "label": "Review count display", "default": "4,210" },
+    { "type": "text", "id": "customer_count", "label": "Happy customers count", "default": "10,000+" },
+    { "type": "text", "id": "dividebuy_text", "label": "DivideBuy info line", "default": "Spread the cost interest-free over 12 months, 0% credit." },
+    { "type": "text", "id": "klarna_text", "label": "Klarna info line", "default": "Pay later in 30 days or split into 3 interest-free payments." }
   ]
 }
 {% endschema %}
