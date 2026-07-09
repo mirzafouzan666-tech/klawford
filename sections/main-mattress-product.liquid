@@ -149,21 +149,35 @@
                         {%- endif -%}
                       {%- endfor -%}
                       {%- assign _price_diff = _sv_price | minus: _selected_price -%}
+                      {%- assign _vlc = value | downcase -%}
+                      {%- case _vlc -%}
+                        {%- when 'small single 2ft6' -%}{%- assign _dim_w = 75 -%}{%- assign _dim_l = 190 -%}
+                        {%- when 'single 3ft' -%}{%- assign _dim_w = 90 -%}{%- assign _dim_l = 190 -%}
+                        {%- when 'small double 4ft' -%}{%- assign _dim_w = 120 -%}{%- assign _dim_l = 190 -%}
+                        {%- when 'double 4ft6' -%}{%- assign _dim_w = 135 -%}{%- assign _dim_l = 190 -%}
+                        {%- when 'king 5ft' -%}{%- assign _dim_w = 150 -%}{%- assign _dim_l = 200 -%}
+                        {%- when 'super king 6ft' -%}{%- assign _dim_w = 180 -%}{%- assign _dim_l = 200 -%}
+                        {%- else -%}{%- assign _dim_w = '' -%}{%- assign _dim_l = '' -%}
+                      {%- endcase -%}
                       <button type="button"
                         class="klm-size-btn{% if option.selected_value == value %} is-active{% endif %}{% unless _sv_avail %} is-soldout{% endunless %}"
                         data-size="{{ value | escape }}"
                         data-vid="{{ _sv_id }}"
                         data-price="{{ _sv_price }}"
                         data-compare="{{ _sv_compare }}"
+                        data-width="{{ _dim_w }}"
+                        data-length="{{ _dim_l }}"
                         aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">
                         <div class="klm-size-btn__icon" aria-hidden="true">
-                          <svg viewBox="0 0 56 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="1" width="54" height="5" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-                            <rect x="1" y="6" width="54" height="8" stroke="currentColor" stroke-width="1"/>
-                            <path d="M14 6v8M28 6v8M42 6v8" stroke="currentColor" stroke-width="0.7"/>
-                            <rect x="1" y="14" width="54" height="13" stroke="currentColor" stroke-width="1"/>
-                            <path d="M9 14v13M19 14v13M28 14v13M37 14v13M47 14v13" stroke="currentColor" stroke-width="0.6" stroke-dasharray="1.5 1.5"/>
-                            <rect x="1" y="27" width="54" height="6" rx="1" stroke="currentColor" stroke-width="1"/>
+                          <svg viewBox="0 0 60 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="56" height="40" rx="4" stroke="currentColor" stroke-width="1.6"/>
+                            <rect x="2" y="2" width="56" height="11" rx="4" stroke="currentColor" stroke-width="1" fill="currentColor" fill-opacity=".06"/>
+                            <circle cx="15" cy="24" r="2.5" fill="currentColor" opacity=".55"/>
+                            <circle cx="30" cy="24" r="2.5" fill="currentColor" opacity=".55"/>
+                            <circle cx="45" cy="24" r="2.5" fill="currentColor" opacity=".55"/>
+                            <circle cx="15" cy="35" r="2.5" fill="currentColor" opacity=".55"/>
+                            <circle cx="30" cy="35" r="2.5" fill="currentColor" opacity=".55"/>
+                            <circle cx="45" cy="35" r="2.5" fill="currentColor" opacity=".55"/>
                           </svg>
                         </div>
                         <span class="klm-size-btn__name">{{ value }}</span>
@@ -180,6 +194,22 @@
                       </button>
                     {%- endfor -%}
                   </div>
+                  {%- assign _sel_vlc = option.selected_value | downcase -%}
+                  {%- case _sel_vlc -%}
+                    {%- when 'small single 2ft6' -%}{%- assign _init_w = 75 -%}{%- assign _init_l = 190 -%}
+                    {%- when 'single 3ft' -%}{%- assign _init_w = 90 -%}{%- assign _init_l = 190 -%}
+                    {%- when 'small double 4ft' -%}{%- assign _init_w = 120 -%}{%- assign _init_l = 190 -%}
+                    {%- when 'double 4ft6' -%}{%- assign _init_w = 135 -%}{%- assign _init_l = 190 -%}
+                    {%- when 'king 5ft' -%}{%- assign _init_w = 150 -%}{%- assign _init_l = 200 -%}
+                    {%- when 'super king 6ft' -%}{%- assign _init_w = 180 -%}{%- assign _init_l = 200 -%}
+                    {%- else -%}{%- assign _init_w = '' -%}{%- assign _init_l = '' -%}
+                  {%- endcase -%}
+                  {%- if _init_w != '' -%}
+                  <div class="klm-size-dims" id="klm-size-dims">
+                    <span>Width: {{ _init_w }}cm</span>
+                    <span>Length: {{ _init_l }}cm</span>
+                  </div>
+                  {%- endif -%}
                 </div>
               </div>
             {%- endif -%}
@@ -638,6 +668,19 @@
 
       var nameEl = document.getElementById('klm-size-name');
       if (nameEl) nameEl.textContent = name;
+
+      /* Update dimensions display */
+      var dimsEl = document.getElementById('klm-size-dims');
+      if (dimsEl) {
+        var dw = btn.dataset.width;
+        var dl = btn.dataset.length;
+        if (dw && dl) {
+          dimsEl.innerHTML = '<span>Width: ' + dw + 'cm</span><span>Length: ' + dl + 'cm</span>';
+          dimsEl.style.display = '';
+        } else {
+          dimsEl.style.display = 'none';
+        }
+      }
 
       /* Update header price */
       var priceEl   = document.getElementById('klm-price');
