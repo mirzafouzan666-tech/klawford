@@ -241,6 +241,10 @@
         {%- endfor -%}
 
         {%- comment -%} 2. SIZE filter {%- endcomment -%}
+        {%- assign is_mattress_col = false -%}
+        {%- if collection.handle == 'mattresses' or collection.handle contains 'mattress' -%}
+          {%- assign is_mattress_col = true -%}
+        {%- endif -%}
         <div class="kl-fg is-open" data-fg>
           <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
             <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
@@ -250,7 +254,11 @@
           </button>
           <div class="kl-fg__body">
             <div class="kl-swatch-list">
-              {%- assign bed_sizes = 'Small Single 2FT6,Single 3FT,Small Double 4FT,Double 4FT6,King 5FT,Super King 6FT' | split: ',' -%}
+              {%- if is_mattress_col -%}
+                {%- assign bed_sizes = 'Small Single 2FT6,Single 3FT,Small Double 4FT,Double 4FT6,King 5FT,Super King 6FT' | split: ',' -%}
+              {%- else -%}
+                {%- assign bed_sizes = 'Small Single 2FT6,Single 3FT,Small Double 4FT,Double 4FT6,King 5FT,Super King 6FT' | split: ',' -%}
+              {%- endif -%}
               {%- for size in bed_sizes -%}
                 {%- assign _sl = size | downcase -%}
                 {%- assign size_active = false -%}
@@ -267,40 +275,63 @@
           </div>
         </div>
 
-        {%- comment -%} 3. COLOUR filter — 5 fixed colours {%- endcomment -%}
-        {%- assign colour_param = 'filter.p.v.option.colour' -%}
-        {%- for filter in collection.filters -%}
-          {%- assign fl_lower = filter.label | downcase -%}
-          {%- if fl_lower == 'color' or fl_lower == 'colour' -%}
-            {%- if filter.values.size > 0 -%}{%- assign colour_param = filter.values[0].param_name -%}{%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
-        <div class="kl-fg is-open" data-fg>
-          <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
-            <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
-              <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>Colour</span>
-          </button>
-          <div class="kl-fg__body">
-            <div class="kl-swatch-list">
-              {%- assign static_colours = 'Cream,Red,Grey,Black,Brown' | split: ',' -%}
-              {%- for colour in static_colours -%}
-                {%- assign _cl = colour | downcase -%}
-                {%- assign col_active = false -%}
-                {%- if kl_active_colour == _cl -%}{%- assign col_active = true -%}{%- endif -%}
-                <label class="kl-swatch-item">
-                  <input type="checkbox"
-                    class="kl-filter-colour"
-                    value="{{ colour | downcase }}"
-                    {% if col_active %}checked{% endif %}>
-                  <span class="kl-swatch-dot{% if col_active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: colour -%};"></span>
-                  <span class="kl-swatch-name">{{ colour }}</span>
-                </label>
-              {%- endfor -%}
+        {%- if is_mattress_col -%}
+          {%- comment -%} 3. FIRMNESS filter — mattress collections only {%- endcomment -%}
+          <div class="kl-fg is-open" data-fg>
+            <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+              <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Firmness</span>
+            </button>
+            <div class="kl-fg__body">
+              <div class="kl-swatch-list">
+                {%- assign firmness_opts = 'Medium Firm,Firm,Medium,Extra Firm,Soft' | split: ',' -%}
+                {%- for firm in firmness_opts -%}
+                  <label class="kl-swatch-item">
+                    <input type="checkbox" class="kl-filter-firmness" value="{{ firm | downcase }}">
+                    <span class="kl-swatch-name">{{ firm }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
             </div>
           </div>
-        </div>
+        {%- else -%}
+          {%- comment -%} 3. COLOUR filter — non-mattress collections {%- endcomment -%}
+          {%- assign colour_param = 'filter.p.v.option.colour' -%}
+          {%- for filter in collection.filters -%}
+            {%- assign fl_lower = filter.label | downcase -%}
+            {%- if fl_lower == 'color' or fl_lower == 'colour' -%}
+              {%- if filter.values.size > 0 -%}{%- assign colour_param = filter.values[0].param_name -%}{%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+          <div class="kl-fg is-open" data-fg>
+            <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+              <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Colour</span>
+            </button>
+            <div class="kl-fg__body">
+              <div class="kl-swatch-list">
+                {%- assign static_colours = 'Cream,Red,Grey,Black,Brown' | split: ',' -%}
+                {%- for colour in static_colours -%}
+                  {%- assign _cl = colour | downcase -%}
+                  {%- assign col_active = false -%}
+                  {%- if kl_active_colour == _cl -%}{%- assign col_active = true -%}{%- endif -%}
+                  <label class="kl-swatch-item">
+                    <input type="checkbox"
+                      class="kl-filter-colour"
+                      value="{{ colour | downcase }}"
+                      {% if col_active %}checked{% endif %}>
+                    <span class="kl-swatch-dot{% if col_active %} is-checked{% endif %}" style="background:{%- render 'swatch-color', name: colour -%};"></span>
+                    <span class="kl-swatch-name">{{ colour }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
 
         <form id="kl-form-sidebar" method="get" action="{{ collection.url }}">
           <input type="hidden" name="sort_by" value="{{ collection.sort_by }}">
@@ -646,9 +677,10 @@
 
   /* ---- Client-side colour + size filter + image swap -------------- */
   (function () {
-    var activeColours = [];
-    var activeSizes   = [];
-    var grid          = document.querySelector('.kl-grid');
+    var activeColours   = [];
+    var activeSizes     = [];
+    var activeFirmness  = [];
+    var grid            = document.querySelector('.kl-grid');
     var noResults     = document.querySelector('.kl-no-results');
 
     function imgForColour(card, colour) {
@@ -712,13 +744,17 @@
       var visible = 0;
       cards.forEach(function (card) {
         var opts = card.dataset.opts || '';
+        var tags = card.dataset.tags || '';
         var colourOk = activeColours.length === 0 || activeColours.some(function (c) {
           return opts.indexOf('|' + c + '|') !== -1;
         });
         var sizeOk = activeSizes.length === 0 || activeSizes.some(function (s) {
           return opts.indexOf('|' + s + '|') !== -1;
         });
-        var show = colourOk && sizeOk;
+        var firmnessOk = activeFirmness.length === 0 || activeFirmness.some(function (f) {
+          return tags.indexOf('|' + f + '|') !== -1;
+        });
+        var show = colourOk && sizeOk && firmnessOk;
         card.style.display = show ? '' : 'none';
         if (show) {
           visible++;
@@ -754,6 +790,19 @@
           if (activeSizes.indexOf(v) === -1) activeSizes.push(v);
         } else {
           activeSizes = activeSizes.filter(function (s) { return s !== v; });
+        }
+        applyFilters();
+      });
+    });
+
+    /* Firmness checkboxes */
+    document.querySelectorAll('.kl-filter-firmness').forEach(function (cb) {
+      cb.addEventListener('change', function () {
+        var v = this.value;
+        if (this.checked) {
+          if (activeFirmness.indexOf(v) === -1) activeFirmness.push(v);
+        } else {
+          activeFirmness = activeFirmness.filter(function (f) { return f !== v; });
         }
         applyFilters();
       });

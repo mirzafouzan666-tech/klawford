@@ -99,9 +99,11 @@
   {%- endif -%}
 {%- endfor -%}
 
+{%- assign _card_tags = product.tags | join: '|' | downcase -%}
 <article class="product-card" itemscope itemtype="https://schema.org/Product"
   data-opts="{{ _card_opts }}"
   data-colours="{{ _card_colours }}"
+  data-tags="|{{ _card_tags }}|"
   data-product-id="{{ product.id }}">
 
   {%- comment -%} ---- IMAGE + OVERLAY AREA ---------------------------------- {%- endcomment -%}
