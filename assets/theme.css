@@ -3795,3 +3795,166 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   font-weight: 700;
   color: #1A8A4A;
 }
+
+/* ============================================================
+   MATTRESS PRODUCT PAGE  (klm- prefix)
+   ============================================================ */
+
+/* breadcrumb */
+.klm-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--clr-gray-dusty); padding: 16px 0 12px; flex-wrap: wrap; }
+.klm-breadcrumb a { color: var(--clr-gray-dusty); text-decoration: none; }
+.klm-breadcrumb a:hover { color: var(--clr-secondary); }
+.klm-breadcrumb svg { flex-shrink: 0; }
+
+/* two-col top layout */
+.klm-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 0 0 48px; align-items: start; }
+
+/* ── Gallery ──────────────────────────────── */
+.klm-gallery__main { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #f5f3f1; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+.klm-gallery__main-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.klm-gallery__placeholder { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 40px; color: var(--clr-ash); text-align: center; }
+.klm-gallery__placeholder p { font-size: 13px; color: var(--clr-gray-dusty); max-width: 200px; }
+.klm-gallery__badge { position: absolute; top: 14px; left: 14px; background: #1A8A4A; color: #fff; font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; }
+
+/* thumbnails */
+.klm-gallery__thumb-wrap { display: flex; align-items: center; gap: 6px; margin-top: 10px; }
+.klm-gallery__thumbs { display: flex; gap: 8px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; flex: 1; }
+.klm-gallery__thumbs::-webkit-scrollbar { display: none; }
+.klm-gallery__thumb { flex-shrink: 0; width: 72px; height: 72px; border: 2px solid var(--clr-ash); border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color .15s; background: #f5f3f1; padding: 0; }
+.klm-gallery__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.klm-gallery__thumb.is-active, .klm-gallery__thumb:hover { border-color: var(--clr-secondary); }
+.klm-gallery__arrow { width: 30px; height: 30px; border: 1px solid var(--clr-ash); border-radius: 50%; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--clr-text); transition: border-color .15s; }
+.klm-gallery__arrow:hover { border-color: var(--clr-secondary); color: var(--clr-secondary); }
+/* empty thumbnail placeholders */
+.klm-gallery__thumb-empty { display: flex; gap: 8px; margin-top: 10px; }
+.klm-gallery__thumb-ph { width: 72px; height: 72px; border: 2px dashed var(--clr-ash); border-radius: 8px; background: #f5f3f1; display: flex; align-items: center; justify-content: center; color: var(--clr-ash); }
+
+/* ── Product Info ─────────────────────────── */
+.klm-info { display: flex; flex-direction: column; gap: 0; }
+
+/* Stars */
+.klm-info__rating { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.klm-stars { display: flex; gap: 2px; }
+.klm-star { width: 14px; height: 14px; color: #F4A200; }
+.klm-info__review-link { font-size: 13px; color: var(--clr-gray-dusty); text-decoration: none; }
+.klm-info__review-link:hover { color: var(--clr-secondary); text-decoration: underline; }
+
+/* Title */
+.klm-info__title { font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 700; line-height: 1.25; margin: 0 0 12px; color: var(--clr-text); }
+
+/* Price */
+.klm-info__price-row { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.klm-info__price { font-size: 2rem; font-weight: 800; color: var(--clr-secondary); line-height: 1; }
+.klm-info__compare { font-size: 1rem; color: var(--clr-gray-dusty); text-decoration: line-through; font-weight: 400; }
+.klm-info__pct { background: var(--clr-secondary); color: #fff; font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 20px; }
+
+/* ── Size Selector ──────────────────────── */
+.klm-size-wrap { margin-bottom: 20px; }
+.klm-size-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.klm-size-header__label { font-size: 13px; font-weight: 600; color: var(--clr-text); text-transform: uppercase; letter-spacing: 0.05em; }
+.klm-size-header__current { font-size: 13px; font-weight: 700; color: var(--clr-secondary); }
+.klm-size-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.klm-size-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px 8px; border: 1.5px solid var(--clr-ash); border-radius: 10px; background: #fff; cursor: pointer; transition: border-color .15s, background .15s; width: 100%; }
+.klm-size-btn:hover { border-color: var(--clr-secondary); }
+.klm-size-btn.is-active { border-color: var(--clr-secondary); background: rgba(92,31,46,.05); }
+.klm-size-btn.is-soldout { opacity: .5; cursor: not-allowed; }
+.klm-size-btn__icon { width: 50px; height: 28px; color: var(--clr-ash); }
+.klm-size-btn__icon svg { width: 100%; height: 100%; }
+.klm-size-btn.is-active .klm-size-btn__icon { color: var(--clr-secondary); }
+.klm-size-btn__name { font-size: 9px; font-weight: 700; text-align: center; line-height: 1.3; color: var(--clr-text); }
+.klm-size-btn__price { font-size: 12px; font-weight: 800; color: var(--clr-secondary); }
+.klm-size-btn__was { font-size: 9px; color: var(--clr-gray-dusty); text-decoration: line-through; }
+
+/* ATC button */
+.klm-atc { margin-bottom: 0; font-size: 16px; padding: 14px; }
+.klm-info .klm-atc { margin: 4px 0 16px; }
+
+/* Payment info below ATC */
+.klm-payment-info { border: 1px solid var(--clr-ash); border-radius: var(--radius-base); overflow: hidden; }
+.klm-payment-info__row { display: flex; align-items: center; gap: 10px; padding: 11px 14px; font-size: 13px; color: var(--clr-text); border-bottom: 1px solid var(--clr-ash); }
+.klm-payment-info__row svg { flex-shrink: 0; color: var(--clr-secondary); }
+.klm-payment-info__icons { padding: 10px 14px; }
+.klm-logo { font-weight: 800; font-size: 14px; flex-shrink: 0; min-width: 72px; }
+.klm-logo--dividebuy { color: var(--clr-text); }
+.klm-logo--dividebuy em { color: var(--clr-secondary); font-style: normal; }
+.klm-logo--klarna { color: #FFB3C7; background: #17120E; padding: 1px 6px; border-radius: 4px; font-style: normal; }
+
+/* ── Trust Strip ────────────────────────── */
+.klm-trust-strip { background: #f5f3f1; border-top: 1px solid var(--clr-ash); border-bottom: 1px solid var(--clr-ash); padding: 24px 0; }
+.klm-trust-strip__inner { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.klm-trust-item { display: flex; align-items: center; gap: 10px; }
+.klm-trust-item svg { color: var(--clr-secondary); flex-shrink: 0; }
+.klm-trust-item div { display: flex; flex-direction: column; gap: 1px; }
+.klm-trust-item strong { font-size: 13px; font-weight: 700; color: var(--clr-text); }
+.klm-trust-item span { font-size: 12px; color: var(--clr-gray-dusty); }
+
+/* ── Shared Section Styles ───────────────── */
+.klm-section { padding: 60px 0; }
+.klm-section__heading { font-size: clamp(1.35rem, 2.5vw, 1.9rem); font-weight: 700; text-align: center; margin: 0 0 40px; color: var(--clr-text); }
+
+/* ── Overview ───────────────────────────── */
+.klm-overview { background: #fff; }
+.klm-overview__body { max-width: 740px; margin: 0 auto; font-size: 15px; line-height: 1.8; color: var(--clr-text); }
+.klm-overview__body p { margin-bottom: 1em; }
+.klm-overview__body ul { padding-left: 1.4em; }
+.klm-overview__body li { margin-bottom: 0.4em; }
+.klm-overview__body strong { font-weight: 700; color: var(--clr-secondary); }
+
+/* ── Features ───────────────────────────── */
+.klm-features { background: #f5f3f1; }
+.klm-features__icons { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 16px; margin-bottom: 32px; }
+.klm-feat { display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; background: none; border: none; padding: 8px; }
+.klm-feat__circle { width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--clr-ash); background: #fff; display: flex; align-items: center; justify-content: center; color: var(--clr-gray-dusty); transition: border-color .15s, color .15s, background .15s; }
+.klm-feat:hover .klm-feat__circle, .klm-feat.is-active .klm-feat__circle { border-color: var(--clr-secondary); color: var(--clr-secondary); background: rgba(92,31,46,.06); }
+.klm-feat__label { font-size: 11px; font-weight: 600; color: var(--clr-text); text-align: center; max-width: 64px; line-height: 1.3; }
+.klm-feat.is-active .klm-feat__label { color: var(--clr-secondary); }
+.klm-features__detail { max-width: 520px; margin: 0 auto; text-align: center; padding: 28px 32px; background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--clr-ash); }
+.klm-features__detail-title { font-size: 17px; font-weight: 700; color: var(--clr-secondary); margin-bottom: 10px; }
+.klm-features__detail-body { font-size: 14px; line-height: 1.7; color: var(--clr-text); }
+
+/* ── Finance ────────────────────────────── */
+.klm-finance { background: var(--clr-secondary); }
+.klm-finance .klm-section__heading { color: #fff; }
+.klm-finance__inner { max-width: 560px; margin: 0 auto; }
+.klm-finance__card { background: #fff; border-radius: var(--radius-lg); padding: 36px 40px; }
+.klm-finance__logo { font-size: 22px; font-weight: 800; color: var(--clr-text); margin-bottom: 6px; }
+.klm-finance__logo em { color: var(--clr-secondary); font-style: normal; }
+.klm-finance__headline { font-size: 18px; font-weight: 700; color: var(--clr-secondary); margin-bottom: 20px; }
+.klm-finance__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px; }
+.klm-finance__list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.55; color: var(--clr-text); }
+.klm-finance__list li svg { flex-shrink: 0; color: var(--clr-secondary); margin-top: 2px; }
+
+/* ── Service ────────────────────────────── */
+.klm-service { background: #fff; }
+.klm-service__inner { max-width: 680px; margin: 0 auto 36px; }
+.klm-service__points { display: flex; flex-direction: column; gap: 24px; }
+.klm-service__point { display: flex; align-items: flex-start; gap: 16px; }
+.klm-service__point svg { flex-shrink: 0; color: var(--clr-secondary); margin-top: 3px; }
+.klm-service__point strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.klm-service__point p { font-size: 14px; line-height: 1.6; color: var(--clr-gray-dusty); margin: 0; }
+.klm-service__atc { text-align: center; }
+.klm-service__atc-btn { max-width: 360px; margin: 0 auto 16px; display: flex; }
+.klm-service__payment-icons { display: flex; justify-content: center; }
+
+/* ── FAQ ────────────────────────────────── */
+.klm-faq { background: #f5f3f1; }
+.klm-faq__list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+.klm-faq__item { border: 1px solid var(--clr-ash); border-radius: 8px; overflow: hidden; background: #fff; }
+.klm-faq__q { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; font-size: 14px; font-weight: 600; cursor: pointer; list-style: none; color: var(--clr-text); }
+.klm-faq__q::-webkit-details-marker { display: none; }
+.klm-faq__q::after { content: '+'; font-size: 20px; font-weight: 400; color: var(--clr-secondary); flex-shrink: 0; margin-left: 12px; }
+details[open] .klm-faq__q::after { content: '\2212'; }
+.klm-faq__a { padding: 0 20px 18px; font-size: 14px; line-height: 1.7; color: var(--clr-gray-dusty); }
+
+/* ── Responsive ────────────────────────── */
+@media (max-width: 900px) {
+  .klm-top { grid-template-columns: 1fr; gap: 28px; }
+  .klm-trust-strip__inner { gap: 20px 32px; }
+}
+@media (max-width: 600px) {
+  .klm-size-grid { grid-template-columns: repeat(3, 1fr); }
+  .klm-finance__card { padding: 24px 20px; }
+  .klm-features__icons { gap: 6px 10px; }
+  .klm-trust-strip__inner { gap: 16px 20px; }
+  .klm-trust-item { flex-basis: 45%; }
+}
