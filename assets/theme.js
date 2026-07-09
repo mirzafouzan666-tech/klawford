@@ -355,6 +355,32 @@
     });
   });
 
+  /* ---- Desktop nav dropdown (click/touch support) -------- */
+  $$('.header-nav__item.has-dropdown').forEach(item => {
+    const btn = item.querySelector('.header-nav__link');
+    if (!btn) return;
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const isOpen = item.classList.contains('is-open');
+      $$('.header-nav__item.has-dropdown').forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.header-nav__link')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.header-nav__item.has-dropdown')) {
+      $$('.header-nav__item.has-dropdown').forEach(i => {
+        i.classList.remove('is-open');
+        i.querySelector('.header-nav__link')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   /* ---- Sticky header shadow ------------------------------ */
   const header = $('.site-header');
   if (header) {

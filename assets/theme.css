@@ -338,7 +338,8 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   z-index: 200;
   border-top: 3px solid var(--clr-secondary);
 }
-.header-nav__item:hover .header-dropdown {
+.header-nav__item:hover .header-dropdown,
+.header-nav__item.is-open .header-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);

@@ -621,6 +621,17 @@
     });
   });
 
+  // Thumbnail strip scroll arrows
+  var thumbPrev = document.getElementById('thumb-prev');
+  var thumbNext = document.getElementById('thumb-next');
+  var thumbsStrip = document.getElementById('product-thumbs');
+  if (thumbPrev && thumbsStrip) {
+    thumbPrev.addEventListener('click', function(){ thumbsStrip.scrollBy({ left: -210, behavior: 'smooth' }); });
+  }
+  if (thumbNext && thumbsStrip) {
+    thumbNext.addEventListener('click', function(){ thumbsStrip.scrollBy({ left: 210, behavior: 'smooth' }); });
+  }
+
   // Thumbnail switcher
   document.getElementById('product-thumbs') && document.getElementById('product-thumbs').addEventListener('click', function(e){
     var thumb = e.target.closest('.product-gallery__thumb');
