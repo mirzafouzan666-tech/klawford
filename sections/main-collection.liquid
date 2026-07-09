@@ -159,6 +159,73 @@
 </form>
 
 {%- comment -%} ================================================================
+    MATTRESS INTRO BENEFITS — only on mattress collection
+    ================================================================ {%- endcomment -%}
+{%- assign is_mattress_top = false -%}
+{%- if collection.handle == 'mattresses' or collection.handle contains 'mattress' -%}
+  {%- assign is_mattress_top = true -%}
+{%- endif -%}
+
+{%- if is_mattress_top -%}
+<div class="kl-matt-intro">
+  <div class="container">
+    <div class="kl-matt-intro__head">
+      <h2 class="kl-matt-intro__title">Handcrafted for Perfect Sleep</h2>
+      <p class="kl-matt-intro__sub">Every Klawford mattress is built in the UK using premium materials — so you wake up feeling genuinely rested, every single day.</p>
+    </div>
+    <div class="kl-matt-intro__benefits">
+
+      <div class="kl-matt-benefit">
+        <div class="kl-matt-benefit__icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M20 12c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M20 16v4l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="kl-matt-benefit__title">Pressure Relief</h3>
+        <p class="kl-matt-benefit__text">Our individually nested pocket springs and memory foam layers respond to your body, easing pressure on joints, hips, and shoulders for pain-free mornings.</p>
+      </div>
+
+      <div class="kl-matt-benefit">
+        <div class="kl-matt-benefit__icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4v32M14 10l6-6 6 6M14 30l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 20h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="kl-matt-benefit__title">Spinal Alignment</h3>
+        <p class="kl-matt-benefit__text">Engineered with an orthopaedic support layer that keeps your spine in a natural, neutral position through the night — so you wake without aches or stiffness.</p>
+      </div>
+
+      <div class="kl-matt-benefit">
+        <div class="kl-matt-benefit__icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 4l-14 6v10c0 8 6 14 14 16 8-2 14-8 14-16V10L20 4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="kl-matt-benefit__title">Hypoallergenic</h3>
+        <p class="kl-matt-benefit__text">Filled with hypoallergenic materials and finished with an anti-dust-mite cover, our mattresses are suitable for allergy sufferers and the whole family.</p>
+      </div>
+
+      <div class="kl-matt-benefit">
+        <div class="kl-matt-benefit__icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 8c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12S26.6 8 20 8z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M16 18c1-2 5-4 8-1M20 14v2M20 24v2M14 20h2M24 20h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 class="kl-matt-benefit__title">Temperature Control</h3>
+        <p class="kl-matt-benefit__text">Cool gel-infused foam and a breathable knitted cover regulate heat so you stay comfortable all night — no more waking up hot at 3am.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+{%- endif -%}
+
+{%- comment -%} ================================================================
     COLLECTION PAGE
     ================================================================ {%- endcomment -%}
 <div class="kl-col-page">
