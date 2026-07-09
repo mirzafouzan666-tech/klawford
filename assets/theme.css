@@ -614,9 +614,11 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .cart-drawer__total-price { font-family: var(--ff-primary); font-size: 26px; font-weight: var(--fw-bold); color: var(--clr-text); }
 .cart-drawer__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 /* Payment icons row */
-.cart-drawer__pay-icons { margin-top: 14px; }
-.cart-drawer__pay-icons .payment-icons-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; }
-.cart-drawer__pay-icons .pay-icon { height: 26px; width: auto; border-radius: 4px; border: 1px solid #E8E0D8; background: #fff; }
+.cart-drawer__pay-icons { margin-top: 14px; padding-top: 14px; border-top: 1px solid #E8DDD2; }
+.cart-drawer__pay-icons::before { content: 'We accept'; display: block; font-size: 11px; font-weight: 600; color: #8C7B6B; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; text-align: center; }
+.cart-drawer__pay-icons .payment-icons-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 5px; }
+.cart-drawer__pay-icons .pay-icon { height: 28px; width: auto; border-radius: 4px; border: 1px solid #E8DDD2; background: #fff; display: inline-flex; align-items: center; }
+.cart-drawer__pay-icons .pay-icon svg { height: 28px; width: auto; display: block; border-radius: 4px; }
 
 /* ============================================================
    HERO BANNER

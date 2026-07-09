@@ -1,27 +1,40 @@
 {%- comment -%}
-  Payment icons — uses Shopify's official payment_type_svg_tag filter.
-  Usage:
-    {% render 'payment-icons' %}
-    {% render 'payment-icons', extended: true %}   — adds Shop Pay & DivideBuy
-    {% render 'payment-icons', class: 'footer-pay' %}
+  Payment icons — all methods always shown.
+  Usage: {% render 'payment-icons' %}  or  {% render 'payment-icons', class: 'footer-pay' %}
 {%- endcomment -%}
 
 <div class="payment-icons-row{% if class != blank %} {{ class }}{% endif %}" aria-label="Accepted payment methods">
-  {{ 'visa'               | payment_type_svg_tag: class: 'pay-icon' }}
-  {{ 'master'             | payment_type_svg_tag: class: 'pay-icon' }}
-  {{ 'american_express'   | payment_type_svg_tag: class: 'pay-icon' }}
-  {{ 'apple_pay'          | payment_type_svg_tag: class: 'pay-icon' }}
-  {{ 'google_pay'         | payment_type_svg_tag: class: 'pay-icon' }}
-  {{ 'klarna'             | payment_type_svg_tag: class: 'pay-icon' }}
-  {{ 'paypal'             | payment_type_svg_tag: class: 'pay-icon' }}
-  {%- if extended -%}
-    {{ 'shopify_pay'      | payment_type_svg_tag: class: 'pay-icon' }}
-    <span class="pay-icon pay-icon--dividebuy" title="DivideBuy">
-      <svg width="46" height="30" viewBox="0 0 46 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect width="46" height="30" rx="4" fill="#fff" stroke="#DEDEDE" stroke-width="1"/>
-        <text x="5" y="19" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#1A1A1A">Divide</text>
-        <text x="33" y="19" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#5C1F2E">Buy</text>
-      </svg>
-    </span>
-  {%- endif -%}
+
+  {{- 'visa'             | payment_type_svg_tag: class: 'pay-icon' -}}
+  {{- 'master'           | payment_type_svg_tag: class: 'pay-icon' -}}
+  {{- 'american_express' | payment_type_svg_tag: class: 'pay-icon' -}}
+  {{- 'paypal'           | payment_type_svg_tag: class: 'pay-icon' -}}
+  {{- 'apple_pay'        | payment_type_svg_tag: class: 'pay-icon' -}}
+  {{- 'google_pay'       | payment_type_svg_tag: class: 'pay-icon' -}}
+  {{- 'shopify_pay'      | payment_type_svg_tag: class: 'pay-icon' -}}
+  {{- 'klarna'           | payment_type_svg_tag: class: 'pay-icon' -}}
+
+  <span class="pay-icon pay-icon--custom" title="Clearpay">
+    <svg width="52" height="30" viewBox="0 0 52 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="52" height="30" rx="4" fill="#fff" stroke="#DEDEDE" stroke-width="1"/>
+      <text x="5" y="20" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#B2FCE4" stroke="#00D166" stroke-width="0.3">clear</text>
+      <text x="31" y="20" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#000">pay</text>
+    </svg>
+  </span>
+
+  <span class="pay-icon pay-icon--custom" title="DivideBuy – Spread the cost">
+    <svg width="56" height="30" viewBox="0 0 56 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="56" height="30" rx="4" fill="#fff" stroke="#DEDEDE" stroke-width="1"/>
+      <text x="4" y="19" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#1A1A1A">Divide</text>
+      <text x="38" y="19" font-family="Arial,sans-serif" font-size="8" font-weight="700" fill="#5C1F2E">Buy</text>
+    </svg>
+  </span>
+
+  <span class="pay-icon pay-icon--custom" title="Snap Finance – Up to 4 Years">
+    <svg width="48" height="30" viewBox="0 0 48 30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="48" height="30" rx="4" fill="#003057" stroke="#003057" stroke-width="1"/>
+      <text x="8" y="20" font-family="Arial,sans-serif" font-size="11" font-weight="900" fill="#FFCC00" letter-spacing="1">snap</text>
+    </svg>
+  </span>
+
 </div>
