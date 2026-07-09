@@ -193,7 +193,48 @@
           <a href="{{ collection.url }}" class="kl-sidebar-clear">Clear all filters</a>
         {%- endif -%}
 
-        {%- comment -%} 1. PRICE filter (from API) {%- endcomment -%}
+        {%- assign is_mattress_col = false -%}
+        {%- if collection.handle == 'mattresses' or collection.handle contains 'mattress' -%}
+          {%- assign is_mattress_col = true -%}
+        {%- endif -%}
+
+        {%- comment -%} 1. PRICE filter (from API, or hardcoded for mattress collection) {%- endcomment -%}
+        {%- assign has_api_price_filter = false -%}
+        {%- for filter in collection.filters -%}
+          {%- if filter.type == 'price_range' -%}{%- assign has_api_price_filter = true -%}{%- endif -%}
+        {%- endfor -%}
+
+        {%- comment -%} Hardcoded price slider for mattress collection (no S&D app needed) {%- endcomment -%}
+        {%- if is_mattress_col and has_api_price_filter == false -%}
+          <div class="kl-fg is-open" data-fg>
+            <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
+              <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
+                <path d="M1 1.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Price</span>
+            </button>
+            <div class="kl-fg__body">
+              <div class="kl-slider-wrap"
+                   data-range="50000"
+                   data-cur-min="0"
+                   data-cur-max="50000"
+                   id="kl-price-slider-static">
+                <div class="kl-slider-track">
+                  <div class="kl-slider-fill" id="kl-slider-fill-s"></div>
+                </div>
+                <input class="kl-slider-thumb kl-slider-thumb--min" type="range"
+                  id="kl-slider-min-s" min="0" max="50000" value="0" step="100" aria-label="Minimum price">
+                <input class="kl-slider-thumb kl-slider-thumb--max" type="range"
+                  id="kl-slider-max-s" min="0" max="50000" value="50000" step="100" aria-label="Maximum price">
+              </div>
+              <div class="kl-slider-labels">
+                <span id="kl-price-min-label-s">£0.00</span>
+                <span id="kl-price-max-label-s">£500.00</span>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+
         {%- for filter in collection.filters -%}
           {%- unless filter.type == 'price_range' -%}{%- continue -%}{%- endunless -%}
           {%- assign pr_min = filter.min_value.value | default: 0 -%}
@@ -241,10 +282,6 @@
         {%- endfor -%}
 
         {%- comment -%} 2. SIZE filter {%- endcomment -%}
-        {%- assign is_mattress_col = false -%}
-        {%- if collection.handle == 'mattresses' or collection.handle contains 'mattress' -%}
-          {%- assign is_mattress_col = true -%}
-        {%- endif -%}
         <div class="kl-fg is-open" data-fg>
           <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
             <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
@@ -598,6 +635,51 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') klCloseFilters();
   });
+
+  /* ---- Static price slider (mattress collection) ------------ */
+  var staticSlider = document.getElementById('kl-price-slider-static');
+  if (staticSlider) {
+    var sMin    = document.getElementById('kl-slider-min-s');
+    var sMax    = document.getElementById('kl-slider-max-s');
+    var sFill   = document.getElementById('kl-slider-fill-s');
+    var sLblMin = document.getElementById('kl-price-min-label-s');
+    var sLblMax = document.getElementById('kl-price-max-label-s');
+    var sRange  = 50000;
+    var activePriceMin = 0;
+    var activePriceMax = sRange;
+
+    function fmtP(cents) { return '£' + (cents / 100).toFixed(2); }
+
+    function renderStatic() {
+      var lo = parseInt(sMin.value, 10);
+      var hi = parseInt(sMax.value, 10);
+      sFill.style.left  = (lo / sRange * 100) + '%';
+      sFill.style.width = ((hi - lo) / sRange * 100) + '%';
+      sLblMin.textContent = fmtP(lo);
+      sLblMax.textContent = fmtP(hi);
+      activePriceMin = lo;
+      activePriceMax = hi;
+    }
+
+    function applyPriceFilter() {
+      document.querySelectorAll('.product-card').forEach(function(card) {
+        var price = parseInt(card.dataset.price || '0', 10);
+        card.style.display = (price >= activePriceMin && price <= activePriceMax) ? '' : 'none';
+      });
+    }
+
+    sMin.addEventListener('input', function() {
+      if (parseInt(sMin.value,10) > parseInt(sMax.value,10) - 1000) sMin.value = parseInt(sMax.value,10) - 1000;
+      renderStatic();
+    });
+    sMax.addEventListener('input', function() {
+      if (parseInt(sMax.value,10) < parseInt(sMin.value,10) + 1000) sMax.value = parseInt(sMin.value,10) + 1000;
+      renderStatic();
+    });
+    sMin.addEventListener('change', applyPriceFilter);
+    sMax.addEventListener('change', applyPriceFilter);
+    renderStatic();
+  }
 
   /* ---- Price range dual slider ------------------------------ */
   var wrap = document.querySelector('.kl-slider-wrap');
