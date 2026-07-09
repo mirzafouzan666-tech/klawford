@@ -126,50 +126,60 @@
           {%- for option in product.options_with_values -%}
             {%- assign _olc = option.name | downcase -%}
             {%- if _olc == 'size' -%}
+              {%- assign _selected_price = kl_first_variant.price -%}
               <div class="klm-size-wrap">
-                <div class="klm-size-header">
-                  <span class="klm-size-header__label">Select Size</span>
-                  <span class="klm-size-header__current" id="klm-size-name">{{ option.selected_value }}</span>
-                </div>
-                <div class="klm-size-grid">
-                  {%- for value in option.values -%}
-                    {%- assign _sv_price = 0 -%}
-                    {%- assign _sv_compare = 0 -%}
-                    {%- assign _sv_id = '' -%}
-                    {%- assign _sv_avail = false -%}
-                    {%- for v in product.variants -%}
-                      {%- if v.option1 == value or v.option2 == value or v.option3 == value -%}
-                        {%- assign _sv_price = v.price -%}
-                        {%- assign _sv_compare = v.compare_at_price -%}
-                        {%- assign _sv_id = v.id -%}
-                        {%- assign _sv_avail = v.available -%}
-                        {%- break -%}
-                      {%- endif -%}
+                <div class="klm-size-box">
+                  <div class="klm-size-header">
+                    <span class="klm-size-header__label">Select Size</span>
+                    <span class="klm-size-header__current" id="klm-size-name">{{ option.selected_value }}</span>
+                  </div>
+                  <div class="klm-size-grid">
+                    {%- for value in option.values -%}
+                      {%- assign _sv_price = 0 -%}
+                      {%- assign _sv_compare = 0 -%}
+                      {%- assign _sv_id = '' -%}
+                      {%- assign _sv_avail = false -%}
+                      {%- for v in product.variants -%}
+                        {%- if v.option1 == value or v.option2 == value or v.option3 == value -%}
+                          {%- assign _sv_price = v.price -%}
+                          {%- assign _sv_compare = v.compare_at_price -%}
+                          {%- assign _sv_id = v.id -%}
+                          {%- assign _sv_avail = v.available -%}
+                          {%- break -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                      {%- assign _price_diff = _sv_price | minus: _selected_price -%}
+                      <button type="button"
+                        class="klm-size-btn{% if option.selected_value == value %} is-active{% endif %}{% unless _sv_avail %} is-soldout{% endunless %}"
+                        data-size="{{ value | escape }}"
+                        data-vid="{{ _sv_id }}"
+                        data-price="{{ _sv_price }}"
+                        data-compare="{{ _sv_compare }}"
+                        aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">
+                        <div class="klm-size-btn__icon" aria-hidden="true">
+                          <svg viewBox="0 0 56 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="54" height="5" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
+                            <rect x="1" y="6" width="54" height="8" stroke="currentColor" stroke-width="1"/>
+                            <path d="M14 6v8M28 6v8M42 6v8" stroke="currentColor" stroke-width="0.7"/>
+                            <rect x="1" y="14" width="54" height="13" stroke="currentColor" stroke-width="1"/>
+                            <path d="M9 14v13M19 14v13M28 14v13M37 14v13M47 14v13" stroke="currentColor" stroke-width="0.6" stroke-dasharray="1.5 1.5"/>
+                            <rect x="1" y="27" width="54" height="6" rx="1" stroke="currentColor" stroke-width="1"/>
+                          </svg>
+                        </div>
+                        <span class="klm-size-btn__name">{{ value }}</span>
+                        {%- if option.selected_value == value -%}
+                          <span class="klm-size-btn__price" data-role="price">{{ _sv_price | money }}</span>
+                        {%- elsif _price_diff < 0 -%}
+                          {%- assign _diff_abs = _price_diff | abs -%}
+                          <span class="klm-size-btn__price klm-size-btn__price--save" data-role="price">-{{ _diff_abs | money }}</span>
+                        {%- elsif _price_diff > 0 -%}
+                          <span class="klm-size-btn__price" data-role="price">+{{ _price_diff | money }}</span>
+                        {%- else -%}
+                          <span class="klm-size-btn__price" data-role="price">{{ _sv_price | money }}</span>
+                        {%- endif -%}
+                      </button>
                     {%- endfor -%}
-                    <button type="button"
-                      class="klm-size-btn{% if option.selected_value == value %} is-active{% endif %}{% unless _sv_avail %} is-soldout{% endunless %}"
-                      data-size="{{ value | escape }}"
-                      data-vid="{{ _sv_id }}"
-                      data-price="{{ _sv_price }}"
-                      data-compare="{{ _sv_compare }}"
-                      aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}">
-                      <div class="klm-size-btn__icon" aria-hidden="true">
-                        <svg viewBox="0 0 56 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <rect x="1" y="1" width="54" height="5" rx="1.5" stroke="currentColor" stroke-width="1.2"/>
-                          <rect x="1" y="6" width="54" height="8" stroke="currentColor" stroke-width="1"/>
-                          <path d="M14 6v8M28 6v8M42 6v8" stroke="currentColor" stroke-width="0.7"/>
-                          <rect x="1" y="14" width="54" height="13" stroke="currentColor" stroke-width="1"/>
-                          <path d="M9 14v13M19 14v13M28 14v13M37 14v13M47 14v13" stroke="currentColor" stroke-width="0.6" stroke-dasharray="1.5 1.5"/>
-                          <rect x="1" y="27" width="54" height="6" rx="1" stroke="currentColor" stroke-width="1"/>
-                        </svg>
-                      </div>
-                      <span class="klm-size-btn__name">{{ value }}</span>
-                      <span class="klm-size-btn__price">{{ _sv_price | money }}</span>
-                      {%- if _sv_compare > _sv_price -%}
-                        <span class="klm-size-btn__was">{{ _sv_compare | money }}</span>
-                      {%- endif -%}
-                    </button>
-                  {%- endfor -%}
+                  </div>
                 </div>
               </div>
             {%- endif -%}
@@ -413,28 +423,24 @@
 
 {%- comment -%} ── FINANCE SECTION ──────────────────────────────────────────── {%- endcomment -%}
 <div class="klm-finance">
-  <div class="klm-finance__bg-half">
-    <div class="klm-finance__content-side">
-      <div class="klm-finance__card">
-        <p class="klm-finance__intro">Shop Now, Pay Later with</p>
-        <div class="klm-finance__logo">Divide<em>Buy</em></div>
-        <div class="klm-finance__banner">0% INTEREST-FREE<br>INSTALMENTS</div>
-        <ul class="klm-finance__list">
-          <li>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 10h10M5 13h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-            <div><strong>Pay In Monthly Instalments</strong><span>Spread the cost of your order for up to 12 months.</span></div>
-          </li>
-          <li>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><strong>Zero Interest Rate</strong><span>Every purchase is entirely interest-free, no matter the price or term length.</span></div>
-          </li>
-          <li>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M5 8l5-5 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div><strong>No Early Repayment Charges</strong><span>The recurring card payments are collected monthly until your balance is paid.</span></div>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="klm-finance__card">
+    <p class="klm-finance__intro">Shop Now, Pay Later with</p>
+    <div class="klm-finance__logo">Divide<em>Buy</em></div>
+    <div class="klm-finance__banner">0% INTEREST-FREE INSTALMENTS</div>
+    <ul class="klm-finance__list">
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="4" width="16" height="12" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M5 10h10M5 13h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+        <div><strong>Pay In Monthly Instalments</strong><span>Spread the cost of your order for up to 12 months.</span></div>
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Zero Interest Rate</strong><span>Every purchase is entirely interest-free, no matter the price or term length.</span></div>
+      </li>
+      <li>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v14M5 8l5-5 5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>No Early Repayment Charges</strong><span>The recurring card payments are collected monthly until your balance is paid.</span></div>
+      </li>
+    </ul>
   </div>
 </div>
 
@@ -563,6 +569,30 @@
   var variants = {{ product.variants | json }};
 
   /* ── Size button clicks ──────────────────────────────────────── */
+  function updateSizePriceDiffs(selectedPrice) {
+    document.querySelectorAll('.klm-size-btn').forEach(function(b) {
+      var btnPrice = parseInt(b.dataset.price, 10);
+      var priceEl  = b.querySelector('[data-role="price"]');
+      if (!priceEl) return;
+      if (b.classList.contains('is-active')) {
+        priceEl.textContent = formatMoney(btnPrice);
+        priceEl.className = 'klm-size-btn__price';
+      } else {
+        var diff = btnPrice - selectedPrice;
+        if (diff < 0) {
+          priceEl.textContent = '-' + formatMoney(Math.abs(diff));
+          priceEl.className = 'klm-size-btn__price klm-size-btn__price--save';
+        } else if (diff > 0) {
+          priceEl.textContent = '+' + formatMoney(diff);
+          priceEl.className = 'klm-size-btn__price';
+        } else {
+          priceEl.textContent = formatMoney(btnPrice);
+          priceEl.className = 'klm-size-btn__price';
+        }
+      }
+    });
+  }
+
   document.querySelectorAll('.klm-size-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
       document.querySelectorAll('.klm-size-btn').forEach(function(b){
@@ -580,6 +610,7 @@
       var nameEl = document.getElementById('klm-size-name');
       if (nameEl) nameEl.textContent = name;
 
+      /* Update header price */
       var priceEl   = document.getElementById('klm-price');
       var compareEl = document.getElementById('klm-compare');
       var pctEl     = document.getElementById('klm-pct');
@@ -596,6 +627,9 @@
           pctEl.style.display = 'none';
         }
       }
+
+      /* Update all size button price diffs relative to new selection */
+      updateSizePriceDiffs(price);
 
       var inp = document.getElementById('klm-variant-id');
       if (inp) inp.value = vid;

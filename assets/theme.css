@@ -3850,21 +3850,23 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 
 /* ── Size Selector ──────────────────────── */
 .klm-size-wrap { margin-bottom: 20px; }
-.klm-size-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.klm-size-header__label { font-size: 13px; font-weight: 600; color: var(--clr-text); text-transform: uppercase; letter-spacing: 0.05em; }
+.klm-size-box { border: 1.5px solid #ddd; border-radius: 10px; padding: 14px; background: #fff; }
+.klm-size-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.klm-size-header__label { font-size: 13px; font-weight: 600; color: var(--clr-text); }
 .klm-size-header__current { font-size: 13px; font-weight: 700; color: var(--clr-secondary); }
-.klm-size-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.klm-size-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 6px 10px; border: 1.5px solid var(--clr-ash); border-radius: 8px; background: #fff; cursor: pointer; transition: border-color .15s, background .15s; width: 100%; }
+.klm-size-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.klm-size-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px 8px; border: 1.5px solid #e0e0e0; border-radius: 8px; background: #fff; cursor: pointer; transition: border-color .15s, background .15s; width: 100%; position: relative; }
 .klm-size-btn:hover { border-color: var(--clr-secondary); }
-.klm-size-btn.is-active { border-color: var(--clr-secondary); background: rgba(92,31,46,.05); position: relative; }
-.klm-size-btn.is-active::after { content: '✓'; position: absolute; top: 5px; right: 7px; font-size: 10px; color: var(--clr-secondary); font-weight: 700; }
+.klm-size-btn.is-active { border-color: var(--clr-secondary); background: rgba(92,31,46,.04); }
+.klm-size-btn.is-active::after { content: ''; position: absolute; top: 6px; right: 6px; width: 14px; height: 14px; background: var(--clr-secondary); border-radius: 50%; background-image: url("data:image/svg+xml,%3Csvg width='8' height='6' viewBox='0 0 8 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 3l2 2 4-4' stroke='white' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: center; }
 .klm-size-btn.is-soldout { opacity: .5; cursor: not-allowed; }
-.klm-size-btn__icon { width: 50px; height: 28px; color: var(--clr-ash); }
+.klm-size-btn__icon { width: 44px; height: 24px; color: #bbb; }
 .klm-size-btn__icon svg { width: 100%; height: 100%; }
 .klm-size-btn.is-active .klm-size-btn__icon { color: var(--clr-secondary); }
-.klm-size-btn__name { font-size: 9px; font-weight: 700; text-align: center; line-height: 1.3; color: var(--clr-text); }
-.klm-size-btn__price { font-size: 12px; font-weight: 800; color: var(--clr-secondary); }
-.klm-size-btn__was { font-size: 9px; color: var(--clr-gray-dusty); text-decoration: line-through; }
+.klm-size-btn__name { font-size: 9px; font-weight: 600; text-align: center; line-height: 1.3; color: var(--clr-text); }
+.klm-size-btn__price { font-size: 11px; font-weight: 700; color: var(--clr-gray-dusty); }
+.klm-size-btn.is-active .klm-size-btn__price { color: var(--clr-secondary); font-size: 12px; }
+.klm-size-btn__price--save { color: #555; }
 
 /* ATC button */
 .klm-atc { margin-bottom: 0; font-size: 16px; padding: 14px; }
@@ -3918,14 +3920,13 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-features__image-ph span { font-size: 12px; text-align: center; max-width: 160px; color: #aaa; }
 .klm-features__right { flex: 1; min-width: 0; }
 
-/* Icon tab row — rectangular boxes like Sonno */
-.klm-features__icon-row { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
-.klm-feat { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 14px 8px 10px; border: none; border-right: 1px solid #ddd; background: #fff; cursor: pointer; transition: background .15s; }
-.klm-feat:nth-child(4),.klm-feat:nth-child(8) { border-right: none; }
-.klm-feat:nth-child(n+5) { border-top: 1px solid #ddd; }
-.klm-feat__icon { color: #888; transition: color .15s; }
-.klm-feat__icon svg { display: block; }
-.klm-feat__label { font-size: 10px; font-weight: 600; text-align: center; line-height: 1.3; color: var(--clr-text); }
+/* Icon tab row — single horizontal row like Sonno */
+.klm-features__icon-row { display: flex; flex-wrap: nowrap; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: #fff; }
+.klm-feat { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 12px 6px 10px; border: none; border-right: 1px solid #ddd; background: #fff; cursor: pointer; transition: background .15s; }
+.klm-feat:last-child { border-right: none; }
+.klm-feat__icon { color: #888; transition: color .15s; flex-shrink: 0; }
+.klm-feat__icon svg { display: block; width: 22px; height: 22px; }
+.klm-feat__label { font-size: 9px; font-weight: 600; text-align: center; line-height: 1.3; color: var(--clr-text); }
 .klm-feat:hover { background: #faf7f7; }
 .klm-feat.is-active { background: #fdf4f5; }
 .klm-feat.is-active .klm-feat__icon { color: var(--clr-secondary); }
@@ -3971,15 +3972,13 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-layer--assembled { margin-top: 4px; }
 .klm-layer__bar--assembled { height: 60px; background: linear-gradient(to bottom, #e8e3db 0%, #b0a89e 50%, #c0b8b0 100%); border: 1.5px solid #999; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
 
-/* ── Finance (full-width split layout) ──── */
-.klm-finance { display: flex; min-height: 340px; }
-.klm-finance__bg-half { flex: 1; background: linear-gradient(135deg, var(--clr-secondary) 0%, #3d0e1a 100%); display: flex; align-items: center; }
-.klm-finance__content-side { flex: 0 0 50%; max-width: 600px; margin: 0 0 0 auto; padding: 60px 48px 60px 0; }
-.klm-finance__card { background: #fff; border-radius: 12px; padding: 36px 40px; box-shadow: 0 8px 40px rgba(0,0,0,.18); }
+/* ── Finance (full-width dark bg, card left-aligned) ──── */
+.klm-finance { background: linear-gradient(135deg, var(--clr-secondary) 0%, #3d0e1a 100%); padding: 72px 0; min-height: 380px; display: flex; align-items: center; }
+.klm-finance__card { background: #fff; border-radius: 12px; padding: 36px 40px; max-width: 460px; box-shadow: 0 8px 40px rgba(0,0,0,.3); margin: 0 auto 0 var(--page-padding, 40px); }
 .klm-finance__intro { font-size: 14px; font-weight: 600; color: var(--clr-text); margin: 0 0 4px; }
 .klm-finance__logo { font-size: 22px; font-weight: 800; color: var(--clr-text); margin-bottom: 14px; }
 .klm-finance__logo em { color: var(--clr-secondary); font-style: normal; }
-.klm-finance__banner { display: inline-block; background: var(--clr-secondary); color: #fff; font-size: 13px; font-weight: 800; padding: 8px 16px; margin-bottom: 24px; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); }
+.klm-finance__banner { display: inline-block; background: var(--clr-secondary); color: #fff; font-size: 12px; font-weight: 800; padding: 8px 18px 8px 14px; margin-bottom: 24px; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%); letter-spacing: 0.03em; }
 .klm-finance__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
 .klm-finance__list li { display: flex; align-items: flex-start; gap: 12px; }
 .klm-finance__list li svg { flex-shrink: 0; color: var(--clr-secondary); margin-top: 2px; }
@@ -4016,9 +4015,6 @@ details[open] > .klm-faq__q::after { content: '\2212'; }
 .klm-faq__a { padding: 0 4px 18px; font-size: 14px; line-height: 1.7; color: var(--clr-gray-dusty); }
 
 /* ── Responsive ────────────────────────── */
-@media (max-width: 1024px) {
-  .klm-finance__content-side { padding: 40px 32px 40px 0; }
-}
 @media (max-width: 900px) {
   .klm-top { grid-template-columns: 1fr; gap: 28px; }
   .klm-trust-strip__inner { gap: 20px 28px; }
@@ -4026,16 +4022,15 @@ details[open] > .klm-faq__q::after { content: '\2212'; }
   .klm-features__image { flex: none; max-width: 100%; width: 100%; }
   .klm-service__inner { flex-direction: column; }
   .klm-service__image { flex: none; max-width: 100%; width: 100%; }
-  .klm-finance { flex-direction: column; }
-  .klm-finance__content-side { flex: none; max-width: 100%; padding: 40px 24px; }
-  .klm-finance__bg-half { min-height: 0; }
+  .klm-finance__card { margin: 0 24px; max-width: none; }
 }
 @media (max-width: 640px) {
   .klm-size-grid { grid-template-columns: repeat(2, 1fr); }
-  .klm-features__icon-row { grid-template-columns: repeat(4, 1fr); }
-  .klm-finance__card { padding: 24px 20px; }
+  .klm-finance__card { padding: 24px 20px; margin: 0 16px; }
   .klm-trust-strip__inner { gap: 16px 20px; }
   .klm-trust-item { flex-basis: 44%; }
   .klm-layer__lbl { width: 140px; font-size: 12px; }
   .klm-sleep-tech__list li { flex-direction: column; }
+  .klm-feat__icon svg { width: 18px; height: 18px; }
+  .klm-feat__label { font-size: 8px; }
 }
