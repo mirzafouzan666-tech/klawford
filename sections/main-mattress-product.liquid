@@ -377,52 +377,23 @@
 </section>
 
 {%- comment -%} ── MATTRESS LAYERS ──────────────────────────────────────────── {%- endcomment -%}
+{%- if product.images[2] -%}
 <section class="klm-section klm-layers">
   <div class="container">
-    <h2 class="klm-section__heading">What's Inside Your Mattress</h2>
-    <p class="klm-layers__intro">Quality materials, layered for comfort, support and durability — every Klawford mattress is built to last.</p>
-    <div class="klm-layers__diagram">
-      <div class="klm-layer">
-        <div class="klm-layer__num">1</div>
-        <div class="klm-layer__bar klm-layer__bar--thin klm-layer__bar--c1"></div>
-        <div class="klm-layer__lbl">Breathable, Anti-Allergy Sleep Cover</div>
-      </div>
-      <div class="klm-layer">
-        <div class="klm-layer__num">2</div>
-        <div class="klm-layer__bar klm-layer__bar--med klm-layer__bar--c2"></div>
-        <div class="klm-layer__lbl">Comfort Foam Layer</div>
-      </div>
-      <div class="klm-layer">
-        <div class="klm-layer__num">3</div>
-        <div class="klm-layer__bar klm-layer__bar--med klm-layer__bar--c3"></div>
-        <div class="klm-layer__lbl">Transition & Support Layer</div>
-      </div>
-      <div class="klm-layer">
-        <div class="klm-layer__num">4</div>
-        <div class="klm-layer__bar klm-layer__bar--thick klm-layer__bar--c4"></div>
-        <div class="klm-layer__lbl">Spring or Foam Support Core</div>
-      </div>
-      <div class="klm-layer">
-        <div class="klm-layer__num">5</div>
-        <div class="klm-layer__bar klm-layer__bar--med klm-layer__bar--c3"></div>
-        <div class="klm-layer__lbl">Foundation Foam Layer</div>
-      </div>
-      <div class="klm-layer">
-        <div class="klm-layer__num">6</div>
-        <div class="klm-layer__bar klm-layer__bar--thin klm-layer__bar--c5"></div>
-        <div class="klm-layer__lbl">Non-Slip Base</div>
-      </div>
-      <div class="klm-layer klm-layer--assembled">
-        <div class="klm-layer__num" aria-hidden="true"></div>
-        <div class="klm-layer__bar klm-layer__bar--assembled"></div>
-        <div class="klm-layer__lbl"></div>
-      </div>
+    <div class="klm-layers__img-wrap">
+      <img
+        src="{{ product.images[2] | image_url: width: 900 }}"
+        alt="Seven layers of Klawford technology"
+        class="klm-layers__img"
+        loading="lazy"
+        width="900">
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {%- comment -%} ── FINANCE SECTION ──────────────────────────────────────────── {%- endcomment -%}
-<div class="klm-finance">
+<div class="klm-finance" {% if product.images[3] %}style="background-image:url('{{ product.images[3] | image_url: width: 1600 }}');"{% endif %}>
   <div class="klm-finance__card">
     <p class="klm-finance__intro">Shop Now, Pay Later with</p>
     <div class="klm-finance__logo">Divide<em>Buy</em></div>

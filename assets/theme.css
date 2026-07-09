@@ -3954,27 +3954,14 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-sleep-tech__list li span { font-size: 14px; line-height: 1.7; color: var(--clr-text); padding-top: 8px; }
 
 /* ── Mattress Layers ────────────────────── */
-.klm-layers { background: #fff; }
-.klm-layers__intro { text-align: center; font-size: 15px; color: var(--clr-gray-dusty); margin: -20px auto 40px; max-width: 560px; }
-.klm-layers__diagram { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-.klm-layer { display: flex; align-items: center; gap: 20px; }
-.klm-layer__num { width: 32px; height: 32px; border-radius: 50%; border: 1.5px solid #ccc; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #888; flex-shrink: 0; }
-.klm-layer__bar { flex: 1; border-radius: 4px; }
-.klm-layer__bar--thin { height: 14px; }
-.klm-layer__bar--med { height: 22px; }
-.klm-layer__bar--thick { height: 44px; }
-.klm-layer__bar--c1 { background: #f0ede6; border: 1px solid #ddd; }
-.klm-layer__bar--c2 { background: #e2ddd6; border: 1px solid #ccc; }
-.klm-layer__bar--c3 { background: #cec8bf; border: 1px solid #bbb; }
-.klm-layer__bar--c4 { background: #afa8a0; border: 1px solid #999; }
-.klm-layer__bar--c5 { background: #b8b0a8; border: 1px solid #aaa; }
-.klm-layer__lbl { width: 240px; font-size: 13px; color: var(--clr-text); font-weight: 500; flex-shrink: 0; }
-.klm-layer--assembled { margin-top: 4px; }
-.klm-layer__bar--assembled { height: 60px; background: linear-gradient(to bottom, #e8e3db 0%, #b0a89e 50%, #c0b8b0 100%); border: 1.5px solid #999; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
+.klm-layers { background: #fff; padding: 40px 0 60px; }
+.klm-layers__img-wrap { max-width: 700px; margin: 0 auto; }
+.klm-layers__img { width: 100%; height: auto; display: block; }
 
-/* ── Finance (full-width dark bg, card left-aligned) ──── */
-.klm-finance { background: linear-gradient(135deg, var(--clr-secondary) 0%, #3d0e1a 100%); padding: 72px 0; min-height: 380px; display: flex; align-items: center; }
-.klm-finance__card { background: #fff; border-radius: 12px; padding: 36px 40px; max-width: 460px; box-shadow: 0 8px 40px rgba(0,0,0,.3); margin: 0 auto 0 var(--page-padding, 40px); }
+/* ── Finance (photo background, card left-aligned) ──── */
+.klm-finance { position: relative; background-color: #3d0e1a; background-size: cover; background-position: center; padding: 72px 0; min-height: 400px; display: flex; align-items: center; }
+.klm-finance::before { content: ''; position: absolute; inset: 0; background: rgba(30,5,12,.55); }
+.klm-finance__card { position: relative; z-index: 1; background: #fff; border-radius: 12px; padding: 36px 40px; max-width: 460px; box-shadow: 0 8px 40px rgba(0,0,0,.4); margin: 0 auto 0 var(--page-padding, 40px); }
 .klm-finance__intro { font-size: 14px; font-weight: 600; color: var(--clr-text); margin: 0 0 4px; }
 .klm-finance__logo { font-size: 22px; font-weight: 800; color: var(--clr-text); margin-bottom: 14px; }
 .klm-finance__logo em { color: var(--clr-secondary); font-style: normal; }
