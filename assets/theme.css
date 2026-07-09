@@ -3915,12 +3915,12 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 /* ── Features (Sonno-style: image left + icon tabs right) ──────── */
 .klm-features { background: #f5f3f1; padding: 60px 0; }
 .klm-features .klm-section__heading { margin-bottom: 36px; }
-.klm-features__body { display: flex; gap: 40px; align-items: flex-start; }
-.klm-features__image { flex: 0 0 45%; max-width: 45%; }
-.klm-features__image-img { width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover; aspect-ratio: 4/3; }
-.klm-features__image-ph { background: #e8e4de; border-radius: 12px; aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #999; }
+.klm-features__body { display: flex; gap: 40px; align-items: stretch; }
+.klm-features__image { flex: 0 0 45%; max-width: 45%; display: flex; flex-direction: column; min-height: 480px; }
+.klm-features__image-img { width: 100%; flex: 1; border-radius: 12px; display: block; object-fit: cover; object-position: center; min-height: 480px; }
+.klm-features__image-ph { background: #e8e4de; border-radius: 12px; flex: 1; min-height: 480px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #999; }
 .klm-features__image-ph span { font-size: 12px; text-align: center; max-width: 160px; color: #aaa; }
-.klm-features__right { flex: 1; min-width: 0; }
+.klm-features__right { flex: 1; min-width: 0; display: flex; flex-direction: column; }
 
 /* Icon tab row — single horizontal row like Sonno */
 .klm-features__icon-row { display: flex; flex-wrap: nowrap; gap: 7px; background: transparent; }
