@@ -109,46 +109,59 @@
         </div>`;
       return;
     }
-    body.innerHTML = cart.items.map(item => `
-      <div class="cart-item" data-key="${item.key}">
-        <a href="${item.url}" class="cart-item__img">
-          <img src="${item.featured_image?.url ? item.featured_image.url.replace(/(\.\w+)$/, '_120x120$1') : ''}" alt="${escapeHtml(item.title)}" width="80" height="80" loading="lazy">
-        </a>
-        <div class="cart-item__details">
-          <a href="${item.url}" class="cart-item__name">${escapeHtml(item.product_title)}</a>
-          ${item.variant_title && item.variant_title !== 'Default Title' ? `<p class="cart-item__variant">${escapeHtml(item.variant_title)}</p>` : ''}
-          <div class="cart-item__row">
-            <div class="cart-qty">
-              <button class="cart-qty__btn" data-action="decrease" data-key="${item.key}">&#8722;</button>
-              <span class="cart-qty__val">${item.quantity}</span>
-              <button class="cart-qty__btn" data-action="increase" data-key="${item.key}">&#43;</button>
-            </div>
-            <span class="cart-item__price">${formatMoney(item.final_line_price)}</span>
+    body.innerHTML = `<div class="cart-items-list">${cart.items.map(item => {
+      const pct = item.original_price > item.price
+        ? Math.round((item.original_price - item.price) * 100 / item.original_price) : 0;
+      const imgSrc = item.featured_image?.url
+        ? item.featured_image.url.replace(/(\.\w+)(\?.*)?$/, '_200x200$1') : '';
+      return `
+        <div class="cart-item-card" data-key="${item.key}">
+          <div class="cart-item-card__img">
+            ${pct > 0 ? `<span class="cart-item-card__badge">${pct}% OFF</span>` : ''}
+            ${imgSrc ? `<img src="${imgSrc}" alt="${escapeHtml(item.title)}" width="90" height="90" loading="lazy">` : ''}
           </div>
-        </div>
-        <button class="cart-item__remove" data-key="${item.key}" aria-label="Remove">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M10 2L2 10M2 2l8 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-      </div>`).join('');
+          <div class="cart-item-card__content">
+            <div class="cart-item-card__top">
+              <p class="cart-item-card__name">${escapeHtml(item.product_title)}</p>
+              <button class="cart-item-card__del" data-remove-key="${item.key}" aria-label="Remove">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M5 4V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1m2 0l-.8 7a1 1 0 0 1-1 .9H4.8a1 1 0 0 1-1-.9L3 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+            ${item.variant_title && item.variant_title !== 'Default Title'
+              ? `<p class="cart-item-card__variant">${escapeHtml(item.variant_title.replace(/ \/ /g, ' · '))}</p>` : ''}
+            <div class="cart-item-card__foot">
+              <div class="cart-item-card__pricing">
+                <span class="cart-item-card__price">${formatMoney(item.final_line_price)}</span>
+                ${item.original_line_price > item.final_line_price
+                  ? `<span class="cart-item-card__was">${formatMoney(item.original_line_price)}</span>` : ''}
+              </div>
+              <div class="cart-item-card__qty">
+                <button class="cart-qty-btn" data-action="decrease" data-key="${item.key}">&#8722;</button>
+                <span class="cart-qty-val">${item.quantity}</span>
+                <button class="cart-qty-btn" data-action="increase" data-key="${item.key}">&#43;</button>
+              </div>
+            </div>
+          </div>
+        </div>`; }).join('')}</div>`;
 
     bindCartEvents();
   }
 
   function bindCartEvents() {
-    $$('.cart-qty__btn').forEach(btn => {
+    $$('.cart-qty-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         const key    = btn.dataset.key;
         const action = btn.dataset.action;
-        const item   = btn.closest('.cart-item');
-        const valEl  = item?.querySelector('.cart-qty__val');
+        const card   = btn.closest('.cart-item-card');
+        const valEl  = card?.querySelector('.cart-qty-val');
         let qty = parseInt(valEl?.textContent || '1', 10);
         qty = action === 'increase' ? qty + 1 : Math.max(0, qty - 1);
         await updateCartItem(key, qty);
       });
     });
-    $$('.cart-item__remove').forEach(btn => {
+    $$('.cart-item-card__del').forEach(btn => {
       btn.addEventListener('click', async () => {
-        await updateCartItem(btn.dataset.key, 0);
+        await updateCartItem(btn.dataset.removeKey, 0);
       });
     });
   }

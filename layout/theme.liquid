@@ -40,68 +40,74 @@
     <!-- Cart Drawer -->
     <div class="cart-overlay" id="cart-overlay"></div>
     <div id="cart-drawer" class="cart-drawer" aria-hidden="true" role="dialog" aria-label="My Basket">
+
       <div class="cart-drawer__head">
         <h3 class="cart-drawer__title">My Basket</h3>
         <button class="cart-drawer__close" id="cart-close" aria-label="Close basket">
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M14 4L4 14M4 4l10 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13 3L3 13M3 3l10 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
       </div>
 
-      <div class="cart-drawer__body" id="cart-drawer-body">
-        <div class="cart-drawer__delivery">
-          <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect x="1" y="2" width="11" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M12 5h3l2 3v3h-5V5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="4.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="13.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-          <span><strong>Fast Free Delivery:</strong> Select date at checkout.</span>
-        </div>
+      <div class="cart-drawer__delivery">
+        <svg width="18" height="14" viewBox="0 0 18 14" fill="none"><rect x="1" y="2" width="11" height="9" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M12 5h3l2 3v3h-5V5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="4.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1.2"/><circle cx="13.5" cy="12" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
+        <span><strong>Free 2-Man Delivery:</strong> Select date at checkout.</span>
+      </div>
 
+      <div class="cart-drawer__body" id="cart-drawer-body">
         {%- if cart.item_count == 0 -%}
-          <div class="cart-empty" style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;gap:16px;text-align:center;">
+          <div class="cart-empty">
             <svg width="56" height="56" viewBox="0 0 56 56" fill="none"><path d="M7 5h6l4 20M17 25h26l-3 16H20L17 25z" stroke="#dadada" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="23" cy="46" r="2.5" stroke="#dadada" stroke-width="1.8"/><circle cx="38" cy="46" r="2.5" stroke="#dadada" stroke-width="1.8"/></svg>
-            <p style="font-size:var(--fs-sm);color:var(--clr-gray-dusty);">Your basket is empty</p>
+            <p>Your basket is empty</p>
             <a href="/collections/all" class="btn btn--primary btn--sm">Continue Shopping</a>
           </div>
         {%- else -%}
-          {%- for item in cart.items -%}
-            <div class="cart-item-row" data-key="{{ item.key }}">
-              <div class="cart-item-row__img">
-                {%- if item.variant.compare_at_price > item.variant.price -%}
-                  {%- assign item_discount_pct = item.variant.compare_at_price | minus: item.variant.price | times: 100 | divided_by: item.variant.compare_at_price -%}
-                  <span class="cart-item-row__badge">{{ item_discount_pct }}% OFF</span>
-                {%- endif -%}
-                {%- if item.image -%}
-                  <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" width="80" height="80" loading="lazy">
-                {%- else -%}
-                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                {%- endif -%}
-              </div>
-              <div class="cart-item-row__info">
-                <p class="cart-item-row__name">{{ item.product.title }}</p>
-                {%- unless item.product.has_only_default_variant -%}
-                  <p class="cart-item-row__variant">{{ item.variant.title }}</p>
-                {%- endunless -%}
-                <div class="cart-item-row__pricing">
-                  <span class="cart-item-row__price">{{ item.final_line_price | money }}</span>
-                  {%- if item.variant.compare_at_price > item.variant.price -%}
-                    <span class="cart-item-row__compare">{{ item.variant.compare_at_price | times: item.quantity | money }}</span>
-                  {%- endif -%}
+          <div class="cart-items-list">
+            {%- for item in cart.items -%}
+              {%- assign _pct = 0 -%}
+              {%- if item.variant.compare_at_price > item.variant.price -%}
+                {%- assign _pct = item.variant.compare_at_price | minus: item.variant.price | times: 100 | divided_by: item.variant.compare_at_price -%}
+              {%- endif -%}
+              <div class="cart-item-card" data-key="{{ item.key }}">
+                <div class="cart-item-card__img">
+                  {%- if _pct > 0 -%}<span class="cart-item-card__badge">{{ _pct }}% OFF</span>{%- endif -%}
+                  {%- if item.image -%}
+                    <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="90" height="90" loading="lazy">
+                  {%- else -%}{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}{%- endif -%}
                 </div>
-                <div class="cart-item-row__qty">
-                  <button class="cart-qty-btn" data-action="decrease" data-key="{{ item.key }}" aria-label="Decrease quantity">&#8722;</button>
-                  <span>{{ item.quantity }}</span>
-                  <button class="cart-qty-btn" data-action="increase" data-key="{{ item.key }}" aria-label="Increase quantity">&#43;</button>
+                <div class="cart-item-card__content">
+                  <div class="cart-item-card__top">
+                    <p class="cart-item-card__name">{{ item.product.title }}</p>
+                    <button class="cart-item-card__del" data-remove-key="{{ item.key }}" aria-label="Remove {{ item.title | escape }}">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M5 4V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1m2 0l-.8 7a1 1 0 0 1-1 .9H4.8a1 1 0 0 1-1-.9L3 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </button>
+                  </div>
+                  {%- unless item.product.has_only_default_variant -%}
+                    <p class="cart-item-card__variant">{{ item.variant.title | replace: ' / ', ' · ' }}</p>
+                  {%- endunless -%}
+                  <div class="cart-item-card__foot">
+                    <div class="cart-item-card__pricing">
+                      <span class="cart-item-card__price">{{ item.final_line_price | money }}</span>
+                      {%- if item.variant.compare_at_price > item.variant.price -%}
+                        <span class="cart-item-card__was">{{ item.variant.compare_at_price | times: item.quantity | money }}</span>
+                      {%- endif -%}
+                    </div>
+                    <div class="cart-item-card__qty">
+                      <button class="cart-qty-btn" data-action="decrease" data-key="{{ item.key }}" aria-label="Decrease">&#8722;</button>
+                      <span class="cart-qty-val">{{ item.quantity }}</span>
+                      <button class="cart-qty-btn" data-action="increase" data-key="{{ item.key }}" aria-label="Increase">&#43;</button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <button class="cart-item-row__remove" data-key="{{ item.key }}" aria-label="Remove {{ item.title | escape }}">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M5 4V3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v1m2 0l-.8 7a1 1 0 0 1-1 .9H4.8a1 1 0 0 1-1-.9L3 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              </button>
-            </div>
-          {%- endfor -%}
+            {%- endfor -%}
+          </div>
         {%- endif -%}
       </div>
 
       <div class="cart-drawer__foot">
         <div class="cart-drawer__total">
           <span class="cart-drawer__total-label">Total</span>
-          <span class="cart-drawer__total-price">{{ cart.total_price | money }}</span>
+          <span class="cart-drawer__total-price" id="cart-subtotal">{{ cart.total_price | money }}</span>
         </div>
         <div class="cart-drawer__btns">
           <a href="/cart" class="btn btn--outline">View Basket</a>
