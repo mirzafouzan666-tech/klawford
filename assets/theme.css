@@ -10,7 +10,7 @@
   --clr-secondary-dark: #471724;
   --clr-secondary-shade: rgba(92, 31, 46, 0.33);
   --clr-text: #0F0F0F;
-  --clr-text-light: #3D3830;
+  --clr-text-light: #111111;
   --clr-gray-dusty: #989898;
   --clr-gray-dark: #71839B;
   --clr-ash: #f2f2f2;
@@ -59,7 +59,7 @@
   --clr-h5: var(--clr-text);
   --fs-desktop-p: 14px;
   --fs-mobile-p: 14px;
-  --fw-p: 400;
+  --fw-p: 600;
   --clr-p: var(--clr-text);
   --kl-reviews-color-light-gray: #e9e9eb;
   --gap-xxs: 4px;
@@ -90,6 +90,7 @@ html { scroll-behavior: smooth; font-size: 16px; min-height: 100%; }
 body {
   font-family: var(--ff-secondary);
   font-size: var(--fs-base);
+  font-weight: 600;
   color: var(--clr-text);
   line-height: 1.5;
   text-rendering: optimizeSpeed;
@@ -104,7 +105,7 @@ a { color: inherit; text-decoration: none; transition: var(--transition); }
 ul, ol { list-style: none; }
 button { background: none; border: none; cursor: pointer; font-family: inherit; font-size: inherit; transition: var(--transition); }
 input, textarea, select { font-family: inherit; font-size: inherit; }
-h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line-height: 1.2; }
+h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); font-weight: var(--fw-bold); color: var(--clr-text); line-height: 1.2; }
 
 /* ---- Container -------------------------------------------- */
 .container { max-width: var(--container-max); margin: 0 auto; padding: 0 24px; }
@@ -2470,8 +2471,8 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 :root {
   --clr-primary:        #F2EDE7;
   --clr-primary-shade:  #EAE4DC;
-  --clr-text:           #1A1816;
-  --clr-text-light:     #4A4744;
+  --clr-text:           #0F0F0F;
+  --clr-text-light:     #111111;
   --clr-gray-dusty:     #8A8784;
   --clr-wild-sand:      #F8F7F5;
   --clr-white-linen:    #EDE8E0;
