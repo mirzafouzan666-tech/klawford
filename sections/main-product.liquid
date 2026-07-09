@@ -85,7 +85,11 @@
           </div>
         </div>
 
-        {%- if section.settings.show_upsell -%}
+        {%- assign _hide_mattress_upsell = false -%}
+        {%- if product.type == 'Mattress' or product.tags contains 'mattress' -%}
+          {%- assign _hide_mattress_upsell = true -%}
+        {%- endif -%}
+        {%- if section.settings.show_upsell and _hide_mattress_upsell == false -%}
           <div class="product-upsell">
             {%- if section.settings.upsell_1_label != blank -%}
               <div class="product-upsell-card">
