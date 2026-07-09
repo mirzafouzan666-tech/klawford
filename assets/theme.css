@@ -484,11 +484,11 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .cart-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 950; opacity: 0; pointer-events: none; transition: opacity .28s; }
 .cart-overlay.is-open { opacity: 1; pointer-events: all; }
 
-/* Drawer shell — 520px wide, warm cream bg */
+/* Drawer shell — 520px wide, clean warm bg */
 .cart-drawer {
   position: fixed; top: 0; right: 0;
   width: 520px; max-width: 100vw; height: 100vh;
-  background: #EDE0CF;          /* rich warm cream — Sonno aesthetic */
+  background: #F5EFE8;          /* light warm cream — clean Sonno-style */
   z-index: 951;
   transform: translateX(100%);
   transition: transform .32s cubic-bezier(.4,0,.2,1);
@@ -515,7 +515,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   border: 1.5px solid #C8B8A2; background: #FAF6F1;
   cursor: pointer; transition: var(--transition);
 }
-.cart-drawer__close:hover { background: #EDE0CF; border-color: #B0A090; }
+.cart-drawer__close:hover { background: #EDE5DA; border-color: #B0A090; }
 
 /* ── Delivery banner ── */
 .cart-drawer__delivery {
@@ -598,7 +598,7 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
   font-size: 18px; color: var(--clr-text); background: none; border: none; cursor: pointer;
   transition: background .15s;
 }
-.cart-qty-btn:hover { background: #EDE0CF; }
+.cart-qty-btn:hover { background: #EDE5DA; }
 .cart-qty-val { min-width: 30px; text-align: center; font-size: 15px; font-weight: 600; color: var(--clr-text); }
 
 /* ── Footer ── */
@@ -613,6 +613,10 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); color: var(--clr-text); line
 .cart-drawer__total-label { font-size: 18px; font-weight: 700; color: var(--clr-text); }
 .cart-drawer__total-price { font-family: var(--ff-primary); font-size: 26px; font-weight: var(--fw-bold); color: var(--clr-text); }
 .cart-drawer__btns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Payment icons row */
+.cart-drawer__pay-icons { margin-top: 14px; }
+.cart-drawer__pay-icons .payment-icons-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px; }
+.cart-drawer__pay-icons .pay-icon { height: 26px; width: auto; border-radius: 4px; border: 1px solid #E8E0D8; background: #fff; }
 
 /* ============================================================
    HERO BANNER
