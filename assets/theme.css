@@ -3698,6 +3698,63 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 /* Upsell cards — a touch more breathing room */
 .product-upsell-card { padding: 16px 18px !important; }
 
+/* ============================================================
+   CART PAGE — PAYMENT OPTIONS SECTION
+   ============================================================ */
+.kl-pay-methods {
+  max-width: 860px;
+  margin: 32px auto 0;
+  background: #fff;
+  border: 1px solid var(--clr-ash);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+}
+.kl-pay-methods__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ff-primary);
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+  color: var(--clr-text);
+  margin: 0 0 4px;
+}
+.kl-pay-methods__sub {
+  font-size: 13px;
+  color: var(--clr-gray-dusty);
+  margin: 0 0 20px;
+}
+.kl-pay-methods__list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--clr-ash);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+}
+.kl-pay-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--clr-ash);
+  background: #fff;
+  transition: background .15s;
+}
+.kl-pay-row:last-child { border-bottom: none; }
+.kl-pay-row:hover { background: #FAF8F6; }
+.kl-pay-row__left { display: flex; flex-direction: column; gap: 2px; }
+.kl-pay-row__name { font-size: 15px; font-weight: var(--fw-semi); color: var(--clr-text); }
+.kl-pay-row__desc { font-size: 12px; color: var(--clr-gray-dusty); }
+.kl-pay-row__icons { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+.kl-pay-ico { height: 28px; width: auto; border-radius: 4px; display: inline-flex; align-items: center; }
+.kl-pay-ico svg { height: 28px; width: auto; display: block; border-radius: 4px; }
+@media (max-width: 600px) {
+  .kl-pay-methods { padding: 20px 16px; }
+  .kl-pay-row { padding: 12px 14px; }
+  .kl-pay-row__name { font-size: 14px; }
+}
+
 /* Product page stars — real green */
 .product-info__star { background: #00B67A !important; }
 
