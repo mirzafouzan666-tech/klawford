@@ -3703,7 +3703,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
    ============================================================ */
 .kl-pay-methods {
   max-width: 860px;
-  margin: 32px auto 0;
+  margin: 32px auto 48px;
   background: #fff;
   border: 1px solid var(--clr-ash);
   border-radius: var(--radius-lg);
