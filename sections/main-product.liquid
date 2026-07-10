@@ -608,12 +608,14 @@
       }
     });
 
-    // Show/hide each thumbnail
+    // Show/hide each thumbnail.
+    // When a colour is selected and the product has colour variants, show ONLY
+    // images whose data-colour exactly matches the selected colour — no generics.
+    // When no colour is selected, or the product has no colour option, show all.
     var visible = [];
     thumbs.forEach(function(t) {
-      var tc      = (t.getAttribute('data-colour') || '').toLowerCase().trim();
-      var isTagged = knownColours.indexOf(tc) >= 0;   // only true when alt = "Name - Colour"
-      var show    = !isTagged || !colourLower || tc === colourLower;
+      var tc   = (t.getAttribute('data-colour') || '').toLowerCase().trim();
+      var show = (!colourLower || knownColours.length === 0) ? true : (tc === colourLower);
       t.style.display = show ? '' : 'none';
       if (show) visible.push(t);
     });
