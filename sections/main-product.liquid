@@ -45,8 +45,41 @@
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="product-gallery__thumbs" id="product-thumbs">
+              {%- comment -%} Find the colour option index once {%- endcomment -%}
+              {%- assign _colour_opt_idx = -1 -%}
+              {%- for _o in product.options -%}
+                {%- assign _olc = _o | downcase -%}
+                {%- if _olc == 'colour' or _olc == 'color' -%}
+                  {%- assign _colour_opt_idx = forloop.index0 -%}
+                  {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+
               {%- for image in product.images -%}
-                {%- assign img_colour = image.alt | split: ' - ' | last | strip | downcase -%}
+                {%- assign img_colour = '' -%}
+
+                {%- comment -%} 1. Check Shopify variant→image assignment {%- endcomment -%}
+                {%- if _colour_opt_idx >= 0 -%}
+                  {%- for v in product.variants -%}
+                    {%- if v.featured_image and v.featured_image.id == image.id -%}
+                      {%- case _colour_opt_idx -%}
+                        {%- when 0 -%}{%- assign img_colour = v.option1 | downcase -%}
+                        {%- when 1 -%}{%- assign img_colour = v.option2 | downcase -%}
+                        {%- when 2 -%}{%- assign img_colour = v.option3 | downcase -%}
+                      {%- endcase -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+
+                {%- comment -%} 2. Fall back to alt text "Product Name - Colour" format {%- endcomment -%}
+                {%- if img_colour == '' -%}
+                  {%- assign _alt_parts = image.alt | split: ' - ' -%}
+                  {%- if _alt_parts.size > 1 -%}
+                    {%- assign img_colour = _alt_parts | last | strip | downcase -%}
+                  {%- endif -%}
+                {%- endif -%}
+
                 <button
                   class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
                   type="button"
