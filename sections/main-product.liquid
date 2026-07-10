@@ -561,16 +561,26 @@
     var thumbs  = Array.from(document.querySelectorAll('.product-gallery__thumb'));
     var colourLower = (colourVal || '').toLowerCase().trim();
 
-    // Check if any thumbnails have colour tags (alt formatted as "Name - Colour")
-    var anyTagged = thumbs.some(function(t) {
-      return (t.getAttribute('data-colour') || '').trim() !== '';
+    // Build exact list of known colour values from the variants JSON
+    // Only images whose data-colour exactly matches one of these will be filtered;
+    // images with untagged / differently-formatted alt text always stay visible.
+    var knownColours = [];
+    var opts = {{ product.options | json }};
+    opts.forEach(function(opt, i) {
+      if (opt.toLowerCase() === 'colour' || opt.toLowerCase() === 'color') {
+        variants.forEach(function(v) {
+          var c = (v.options[i] || '').toLowerCase().trim();
+          if (c && knownColours.indexOf(c) < 0) knownColours.push(c);
+        });
+      }
     });
 
     // Show/hide each thumbnail
     var visible = [];
     thumbs.forEach(function(t) {
-      var tc   = (t.getAttribute('data-colour') || '').toLowerCase().trim();
-      var show = !anyTagged || !colourLower || tc === colourLower;
+      var tc      = (t.getAttribute('data-colour') || '').toLowerCase().trim();
+      var isTagged = knownColours.indexOf(tc) >= 0;   // only true when alt = "Name - Colour"
+      var show    = !isTagged || !colourLower || tc === colourLower;
       t.style.display = show ? '' : 'none';
       if (show) visible.push(t);
     });
