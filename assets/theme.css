@@ -1642,44 +1642,45 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); font-weight: var(--fw-bold);
 .btn--dims:hover { border-color: var(--clr-secondary); color: var(--clr-secondary); }
 .btn--full { width: 100%; justify-content: center; }
 /* mattress drawer */
-.mattress-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 900; opacity: 0; pointer-events: none; transition: opacity .25s; }
+.mattress-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.45); z-index: 900; opacity: 0; pointer-events: none; transition: opacity .25s; }
 .mattress-overlay.open { opacity: 1; pointer-events: all; }
-.mattress-drawer { position: fixed; top: 0; right: 0; width: 420px; max-width: 100vw; height: 100vh; background: var(--clr-white); z-index: 901; transform: translateX(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); overflow-y: auto; display: flex; flex-direction: column; box-shadow: -4px 0 24px rgba(0,0,0,.12); }
+.mattress-drawer { position: fixed; top: 0; right: 0; width: 440px; max-width: 100vw; height: 100vh; background: var(--clr-white); z-index: 901; transform: translateX(100%); transition: transform .3s cubic-bezier(.4,0,.2,1); overflow-y: auto; display: flex; flex-direction: column; box-shadow: -6px 0 32px rgba(0,0,0,.14); }
 .mattress-drawer.open { transform: translateX(0); }
-.mattress-drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--clr-ash); position: sticky; top: 0; background: var(--clr-white); z-index: 2; }
-.mattress-drawer__title { font-family: var(--ff-primary); font-size: 20px; font-weight: var(--fw-bold); margin: 0; }
-.mattress-drawer__close { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--clr-ash); background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--clr-text); line-height: 1; flex-shrink: 0; transition: var(--transition); font-family: inherit; }
-.mattress-drawer__close:hover { background: var(--clr-ash); }
-.mattress-drawer__firmness { display: flex; gap: 7px; flex-wrap: wrap; padding: 14px 24px; border-bottom: 1px solid var(--clr-ash); }
-.firmness-tab { padding: 6px 14px; border: 1.5px solid var(--clr-ash); border-radius: var(--radius-full); font-size: var(--fs-xs); font-weight: var(--fw-semi); cursor: pointer; transition: var(--transition); background: none; font-family: inherit; color: var(--clr-text); }
-.firmness-tab:hover { border-color: var(--clr-secondary); color: var(--clr-secondary); }
+.mattress-drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px 18px; border-bottom: 1px solid var(--clr-ash); position: sticky; top: 0; background: var(--clr-secondary); z-index: 2; }
+.mattress-drawer__title { font-family: var(--ff-primary); font-size: 18px; font-weight: var(--fw-bold); margin: 0; color: #fff; }
+.mattress-drawer__close { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.4); background: rgba(255,255,255,.1); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; line-height: 1; flex-shrink: 0; transition: var(--transition); font-family: inherit; }
+.mattress-drawer__close:hover { background: rgba(255,255,255,.25); }
+.mattress-drawer__firmness { display: flex; gap: 7px; flex-wrap: wrap; padding: 14px 24px; border-bottom: 1px solid var(--clr-ash); background: var(--clr-primary); }
+.firmness-tab { padding: 6px 14px; border: 1.5px solid var(--clr-secondary-shade); border-radius: var(--radius-full); font-size: var(--fs-xs); font-weight: var(--fw-semi); cursor: pointer; transition: var(--transition); background: var(--clr-white); font-family: inherit; color: var(--clr-secondary); }
+.firmness-tab:hover { border-color: var(--clr-secondary); background: var(--clr-secondary-shade); }
 .firmness-tab.active { background: var(--clr-secondary); border-color: var(--clr-secondary); color: #fff; }
-.mattress-drawer__list { padding: 16px 24px; display: flex; flex-direction: column; gap: 12px; }
-.mattress-item { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1.5px solid var(--clr-ash); border-radius: var(--radius-base); cursor: pointer; transition: border-color .18s; background: var(--clr-white); }
-.mattress-item:hover { border-color: var(--clr-gray-dusty); }
-.mattress-item.selected { border-color: var(--clr-secondary); }
-.mattress-item__radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--clr-alto); flex-shrink: 0; position: relative; transition: var(--transition); }
+.mattress-drawer__list { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.mattress-item { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1.5px solid var(--clr-ash); border-radius: var(--radius-base); cursor: pointer; transition: border-color .18s, background .18s; background: var(--clr-white); }
+.mattress-item:hover { border-color: var(--clr-secondary-shade); background: var(--clr-primary); }
+.mattress-item.selected { border-color: var(--clr-secondary); background: var(--clr-primary); }
+.mattress-item__radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--clr-ash); flex-shrink: 0; position: relative; transition: var(--transition); }
 .mattress-item.selected .mattress-item__radio { border-color: var(--clr-secondary); }
 .mattress-item.selected .mattress-item__radio::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--clr-secondary); }
-.mattress-item__img { width: 80px; height: 60px; border-radius: var(--radius-sm); flex-shrink: 0; overflow: hidden; background: var(--clr-primary-shade); display: flex; align-items: center; justify-content: center; }
+.mattress-item__img { width: 88px; height: 66px; border-radius: var(--radius-sm); flex-shrink: 0; overflow: hidden; background: var(--clr-primary); display: flex; align-items: center; justify-content: center; }
 .mattress-item__img img { width: 100%; height: 100%; object-fit: cover; }
 .mattress-item__info { flex: 1; min-width: 0; }
-.mattress-item__name { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--clr-secondary); margin: 0 0 3px; line-height: 1.4; }
-.mattress-item__price { font-size: var(--fs-base); font-weight: var(--fw-bold); color: var(--clr-secondary); margin: 0; }
+.mattress-item__name { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--clr-secondary); margin: 0 0 4px; line-height: 1.4; }
+.mattress-item__price { font-size: 17px; font-weight: var(--fw-bold); color: var(--clr-secondary); margin: 0 0 3px; }
 .mattress-item__was { font-size: var(--fs-xs); color: var(--clr-gray-dusty); margin-left: 6px; font-weight: var(--fw-regular); }
-.mattress-item__save { display: inline-block; background: var(--clr-secondary); color: #fff; font-size: 9px; font-weight: var(--fw-bold); padding: 2px 8px; border-radius: var(--radius-full); margin-top: 4px; letter-spacing: .3px; }
-.mattress-item__details { font-size: var(--fs-xs); color: var(--clr-secondary); text-decoration: underline; white-space: nowrap; flex-shrink: 0; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; align-self: flex-end; }
+.mattress-item__save { display: inline-block; background: var(--clr-secondary); color: #fff; font-size: 9px; font-weight: var(--fw-bold); padding: 2px 8px; border-radius: var(--radius-full); letter-spacing: .3px; }
+.mattress-item__details { font-size: var(--fs-xs); color: var(--clr-secondary); text-decoration: underline; white-space: nowrap; flex-shrink: 0; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; align-self: flex-start; margin-top: 2px; }
 /* mattress drawer footer */
-.mattress-drawer__footer { position: sticky; bottom: 0; background: var(--clr-white); border-top: 1px solid var(--clr-ash); padding: 14px 24px 20px; display: flex; flex-direction: column; gap: 8px; z-index: 3; }
-.mattress-drawer__size-note { font-size: var(--fs-xs); color: var(--clr-gray-dusty); margin: 0; text-align: center; min-height: 1em; }
-.mattress-drawer__confirm:disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+.mattress-drawer__footer { position: sticky; bottom: 0; background: var(--clr-white); border-top: 2px solid var(--clr-primary); padding: 16px 20px 22px; display: flex; flex-direction: column; gap: 8px; z-index: 3; box-shadow: 0 -4px 16px rgba(92,31,46,.07); }
+.mattress-drawer__size-note { font-size: var(--fs-xs); color: var(--clr-secondary); font-weight: var(--fw-semi); margin: 0; text-align: center; min-height: 1.2em; }
+.mattress-drawer__confirm { font-size: var(--fs-sm); letter-spacing: .3px; }
+.mattress-drawer__confirm:disabled { opacity: .38; cursor: not-allowed; pointer-events: none; }
 .mattress-drawer__skip { background: none; border: none; font-family: inherit; font-size: var(--fs-xs); color: var(--clr-gray-dusty); text-decoration: underline; cursor: pointer; padding: 2px 0; text-align: center; transition: var(--transition); }
-.mattress-drawer__skip:hover { color: var(--clr-text); }
+.mattress-drawer__skip:hover { color: var(--clr-secondary); }
 /* upsell card selected state */
-.product-upsell-card__selected { font-size: var(--fs-xxs); color: var(--clr-secondary); margin: 0; font-weight: var(--fw-semi); }
+.product-upsell-card__selected { font-size: var(--fs-xxs); color: var(--clr-secondary); margin: 2px 0 0; font-weight: var(--fw-semi); }
 /* upsell cards */
 .product-upsell { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
-.product-upsell-card { display: flex; align-items: center; gap: 14px; border: 1.5px solid #e0d8cc; border-radius: var(--radius-base); padding: 12px 14px; background: #f5f0eb; }
+.product-upsell-card { display: flex; align-items: center; gap: 14px; border: 1.5px solid var(--clr-secondary-shade); border-radius: var(--radius-base); padding: 12px 14px; background: var(--clr-primary); }
 .product-upsell-card__icons { display: flex; align-items: center; gap: 4px; color: var(--clr-secondary); flex-shrink: 0; }
 .product-upsell-card__body { flex: 1; min-width: 0; }
 .product-upsell-card__title { font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--clr-text); margin: 0 0 2px; }
