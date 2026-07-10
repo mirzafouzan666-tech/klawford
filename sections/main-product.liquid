@@ -125,18 +125,19 @@
         {%- if section.settings.show_upsell and _hide_mattress_upsell == false -%}
           <div class="product-upsell">
             {%- if section.settings.upsell_1_label != blank -%}
-              <div class="product-upsell-card">
+              <div class="product-upsell-card" id="mattress-upsell-card">
                 <div class="product-upsell-card__icons">
                   <svg width="28" height="22" viewBox="0 0 28 22" fill="none"><rect x="1" y="8" width="22" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/><rect x="4" y="5" width="16" height="5" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 18v3M22 18v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
                   <span style="font-size:18px;color:var(--clr-ash);font-weight:300;">+</span>
                   <svg width="28" height="16" viewBox="0 0 28 16" fill="none"><rect x="1" y="1" width="26" height="14" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M5 6h18M5 10h12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
                 </div>
                 <div class="product-upsell-card__body">
-                  <p class="product-upsell-card__title">{{ section.settings.upsell_1_label }}</p>
+                  <p class="product-upsell-card__title" id="mattress-upsell-title">{{ section.settings.upsell_1_label }}</p>
+                  <p class="product-upsell-card__selected" id="mattress-upsell-selected" style="display:none;"></p>
                 </div>
                 <div class="product-upsell-card__action">
-                  <button type="button" class="product-upsell-card__link" data-open-mattress>
-                    {{ section.settings.upsell_2_label | default: 'Choose Mattress' }}
+                  <button type="button" class="product-upsell-card__link" id="mattress-upsell-btn" data-open-mattress>
+                    <span id="mattress-upsell-btn-label">{{ section.settings.upsell_2_label | default: 'Choose Mattress' }}</span>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M3 1l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
                   </button>
                 </div>
@@ -494,7 +495,18 @@
     {%- for block in section.blocks -%}
       {%- if block.type == 'mattress' -%}
         {%- assign saving = block.settings.compare_price | minus: block.settings.price -%}
-        <div class="mattress-item" data-firmness="{{ block.settings.firmness | handleize }}" {{ block.shopify_attributes }}>
+        {%- assign _mp = nil -%}
+        {%- if block.settings.mattress_product != blank -%}
+          {%- assign _mp = all_products[block.settings.mattress_product] -%}
+        {%- endif -%}
+        <div class="mattress-item"
+          data-firmness="{{ block.settings.firmness | handleize }}"
+          data-price="{{ block.settings.price }}"
+          data-name="{{ block.settings.name | escape }}"
+          {%- if _mp and _mp != empty -%}
+            data-variants="{{ _mp.variants | json | escape }}"
+          {%- endif -%}
+          {{ block.shopify_attributes }}>
           <div class="mattress-item__radio"></div>
           <div class="mattress-item__img">
             {%- if block.settings.image != blank -%}
@@ -521,6 +533,15 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
+  </div>
+  <div class="mattress-drawer__footer">
+    <p class="mattress-drawer__size-note" id="mattress-size-note"></p>
+    <button type="button" class="btn btn--primary btn--full mattress-drawer__confirm" id="mattress-confirm" disabled>
+      Add Mattress &amp; Save
+    </button>
+    <button type="button" class="mattress-drawer__skip" id="mattress-skip">
+      Continue without a mattress
+    </button>
   </div>
 </div>
 {%- endif -%}
@@ -724,23 +745,91 @@
   });
 
   // Mattress drawer
-  var overlay = document.getElementById('mattress-overlay');
-  var drawer = document.getElementById('mattress-drawer');
-  var closeBtn = document.getElementById('mattress-close');
-  function openMattressDrawer(){ if(overlay&&drawer){ overlay.classList.add('open'); drawer.classList.add('open'); document.body.style.overflow='hidden'; } }
-  function closeMattressDrawer(){ if(overlay&&drawer){ overlay.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow=''; } }
-  if(overlay) overlay.addEventListener('click', closeMattressDrawer);
+  var overlay    = document.getElementById('mattress-overlay');
+  var drawer     = document.getElementById('mattress-drawer');
+  var closeBtn   = document.getElementById('mattress-close');
+  var confirmBtn = document.getElementById('mattress-confirm');
+  var skipBtn    = document.getElementById('mattress-skip');
+
+  function openMattressDrawer(){
+    if(overlay&&drawer){ overlay.classList.add('open'); drawer.classList.add('open'); document.body.style.overflow='hidden'; }
+  }
+  function closeMattressDrawer(){
+    if(overlay&&drawer){ overlay.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow=''; }
+  }
+  if(overlay)  overlay.addEventListener('click', closeMattressDrawer);
   if(closeBtn) closeBtn.addEventListener('click', closeMattressDrawer);
-  document.querySelectorAll('[data-open-mattress]').forEach(function(btn){ btn.addEventListener('click', openMattressDrawer); });
+  if(skipBtn)  skipBtn.addEventListener('click', closeMattressDrawer);
+  document.querySelectorAll('[data-open-mattress]').forEach(function(btn){
+    btn.addEventListener('click', openMattressDrawer);
+  });
+
+  // Find best-matching mattress variant for the selected bed size
+  function findMattressVariant(variantsJson, bedSize) {
+    var vs = [];
+    try { vs = JSON.parse(variantsJson || '[]'); } catch(e) { return null; }
+    if (!vs.length) return null;
+    var bl = (bedSize || '').toLowerCase();
+    // 1 exact title match
+    var m = vs.filter(function(v){ return v.title.toLowerCase() === bl; })[0];
+    if (m) return m;
+    // 2 title contains bed size string
+    m = vs.filter(function(v){ return v.title.toLowerCase().indexOf(bl) !== -1; })[0];
+    if (m) return m;
+    // 3 keyword match (handles "Double 4ft6" → look for "double" in variant)
+    var kws = ['small single','single','small double','double','super king','king'];
+    var kw = kws.filter(function(k){ return bl.indexOf(k) !== -1; })[0];
+    if (kw) {
+      m = vs.filter(function(v){
+        return v.title.toLowerCase().indexOf(kw) !== -1 ||
+               (v.options||[]).some(function(o){ return o.toLowerCase().indexOf(kw) !== -1; });
+      })[0];
+      if (m) return m;
+    }
+    // fallback: first available
+    return vs.filter(function(v){ return v.available; })[0] || vs[0];
+  }
+
+  function getBedSizeOption() {
+    var opts = {{ product.options | json }};
+    for (var i = 0; i < opts.length; i++) {
+      var ol = opts[i].toLowerCase();
+      if (ol === 'size' || ol === 'sizes') return selectedOptions[i] || '';
+    }
+    return '';
+  }
+
   document.querySelectorAll('.mattress-item').forEach(function(item){
     item.addEventListener('click', function(){
-      document.querySelectorAll('.mattress-item').forEach(function(i){i.classList.remove('selected')});
+      document.querySelectorAll('.mattress-item').forEach(function(i){ i.classList.remove('selected'); });
       item.classList.add('selected');
+
+      // Enable confirm + update size note
+      if (confirmBtn) {
+        confirmBtn.disabled = false;
+        var bedSize   = getBedSizeOption();
+        var vData     = item.getAttribute('data-variants');
+        var mv        = vData ? findMattressVariant(vData, bedSize) : null;
+        var noteEl    = document.getElementById('mattress-size-note');
+        if (noteEl) {
+          if (bedSize && mv) {
+            noteEl.textContent = 'Adding: ' + mv.title;
+            noteEl.style.display = '';
+          } else if (bedSize) {
+            noteEl.textContent = 'Size: ' + bedSize;
+            noteEl.style.display = '';
+          } else {
+            noteEl.style.display = 'none';
+          }
+        }
+      }
     });
   });
+
+  // Firmness tabs
   document.querySelectorAll('.firmness-tab').forEach(function(tab){
     tab.addEventListener('click', function(){
-      document.querySelectorAll('.firmness-tab').forEach(function(t){t.classList.remove('active')});
+      document.querySelectorAll('.firmness-tab').forEach(function(t){ t.classList.remove('active'); });
       tab.classList.add('active');
       var f = tab.getAttribute('data-firmness');
       document.querySelectorAll('.mattress-item').forEach(function(item){
@@ -748,6 +837,50 @@
       });
     });
   });
+
+  // Confirm: add mattress + bed to cart then go to cart
+  if (confirmBtn) {
+    confirmBtn.addEventListener('click', function(){
+      var selected = document.querySelector('.mattress-item.selected');
+      if (!selected) return;
+
+      var bedVariant  = findVariant();
+      var vData       = selected.getAttribute('data-variants');
+      var bedSize     = getBedSizeOption();
+      var mv          = vData ? findMattressVariant(vData, bedSize) : null;
+
+      if (!bedVariant) { alert('Please select a bed variant first.'); return; }
+
+      confirmBtn.disabled   = true;
+      confirmBtn.textContent = 'Adding…';
+
+      var items = [{ id: bedVariant.id, quantity: 1 }];
+      if (mv) items.push({ id: mv.id, quantity: 1 });
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: items })
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data){
+        if (data.status) { throw new Error(data.description || 'Cart error'); }
+        // Update upsell card to reflect chosen mattress
+        var mName = selected.getAttribute('data-name') || '';
+        var selEl = document.getElementById('mattress-upsell-selected');
+        var lblEl = document.getElementById('mattress-upsell-btn-label');
+        if (selEl) { selEl.textContent = mName; selEl.style.display = ''; }
+        if (lblEl) lblEl.textContent = 'Change';
+        closeMattressDrawer();
+        window.location.href = '/cart';
+      })
+      .catch(function(err){
+        confirmBtn.disabled   = false;
+        confirmBtn.textContent = 'Add Mattress & Save';
+        alert(err.message || 'Could not add to cart. Please try again.');
+      });
+    });
+  }
 
   // On page load: filter thumbnails + set main image for the default selected colour
   (function(){
@@ -938,7 +1071,8 @@
           { "value": "extra-firm", "label": "Extra Firm" },
           { "value": "soft", "label": "Soft" }
         ], "default": "medium-firm" },
-        { "type": "url", "id": "url", "label": "See Details URL" }
+        { "type": "url", "id": "url", "label": "See Details URL" },
+        { "type": "product", "id": "mattress_product", "label": "Mattress product (for cart — links size to variant automatically)" }
       ]
     }
   ],

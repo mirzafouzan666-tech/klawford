@@ -1669,6 +1669,14 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); font-weight: var(--fw-bold);
 .mattress-item__was { font-size: var(--fs-xs); color: var(--clr-gray-dusty); margin-left: 6px; font-weight: var(--fw-regular); }
 .mattress-item__save { display: inline-block; background: var(--clr-green); color: #fff; font-size: 9px; font-weight: var(--fw-bold); padding: 2px 8px; border-radius: var(--radius-full); margin-top: 4px; letter-spacing: .3px; }
 .mattress-item__details { font-size: var(--fs-xs); color: var(--clr-secondary); text-decoration: underline; white-space: nowrap; flex-shrink: 0; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; align-self: flex-end; }
+/* mattress drawer footer */
+.mattress-drawer__footer { position: sticky; bottom: 0; background: var(--clr-white); border-top: 1px solid var(--clr-ash); padding: 14px 24px 20px; display: flex; flex-direction: column; gap: 8px; z-index: 3; }
+.mattress-drawer__size-note { font-size: var(--fs-xs); color: var(--clr-gray-dusty); margin: 0; text-align: center; min-height: 1em; }
+.mattress-drawer__confirm:disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+.mattress-drawer__skip { background: none; border: none; font-family: inherit; font-size: var(--fs-xs); color: var(--clr-gray-dusty); text-decoration: underline; cursor: pointer; padding: 2px 0; text-align: center; transition: var(--transition); }
+.mattress-drawer__skip:hover { color: var(--clr-text); }
+/* upsell card selected state */
+.product-upsell-card__selected { font-size: var(--fs-xxs); color: var(--clr-secondary); margin: 0; font-weight: var(--fw-semi); }
 /* upsell cards */
 .product-upsell { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
 .product-upsell-card { display: flex; align-items: center; gap: 14px; border: 1.5px solid var(--clr-ash); border-radius: var(--radius-base); padding: 12px 14px; background: var(--clr-white); }
