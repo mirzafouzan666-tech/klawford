@@ -477,8 +477,9 @@
 
 {%- render 'trust-badges-row' -%}
 
-{%- comment -%} Mattress upsell drawer {%- endcomment -%}
-{%- if section.settings.show_upsell and section.settings.mattress_blocks.size > 0 or section.blocks.size > 0 -%}
+{%- comment -%} Mattress upsell drawer — auto-populated from 'mattresses' collection {%- endcomment -%}
+{%- assign _mattress_col = collections['mattresses'] -%}
+{%- if section.settings.show_upsell and _hide_mattress_upsell == false -%}
 <div class="mattress-overlay" id="mattress-overlay"></div>
 <div class="mattress-drawer" id="mattress-drawer" role="dialog" aria-label="Select Mattress and Save">
   <div class="mattress-drawer__header">
@@ -486,52 +487,49 @@
     <button class="mattress-drawer__close" id="mattress-close" aria-label="Close">&times;</button>
   </div>
   <div class="mattress-drawer__firmness" id="firmness-tabs">
-    {%- assign firmness_options = 'Medium Firm,Firm,Medium,Extra Firm,Soft' | split: ',' -%}
-    {%- for f in firmness_options -%}
-      <button class="firmness-tab {% if forloop.first %}active{% endif %}" data-firmness="{{ f | handleize }}">{{ f }}</button>
+    <button class="firmness-tab active" data-firmness="">All</button>
+    {%- assign _firm_labels = 'Medium Firm,Firm,Medium,Extra Firm,Soft' | split: ',' -%}
+    {%- for f in _firm_labels -%}
+      <button class="firmness-tab" data-firmness="{{ f | handleize }}">{{ f }}</button>
     {%- endfor -%}
   </div>
   <div class="mattress-drawer__list" id="mattress-list">
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'mattress' -%}
-        {%- assign saving = block.settings.compare_price | minus: block.settings.price -%}
-        {%- assign _mp = nil -%}
-        {%- if block.settings.mattress_product != blank -%}
-          {%- assign _mp = all_products[block.settings.mattress_product] -%}
-        {%- endif -%}
-        <div class="mattress-item"
-          data-firmness="{{ block.settings.firmness | handleize }}"
-          data-price="{{ block.settings.price }}"
-          data-name="{{ block.settings.name | escape }}"
-          {%- if _mp and _mp != empty -%}
-            data-variants="{{ _mp.variants | json | escape }}"
-          {%- endif -%}
-          {{ block.shopify_attributes }}>
-          <div class="mattress-item__radio"></div>
-          <div class="mattress-item__img">
-            {%- if block.settings.image != blank -%}
-              <img src="{{ block.settings.image | image_url: width: 200 }}" alt="{{ block.settings.name | escape }}" width="80" height="60" loading="lazy">
-            {%- else -%}
-              {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
-            {%- endif -%}
-          </div>
-          <div class="mattress-item__info">
-            <p class="mattress-item__name">{{ block.settings.name }}</p>
-            <p class="mattress-item__price">
-              £{{ block.settings.price }}
-              {%- if block.settings.compare_price > 0 -%}
-                <span class="mattress-item__was">Was: £{{ block.settings.compare_price }}</span>
-              {%- endif -%}
-            </p>
-            {%- if saving > 0 -%}
-              <span class="mattress-item__save">SAVE: £{{ saving }}</span>
-            {%- endif -%}
-          </div>
-          {%- if block.settings.url != blank -%}
-            <a href="{{ block.settings.url }}" class="mattress-item__details" onclick="event.stopPropagation()">See Details</a>
+    {%- for mp in _mattress_col.products -%}
+      {%- assign _mfirm = 'medium-firm' -%}
+      {%- if mp.tags contains 'soft' -%}{%- assign _mfirm = 'soft' -%}
+      {%- elsif mp.tags contains 'extra firm' -%}{%- assign _mfirm = 'extra-firm' -%}
+      {%- elsif mp.tags contains 'medium firm' -%}{%- assign _mfirm = 'medium-firm' -%}
+      {%- elsif mp.tags contains 'firm' -%}{%- assign _mfirm = 'firm' -%}
+      {%- elsif mp.tags contains 'medium' -%}{%- assign _mfirm = 'medium' -%}
+      {%- endif -%}
+      <div class="mattress-item"
+        data-firmness="{{ _mfirm }}"
+        data-name="{{ mp.title | escape }}"
+        data-product-url="/products/{{ mp.handle }}"
+        data-variants="{{ mp.variants | json | escape }}">
+        <div class="mattress-item__radio"></div>
+        <div class="mattress-item__img">
+          {%- if mp.featured_image -%}
+            <img src="{{ mp.featured_image | image_url: width: 200 }}" alt="{{ mp.title | escape }}" width="80" height="60" loading="lazy">
           {%- endif -%}
         </div>
-      {%- endif -%}
+        <div class="mattress-item__info">
+          <p class="mattress-item__name">{{ mp.title }}</p>
+          <p class="mattress-item__price">
+            {{ mp.price_min | money }}
+            {%- if mp.compare_at_price_min > mp.price_min -%}
+              <span class="mattress-item__was">Was: {{ mp.compare_at_price_min | money }}</span>
+            {%- endif -%}
+          </p>
+          {%- if mp.compare_at_price_min > mp.price_min -%}
+            {%- assign _msave = mp.compare_at_price_min | minus: mp.price_min -%}
+            <span class="mattress-item__save">SAVE: {{ _msave | money }}</span>
+          {%- endif -%}
+        </div>
+        <a href="/products/{{ mp.handle }}" class="mattress-item__details" onclick="event.stopPropagation()">See Details</a>
+      </div>
+    {%- else -%}
+      <p style="padding:24px;color:var(--clr-gray-dusty);font-size:var(--fs-sm);">No mattresses currently available.</p>
     {%- endfor -%}
   </div>
   <div class="mattress-drawer__footer">
@@ -764,29 +762,43 @@
     btn.addEventListener('click', openMattressDrawer);
   });
 
-  // Find best-matching mattress variant for the selected bed size
+  // Find best-matching mattress variant for the selected bed size.
+  // Handles "Double 4ft6" → "Double (4ft 6)", "King 5ft" → "King (5ft)" etc.
   function findMattressVariant(variantsJson, bedSize) {
     var vs = [];
     try { vs = JSON.parse(variantsJson || '[]'); } catch(e) { return null; }
     if (!vs.length) return null;
     var bl = (bedSize || '').toLowerCase();
-    // 1 exact title match
-    var m = vs.filter(function(v){ return v.title.toLowerCase() === bl; })[0];
+
+    function norm(s){ return s.toLowerCase().replace(/[^a-z]/g,' ').replace(/\s+/g,' ').trim(); }
+    // 1. Normalised exact match e.g. "double 4ft 6" === "double 4ft 6"
+    var m = vs.filter(function(v){ return norm(v.title) === norm(bl); })[0];
     if (m) return m;
-    // 2 title contains bed size string
-    m = vs.filter(function(v){ return v.title.toLowerCase().indexOf(bl) !== -1; })[0];
-    if (m) return m;
-    // 3 keyword match (handles "Double 4ft6" → look for "double" in variant)
-    var kws = ['small single','single','small double','double','super king','king'];
-    var kw = kws.filter(function(k){ return bl.indexOf(k) !== -1; })[0];
-    if (kw) {
+
+    // 2. Keyword match with disambiguation (super king before king, small double before double, small single before single)
+    var sizeKeys = [
+      { kw: 'small single', exclude: null },
+      { kw: 'single',       exclude: 'small single' },
+      { kw: 'small double', exclude: null },
+      { kw: 'double',       exclude: 'small double' },
+      { kw: 'super king',   exclude: null },
+      { kw: 'king',         exclude: 'super king' }
+    ];
+    for (var ki = 0; ki < sizeKeys.length; ki++) {
+      var sk = sizeKeys[ki];
+      // bed size must contain this keyword but NOT the excluded one
+      if (bl.indexOf(sk.kw) === -1) continue;
+      if (sk.exclude && bl.indexOf(sk.exclude) !== -1) continue;
+      // find mattress variant that contains this keyword but not the excluded one
       m = vs.filter(function(v){
-        return v.title.toLowerCase().indexOf(kw) !== -1 ||
-               (v.options||[]).some(function(o){ return o.toLowerCase().indexOf(kw) !== -1; });
+        var vl = v.title.toLowerCase();
+        if (vl.indexOf(sk.kw) === -1) return false;
+        if (sk.exclude && vl.indexOf(sk.exclude) !== -1) return false;
+        return true;
       })[0];
       if (m) return m;
     }
-    // fallback: first available
+    // 3. Fallback: first available variant
     return vs.filter(function(v){ return v.available; })[0] || vs[0];
   }
 
@@ -803,24 +815,24 @@
     item.addEventListener('click', function(){
       document.querySelectorAll('.mattress-item').forEach(function(i){ i.classList.remove('selected'); });
       item.classList.add('selected');
+      if (!confirmBtn) return;
+      confirmBtn.disabled = false;
 
-      // Enable confirm + update size note
-      if (confirmBtn) {
-        confirmBtn.disabled = false;
-        var bedSize   = getBedSizeOption();
-        var vData     = item.getAttribute('data-variants');
-        var mv        = vData ? findMattressVariant(vData, bedSize) : null;
-        var noteEl    = document.getElementById('mattress-size-note');
-        if (noteEl) {
-          if (bedSize && mv) {
-            noteEl.textContent = 'Adding: ' + mv.title;
-            noteEl.style.display = '';
-          } else if (bedSize) {
-            noteEl.textContent = 'Size: ' + bedSize;
-            noteEl.style.display = '';
-          } else {
-            noteEl.style.display = 'none';
-          }
+      var bedSize = getBedSizeOption();
+      var vData   = item.getAttribute('data-variants');
+      var mv      = vData ? findMattressVariant(vData, bedSize) : null;
+      var noteEl  = document.getElementById('mattress-size-note');
+
+      if (noteEl) {
+        if (mv) {
+          var mPrice = mv.price ? ('£' + (mv.price / 100).toFixed(2).replace(/\.00$/, '')) : '';
+          noteEl.textContent = 'Size: ' + mv.title + (mPrice ? '  —  ' + mPrice : '');
+          noteEl.style.display = '';
+        } else if (bedSize) {
+          noteEl.textContent = 'Size: ' + bedSize;
+          noteEl.style.display = '';
+        } else {
+          noteEl.style.display = 'none';
         }
       }
     });

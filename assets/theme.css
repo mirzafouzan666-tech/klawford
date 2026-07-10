@@ -1664,10 +1664,10 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); font-weight: var(--fw-bold);
 .mattress-item__img { width: 80px; height: 60px; border-radius: var(--radius-sm); flex-shrink: 0; overflow: hidden; background: var(--clr-primary-shade); display: flex; align-items: center; justify-content: center; }
 .mattress-item__img img { width: 100%; height: 100%; object-fit: cover; }
 .mattress-item__info { flex: 1; min-width: 0; }
-.mattress-item__name { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--clr-text); margin: 0 0 3px; line-height: 1.4; }
-.mattress-item__price { font-size: var(--fs-base); font-weight: var(--fw-bold); color: var(--clr-text); margin: 0; }
+.mattress-item__name { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--clr-secondary); margin: 0 0 3px; line-height: 1.4; }
+.mattress-item__price { font-size: var(--fs-base); font-weight: var(--fw-bold); color: var(--clr-secondary); margin: 0; }
 .mattress-item__was { font-size: var(--fs-xs); color: var(--clr-gray-dusty); margin-left: 6px; font-weight: var(--fw-regular); }
-.mattress-item__save { display: inline-block; background: var(--clr-green); color: #fff; font-size: 9px; font-weight: var(--fw-bold); padding: 2px 8px; border-radius: var(--radius-full); margin-top: 4px; letter-spacing: .3px; }
+.mattress-item__save { display: inline-block; background: var(--clr-secondary); color: #fff; font-size: 9px; font-weight: var(--fw-bold); padding: 2px 8px; border-radius: var(--radius-full); margin-top: 4px; letter-spacing: .3px; }
 .mattress-item__details { font-size: var(--fs-xs); color: var(--clr-secondary); text-decoration: underline; white-space: nowrap; flex-shrink: 0; background: none; border: none; cursor: pointer; font-family: inherit; padding: 0; align-self: flex-end; }
 /* mattress drawer footer */
 .mattress-drawer__footer { position: sticky; bottom: 0; background: var(--clr-white); border-top: 1px solid var(--clr-ash); padding: 14px 24px 20px; display: flex; flex-direction: column; gap: 8px; z-index: 3; }
@@ -1679,14 +1679,14 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); font-weight: var(--fw-bold);
 .product-upsell-card__selected { font-size: var(--fs-xxs); color: var(--clr-secondary); margin: 0; font-weight: var(--fw-semi); }
 /* upsell cards */
 .product-upsell { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
-.product-upsell-card { display: flex; align-items: center; gap: 14px; border: 1.5px solid var(--clr-ash); border-radius: var(--radius-base); padding: 12px 14px; background: var(--clr-white); }
+.product-upsell-card { display: flex; align-items: center; gap: 14px; border: 1.5px solid #e0d8cc; border-radius: var(--radius-base); padding: 12px 14px; background: #f5f0eb; }
 .product-upsell-card__icons { display: flex; align-items: center; gap: 4px; color: var(--clr-secondary); flex-shrink: 0; }
 .product-upsell-card__body { flex: 1; min-width: 0; }
 .product-upsell-card__title { font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--clr-text); margin: 0 0 2px; }
 .product-upsell-card__desc { font-size: var(--fs-xxs); color: var(--clr-text-light); margin: 0; line-height: 1.5; }
 .product-upsell-card__action { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .product-upsell-card__price { font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--clr-secondary); }
-.product-upsell-card__link { display: inline-flex; align-items: center; gap: 4px; font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--clr-secondary); border: 1.5px solid var(--clr-secondary); border-radius: var(--radius-base); padding: 7px 14px; white-space: nowrap; cursor: pointer; transition: var(--transition); text-decoration: none; background: none; font-family: inherit; }
+.product-upsell-card__link { display: inline-flex; align-items: center; gap: 5px; font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--clr-secondary); border: 1.5px solid var(--clr-secondary); border-radius: var(--radius-full); padding: 8px 18px; white-space: nowrap; cursor: pointer; transition: var(--transition); text-decoration: none; background: none; font-family: inherit; }
 .product-upsell-card__link:hover { background: var(--clr-secondary); color: #fff; }
 .product-upsell-card__add { padding: 7px 18px; font-size: var(--fs-xs); white-space: nowrap; }
 /* post-ATC block */
