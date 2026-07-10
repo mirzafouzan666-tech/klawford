@@ -3959,19 +3959,19 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-layers__img { width: 100%; height: auto; display: block; }
 
 /* ── Finance (photo background, card left-aligned) ──── */
-.klm-finance { position: relative; background-color: #3d0e1a; background-size: cover; background-position: center; padding: 72px 0; min-height: 400px; display: flex; align-items: center; }
-.klm-finance::before { content: ''; position: absolute; inset: 0; background: rgba(30,5,12,.55); }
-.klm-finance__card { position: relative; z-index: 1; background: #fff; border-radius: 12px; padding: 36px 40px; max-width: 460px; box-shadow: 0 8px 40px rgba(0,0,0,.4); margin: 0 auto 0 var(--page-padding, 40px); }
-.klm-finance__intro { font-size: 14px; font-weight: 600; color: var(--clr-text); margin: 0 0 4px; }
+.klm-finance { position: relative; background-color: #1c1c1c; background-size: cover; background-position: center; padding: 72px 0; min-height: 400px; display: flex; align-items: center; }
+.klm-finance::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,.28); }
+.klm-finance__card { position: relative; z-index: 1; background: #fff; border-radius: 12px; padding: 36px 40px; max-width: 460px; box-shadow: 0 8px 40px rgba(0,0,0,.25); margin: 0 auto 0 var(--page-padding, 40px); }
+.klm-finance__intro { font-size: 14px; font-weight: 600; color: #444; margin: 0 0 4px; }
 .klm-finance__logo { font-size: 22px; font-weight: 800; color: var(--clr-text); margin-bottom: 14px; }
-.klm-finance__logo em { color: var(--clr-secondary); font-style: normal; }
-.klm-finance__banner { display: inline-block; background: var(--clr-secondary); color: #fff; font-size: 12px; font-weight: 800; padding: 8px 18px 8px 14px; margin-bottom: 24px; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%); letter-spacing: 0.03em; }
+.klm-finance__logo em { color: var(--clr-text); font-style: normal; }
+.klm-finance__banner { display: inline-block; background: #222; color: #fff; font-size: 12px; font-weight: 800; padding: 8px 18px 8px 14px; margin-bottom: 24px; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 50%, calc(100% - 12px) 100%, 0 100%); letter-spacing: 0.03em; }
 .klm-finance__list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
 .klm-finance__list li { display: flex; align-items: flex-start; gap: 12px; }
-.klm-finance__list li svg { flex-shrink: 0; color: var(--clr-secondary); margin-top: 2px; }
+.klm-finance__list li svg { flex-shrink: 0; color: #555; margin-top: 2px; }
 .klm-finance__list li div { display: flex; flex-direction: column; gap: 2px; }
 .klm-finance__list li strong { font-size: 14px; font-weight: 700; color: var(--clr-text); }
-.klm-finance__list li span { font-size: 13px; color: var(--clr-gray-dusty); line-height: 1.5; }
+.klm-finance__list li span { font-size: 13px; color: #777; line-height: 1.5; }
 
 /* ── Service (image left + points right) ── */
 .klm-service { background: #fff; padding: 60px 0; }
