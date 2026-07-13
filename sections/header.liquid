@@ -107,9 +107,9 @@
                     {%- if _parent_lc == 'mattresses' -%}
                       {%- assign _ctlc = child.title | downcase -%}
                       {%- if _ctlc contains 'pocket sprung' -%}
-                        {%- assign _child_url = '/products/klawford-orthopaedic-pocket-sprung-mattress' -%}
+                        {%- assign _child_url = '/collections/pocketsprungmattress' -%}
                       {%- elsif _ctlc contains 'memory foam' -%}
-                        {%- assign _child_url = '/products/klawford-cool-gel-memory-foam-pillowtop-mattress' -%}
+                        {%- assign _child_url = '/collections/memoryfoammattress' -%}
                       {%- else -%}
                         {%- assign _show = false -%}
                       {%- endif -%}
@@ -190,9 +190,9 @@
               {%- if _parent_lc == 'mattresses' -%}
                 {%- assign _ctlc = child.title | downcase -%}
                 {%- if _ctlc contains 'pocket sprung' -%}
-                  {%- assign _child_url = '/products/klawford-orthopaedic-pocket-sprung-mattress' -%}
+                  {%- assign _child_url = '/collections/pocketsprungmattress' -%}
                 {%- elsif _ctlc contains 'memory foam' -%}
-                  {%- assign _child_url = '/products/klawford-cool-gel-memory-foam-pillowtop-mattress' -%}
+                  {%- assign _child_url = '/collections/memoryfoammattress' -%}
                 {%- else -%}
                   {%- assign _show = false -%}
                 {%- endif -%}
