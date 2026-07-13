@@ -103,15 +103,20 @@
                   {%- assign _parent_lc = link.title | downcase -%}
                   {%- for child in link.links -%}
                     {%- assign _show = true -%}
+                    {%- assign _child_url = child.url -%}
                     {%- if _parent_lc == 'mattresses' -%}
                       {%- assign _ctlc = child.title | downcase -%}
-                      {%- unless _ctlc contains 'pocket sprung' or _ctlc contains 'memory foam' -%}
+                      {%- if _ctlc contains 'pocket sprung' -%}
+                        {%- assign _child_url = '/products/klawford-orthopaedic-pocket-sprung-mattress' -%}
+                      {%- elsif _ctlc contains 'memory foam' -%}
+                        {%- assign _child_url = '/products/klawford-cool-gel-memory-foam-pillowtop-mattress' -%}
+                      {%- else -%}
                         {%- assign _show = false -%}
-                      {%- endunless -%}
+                      {%- endif -%}
                     {%- endif -%}
                     {%- if _show -%}
                       <li>
-                        <a href="{{ child.url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>
+                        <a href="{{ _child_url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>
                       </li>
                     {%- endif -%}
                   {%- endfor -%}
@@ -181,14 +186,19 @@
             {%- assign _parent_lc = link.title | downcase -%}
             {%- for child in link.links -%}
               {%- assign _show = true -%}
+              {%- assign _child_url = child.url -%}
               {%- if _parent_lc == 'mattresses' -%}
                 {%- assign _ctlc = child.title | downcase -%}
-                {%- unless _ctlc contains 'pocket sprung' or _ctlc contains 'memory foam' -%}
+                {%- if _ctlc contains 'pocket sprung' -%}
+                  {%- assign _child_url = '/products/klawford-orthopaedic-pocket-sprung-mattress' -%}
+                {%- elsif _ctlc contains 'memory foam' -%}
+                  {%- assign _child_url = '/products/klawford-cool-gel-memory-foam-pillowtop-mattress' -%}
+                {%- else -%}
                   {%- assign _show = false -%}
-                {%- endunless -%}
+                {%- endif -%}
               {%- endif -%}
               {%- if _show -%}
-                <li><a href="{{ child.url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
+                <li><a href="{{ _child_url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
               {%- endif -%}
             {%- endfor -%}
           </ul>
