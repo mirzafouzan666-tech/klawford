@@ -300,21 +300,14 @@
     <h2 class="klm-section__heading">What Makes Our Mattress Great</h2>
     <div class="klm-features__body">
 
-      {%- comment -%} Left: product image {%- endcomment -%}
+      {%- comment -%} Left: lifestyle image {%- endcomment -%}
       <div class="klm-features__image">
-        {%- if product.featured_image -%}
-          <img
-            src="{{ product.featured_image | image_url: width: 700 }}"
-            alt="{{ product.title }}"
-            width="700" height="560"
-            loading="lazy"
-            class="klm-features__image-img">
-        {%- else -%}
-          <div class="klm-features__image-ph">
-            <svg width="64" height="48" viewBox="0 0 80 60" fill="none" aria-hidden="true"><rect x="4" y="8" width="72" height="44" rx="4" stroke="currentColor" stroke-width="2.5"/><circle cx="28" cy="28" r="8" stroke="currentColor" stroke-width="2"/><path d="M16 44l16-16 14 12 10-10 10 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span>Upload a product image to display here</span>
-          </div>
-        {%- endif -%}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-lifestyle.jpg"
+          alt="{{ product.title }} — comfort and quality"
+          width="700" height="560"
+          loading="lazy"
+          class="klm-features__image-img">
       </div>
 
       {%- comment -%} Right: icon tabs + indicator + detail {%- endcomment -%}
