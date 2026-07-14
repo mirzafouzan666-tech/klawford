@@ -1,270 +1,294 @@
-{%- assign rp = request.path -%}
+<!-- All page content hidden by default; JS reveals the right one -->
 
-{%- if rp == '/pages/delivery-information' or rp == '/pages/delivery' or rp == '/pages/shipping-information' -%}
-
-<!-- ===== DELIVERY INFORMATION ===== -->
-<div class="info-page">
-  <div class="info-page__hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-grey-4.jpg');">
-    <div class="info-page__hero-overlay"></div>
-    <div class="container info-page__hero-inner">
-      <p class="info-page__eyebrow">Klawford Delivery</p>
-      <h1 class="info-page__hero-title">Delivery Information</h1>
-      <p class="info-page__hero-sub">Free UK mainland delivery on every order — bringing your dream bedroom to your door.</p>
-    </div>
-  </div>
-  <div class="container info-page__body">
-    <div class="info-highlights">
-      <div class="info-highlight">
-        <div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-        <h3 class="info-highlight__title">Free UK Delivery</h3>
-        <p class="info-highlight__text">Complimentary delivery to all UK mainland addresses on every order, no minimum spend.</p>
-      </div>
-      <div class="info-highlight">
-        <div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h3 class="info-highlight__title">7–14 Working Days</h3>
-        <p class="info-highlight__text">Carefully crafted and dispatched within 7–14 working days of your order being placed.</p>
-      </div>
-      <div class="info-highlight">
-        <div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <h3 class="info-highlight__title">Room of Choice</h3>
-        <p class="info-highlight__text">White glove service available — delivered and assembled in your bedroom by our expert team.</p>
-      </div>
-      <div class="info-highlight">
-        <div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-        <h3 class="info-highlight__title">Delivery Updates</h3>
-        <p class="info-highlight__text">SMS and email updates at every stage so you always know where your order is.</p>
+<!-- DELIVERY -->
+<div id="pg-delivery" class="pg-section" style="display:none">
+  <div class="info-page">
+    <div class="info-page__hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-grey-4.jpg');">
+      <div class="info-page__hero-overlay"></div>
+      <div class="container info-page__hero-inner">
+        <p class="info-page__eyebrow">Klawford Delivery</p>
+        <h1 class="info-page__hero-title">Free Delivery on All Beds &amp; Mattresses UK</h1>
+        <p class="info-page__hero-sub">Every Klawford order ships free to UK mainland addresses — bringing your dream bedroom straight to your door.</p>
       </div>
     </div>
-
-    <div class="info-split">
-      <div class="info-split__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-1.jpg" alt="Klawford bed delivery" loading="lazy"></div>
-      <div class="info-split__content">
-        <h2 class="info-split__title">Standard Free Delivery</h2>
-        <p>Every Klawford order includes free standard delivery to UK mainland addresses — no hidden charges, no minimum spend.</p>
-        <ul class="info-list">
-          <li>Delivered within <strong>7–14 working days</strong> from order confirmation</li>
-          <li>Email dispatch notification with full carrier tracking details</li>
-          <li>SMS updates on your delivery day with a live 2-hour window</li>
-          <li>Kerbside delivery — items left safely at your front door</li>
-          <li>Two-man delivery available for large items via White Glove upgrade</li>
-        </ul>
-        <p>We partner with specialist furniture couriers who handle every Klawford piece with the care it deserves.</p>
+    <div class="container info-page__body">
+      <div class="info-highlights">
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h3 class="info-highlight__title">Free UK Delivery</h3><p class="info-highlight__text">Complimentary delivery to all UK mainland addresses — no minimum spend, no hidden fees.</p></div>
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3 class="info-highlight__title">7–14 Working Days</h3><p class="info-highlight__text">Handcrafted and dispatched within 7–14 working days from your order date.</p></div>
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><h3 class="info-highlight__title">Room of Choice</h3><p class="info-highlight__text">White glove delivery available — our specialist team delivers directly to your bedroom.</p></div>
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.44 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3 class="info-highlight__title">Live Tracking</h3><p class="info-highlight__text">SMS and email updates at every stage so you always know exactly where your order is.</p></div>
       </div>
-    </div>
-
-    <div class="info-banner">
-      <div class="info-banner__content">
-        <h2 class="info-banner__title">White Glove Delivery Service</h2>
-        <p class="info-banner__text">Upgrade to our premium two-person delivery service — available at checkout for select products.</p>
-        <ul class="info-banner__list">
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivery to your room of choice</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Full assembly of your bed frame included</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>All packaging removed from your home</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Old bed &amp; mattress removal available on request</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Pre-delivery confirmation call 24 hours in advance</li>
-        </ul>
+      <div class="info-split">
+        <div class="info-split__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-1.jpg" alt="free bed delivery UK Klawford" loading="lazy"></div>
+        <div class="info-split__content">
+          <h2 class="info-split__title">Free Bed &amp; Mattress Delivery Across the UK</h2>
+          <p>Every order to a UK mainland address is delivered completely free of charge. There is no minimum spend and no delivery surcharge — what you see is what you pay.</p>
+          <ul class="info-list">
+            <li>Delivered within <strong>7–14 working days</strong> from your order confirmation</li>
+            <li>Dispatch email with full carrier tracking link sent automatically</li>
+            <li>SMS updates on your delivery day with a 2-hour arrival window</li>
+            <li>Kerbside delivery included — items placed safely at your door</li>
+            <li>Two-man bedroom delivery available via White Glove upgrade</li>
+          </ul>
+          <p>We use specialist furniture couriers who understand how to handle luxury beds and mattresses — your Klawford pieces will arrive in perfect condition.</p>
+        </div>
       </div>
-      <div class="info-banner__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/upholspic1.jpg" alt="Klawford white glove delivery" loading="lazy"></div>
-    </div>
-
-    <div class="info-section">
-      <h2 class="info-section__title">Delivery Areas &amp; Timescales</h2>
-      <div class="info-table-wrap">
-        <table class="info-table">
-          <thead><tr><th>Region</th><th>Estimated Timescale</th><th>Delivery Charge</th></tr></thead>
-          <tbody>
-            <tr><td>UK Mainland</td><td>7–14 working days</td><td class="info-table__free">FREE</td></tr>
-            <tr><td>Scottish Highlands &amp; Islands</td><td>10–16 working days</td><td>£49</td></tr>
-            <tr><td>Northern Ireland</td><td>Please contact us</td><td>POA</td></tr>
-            <tr><td>Republic of Ireland</td><td>Please contact us</td><td>POA</td></tr>
-            <tr><td>Channel Islands</td><td>Please contact us</td><td>POA</td></tr>
-          </tbody>
-        </table>
+      <div class="info-banner">
+        <div class="info-banner__content">
+          <h2 class="info-banner__title">White Glove Delivery &amp; Assembly Service</h2>
+          <p class="info-banner__text">Upgrade at checkout to our premium two-man delivery service for a completely hands-free experience.</p>
+          <ul class="info-banner__list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivery direct to your bedroom of choice</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Full professional assembly of your bed frame</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>All packaging removed and taken away</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Old bed &amp; mattress removal available on request</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Confirmation call 24 hours before your delivery</li>
+          </ul>
+        </div>
+        <div class="info-banner__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/upholspic1.jpg" alt="white glove bed delivery service UK" loading="lazy"></div>
       </div>
-    </div>
-
-    <div class="info-steps">
-      <h2 class="info-steps__title">Preparing for Your Delivery</h2>
-      <div class="info-steps__grid info-steps__grid--4">
-        <div class="info-step"><div class="info-step__num">01</div><h3 class="info-step__title">Measure Your Space</h3><p>Measure all doorways, stairwells, and hallways. Standard beds require at least 75cm clearance on access routes.</p></div>
-        <div class="info-step"><div class="info-step__num">02</div><h3 class="info-step__title">Clear the Route</h3><p>Remove rugs, wall art, and furniture that may obstruct the path to your bedroom for a faster, damage-free delivery.</p></div>
-        <div class="info-step"><div class="info-step__num">03</div><h3 class="info-step__title">Be Available</h3><p>Ensure someone aged 18+ is present to accept delivery. Our drivers will call ahead with your 2-hour delivery window.</p></div>
-        <div class="info-step"><div class="info-step__num">04</div><h3 class="info-step__title">Inspect on Arrival</h3><p>Check your order on delivery. If you spot any damage, note it on the paperwork and contact us within 48 hours.</p></div>
+      <div class="info-section">
+        <h2 class="info-section__title">Delivery Areas &amp; Timescales</h2>
+        <div class="info-table-wrap">
+          <table class="info-table">
+            <thead><tr><th>Region</th><th>Estimated Timescale</th><th>Delivery Charge</th></tr></thead>
+            <tbody>
+              <tr><td>UK Mainland</td><td>7–14 working days</td><td class="info-table__free">FREE</td></tr>
+              <tr><td>Scottish Highlands &amp; Islands</td><td>10–16 working days</td><td>£49</td></tr>
+              <tr><td>Northern Ireland</td><td>Please contact us</td><td>POA</td></tr>
+              <tr><td>Republic of Ireland</td><td>Please contact us</td><td>POA</td></tr>
+              <tr><td>Channel Islands</td><td>Please contact us</td><td>POA</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
-
-    <div class="info-cta">
-      <h2 class="info-cta__title">Questions About Your Delivery?</h2>
-      <p class="info-cta__text">Our team is happy to help with access concerns, specific time slot requests, or anything else.</p>
-      <a href="mailto:sales@clickclickstore.co.uk" class="btn btn--primary">Email Our Team</a>
+      <div class="info-steps">
+        <h2 class="info-steps__title">Preparing for Your Delivery</h2>
+        <div class="info-steps__grid info-steps__grid--4">
+          <div class="info-step"><div class="info-step__num">01</div><h3 class="info-step__title">Measure Access Routes</h3><p>Measure all doorways, hallways, and stairwells. Beds need at least 75cm clearance. Check our size guide if unsure.</p></div>
+          <div class="info-step"><div class="info-step__num">02</div><h3 class="info-step__title">Clear the Path</h3><p>Remove rugs, pictures, and any furniture that could obstruct your delivery team's access to your bedroom.</p></div>
+          <div class="info-step"><div class="info-step__num">03</div><h3 class="info-step__title">Be at Home</h3><p>Ensure someone 18+ is in to accept delivery. We'll call ahead with your 2-hour window on the morning of delivery.</p></div>
+          <div class="info-step"><div class="info-step__num">04</div><h3 class="info-step__title">Check on Arrival</h3><p>Inspect your order before signing. Note any damage on the delivery paperwork and contact us within 48 hours.</p></div>
+        </div>
+      </div>
+      <div class="info-cta">
+        <h2 class="info-cta__title">Questions About Your Delivery?</h2>
+        <p class="info-cta__text">Our team is happy to help with access concerns, time slots, or any other delivery queries.</p>
+        <a href="mailto:sales@clickclickstore.co.uk" class="btn btn--primary">Email Our Team</a>
+      </div>
     </div>
   </div>
 </div>
 
-{%- elsif rp == '/pages/returns-policy' or rp == '/pages/returns' or rp == '/pages/return-policy' or rp == '/pages/refunds' -%}
-
-<!-- ===== RETURNS POLICY ===== -->
-<div class="info-page">
-  <div class="info-page__hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-14_at_6.13.07_AM.jpeg');">
-    <div class="info-page__hero-overlay"></div>
-    <div class="container info-page__hero-inner">
-      <p class="info-page__eyebrow">Sleep with Confidence</p>
-      <h1 class="info-page__hero-title">Returns Policy</h1>
-      <p class="info-page__hero-sub">We believe in our products. If you're not completely satisfied, we'll make it right — no hassle, no questions asked.</p>
-    </div>
-  </div>
-  <div class="container info-page__body">
-    <div class="info-highlights">
-      <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="info-highlight__title">60-Night Trial</h3><p class="info-highlight__text">Sleep on your mattress for up to 60 nights before deciding — completely risk free.</p></div>
-      <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div><h3 class="info-highlight__title">Free Collection</h3><p class="info-highlight__text">We arrange and cover the full cost of collection for all eligible mattress returns.</p></div>
-      <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg></div><h3 class="info-highlight__title">Full Refund</h3><p class="info-highlight__text">Your full purchase price returned to your original payment method within 5–7 working days.</p></div>
-      <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3 class="info-highlight__title">Trusted Process</h3><p class="info-highlight__text">A simple, straightforward process with dedicated support at every step.</p></div>
-    </div>
-
-    <div class="info-split">
-      <div class="info-split__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-lifestyle.jpg" alt="60 night sleep trial" loading="lazy"></div>
-      <div class="info-split__content">
-        <h2 class="info-split__title">Our 60-Night Mattress Sleep Trial</h2>
-        <p>We're so confident in our mattresses that we offer a full 60-night sleep trial. We know adjusting to a new mattress takes time — so we give you two full months to decide.</p>
-        <p>If for any reason you're not satisfied, contact our team and we'll arrange a free collection and full refund. No awkward conversations. No restocking fees.</p>
-        <div class="info-badge-row"><span class="info-badge">60 Nights Risk-Free</span><span class="info-badge">Free Collection</span><span class="info-badge">100% Refund</span></div>
+<!-- RETURNS -->
+<div id="pg-returns" class="pg-section" style="display:none">
+  <div class="info-page">
+    <div class="info-page__hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-14_at_6.13.07_AM.jpeg');">
+      <div class="info-page__hero-overlay"></div>
+      <div class="container info-page__hero-inner">
+        <p class="info-page__eyebrow">Shop With Total Confidence</p>
+        <h1 class="info-page__hero-title">60-Night Sleep Trial &amp; Returns Policy</h1>
+        <p class="info-page__hero-sub">Try your Klawford mattress for 60 nights at home. Not happy? We'll collect it free and refund you in full — no questions asked.</p>
       </div>
     </div>
-
-    <div class="info-steps">
-      <h2 class="info-steps__title">How to Initiate a Return</h2>
-      <div class="info-steps__grid info-steps__grid--4">
-        <div class="info-step"><div class="info-step__num">01</div><h3 class="info-step__title">Contact Our Team</h3><p>Email <strong>sales@clickclickstore.co.uk</strong> within 60 nights of delivery with your order number and reason for return.</p></div>
-        <div class="info-step"><div class="info-step__num">02</div><h3 class="info-step__title">Confirm Details</h3><p>Our team will confirm eligibility and agree a convenient collection date and time window with you.</p></div>
-        <div class="info-step"><div class="info-step__num">03</div><h3 class="info-step__title">Free Collection</h3><p>Our courier collects your mattress directly from your home. No packaging needed — we handle everything.</p></div>
-        <div class="info-step"><div class="info-step__num">04</div><h3 class="info-step__title">Refund Processed</h3><p>Once collected, your full refund is processed within <strong>5–7 working days</strong> to your original payment method.</p></div>
+    <div class="container info-page__body">
+      <div class="info-highlights">
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3 class="info-highlight__title">60-Night Trial</h3><p class="info-highlight__text">Two full months to decide if your mattress is right — the UK's most generous sleep trial.</p></div>
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div><h3 class="info-highlight__title">Free Collection</h3><p class="info-highlight__text">We cover the full cost of collection for all eligible returns — you don't pay a penny.</p></div>
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><path d="M1 10h22"/></svg></div><h3 class="info-highlight__title">100% Refund</h3><p class="info-highlight__text">Full purchase price returned to your original payment method within 5–7 working days.</p></div>
+        <div class="info-highlight"><div class="info-highlight__icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><h3 class="info-highlight__title">No Hassle</h3><p class="info-highlight__text">A simple, supportive process from start to finish — no awkward calls, no restocking fees.</p></div>
       </div>
-    </div>
-
-    <div class="info-two-col">
-      <div class="info-card">
-        <h3 class="info-card__title">Return Conditions</h3>
-        <ul class="info-list">
-          <li>Mattress must have been used for a <strong>minimum of 14 nights</strong></li>
-          <li>Mattress must be <strong>clean and free from damage</strong> beyond normal use</li>
-          <li>A <strong>mattress protector must have been used</strong> throughout the trial</li>
-          <li>Original packaging is not required for mattress returns</li>
-          <li>Return must be requested within <strong>60 nights</strong> of delivery</li>
-        </ul>
+      <div class="info-split">
+        <div class="info-split__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-lifestyle.jpg" alt="60 night mattress trial UK risk free" loading="lazy"></div>
+        <div class="info-split__content">
+          <h2 class="info-split__title">The UK's Best Mattress Sleep Trial — 60 Nights, Risk Free</h2>
+          <p>We are so confident in the quality of our pocket sprung and memory foam mattresses that we back every single one with a full 60-night sleep trial. Try it in your own home — not a showroom — and see the difference for yourself.</p>
+          <p>Most people need at least 2–4 weeks to fully adjust to a new mattress. That is why we give you two months. If you are still not satisfied after 60 nights, simply contact our team and we will arrange a free collection and a full refund to your original payment method.</p>
+          <div class="info-badge-row"><span class="info-badge">60 Nights Risk-Free</span><span class="info-badge">Free UK Collection</span><span class="info-badge">100% Money Back</span></div>
+        </div>
       </div>
-      <div class="info-card">
-        <h3 class="info-card__title">Beds &amp; Frames</h3>
-        <ul class="info-list">
-          <li>May be returned within <strong>14 days of delivery</strong></li>
-          <li>Items must be <strong>unused and in original packaging</strong></li>
-          <li>Collection arranged at customer's expense (unless faulty)</li>
-          <li>Faulty items collected free of charge</li>
-          <li>Report delivery damage within <strong>48 hours</strong> with photos</li>
-        </ul>
+      <div class="info-steps">
+        <h2 class="info-steps__title">How to Return Your Mattress — 4 Simple Steps</h2>
+        <div class="info-steps__grid info-steps__grid--4">
+          <div class="info-step"><div class="info-step__num">01</div><h3 class="info-step__title">Get in Touch</h3><p>Email <strong>sales@clickclickstore.co.uk</strong> within 60 nights of delivery with your order number and reason for return.</p></div>
+          <div class="info-step"><div class="info-step__num">02</div><h3 class="info-step__title">We Confirm</h3><p>Our team will review your request and confirm eligibility, then agree a convenient collection date with you.</p></div>
+          <div class="info-step"><div class="info-step__num">03</div><h3 class="info-step__title">Free Collection</h3><p>Our specialist courier collects from your home. No packaging needed. No lifting required. We handle everything.</p></div>
+          <div class="info-step"><div class="info-step__num">04</div><h3 class="info-step__title">Full Refund</h3><p>Your complete purchase price is refunded within <strong>5–7 working days</strong> of collection — direct to your card or account.</p></div>
+        </div>
       </div>
-    </div>
-
-    <div class="info-banner info-banner--light">
-      <div class="info-banner__content">
-        <h2 class="info-banner__title">Refund Timescales</h2>
-        <p class="info-banner__text">Once collected and inspected, refunds are processed promptly to your original payment method.</p>
-        <ul class="info-banner__list">
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Refund initiated within <strong>1–2 working days</strong> of collection</li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Credit / debit card: <strong>3–5 working days</strong></li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>PayPal / digital wallets: <strong>1–3 working days</strong></li>
-          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Finance agreements managed through your finance provider</li>
-        </ul>
+      <div class="info-two-col">
+        <div class="info-card">
+          <h3 class="info-card__title">Mattress Return Conditions</h3>
+          <ul class="info-list">
+            <li>Must be slept on for a <strong>minimum of 14 nights</strong> before requesting a return</li>
+            <li>Must be <strong>clean and free from damage</strong> beyond normal use</li>
+            <li>A <strong>mattress protector must have been used</strong> throughout the trial period</li>
+            <li>Return must be requested within <strong>60 nights</strong> of delivery date</li>
+            <li>Original packaging is <strong>not required</strong> for mattress returns</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3 class="info-card__title">Bed Frames &amp; Other Products</h3>
+          <ul class="info-list">
+            <li>Beds and frames returnable within <strong>14 days of delivery</strong></li>
+            <li>Must be <strong>unused and in original packaging</strong></li>
+            <li>Return collection arranged — costs may apply unless item is faulty</li>
+            <li>Damaged items on arrival: notify us with photos within <strong>48 hours</strong></li>
+            <li>Bespoke / custom orders non-returnable unless faulty</li>
+          </ul>
+        </div>
       </div>
-      <div class="info-banner__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-cream-1.jpg" alt="Klawford returns" loading="lazy"></div>
-    </div>
-
-    <div class="info-cta">
-      <h2 class="info-cta__title">Need to Make a Return?</h2>
-      <p class="info-cta__text">Our friendly customer service team will make the process as easy as possible for you.</p>
-      <a href="mailto:sales@clickclickstore.co.uk" class="btn btn--primary">Start Your Return</a>
+      <div class="info-banner info-banner--light">
+        <div class="info-banner__content">
+          <h2 class="info-banner__title">Refund Timescales by Payment Method</h2>
+          <p class="info-banner__text">Once collected, your refund is processed promptly. Here's what to expect depending on how you paid.</p>
+          <ul class="info-banner__list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Refund initiated within <strong>1–2 working days</strong> of collection</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Credit / debit card: <strong>3–5 working days</strong></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>PayPal / Apple Pay / Google Pay: <strong>1–3 working days</strong></li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Finance agreements: refund processed via your finance provider</li>
+          </ul>
+        </div>
+        <div class="info-banner__img"><img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-cream-1.jpg" alt="Klawford mattress returns policy UK" loading="lazy"></div>
+      </div>
+      <div class="info-cta">
+        <h2 class="info-cta__title">Ready to Return? We Make It Simple.</h2>
+        <p class="info-cta__text">Contact our team and we'll guide you through the process — usually resolved in under 5 minutes.</p>
+        <a href="mailto:sales@clickclickstore.co.uk" class="btn btn--primary">Start Your Return</a>
+      </div>
     </div>
   </div>
 </div>
 
-{%- elsif rp == '/pages/faq' or rp == '/pages/faqs' or rp == '/pages/frequently-asked-questions' -%}
-
-<!-- ===== FAQ ===== -->
-<div class="info-page">
-  <div class="info-page__hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg');">
-    <div class="info-page__hero-overlay"></div>
-    <div class="container info-page__hero-inner">
-      <p class="info-page__eyebrow">Got Questions?</p>
-      <h1 class="info-page__hero-title">Frequently Asked Questions</h1>
-      <p class="info-page__hero-sub">Everything you need to know about Klawford beds, mattresses, delivery, and more.</p>
+<!-- FAQ -->
+<div id="pg-faq" class="pg-section" style="display:none">
+  <div class="info-page">
+    <div class="info-page__hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg');">
+      <div class="info-page__hero-overlay"></div>
+      <div class="container info-page__hero-inner">
+        <p class="info-page__eyebrow">We've Got Answers</p>
+        <h1 class="info-page__hero-title">Frequently Asked Questions</h1>
+        <p class="info-page__hero-sub">Everything you need to know about buying beds and mattresses online in the UK from Klawford.</p>
+      </div>
+    </div>
+    <div class="container info-page__body">
+      <div class="faq-nav">
+        <button class="faq-nav__btn active" data-cat="delivery">Delivery</button>
+        <button class="faq-nav__btn" data-cat="returns">Returns &amp; Trial</button>
+        <button class="faq-nav__btn" data-cat="products">Products &amp; Sizes</button>
+        <button class="faq-nav__btn" data-cat="payment">Finance &amp; Payment</button>
+        <button class="faq-nav__btn" data-cat="warranty">Warranty</button>
+      </div>
+      <div class="faq-list">
+        <div class="faq-group" data-cat="delivery">
+          <h2 class="faq-group__title">Delivery Questions</h2>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does delivery take for beds and mattresses in the UK?</button><div class="faq-a"><p>All Klawford orders to UK mainland addresses are delivered within <strong>7–14 working days</strong> from the date your order is placed. Because our beds and mattresses are handmade to order, this gives our team time to build your piece to the highest standard. You'll receive an email with your tracking details as soon as your order is dispatched.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Is delivery really free on all Klawford orders?</button><div class="faq-a"><p>Yes — standard delivery to UK mainland addresses is completely free on every Klawford order, with no minimum spend required. For deliveries to Scottish Highlands, Northern Ireland, or the Republic of Ireland, a surcharge may apply. Please contact us at <strong>sales@clickclickstore.co.uk</strong> for a quote to your postcode before ordering.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you offer weekend or next-day bed delivery?</button><div class="faq-a"><p>We offer weekend delivery slots in select UK postcodes, subject to availability. Next-day delivery is not currently available as our beds are made to order. If a specific delivery date is important to you, please contact our team before placing your order and we'll do our best to accommodate your requirements.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens if I'm not home when my bed is delivered?</button><div class="faq-a"><p>Our delivery carrier will leave a calling card with instructions to rearrange. We'll also attempt to call the phone number on your order before delivery. We recommend providing a mobile number so we can send you an SMS the morning of delivery with your 2-hour arrival window.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What is your White Glove delivery service?</button><div class="faq-a"><p>Our White Glove delivery service upgrades your standard delivery to a full room-of-choice service. A two-person specialist team will carry your bed or mattress to the room you specify, complete full assembly of your bed frame, and remove all packaging from your home. Old bed and mattress disposal is available as an additional add-on. Select White Glove at checkout.</p></div></div>
+        </div>
+        <div class="faq-group" data-cat="returns" style="display:none">
+          <h2 class="faq-group__title">Returns &amp; Sleep Trial</h2>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What is Klawford's mattress return policy?</button><div class="faq-a"><p>All Klawford mattresses come with a <strong>60-night risk-free sleep trial</strong>. If you are not completely satisfied with your mattress within 60 nights of delivery, contact our team and we will arrange a free collection from your home and refund you in full — no questions asked, no restocking fees, no hassle.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does it take to get a refund after returning a mattress?</button><div class="faq-a"><p>Once your mattress has been collected, we initiate your refund within 1–2 working days. The refund will appear in your account within <strong>3–5 working days</strong> for credit and debit cards, or 1–3 working days for PayPal and digital wallets. Finance refunds are processed through your finance provider.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Do I need to keep the original mattress packaging to return it?</button><div class="faq-a"><p>No — you do not need the original packaging to return a mattress under our 60-night trial. Our collection team will take the mattress as-is. For bed frame returns, however, the original packaging must be retained as items should be returned unused.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Why do I need to sleep on the mattress for at least 14 nights?</button><div class="faq-a"><p>Your body naturally takes time to adapt to a new sleep surface, especially if you are switching from a different firmness level or mattress type. We ask for a minimum of 14 nights so your body has a genuine chance to adjust and you can make a fully informed decision. After that point, if you're still not satisfied, we'll collect it for free.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Can I return a bed frame?</button><div class="faq-a"><p>Yes — bed frames can be returned within 14 days of delivery provided they are unused and in their original packaging. Please contact us at <strong>sales@clickclickstore.co.uk</strong> to arrange. Bespoke or custom-made frames cannot be returned unless they arrive faulty or damaged.</p></div></div>
+        </div>
+        <div class="faq-group" data-cat="products" style="display:none">
+          <h2 class="faq-group__title">Products &amp; Sizes</h2>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What bed sizes do Klawford offer?</button><div class="faq-a"><p>Klawford beds are available in all standard UK sizes: <strong>Small Single (2'6" / 75cm), Single (3' / 90cm), Small Double (4' / 120cm), Double (4'6" / 135cm), King (5' / 150cm), and Super King (6' / 180cm)</strong>. Available sizes vary by product — please check each product listing for specific options.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Are Klawford beds and mattresses handmade in the UK?</button><div class="faq-a"><p>Yes — every Klawford bed frame and mattress is <strong>handcrafted to order in the United Kingdom</strong> by our team of skilled artisans. We do not import mass-produced products. Each piece is built specifically for the customer who ordered it, using premium UK-sourced materials and subject to strict quality checks before dispatch.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What is the difference between a pocket sprung and memory foam mattress?</button><div class="faq-a"><p>A <strong>pocket sprung mattress</strong> uses individually wrapped steel coils that move independently, providing responsive support and excellent airflow — great for those who sleep hot or prefer a traditional, bouncy feel. A <strong>memory foam mattress</strong> uses heat-reactive foam that contours to your body shape, relieving pressure points and reducing motion transfer — ideal for couples and side sleepers. Both are available in Klawford's mattress range with multiple firmness options.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Which mattress firmness is right for me?</button><div class="faq-a"><p>As a general guide: <strong>Soft</strong> — side sleepers under 10 stone; <strong>Medium</strong> — combination sleepers, average build; <strong>Medium Firm</strong> — back sleepers, most popular option; <strong>Firm</strong> — heavier individuals, back pain sufferers; <strong>Extra Firm</strong> — severe back issues or very heavy individuals. If unsure, our 60-night trial means you can test your choice risk-free at home.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What types of beds do Klawford sell?</button><div class="faq-a"><p>Our range includes <strong>upholstered bed frames</strong> (panel, wing-back, and sleigh designs), <strong>divan beds</strong> with optional storage drawers, <strong>ottoman storage beds</strong> with lift-up base, and <strong>luxury bed and mattress sets</strong>. All are available in a variety of premium fabrics and colours including velvet, linen, and faux leather.</p></div></div>
+        </div>
+        <div class="faq-group" data-cat="payment" style="display:none">
+          <h2 class="faq-group__title">Finance &amp; Payment</h2>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Do Klawford offer finance or buy now pay later?</button><div class="faq-a"><p>Yes — Klawford offers flexible finance and buy now pay later options through trusted UK payment providers. Finance is available at checkout; representative APR and eligibility are displayed before you apply. Spreading the cost means you can invest in a quality bed without paying everything upfront.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What payment methods do you accept?</button><div class="faq-a"><p>We accept all major UK credit and debit cards (Visa, Mastercard, American Express), PayPal, Apple Pay, Google Pay, and finance options. All payments are processed through Shopify's secure, PCI-DSS compliant payment infrastructure — we never store your card details.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">Can I cancel or amend my order?</button><div class="faq-a"><p>Orders can be amended or cancelled within <strong>24 hours</strong> of being placed. Because our beds and mattresses are built to order, production begins quickly and cancellation after this window may not be possible. Please email <strong>sales@clickclickstore.co.uk</strong> immediately if you need to make changes.</p></div></div>
+        </div>
+        <div class="faq-group" data-cat="warranty" style="display:none">
+          <h2 class="faq-group__title">Warranty &amp; Guarantees</h2>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">What warranty do Klawford beds and mattresses come with?</button><div class="faq-a"><p>All Klawford beds and mattresses are backed by a manufacturer's guarantee covering structural faults and manufacturing defects. The guarantee period varies by product and is listed on each individual product page. Our mattresses also carry our 60-night sleep trial on top of the standard guarantee.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">My Klawford bed arrived damaged — what do I do?</button><div class="faq-a"><p>Please note any damage on the delivery paperwork before signing, photograph the issue clearly, and contact us at <strong>sales@clickclickstore.co.uk</strong> within <strong>48 hours</strong> of delivery. We will assess the photographs and arrange a repair, replacement, or refund as quickly as possible — at no cost to you.</p></div></div>
+          <div class="faq-item"><button class="faq-q" aria-expanded="false">How do I make a warranty claim?</button><div class="faq-a"><p>Email <strong>sales@clickclickstore.co.uk</strong> with your order number, a description of the issue, and clear photographs of the fault. Our team will respond within 2 working days with a resolution. Please do not attempt to repair the item yourself as this may void the warranty.</p></div></div>
+        </div>
+      </div>
+      <div class="info-cta">
+        <h2 class="info-cta__title">Didn't Find Your Answer?</h2>
+        <p class="info-cta__text">Our UK team is available Monday–Friday and happy to help with any question about our beds, mattresses, or ordering process.</p>
+        <a href="mailto:sales@clickclickstore.co.uk" class="btn btn--primary">Email Our Team</a>
+      </div>
     </div>
   </div>
-  <div class="container info-page__body">
-    <div class="faq-nav">
-      <button class="faq-nav__btn active" data-cat="delivery">Delivery</button>
-      <button class="faq-nav__btn" data-cat="returns">Returns &amp; Trial</button>
-      <button class="faq-nav__btn" data-cat="products">Products &amp; Quality</button>
-      <button class="faq-nav__btn" data-cat="payment">Finance &amp; Payment</button>
-      <button class="faq-nav__btn" data-cat="warranty">Warranty</button>
-    </div>
-    <div class="faq-list">
-      <div class="faq-group" data-cat="delivery">
-        <h2 class="faq-group__title">Delivery</h2>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does delivery take?</button><div class="faq-a"><p>All Klawford orders to UK mainland are delivered within <strong>7–14 working days</strong>. You'll receive an email when dispatched with a tracking link, plus SMS updates on the day of delivery.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Is delivery really free?</button><div class="faq-a"><p>Yes — standard delivery to all UK mainland addresses is completely free on every Klawford order, with no minimum spend. Remote areas may incur a surcharge — contact us for a quote.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you offer weekend or evening deliveries?</button><div class="faq-a"><p>Weekend and evening slots are available in select postcodes. Contact <strong>sales@clickclickstore.co.uk</strong> before ordering and we'll do our best to accommodate you.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What happens if I'm not home?</button><div class="faq-a"><p>Our courier will leave a card to rearrange. We recommend providing a phone number so we can give you advance notice. You can also contact us directly to reschedule.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you deliver to Northern Ireland or Ireland?</button><div class="faq-a"><p>Yes — delivery to Northern Ireland and the Republic of Ireland is available. Charges vary, so please contact us at <strong>sales@clickclickstore.co.uk</strong> for a personalised quote.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What is White Glove delivery?</button><div class="faq-a"><p>Our White Glove service means a specialist two-person team delivers to your chosen room, assembles your bed frame, and removes all packaging. Old bed/mattress removal is available for an additional charge.</p></div></div>
-      </div>
-      <div class="faq-group" data-cat="returns" style="display:none;">
-        <h2 class="faq-group__title">Returns &amp; Trial</h2>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What is your returns policy?</button><div class="faq-a"><p>All Klawford mattresses come with a <strong>60-night sleep trial</strong>. If not completely satisfied, contact us and we'll arrange a free collection and full refund. Beds and frames can be returned within 14 days if unused and in original packaging.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">How do I start a return?</button><div class="faq-a"><p>Email <strong>sales@clickclickstore.co.uk</strong> with your order number and reason for return. We'll confirm eligibility and arrange free collection at a time that suits you.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Why do I need to sleep on the mattress for 14 nights first?</button><div class="faq-a"><p>Your body naturally takes time to adjust to a new sleep surface. We ask for 14 nights minimum to give you the full benefit. After that, if you're still not happy, we're here to help.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">How long does a refund take?</button><div class="faq-a"><p>Once your mattress is collected, refunds are processed within <strong>5–7 working days</strong> to your original payment method.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Do I need the original packaging to return?</button><div class="faq-a"><p>No — original packaging is not required for mattress returns under the 60-night trial. For bed frames, original packaging is required.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Do I need a mattress protector?</button><div class="faq-a"><p>Yes — a mattress protector must be used throughout the trial for hygiene purposes. This is a condition of our 60-night trial.</p></div></div>
-      </div>
-      <div class="faq-group" data-cat="products" style="display:none;">
-        <h2 class="faq-group__title">Products &amp; Quality</h2>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What bed sizes do you offer?</button><div class="faq-a"><p>Klawford beds are available in all standard UK sizes: <strong>Small Single (2'6), Single (3'), Small Double (4'), Double (4'6), King (5'), and Super King (6')</strong>. Availability varies by product.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Are Klawford beds handmade?</button><div class="faq-a"><p>Yes. Every Klawford bed is <strong>handcrafted in the UK</strong> by skilled artisans using premium materials. Each piece is built to order and made to last.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What types of beds do you sell?</button><div class="faq-a"><p>Our collection includes divan beds, ottoman storage beds, panel beds, wing-back beds, and luxury upholstered frames, plus pocket sprung and memory foam mattresses.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Can I choose my own fabric or colour?</button><div class="faq-a"><p>Many beds are available in multiple fabrics and colours, selectable on the product page. For bespoke requests, please contact our team.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">How do I care for my mattress?</button><div class="faq-a"><p><strong>Rotate it 180° every 3 months</strong>, always use a protector, keep it ventilated, and spot clean with mild detergent. Do not fold or bend your mattress.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What firmness mattresses do you offer?</button><div class="faq-a"><p>Available in <strong>Soft, Medium, Medium Firm, Firm, and Extra Firm</strong>. Side sleepers typically prefer softer; back sleepers medium to firm; stomach sleepers firm to extra firm.</p></div></div>
-      </div>
-      <div class="faq-group" data-cat="payment" style="display:none;">
-        <h2 class="faq-group__title">Finance &amp; Payment</h2>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you offer finance or pay monthly?</button><div class="faq-a"><p>Yes — Klawford offers flexible finance options through trusted payment partners. Apply at checkout. Representative APR and eligibility displayed at the point of application.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What payment methods do you accept?</button><div class="faq-a"><p>We accept all major credit/debit cards (Visa, Mastercard, Amex), PayPal, Apple Pay, Google Pay, and finance options. All payments are processed securely via SSL encryption.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">Can I change or cancel my order?</button><div class="faq-a"><p>Orders can be amended or cancelled within <strong>24 hours</strong> of placing. Because our beds are made to order, we're unable to cancel after production begins. Email us immediately at <strong>sales@clickclickstore.co.uk</strong>.</p></div></div>
-      </div>
-      <div class="faq-group" data-cat="warranty" style="display:none;">
-        <h2 class="faq-group__title">Warranty</h2>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What warranty do Klawford products come with?</button><div class="faq-a"><p>All Klawford beds and mattresses come with a <strong>manufacturer's guarantee</strong> covering structural faults and manufacturing defects. Warranty periods are listed on each product page.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">What does the warranty cover?</button><div class="faq-a"><p>Manufacturing defects including structural failures, faulty joints, and material defects under normal domestic use. Does not cover wear and tear, misuse, or improper assembly.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">How do I make a warranty claim?</button><div class="faq-a"><p>Email <strong>sales@clickclickstore.co.uk</strong> with your order number, a description of the issue, and clear photographs. We'll respond within 2 working days.</p></div></div>
-        <div class="faq-item"><button class="faq-q" aria-expanded="false">My item arrived damaged — what should I do?</button><div class="faq-a"><p>Note it on the delivery paperwork, photograph the damage, and contact us within <strong>48 hours</strong> of delivery. We'll arrange a replacement or repair at no cost to you.</p></div></div>
-      </div>
-    </div>
-    <div class="info-cta">
-      <h2 class="info-cta__title">Still Have a Question?</h2>
-      <p class="info-cta__text">Our team is available Monday–Friday and would love to help you find the perfect bed or mattress.</p>
-      <a href="mailto:sales@clickclickstore.co.uk" class="btn btn--primary">Email Our Team</a>
+</div>
+
+<!-- DEFAULT 404 -->
+<div id="pg-404" class="pg-section" style="display:none">
+  <div class="container">
+    <div class="not-found">
+      <h1 aria-hidden="true">404</h1>
+      <h2>Page not found</h2>
+      <p>The page you're looking for has been moved, deleted, or never existed.</p>
+      <a href="/" class="btn btn--primary btn--lg">Back to Home</a>
     </div>
   </div>
 </div>
 
 <script>
 (function(){
+  var path = window.location.pathname.replace(/\/$/, '');
+  var map = {
+    '/pages/delivery':              'pg-delivery',
+    '/pages/delivery-information':  'pg-delivery',
+    '/pages/shipping-information':  'pg-delivery',
+    '/pages/shipping':              'pg-delivery',
+    '/pages/returns':               'pg-returns',
+    '/pages/returns-policy':        'pg-returns',
+    '/pages/return-policy':         'pg-returns',
+    '/pages/refunds':               'pg-returns',
+    '/pages/faq':                   'pg-faq',
+    '/pages/faqs':                  'pg-faq',
+    '/pages/frequently-asked-questions': 'pg-faq'
+  };
+  var id = map[path] || 'pg-404';
+  var el = document.getElementById(id);
+  if(el) el.style.display = '';
+
+  /* Update page title and meta description */
+  var meta = {
+    'pg-delivery': {
+      t: 'Free Bed & Mattress Delivery UK | Klawford',
+      d: 'Free UK mainland delivery on all Klawford beds and mattresses. 7-14 working days, white glove assembly service available. Order online today.'
+    },
+    'pg-returns': {
+      t: '60-Night Mattress Trial & Returns Policy | Klawford UK',
+      d: 'Shop risk-free with Klawford\'s 60-night mattress sleep trial. Free collection, full refund guaranteed. Buy luxury beds & mattresses with total confidence.'
+    },
+    'pg-faq': {
+      t: 'FAQs | Beds, Mattresses & Delivery | Klawford UK',
+      d: 'Answers to common questions about buying beds and mattresses online in the UK — delivery, returns, sizes, firmness, finance and more. Klawford FAQ.'
+    }
+  };
+  if(meta[id]){
+    document.title = meta[id].t;
+    var dm = document.querySelector('meta[name="description"]');
+    if(dm){ dm.content = meta[id].d; }
+    else { var m=document.createElement('meta'); m.name='description'; m.content=meta[id].d; document.head.appendChild(m); }
+  }
+
+  /* FAQ accordion */
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click',function(){
-      var item=this.closest('.faq-item'),open=item.classList.contains('is-open');
+      var item=this.closest('.faq-item'), open=item.classList.contains('is-open');
       item.closest('.faq-group').querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('is-open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
       if(!open){item.classList.add('is-open');this.setAttribute('aria-expanded','true');}
     });
   });
+  /* FAQ category tabs */
   document.querySelectorAll('.faq-nav__btn').forEach(function(btn){
     btn.addEventListener('click',function(){
       var cat=this.getAttribute('data-cat');
@@ -276,28 +300,13 @@
 })();
 </script>
 
-{%- else -%}
-
-<!-- ===== DEFAULT 404 ===== -->
-<div class="container">
-  <div class="not-found">
-    <h1 aria-hidden="true">404</h1>
-    <h2>Page not found</h2>
-    <p>The page you're looking for has been moved, deleted, or never existed.</p>
-    <a href="/" class="btn btn--primary btn--lg">Back to Home</a>
-  </div>
-</div>
-
-{%- endif -%}
-
-<!-- Shared styles for info pages -->
 <style>
 .info-page__hero{position:relative;background-size:cover;background-position:center;min-height:380px;display:flex;align-items:flex-end;}
-.info-page__hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(92,31,46,.85) 0%,rgba(92,31,46,.35) 60%,rgba(0,0,0,.1) 100%);}
+.info-page__hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(92,31,46,.88) 0%,rgba(92,31,46,.38) 60%,rgba(0,0,0,.1) 100%);}
 .info-page__hero-inner{position:relative;z-index:1;padding-block:3rem;}
 .info-page__eyebrow{font-size:var(--fs-xs);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:.5rem;}
-.info-page__hero-title{font-family:var(--ff-primary);font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-bottom:.75rem;line-height:1.1;}
-.info-page__hero-sub{font-size:var(--fs-base);color:rgba(255,255,255,.85);max-width:540px;line-height:1.6;}
+.info-page__hero-title{font-family:var(--ff-primary);font-size:clamp(2rem,5vw,3.2rem);color:#fff;margin-bottom:.75rem;line-height:1.1;}
+.info-page__hero-sub{font-size:var(--fs-base);color:rgba(255,255,255,.88);max-width:560px;line-height:1.65;}
 .info-page__body{padding-block:4rem;display:flex;flex-direction:column;gap:4rem;}
 .info-highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
 @media(max-width:860px){.info-highlights{grid-template-columns:repeat(2,1fr);}}
@@ -313,10 +322,10 @@
 .info-split__content p{margin-bottom:1rem;line-height:1.7;}
 .info-list{list-style:none;padding:0;margin:1rem 0;display:flex;flex-direction:column;gap:.6rem;}
 .info-list li{padding-left:1.4rem;position:relative;font-size:var(--fs-sm);line-height:1.6;}
-.info-list li::before{content:'';position:absolute;left:0;top:.5em;width:7px;height:7px;border-radius:50%;background:var(--clr-secondary);}
+.info-list li::before{content:'';position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--clr-secondary);}
 .info-banner{background:var(--clr-secondary);color:#fff;border-radius:var(--radius-base);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;}
-@media(max-width:700px){.info-banner{grid-template-columns:1fr;}}
 .info-banner--light{background:var(--clr-primary);color:var(--clr-text);border:1px solid rgba(92,31,46,.15);}
+@media(max-width:700px){.info-banner{grid-template-columns:1fr;}}
 .info-banner__content{padding:2.5rem;}
 .info-banner__title{font-family:var(--ff-primary);font-size:clamp(1.3rem,2.5vw,1.75rem);margin-bottom:.75rem;color:inherit;}
 .info-banner--light .info-banner__title{color:var(--clr-secondary);}
@@ -341,7 +350,7 @@
 @media(max-width:700px){.info-steps__grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:480px){.info-steps__grid,.info-steps__grid--4{grid-template-columns:1fr;}}
 .info-step{background:var(--clr-primary);border:1px solid rgba(92,31,46,.12);border-radius:var(--radius-base);padding:1.75rem 1.5rem;}
-.info-step__num{font-size:2.5rem;font-family:var(--ff-primary);color:var(--clr-secondary);opacity:.25;line-height:1;margin-bottom:.75rem;}
+.info-step__num{font-size:2.5rem;font-family:var(--ff-primary);color:var(--clr-secondary);opacity:.2;line-height:1;margin-bottom:.75rem;}
 .info-step__title{font-family:var(--ff-primary);font-size:var(--fs-base);color:var(--clr-secondary);margin-bottom:.5rem;}
 .info-step p{font-size:var(--fs-sm);line-height:1.6;}
 .info-two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
@@ -361,12 +370,15 @@
 .faq-group__title{font-family:var(--ff-primary);font-size:clamp(1.3rem,2.5vw,1.75rem);color:var(--clr-secondary);margin-bottom:1.25rem;}
 .faq-item{border-bottom:1px solid rgba(92,31,46,.12);}
 .faq-q{width:100%;background:none;border:none;text-align:left;padding:1.1rem 0;font-size:var(--fs-base);font-family:var(--ff-primary);color:var(--clr-text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
-.faq-q::after{content:'+';font-size:1.4rem;color:var(--clr-secondary);flex-shrink:0;line-height:1;transition:transform .2s;}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--clr-secondary);flex-shrink:0;line-height:1;}
 .faq-item.is-open .faq-q::after{content:'−';}
 .faq-a{display:none;padding:0 0 1.25rem;}
-.faq-a p{font-size:var(--fs-sm);line-height:1.7;color:var(--clr-text-light);margin:0;}
+.faq-a p{font-size:var(--fs-sm);line-height:1.75;color:var(--clr-text-light);margin:0;}
 .faq-item.is-open .faq-a{display:block;}
-.info-section{} .info-section__title{font-family:var(--ff-primary);font-size:clamp(1.4rem,3vw,2rem);color:var(--clr-secondary);margin-bottom:1.25rem;}
+.not-found{text-align:center;padding:6rem 0;}
+.not-found h1{font-size:8rem;font-family:var(--ff-primary);color:var(--clr-secondary);opacity:.15;line-height:1;margin-bottom:1rem;}
+.not-found h2{font-family:var(--ff-primary);font-size:2rem;color:var(--clr-secondary);margin-bottom:.75rem;}
+.not-found p{color:var(--clr-text-light);margin-bottom:2rem;}
 </style>
 
 {% schema %}
