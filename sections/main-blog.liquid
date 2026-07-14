@@ -1,59 +1,151 @@
+<!-- SEO meta injection for blog -->
+<script>
+document.title = 'The Klawford Journal | Beds, Mattresses & Sleep Guides | UK';
+(function(){
+  var d = document.querySelector('meta[name="description"]');
+  var c = 'Expert guides on choosing the best beds and mattresses in the UK. Sleep tips, bedroom inspiration, and care advice from Klawford — luxury handcrafted beds made in Britain.';
+  if(d){d.content=c;}else{var m=document.createElement('meta');m.name='description';m.content=c;document.head.appendChild(m);}
+})();
+</script>
+
 <!-- Blog Hero -->
 <div class="blog-hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-1.jpg');">
   <div class="blog-hero__overlay"></div>
   <div class="container blog-hero__inner">
     <p class="blog-hero__eyebrow">The Klawford Journal</p>
-    <h1 class="blog-hero__title">{{ blog.title }}</h1>
-    <p class="blog-hero__sub">Expert sleep advice, style inspiration, and the latest from the world of Klawford beds and mattresses.</p>
+    <h1 class="blog-hero__title">Sleep Better. Live Better.</h1>
+    <p class="blog-hero__sub">Expert guides on choosing the best beds and mattresses in the UK — plus bedroom inspiration, sleep tips, and care advice from the Klawford team.</p>
   </div>
 </div>
 
-<!-- Featured editorial strip (visible always) -->
+<!-- Featured Articles -->
 <div class="blog-editorial">
   <div class="container">
+    <h2 class="blog-section-title">Featured Guides</h2>
     <div class="blog-editorial__grid">
-      <div class="blog-editorial__card">
+
+      <article class="blog-editorial__card">
         <div class="blog-editorial__img-wrap">
-          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-lifestyle.jpg" alt="Choosing a mattress" loading="lazy">
-          <span class="blog-editorial__tag">Sleep Health</span>
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-lifestyle.jpg" alt="How to choose the best mattress UK" loading="lazy">
+          <span class="blog-editorial__tag">Mattress Guide</span>
         </div>
         <div class="blog-editorial__body">
-          <p class="blog-editorial__date">Klawford Guide</p>
-          <h3 class="blog-editorial__title">How to Choose the Perfect Mattress for Your Sleep Style</h3>
-          <p class="blog-editorial__excerpt">Your mattress is the single most important purchase for your sleep health. Whether you're a side sleeper, back sleeper, or combination sleeper, understanding your needs is the first step to the perfect night's rest.</p>
+          <p class="blog-editorial__date">Buying Guide · Klawford UK</p>
+          <h3 class="blog-editorial__title">Pocket Sprung vs Memory Foam: Which Mattress Is Best for You?</h3>
+          <p class="blog-editorial__excerpt">Choosing between a pocket sprung mattress and a memory foam mattress is one of the most common questions UK bed buyers face. Pocket sprung mattresses use individually wrapped coils to provide targeted support and excellent airflow — ideal for those who sleep hot or prefer a traditional, responsive feel. Memory foam contours closely to your body shape, eliminating pressure points and reducing motion transfer — perfect for couples and side sleepers. At Klawford, we offer both types in a range of firmness levels from Soft to Extra Firm. Understanding your sleep position, body weight, and temperature preferences is the key to making the right choice.</p>
         </div>
-      </div>
-      <div class="blog-editorial__card">
+      </article>
+
+      <article class="blog-editorial__card">
         <div class="blog-editorial__img-wrap">
-          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/upholspic1.jpg" alt="Bedroom design" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg" alt="UK bed size guide king super king" loading="lazy">
+          <span class="blog-editorial__tag">Size Guide</span>
+        </div>
+        <div class="blog-editorial__body">
+          <p class="blog-editorial__date">Buying Guide · Klawford UK</p>
+          <h3 class="blog-editorial__title">The Complete UK Bed Size Guide — From Single to Super King</h3>
+          <p class="blog-editorial__excerpt">Not all bed sizes are equal — and the difference between a King and a Super King could mean the difference between a great night's sleep and a cramped one. In the UK, a Double bed measures 135cm × 190cm, while a King is 150cm × 200cm and a Super King stretches to 180cm × 200cm. If you share a bed, we always recommend going one size larger than you think you need — sleep quality improves dramatically with more space. Our Alexander and Davina collections are available across all UK standard sizes, with our most popular being the King and Super King. Don't forget to measure your bedroom before ordering and check doorway access for delivery.</p>
+        </div>
+      </article>
+
+      <article class="blog-editorial__card">
+        <div class="blog-editorial__img-wrap">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/upholspic1.jpg" alt="luxury bedroom interior design UK" loading="lazy">
           <span class="blog-editorial__tag">Interior Design</span>
         </div>
         <div class="blog-editorial__body">
-          <p class="blog-editorial__date">Klawford Guide</p>
-          <h3 class="blog-editorial__title">5 Ways to Transform Your Bedroom Into a Luxury Sleep Sanctuary</h3>
-          <p class="blog-editorial__excerpt">Your bedroom should be a retreat — a space designed entirely around rest and relaxation. Discover how the right bed frame, lighting, and layering can completely transform how you feel at the end of each day.</p>
+          <p class="blog-editorial__date">Inspiration · Klawford UK</p>
+          <h3 class="blog-editorial__title">5 Ways to Transform Your Bedroom into a Luxury Sleep Sanctuary</h3>
+          <p class="blog-editorial__excerpt">Your bedroom is the most important room in your home — yet most people spend less time designing it than their living room. A few considered changes can completely transform how you feel at the end of each day. Start with your bed frame: an upholstered wing-back or statement panel bed instantly elevates the room. Layer your bedding with natural fibres — cotton, linen, or bamboo — for temperature regulation. Keep colours calm: soft creams, warm greys, and earthy tones signal sleep to your brain. Invest in blackout curtains and consider a bedside reading lamp on a warm dimmer. Finally, declutter ruthlessly — a calm, uncluttered bedroom promotes deeper, faster sleep. Our luxury bed frames are designed specifically to anchor a restful bedroom aesthetic.</p>
         </div>
-      </div>
-      <div class="blog-editorial__card">
+      </article>
+
+    </div>
+
+    <!-- Second row -->
+    <div class="blog-editorial__grid" style="margin-top:2rem;">
+
+      <article class="blog-editorial__card">
         <div class="blog-editorial__img-wrap">
-          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-cream-1.jpg" alt="Bed care" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-product.jpg" alt="best mattress for back pain UK orthopaedic" loading="lazy">
+          <span class="blog-editorial__tag">Health & Wellness</span>
+        </div>
+        <div class="blog-editorial__body">
+          <p class="blog-editorial__date">Sleep Health · Klawford UK</p>
+          <h3 class="blog-editorial__title">Best Mattresses for Back Pain Relief — UK Orthopaedic Guide</h3>
+          <p class="blog-editorial__excerpt">Back pain affects over 16 million adults in the UK, and your mattress could be making it worse — or better. The right mattress for back pain depends on your sleep position: back sleepers need firm-to-medium support to keep the spine neutral, while side sleepers need softer options to cushion hips and shoulders without letting the spine curve. A pocket sprung orthopaedic mattress provides zoned support that adapts to different areas of the body. Our Klawford Orthopaedic Pocket Sprung Mattress features 1000+ individually nested springs for targeted lumbar support. If you're unsure which firmness is right for your pain level, try our 60-night sleep trial — you can return it if it doesn't improve your sleep within two months.</p>
+        </div>
+      </article>
+
+      <article class="blog-editorial__card">
+        <div class="blog-editorial__img-wrap">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-grey-4.jpg" alt="divan bed vs bed frame UK which is better" loading="lazy">
+          <span class="blog-editorial__tag">Buying Guide</span>
+        </div>
+        <div class="blog-editorial__body">
+          <p class="blog-editorial__date">Buying Guide · Klawford UK</p>
+          <h3 class="blog-editorial__title">Divan Bed vs Bed Frame — Which Is Right for Your Bedroom?</h3>
+          <p class="blog-editorial__excerpt">Divan beds and bed frames each have distinct advantages, and choosing between them comes down to your priorities. Divan beds — upholstered bases on castors — offer an integrated, clean look and often include built-in storage drawers or an ottoman lift, making them perfect for maximising space in smaller UK bedrooms. Bed frames, on the other hand, are statement pieces: the structure of your bedroom's aesthetic. Panel beds, sleigh frames, and wing-back designs all create a focal point that a divan cannot match. At Klawford, we manufacture both — our divan range comes with up to 4 storage drawers or ottoman lift storage, while our luxury frames are available in premium velvets, linens, and leathers. Many customers choose a divan base with a headboard for the best of both worlds.</p>
+        </div>
+      </article>
+
+      <article class="blog-editorial__card">
+        <div class="blog-editorial__img-wrap">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-cream-1.jpg" alt="how to care for mattress and bed UK tips" loading="lazy">
           <span class="blog-editorial__tag">Care Guide</span>
         </div>
         <div class="blog-editorial__body">
-          <p class="blog-editorial__date">Klawford Guide</p>
-          <h3 class="blog-editorial__title">How to Care for Your Klawford Bed &amp; Mattress</h3>
-          <p class="blog-editorial__excerpt">With the right care, a quality bed can last a decade or more. Learn how to rotate, clean, and protect your investment so it continues to deliver the sleep quality it was built for.</p>
+          <p class="blog-editorial__date">Care Guide · Klawford UK</p>
+          <h3 class="blog-editorial__title">How to Care for Your Bed & Mattress — Expert Tips to Make It Last</h3>
+          <p class="blog-editorial__excerpt">A quality bed and mattress is a long-term investment, and with the right care, it can provide exceptional sleep for 10 years or more. The single most important habit: rotate your mattress 180° every 3 months for the first year, then twice a year thereafter. This prevents body impressions and ensures even wear. Always use a mattress protector — it guards against moisture, dust mites, and allergens while keeping your mattress feeling fresh. For your bed frame, vacuum the base annually if it's upholstered, and tighten any bolts or fixings every 6 months. Avoid sitting on the edge of the mattress repeatedly in the same spot. Air your mattress monthly by pulling back the bedding for 30 minutes. These simple steps can add years of comfortable sleep to your Klawford mattress.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</div>
+
+<!-- Full-text featured article -->
+<div class="blog-featured-article">
+  <div class="container">
+    <div class="blog-featured-article__inner">
+      <div class="blog-featured-article__content">
+        <span class="blog-featured-article__label">Featured Guide</span>
+        <h2 class="blog-featured-article__title">How to Buy a Bed Online in the UK — The Complete 2025 Guide</h2>
+        <p class="blog-featured-article__lead">Buying a bed online in the UK has never been easier — but with so many options, knowing what to look for is essential. This guide covers everything from measuring your room to understanding mattress specifications, so you can shop with confidence.</p>
+
+        <h3>Step 1: Measure Before You Order</h3>
+        <p>Before searching for your ideal bed, measure your bedroom carefully. You'll need the room dimensions, doorway widths, and stairwell clearances to ensure delivery is straightforward. As a rule, allow at least 60cm of walkable space on either side of the bed. A Super King (180cm wide) needs a room at least 3.5m wide to feel comfortable.</p>
+
+        <h3>Step 2: Choose Your Bed Type</h3>
+        <p>UK shoppers typically choose between <strong>divan beds</strong> (great for storage, clean look), <strong>ottoman beds</strong> (lift-up base for maximum storage), <strong>panel or wing-back frames</strong> (statement aesthetic), and <strong>sleigh beds</strong> (curved headboard and footboard). Consider the style of your bedroom and how much storage you need.</p>
+
+        <h3>Step 3: Select the Right Mattress Firmness</h3>
+        <p>Mattress firmness is personal, but general guidance helps: <strong>Soft</strong> suits lighter-weight side sleepers; <strong>Medium</strong> is ideal for combination sleepers; <strong>Firm</strong> suits back sleepers and heavier individuals; <strong>Extra Firm</strong> is recommended for those with lower back pain requiring maximum support.</p>
+
+        <h3>Step 4: Look for UK-Made Quality</h3>
+        <p>British-made beds and mattresses are subject to UK fire safety regulations and quality standards. Look for brands that manufacture in the UK, offer transparent spring counts and material specifications, and back their products with genuine guarantees and sleep trials.</p>
+
+        <h3>Step 5: Take Advantage of Sleep Trials</h3>
+        <p>Any reputable UK bed retailer should offer a sleep trial on mattresses. At Klawford, our <strong>60-night sleep trial</strong> means you can sleep on your mattress at home — and return it free of charge if you're not completely satisfied. This is far more informative than testing a mattress in a showroom for 5 minutes.</p>
+
+        <a href="/collections/all" class="btn btn--primary" style="margin-top:1.5rem;display:inline-block;">Shop Klawford Beds &amp; Mattresses</a>
+      </div>
+      <div class="blog-featured-article__img">
+        <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/pic_2_uphol.webp" alt="buy beds online UK guide Klawford" loading="lazy">
+        <div class="blog-featured-article__img-caption">
+          <strong>Klawford</strong><br>Handcrafted luxury beds &amp; mattresses, made in the UK.
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Blog articles from Shopify -->
+<!-- Blog articles from Shopify admin -->
 {%- if blog.articles_count > 0 -%}
 <div class="blog-articles">
   <div class="container">
-    <h2 class="blog-articles__title">Latest Articles</h2>
+    <h2 class="blog-articles__title">Latest from the Blog</h2>
     <div class="blog-articles__grid">
       {%- for article in blog.articles -%}
         <article class="blog-article-card">
@@ -67,13 +159,9 @@
           <div class="blog-article-card__body">
             <p class="blog-article-card__meta">
               <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: "%B %d, %Y" }}</time>
-              {%- if article.tags.size > 0 -%}
-                &nbsp;·&nbsp;{{ article.tags | first }}
-              {%- endif -%}
+              {%- if article.tags.size > 0 -%}&nbsp;·&nbsp;{{ article.tags | first }}{%- endif -%}
             </p>
-            <h3 class="blog-article-card__title">
-              <a href="{{ article.url }}">{{ article.title }}</a>
-            </h3>
+            <h3 class="blog-article-card__title"><a href="{{ article.url }}">{{ article.title }}</a></h3>
             {%- if article.excerpt != blank -%}
               <p class="blog-article-card__excerpt">{{ article.excerpt | strip_html | truncate: 130 }}</p>
             {%- endif -%}
@@ -88,204 +176,109 @@
 </div>
 {%- endif -%}
 
+<!-- SEO keyword-rich footer strip -->
+<div class="blog-topics">
+  <div class="container">
+    <h2 class="blog-topics__title">Explore Topics</h2>
+    <div class="blog-topics__list">
+      <a href="/collections/mattresses" class="blog-topic">Mattresses UK</a>
+      <a href="/collections/all" class="blog-topic">Luxury Beds UK</a>
+      <a href="/collections/all" class="blog-topic">King Size Beds</a>
+      <a href="/collections/all" class="blog-topic">Super King Beds</a>
+      <a href="/collections/all" class="blog-topic">Ottoman Storage Beds</a>
+      <a href="/collections/all" class="blog-topic">Upholstered Beds</a>
+      <a href="/collections/all" class="blog-topic">Divan Beds</a>
+      <a href="/collections/mattresses" class="blog-topic">Pocket Sprung Mattresses</a>
+      <a href="/collections/mattresses" class="blog-topic">Memory Foam Mattresses</a>
+      <a href="/collections/all" class="blog-topic">Handmade Beds UK</a>
+    </div>
+  </div>
+</div>
+
 <!-- Newsletter CTA -->
 <div class="blog-newsletter">
   <div class="container">
     <div class="blog-newsletter__inner">
       <div class="blog-newsletter__text">
-        <h2 class="blog-newsletter__title">Sleep Better, Starting Tonight</h2>
-        <p>Get expert sleep tips, exclusive Klawford offers, and new collection previews delivered to your inbox.</p>
+        <h2 class="blog-newsletter__title">Get Expert Sleep Advice, Delivered Free</h2>
+        <p>Join thousands of UK customers who receive Klawford's sleep guides, exclusive offers, and new collection previews straight to their inbox.</p>
       </div>
       <div class="blog-newsletter__img">
-        <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-grey-4.jpg" alt="Klawford beds" loading="lazy">
+        <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-grey-4.jpg" alt="Klawford luxury beds UK" loading="lazy">
       </div>
     </div>
   </div>
 </div>
 
 <style>
-/* ---- Blog Hero ---- */
-.blog-hero {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  min-height: 420px;
-  display: flex;
-  align-items: flex-end;
-}
-.blog-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(92,31,46,0.88) 0%, rgba(92,31,46,0.4) 55%, rgba(0,0,0,0.15) 100%);
-}
-.blog-hero__inner {
-  position: relative;
-  z-index: 1;
-  padding-block: 3.5rem;
-}
-.blog-hero__eyebrow {
-  font-size: var(--fs-xs);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.7);
-  margin-bottom: .5rem;
-}
-.blog-hero__title {
-  font-family: var(--ff-primary);
-  font-size: clamp(2rem,5vw,3.5rem);
-  color: #fff;
-  margin-bottom: .75rem;
-}
-.blog-hero__sub {
-  font-size: var(--fs-base);
-  color: rgba(255,255,255,.85);
-  max-width: 560px;
-  line-height: 1.65;
-}
-
-/* ---- Editorial cards ---- */
-.blog-editorial { padding: 4rem 0; border-bottom: 1px solid rgba(92,31,46,.1); }
-.blog-editorial__grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 2rem;
-}
-@media(max-width:900px){ .blog-editorial__grid { grid-template-columns: repeat(2,1fr); } }
-@media(max-width:560px){ .blog-editorial__grid { grid-template-columns: 1fr; } }
-.blog-editorial__card {
-  background: var(--clr-white);
-  border-radius: var(--radius-base);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm,0 2px 8px rgba(0,0,0,.07));
-  display: flex;
-  flex-direction: column;
-}
-.blog-editorial__img-wrap { position: relative; overflow: hidden; }
-.blog-editorial__img-wrap img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  display: block;
-  transition: transform .4s ease;
-}
-.blog-editorial__card:hover .blog-editorial__img-wrap img { transform: scale(1.04); }
-.blog-editorial__tag {
-  position: absolute;
-  top: .75rem;
-  left: .75rem;
-  background: var(--clr-secondary);
-  color: #fff;
-  font-size: var(--fs-xs);
-  padding: .3rem .7rem;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  letter-spacing: .04em;
-}
-.blog-editorial__body { padding: 1.5rem; flex: 1; }
-.blog-editorial__date { font-size: var(--fs-xs); color: var(--clr-gray-dusty,#888); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .08em; }
-.blog-editorial__title {
-  font-family: var(--ff-primary);
-  font-size: var(--fs-base);
-  color: var(--clr-secondary);
-  margin-bottom: .6rem;
-  line-height: 1.4;
-}
-.blog-editorial__excerpt { font-size: var(--fs-sm); color: var(--clr-text-light); line-height: 1.6; }
-
-/* ---- Articles grid ---- */
-.blog-articles { padding: 4rem 0; }
-.blog-articles__title {
-  font-family: var(--ff-primary);
-  font-size: clamp(1.5rem,3vw,2rem);
-  color: var(--clr-secondary);
-  margin-bottom: 2rem;
-}
-.blog-articles__grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 1.75rem;
-}
-@media(max-width:900px){ .blog-articles__grid { grid-template-columns: repeat(2,1fr); } }
-@media(max-width:560px){ .blog-articles__grid { grid-template-columns: 1fr; } }
-.blog-article-card {
-  background: var(--clr-white);
-  border-radius: var(--radius-base);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm,0 2px 8px rgba(0,0,0,.07));
-  display: flex;
-  flex-direction: column;
-  transition: box-shadow .25s;
-}
-.blog-article-card:hover { box-shadow: 0 6px 20px rgba(92,31,46,.12); }
-.blog-article-card__img-link { display: block; overflow: hidden; }
-.blog-article-card__img {
-  width: 100%;
-  aspect-ratio: 16/10;
-  object-fit: cover;
-  display: block;
-  transition: transform .35s ease;
-}
-.blog-article-card__img--placeholder {
-  width: 100%;
-  aspect-ratio: 16/10;
-  background: var(--clr-primary);
-}
-.blog-article-card:hover .blog-article-card__img { transform: scale(1.04); }
-.blog-article-card__body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
-.blog-article-card__meta { font-size: var(--fs-xs); color: var(--clr-gray-dusty,#888); margin-bottom: .5rem; }
-.blog-article-card__title {
-  font-family: var(--ff-primary);
-  font-size: var(--fs-base);
-  margin-bottom: .6rem;
-  line-height: 1.4;
-}
-.blog-article-card__title a { color: var(--clr-secondary); text-decoration: none; }
-.blog-article-card__title a:hover { text-decoration: underline; }
-.blog-article-card__excerpt { font-size: var(--fs-sm); color: var(--clr-text-light); line-height: 1.6; flex: 1; }
-.blog-article-card__read {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  margin-top: 1rem;
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  color: var(--clr-secondary);
-  text-decoration: none;
-  border-bottom: 1.5px solid var(--clr-secondary);
-  padding-bottom: 2px;
-  width: fit-content;
-}
-.blog-article-card__read:hover { opacity: .75; }
-
-/* ---- Newsletter ---- */
-.blog-newsletter {
-  background: var(--clr-secondary);
-  padding: 0;
-  overflow: hidden;
-}
-.blog-newsletter__inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 280px;
-}
-@media(max-width:700px){ .blog-newsletter__inner { grid-template-columns: 1fr; } }
-.blog-newsletter__text {
-  padding: 3rem 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #fff;
-}
-.blog-newsletter__title {
-  font-family: var(--ff-primary);
-  font-size: clamp(1.4rem,2.5vw,2rem);
-  margin-bottom: .75rem;
-  color: #fff;
-}
-.blog-newsletter__text p { opacity: .87; line-height: 1.65; margin-bottom: 0; }
-.blog-newsletter__img { overflow: hidden; }
-.blog-newsletter__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-@media(max-width:700px){ .blog-newsletter__img { display: none; } }
+.blog-hero{position:relative;background-size:cover;background-position:center;min-height:440px;display:flex;align-items:flex-end;}
+.blog-hero__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(92,31,46,.9) 0%,rgba(92,31,46,.4) 55%,rgba(0,0,0,.15) 100%);}
+.blog-hero__inner{position:relative;z-index:1;padding-block:3.5rem;}
+.blog-hero__eyebrow{font-size:var(--fs-xs);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.5rem;}
+.blog-hero__title{font-family:var(--ff-primary);font-size:clamp(2rem,5vw,3.5rem);color:#fff;margin-bottom:.75rem;}
+.blog-hero__sub{font-size:var(--fs-base);color:rgba(255,255,255,.85);max-width:600px;line-height:1.65;}
+.blog-section-title{font-family:var(--ff-primary);font-size:clamp(1.5rem,3vw,2.2rem);color:var(--clr-secondary);margin-bottom:2rem;}
+.blog-editorial{padding:4rem 0;}
+.blog-editorial__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+@media(max-width:900px){.blog-editorial__grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.blog-editorial__grid{grid-template-columns:1fr;}}
+.blog-editorial__card{background:var(--clr-white);border-radius:var(--radius-base);overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s;}
+.blog-editorial__card:hover{box-shadow:0 8px 24px rgba(92,31,46,.13);transform:translateY(-2px);}
+.blog-editorial__img-wrap{position:relative;overflow:hidden;}
+.blog-editorial__img-wrap img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .4s ease;}
+.blog-editorial__card:hover .blog-editorial__img-wrap img{transform:scale(1.04);}
+.blog-editorial__tag{position:absolute;top:.75rem;left:.75rem;background:var(--clr-secondary);color:#fff;font-size:var(--fs-xs);padding:.3rem .7rem;border-radius:var(--radius-full);font-weight:600;letter-spacing:.04em;}
+.blog-editorial__body{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
+.blog-editorial__date{font-size:var(--fs-xs);color:var(--clr-gray-dusty,#888);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.08em;}
+.blog-editorial__title{font-family:var(--ff-primary);font-size:var(--fs-base);color:var(--clr-secondary);margin-bottom:.6rem;line-height:1.4;flex:1;}
+.blog-editorial__excerpt{font-size:var(--fs-sm);color:var(--clr-text-light);line-height:1.65;}
+/* Featured article */
+.blog-featured-article{background:var(--clr-primary);padding:5rem 0;border-top:1px solid rgba(92,31,46,.12);border-bottom:1px solid rgba(92,31,46,.12);}
+.blog-featured-article__inner{display:grid;grid-template-columns:1fr 380px;gap:4rem;align-items:start;}
+@media(max-width:900px){.blog-featured-article__inner{grid-template-columns:1fr;}}
+.blog-featured-article__label{display:inline-block;background:var(--clr-secondary);color:#fff;font-size:var(--fs-xs);padding:.3rem .8rem;border-radius:var(--radius-full);font-weight:600;letter-spacing:.06em;margin-bottom:1rem;}
+.blog-featured-article__title{font-family:var(--ff-primary);font-size:clamp(1.5rem,3vw,2.2rem);color:var(--clr-secondary);margin-bottom:1rem;line-height:1.2;}
+.blog-featured-article__lead{font-size:var(--fs-base);line-height:1.7;color:var(--clr-text-light);margin-bottom:1.5rem;font-style:italic;}
+.blog-featured-article__content h3{font-family:var(--ff-primary);font-size:var(--fs-base);color:var(--clr-secondary);margin:1.5rem 0 .5rem;}
+.blog-featured-article__content p{font-size:var(--fs-sm);line-height:1.75;color:var(--clr-text-light);margin-bottom:1rem;}
+.blog-featured-article__content strong{color:var(--clr-secondary);}
+.blog-featured-article__img img{width:100%;border-radius:var(--radius-base);object-fit:cover;}
+.blog-featured-article__img-caption{background:var(--clr-secondary);color:#fff;padding:.9rem 1.1rem;border-radius:0 0 var(--radius-base) var(--radius-base);font-size:var(--fs-sm);line-height:1.5;}
+/* Articles grid */
+.blog-articles{padding:4rem 0;}
+.blog-articles__title{font-family:var(--ff-primary);font-size:clamp(1.5rem,3vw,2rem);color:var(--clr-secondary);margin-bottom:2rem;}
+.blog-articles__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem;}
+@media(max-width:900px){.blog-articles__grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.blog-articles__grid{grid-template-columns:1fr;}}
+.blog-article-card{background:var(--clr-white);border-radius:var(--radius-base);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;flex-direction:column;transition:box-shadow .25s;}
+.blog-article-card:hover{box-shadow:0 6px 20px rgba(92,31,46,.12);}
+.blog-article-card__img-link{display:block;overflow:hidden;}
+.blog-article-card__img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .35s ease;}
+.blog-article-card__img--placeholder{width:100%;aspect-ratio:16/10;background:var(--clr-primary);}
+.blog-article-card:hover .blog-article-card__img{transform:scale(1.04);}
+.blog-article-card__body{padding:1.4rem;flex:1;display:flex;flex-direction:column;}
+.blog-article-card__meta{font-size:var(--fs-xs);color:var(--clr-gray-dusty,#888);margin-bottom:.5rem;}
+.blog-article-card__title{font-family:var(--ff-primary);font-size:var(--fs-base);margin-bottom:.6rem;line-height:1.4;flex:1;}
+.blog-article-card__title a{color:var(--clr-secondary);text-decoration:none;}
+.blog-article-card__title a:hover{text-decoration:underline;}
+.blog-article-card__excerpt{font-size:var(--fs-sm);color:var(--clr-text-light);line-height:1.6;}
+.blog-article-card__read{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;font-size:var(--fs-sm);font-weight:600;color:var(--clr-secondary);text-decoration:none;border-bottom:1.5px solid var(--clr-secondary);padding-bottom:2px;width:fit-content;}
+/* Topics */
+.blog-topics{padding:3rem 0;border-top:1px solid rgba(92,31,46,.1);}
+.blog-topics__title{font-family:var(--ff-primary);font-size:var(--fs-lg);color:var(--clr-secondary);margin-bottom:1rem;}
+.blog-topics__list{display:flex;flex-wrap:wrap;gap:.6rem;}
+.blog-topic{background:var(--clr-primary);border:1.5px solid rgba(92,31,46,.2);color:var(--clr-secondary);font-size:var(--fs-sm);padding:.45rem 1rem;border-radius:var(--radius-full);text-decoration:none;transition:background .2s,color .2s;}
+.blog-topic:hover{background:var(--clr-secondary);color:#fff;border-color:var(--clr-secondary);}
+/* Newsletter */
+.blog-newsletter{background:var(--clr-secondary);padding:0;overflow:hidden;}
+.blog-newsletter__inner{display:grid;grid-template-columns:1fr 1fr;min-height:280px;}
+@media(max-width:700px){.blog-newsletter__inner{grid-template-columns:1fr;}}
+.blog-newsletter__text{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center;color:#fff;}
+.blog-newsletter__title{font-family:var(--ff-primary);font-size:clamp(1.4rem,2.5vw,2rem);margin-bottom:.75rem;color:#fff;}
+.blog-newsletter__text p{opacity:.87;line-height:1.65;margin-bottom:0;}
+.blog-newsletter__img{overflow:hidden;}
+.blog-newsletter__img img{width:100%;height:100%;object-fit:cover;display:block;}
+@media(max-width:700px){.blog-newsletter__img{display:none;}}
 </style>
 
 {% schema %}
