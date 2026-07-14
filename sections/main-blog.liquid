@@ -1,27 +1,292 @@
-<div class="collection-main">
+<!-- Blog Hero -->
+<div class="blog-hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-1.jpg');">
+  <div class="blog-hero__overlay"></div>
+  <div class="container blog-hero__inner">
+    <p class="blog-hero__eyebrow">The Klawford Journal</p>
+    <h1 class="blog-hero__title">{{ blog.title }}</h1>
+    <p class="blog-hero__sub">Expert sleep advice, style inspiration, and the latest from the world of Klawford beds and mattresses.</p>
+  </div>
+</div>
+
+<!-- Featured editorial strip (visible always) -->
+<div class="blog-editorial">
   <div class="container">
-    <div class="collection-header">
-      <h1 class="collection-header__title">{{ blog.title }}</h1>
+    <div class="blog-editorial__grid">
+      <div class="blog-editorial__card">
+        <div class="blog-editorial__img-wrap">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-lifestyle.jpg" alt="Choosing a mattress" loading="lazy">
+          <span class="blog-editorial__tag">Sleep Health</span>
+        </div>
+        <div class="blog-editorial__body">
+          <p class="blog-editorial__date">Klawford Guide</p>
+          <h3 class="blog-editorial__title">How to Choose the Perfect Mattress for Your Sleep Style</h3>
+          <p class="blog-editorial__excerpt">Your mattress is the single most important purchase for your sleep health. Whether you're a side sleeper, back sleeper, or combination sleeper, understanding your needs is the first step to the perfect night's rest.</p>
+        </div>
+      </div>
+      <div class="blog-editorial__card">
+        <div class="blog-editorial__img-wrap">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/upholspic1.jpg" alt="Bedroom design" loading="lazy">
+          <span class="blog-editorial__tag">Interior Design</span>
+        </div>
+        <div class="blog-editorial__body">
+          <p class="blog-editorial__date">Klawford Guide</p>
+          <h3 class="blog-editorial__title">5 Ways to Transform Your Bedroom Into a Luxury Sleep Sanctuary</h3>
+          <p class="blog-editorial__excerpt">Your bedroom should be a retreat — a space designed entirely around rest and relaxation. Discover how the right bed frame, lighting, and layering can completely transform how you feel at the end of each day.</p>
+        </div>
+      </div>
+      <div class="blog-editorial__card">
+        <div class="blog-editorial__img-wrap">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-cream-1.jpg" alt="Bed care" loading="lazy">
+          <span class="blog-editorial__tag">Care Guide</span>
+        </div>
+        <div class="blog-editorial__body">
+          <p class="blog-editorial__date">Klawford Guide</p>
+          <h3 class="blog-editorial__title">How to Care for Your Klawford Bed &amp; Mattress</h3>
+          <p class="blog-editorial__excerpt">With the right care, a quality bed can last a decade or more. Learn how to rotate, clean, and protect your investment so it continues to deliver the sleep quality it was built for.</p>
+        </div>
+      </div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap-base);">
+  </div>
+</div>
+
+<!-- Blog articles from Shopify -->
+{%- if blog.articles_count > 0 -%}
+<div class="blog-articles">
+  <div class="container">
+    <h2 class="blog-articles__title">Latest Articles</h2>
+    <div class="blog-articles__grid">
       {%- for article in blog.articles -%}
-        <article style="border-radius:var(--radius-base);overflow:hidden;background:var(--clr-white);box-shadow:var(--shadow-sm);">
+        <article class="blog-article-card">
           {%- if article.image -%}
-            <a href="{{ article.url }}">
-              <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.image.alt | escape }}" loading="lazy" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
+            <a href="{{ article.url }}" class="blog-article-card__img-link" tabindex="-1" aria-hidden="true">
+              <img src="{{ article.image | image_url: width: 600 }}" alt="{{ article.image.alt | escape }}" loading="lazy" class="blog-article-card__img">
             </a>
+          {%- else -%}
+            <div class="blog-article-card__img blog-article-card__img--placeholder"></div>
           {%- endif -%}
-          <div style="padding:20px;">
-            <p style="font-size:var(--fs-xs);color:var(--clr-gray-dusty);margin-bottom:8px;">{{ article.published_at | date: "%B %d, %Y" }}</p>
-            <h2 style="font-family:var(--ff-primary);font-size:var(--fs-lg);margin-bottom:10px;"><a href="{{ article.url }}">{{ article.title }}</a></h2>
-            <p style="font-size:var(--fs-sm);color:var(--clr-text-light);">{{ article.excerpt | strip_html | truncate: 120 }}</p>
-            <a href="{{ article.url }}" class="btn btn--outline btn--sm" style="margin-top:16px;">Read More</a>
+          <div class="blog-article-card__body">
+            <p class="blog-article-card__meta">
+              <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: "%B %d, %Y" }}</time>
+              {%- if article.tags.size > 0 -%}
+                &nbsp;·&nbsp;{{ article.tags | first }}
+              {%- endif -%}
+            </p>
+            <h3 class="blog-article-card__title">
+              <a href="{{ article.url }}">{{ article.title }}</a>
+            </h3>
+            {%- if article.excerpt != blank -%}
+              <p class="blog-article-card__excerpt">{{ article.excerpt | strip_html | truncate: 130 }}</p>
+            {%- endif -%}
+            <a href="{{ article.url }}" class="blog-article-card__read">Read Article
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
         </article>
       {%- endfor -%}
     </div>
   </div>
 </div>
+{%- endif -%}
+
+<!-- Newsletter CTA -->
+<div class="blog-newsletter">
+  <div class="container">
+    <div class="blog-newsletter__inner">
+      <div class="blog-newsletter__text">
+        <h2 class="blog-newsletter__title">Sleep Better, Starting Tonight</h2>
+        <p>Get expert sleep tips, exclusive Klawford offers, and new collection previews delivered to your inbox.</p>
+      </div>
+      <div class="blog-newsletter__img">
+        <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-grey-4.jpg" alt="Klawford beds" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ---- Blog Hero ---- */
+.blog-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+}
+.blog-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(92,31,46,0.88) 0%, rgba(92,31,46,0.4) 55%, rgba(0,0,0,0.15) 100%);
+}
+.blog-hero__inner {
+  position: relative;
+  z-index: 1;
+  padding-block: 3.5rem;
+}
+.blog-hero__eyebrow {
+  font-size: var(--fs-xs);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+  margin-bottom: .5rem;
+}
+.blog-hero__title {
+  font-family: var(--ff-primary);
+  font-size: clamp(2rem,5vw,3.5rem);
+  color: #fff;
+  margin-bottom: .75rem;
+}
+.blog-hero__sub {
+  font-size: var(--fs-base);
+  color: rgba(255,255,255,.85);
+  max-width: 560px;
+  line-height: 1.65;
+}
+
+/* ---- Editorial cards ---- */
+.blog-editorial { padding: 4rem 0; border-bottom: 1px solid rgba(92,31,46,.1); }
+.blog-editorial__grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 2rem;
+}
+@media(max-width:900px){ .blog-editorial__grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .blog-editorial__grid { grid-template-columns: 1fr; } }
+.blog-editorial__card {
+  background: var(--clr-white);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm,0 2px 8px rgba(0,0,0,.07));
+  display: flex;
+  flex-direction: column;
+}
+.blog-editorial__img-wrap { position: relative; overflow: hidden; }
+.blog-editorial__img-wrap img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+.blog-editorial__card:hover .blog-editorial__img-wrap img { transform: scale(1.04); }
+.blog-editorial__tag {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  background: var(--clr-secondary);
+  color: #fff;
+  font-size: var(--fs-xs);
+  padding: .3rem .7rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+.blog-editorial__body { padding: 1.5rem; flex: 1; }
+.blog-editorial__date { font-size: var(--fs-xs); color: var(--clr-gray-dusty,#888); margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .08em; }
+.blog-editorial__title {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-base);
+  color: var(--clr-secondary);
+  margin-bottom: .6rem;
+  line-height: 1.4;
+}
+.blog-editorial__excerpt { font-size: var(--fs-sm); color: var(--clr-text-light); line-height: 1.6; }
+
+/* ---- Articles grid ---- */
+.blog-articles { padding: 4rem 0; }
+.blog-articles__title {
+  font-family: var(--ff-primary);
+  font-size: clamp(1.5rem,3vw,2rem);
+  color: var(--clr-secondary);
+  margin-bottom: 2rem;
+}
+.blog-articles__grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 1.75rem;
+}
+@media(max-width:900px){ .blog-articles__grid { grid-template-columns: repeat(2,1fr); } }
+@media(max-width:560px){ .blog-articles__grid { grid-template-columns: 1fr; } }
+.blog-article-card {
+  background: var(--clr-white);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm,0 2px 8px rgba(0,0,0,.07));
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .25s;
+}
+.blog-article-card:hover { box-shadow: 0 6px 20px rgba(92,31,46,.12); }
+.blog-article-card__img-link { display: block; overflow: hidden; }
+.blog-article-card__img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.blog-article-card__img--placeholder {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--clr-primary);
+}
+.blog-article-card:hover .blog-article-card__img { transform: scale(1.04); }
+.blog-article-card__body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+.blog-article-card__meta { font-size: var(--fs-xs); color: var(--clr-gray-dusty,#888); margin-bottom: .5rem; }
+.blog-article-card__title {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-base);
+  margin-bottom: .6rem;
+  line-height: 1.4;
+}
+.blog-article-card__title a { color: var(--clr-secondary); text-decoration: none; }
+.blog-article-card__title a:hover { text-decoration: underline; }
+.blog-article-card__excerpt { font-size: var(--fs-sm); color: var(--clr-text-light); line-height: 1.6; flex: 1; }
+.blog-article-card__read {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  margin-top: 1rem;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--clr-secondary);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--clr-secondary);
+  padding-bottom: 2px;
+  width: fit-content;
+}
+.blog-article-card__read:hover { opacity: .75; }
+
+/* ---- Newsletter ---- */
+.blog-newsletter {
+  background: var(--clr-secondary);
+  padding: 0;
+  overflow: hidden;
+}
+.blog-newsletter__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 280px;
+}
+@media(max-width:700px){ .blog-newsletter__inner { grid-template-columns: 1fr; } }
+.blog-newsletter__text {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+}
+.blog-newsletter__title {
+  font-family: var(--ff-primary);
+  font-size: clamp(1.4rem,2.5vw,2rem);
+  margin-bottom: .75rem;
+  color: #fff;
+}
+.blog-newsletter__text p { opacity: .87; line-height: 1.65; margin-bottom: 0; }
+.blog-newsletter__img { overflow: hidden; }
+.blog-newsletter__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media(max-width:700px){ .blog-newsletter__img { display: none; } }
+</style>
 
 {% schema %}
 {
