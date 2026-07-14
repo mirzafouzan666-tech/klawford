@@ -2,7 +2,139 @@
   assign ph = page.handle
 -%}
 
-{%- if ph == 'delivery' -%}
+{%- if ph == 'about-us' or ph == 'about' -%}
+
+<!-- ===== ABOUT US PAGE ===== -->
+<div class="info-page">
+
+  <div class="info-page__hero" style="background-image:url('https://cdn.shopify.com/s/files/1/0960/5588/6153/files/upholspic1.jpg');">
+    <div class="info-page__hero-overlay"></div>
+    <div class="container info-page__hero-inner">
+      <p class="info-page__eyebrow">Our Story</p>
+      <h1 class="info-page__hero-title">About Klawford</h1>
+      <p class="info-page__hero-sub">Handcrafted beds and mattresses built for the perfect night's sleep — made with pride in the United Kingdom.</p>
+    </div>
+  </div>
+
+  <div class="container info-page__body">
+
+    <!-- Mission -->
+    <div class="info-split">
+      <div class="info-split__img">
+        <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-1.jpg" alt="Klawford handcrafted beds" loading="lazy">
+      </div>
+      <div class="info-split__content">
+        <h2 class="info-split__title">Crafted for Sleep. Built to Last.</h2>
+        <p>Klawford was founded on a single belief: that a great night's sleep changes everything. We design and handcraft premium beds and mattresses that combine lasting quality with timeless style — giving you the bedroom you deserve.</p>
+        <p>Every Klawford piece is built by skilled UK artisans using the finest materials, from hand-tufted pocket sprung mattresses to beautifully upholstered bed frames. We don't cut corners — because neither should your sleep.</p>
+        <div class="info-badge-row">
+          <span class="info-badge">Handmade in the UK</span>
+          <span class="info-badge">Premium Materials</span>
+          <span class="info-badge">Built to Last</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div class="info-steps">
+      <h2 class="info-steps__title">What We Stand For</h2>
+      <div class="info-steps__grid info-steps__grid--4">
+        <div class="info-step">
+          <div class="info-highlight__icon" style="margin-bottom:1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="info-step__title">Uncompromising Quality</h3>
+          <p>We source only premium fabrics, tempered steel springs, and natural fillings. Every component is chosen to last — and to feel exceptional from night one.</p>
+        </div>
+        <div class="info-step">
+          <div class="info-highlight__icon" style="margin-bottom:1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3 class="info-step__title">British Craftsmanship</h3>
+          <p>All Klawford beds and mattresses are handmade in the UK. Each piece is crafted to order by a team of skilled artisans with decades of experience in the trade.</p>
+        </div>
+        <div class="info-step">
+          <div class="info-highlight__icon" style="margin-bottom:1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="info-step__title">Customer First</h3>
+          <p>From your first visit to our site to the moment your bed is assembled in your room, we're with you every step. Our 60-night sleep trial is proof of that commitment.</p>
+        </div>
+        <div class="info-step">
+          <div class="info-highlight__icon" style="margin-bottom:1rem;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <h3 class="info-step__title">Style &amp; Comfort</h3>
+          <p>We believe your bedroom should inspire calm and confidence. Our designs range from the understated to the luxurious — all engineered around a great night's rest.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why Klawford -->
+    <div class="info-banner">
+      <div class="info-banner__content">
+        <h2 class="info-banner__title">Why Choose Klawford?</h2>
+        <p class="info-banner__text">When you buy a Klawford bed, you're not buying furniture — you're investing in your sleep, your health, and your home.</p>
+        <ul class="info-banner__list">
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>All beds handmade to order in the UK</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>60-night risk-free mattress sleep trial</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Free UK mainland delivery on every order</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>White glove assembly service available</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Flexible finance options at checkout</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M5 8l2 2 4-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Dedicated customer service team</li>
+        </ul>
+      </div>
+      <div class="info-banner__img">
+        <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-grey-4.jpg" alt="Klawford beds" loading="lazy">
+      </div>
+    </div>
+
+    <!-- Products showcase -->
+    <div class="info-section">
+      <h2 class="info-section__title">Our Collection</h2>
+      <div class="about-products">
+        <div class="about-product">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg" alt="Klawford luxury beds" loading="lazy">
+          <h3>Luxury Bed Frames</h3>
+          <p>From classic wing-backs to sleek panel beds — handcrafted frames that become the centrepiece of your bedroom.</p>
+          <a href="/collections/all" class="btn btn--outline btn--sm">Shop Beds</a>
+        </div>
+        <div class="about-product">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/klawford-mattress-lifestyle.jpg" alt="Klawford mattresses" loading="lazy">
+          <h3>Premium Mattresses</h3>
+          <p>Pocket sprung, memory foam, and hybrid — engineered for support, pressure relief, and a cooler night's sleep.</p>
+          <a href="/collections/mattresses" class="btn btn--outline btn--sm">Shop Mattresses</a>
+        </div>
+        <div class="about-product">
+          <img src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/panel-bed-cream-1.jpg" alt="Klawford divan beds" loading="lazy">
+          <h3>Divan &amp; Storage Beds</h3>
+          <p>Maximise your space with our range of ottoman and divan storage beds — stylish and practical in equal measure.</p>
+          <a href="/collections/all" class="btn btn--outline btn--sm">Explore Range</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="info-cta">
+      <h2 class="info-cta__title">Ready to Transform Your Sleep?</h2>
+      <p class="info-cta__text">Browse the full Klawford collection and find the bed and mattress that's perfect for you.</p>
+      <a href="/collections/all" class="btn btn--primary">Shop Now</a>
+    </div>
+
+  </div>
+</div>
+
+<style>
+.about-products { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.75rem; }
+@media(max-width:700px){ .about-products { grid-template-columns: 1fr; } }
+.about-product { background: var(--clr-white); border-radius: var(--radius-base); overflow: hidden; box-shadow: var(--shadow-sm,0 2px 8px rgba(0,0,0,.07)); }
+.about-product img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+.about-product h3 { font-family: var(--ff-primary); color: var(--clr-secondary); font-size: var(--fs-base); margin: 1rem 1.25rem .4rem; }
+.about-product p { font-size: var(--fs-sm); color: var(--clr-text-light); line-height: 1.6; margin: 0 1.25rem .75rem; }
+.about-product .btn { margin: 0 1.25rem 1.25rem; }
+</style>
+
+{%- elsif ph == 'delivery' or ph == 'delivery-information' or ph == 'shipping-information' -%}
 
 <!-- ===== DELIVERY INFORMATION PAGE ===== -->
 <div class="info-page">
@@ -183,7 +315,7 @@
   </div>
 </div>
 
-{%- elsif ph == 'returns' -%}
+{%- elsif ph == 'returns' or ph == 'returns-policy' or ph == 'return-policy' or ph == 'refunds' -%}
 
 <!-- ===== RETURNS POLICY PAGE ===== -->
 <div class="info-page">
@@ -354,7 +486,7 @@
   </div>
 </div>
 
-{%- elsif ph == 'faq' -%}
+{%- elsif ph == 'faq' or ph == 'faqs' or ph == 'frequently-asked-questions' -%}
 
 <!-- ===== FAQ PAGE ===== -->
 <div class="info-page">
