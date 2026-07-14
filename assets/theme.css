@@ -3844,7 +3844,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 /* Stars */
 .klm-info__rating { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 .klm-stars { display: flex; gap: 2px; }
-.klm-star { width: 14px; height: 14px; color: #F4A200; }
+.klm-star { width: 14px; height: 14px; color: var(--clr-green); }
 .klm-star--lg { width: 22px; height: 22px; }
 .klm-info__review-link { font-size: 13px; color: var(--clr-gray-dusty); text-decoration: none; }
 .klm-info__review-link:hover { color: var(--clr-secondary); text-decoration: underline; }
