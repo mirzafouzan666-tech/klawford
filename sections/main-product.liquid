@@ -628,13 +628,12 @@
     });
 
     // Show/hide each thumbnail.
-    // When a colour is selected and the product has colour variants, show ONLY
-    // images whose data-colour exactly matches the selected colour — no generics.
-    // When no colour is selected, or the product has no colour option, show all.
+    // Images with no data-colour (generic/hero images) always show for every colour.
+    // Images with a data-colour show only when that colour is selected.
     var visible = [];
     thumbs.forEach(function(t) {
       var tc   = (t.getAttribute('data-colour') || '').toLowerCase().trim();
-      var show = (!colourLower || knownColours.length === 0) ? true : (tc === colourLower);
+      var show = (!colourLower || knownColours.length === 0) ? true : (tc === colourLower || tc === '');
       t.style.display = show ? '' : 'none';
       if (show) visible.push(t);
     });
