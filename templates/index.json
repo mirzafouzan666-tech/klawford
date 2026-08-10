@@ -166,6 +166,60 @@
       },
       "block_order": ["step1", "step2", "step3"]
     },
+    "mattress_range": {
+      "type": "mattress-range",
+      "settings": {
+        "heading": "Shop Our Mattress Range",
+        "subheading": "Three premium mattresses. One perfect sleep."
+      },
+      "blocks": {
+        "mr1": {
+          "type": "mattress",
+          "settings": {
+            "product": "klawford-hybrid-3000-31cm-pocket-sprung-mattress",
+            "badge": "Best Seller",
+            "label": "Hybrid Pocket Spring",
+            "title": "Klawford Hybrid 3000",
+            "description": "31cm premium hybrid mattress. Zoned pocket springs with cooling gel memory foam for the ultimate sleep upgrade.",
+            "spec1": "31cm total depth",
+            "spec2": "Zoned pocket spring system",
+            "spec3": "Cooling gel memory foam",
+            "price_text": "From £249",
+            "cta_label": "Shop Now"
+          }
+        },
+        "mr2": {
+          "type": "mattress",
+          "settings": {
+            "product": "klawford-duo-sleep-mattress",
+            "badge": "New",
+            "label": "Dual Comfort",
+            "title": "Klawford Duo Sleep",
+            "description": "Innovative dual-sided comfort mattress designed for couples with different sleeping preferences.",
+            "spec1": "Dual-sided comfort zones",
+            "spec2": "Bamboo-infused cover",
+            "spec3": "Motion isolation",
+            "price_text": "From £299",
+            "cta_label": "Shop Now"
+          }
+        },
+        "mr3": {
+          "type": "mattress",
+          "settings": {
+            "product": "klawford-majestic-firm-25cm-premium-orthopaedic-mattress",
+            "label": "Orthopaedic Firm",
+            "title": "Klawford Majestic Firm",
+            "description": "25cm extra-firm orthopaedic mattress. High-density core for solid spinal support and long-lasting comfort.",
+            "spec1": "25cm orthopaedic foam",
+            "spec2": "Extra-firm support",
+            "spec3": "300gsm breathable cover",
+            "price_text": "From £199",
+            "cta_label": "Shop Now"
+          }
+        }
+      },
+      "block_order": ["mr1", "mr2", "mr3"]
+    },
     "mattress_feature": {
       "type": "mattress-feature",
       "settings": {
@@ -212,6 +266,7 @@
     "loved_gallery",
     "promo_banner",
     "how_it_works",
+    "mattress_range",
     "mattress_feature",
     "faq_section"
   ]

@@ -1,0 +1,354 @@
+<section class="klm-mattress-range">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="klm-mattress-range__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="klm-mattress-range__sub">{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="klm-mattress-range__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'mattress' -%}
+          {%- assign _prod = all_products[block.settings.product] -%}
+          <div class="klm-mcard" {{ block.shopify_attributes }}>
+            <a href="{%- if _prod != blank -%}{{ _prod.url }}{%- elsif block.settings.url != blank -%}{{ block.settings.url }}{%- else -%}#{%- endif -%}" class="klm-mcard__img-link" aria-hidden="true" tabindex="-1">
+              <div class="klm-mcard__img-wrap">
+                {%- if _prod != blank and _prod.featured_image -%}
+                  <img
+                    src="{{ _prod.featured_image | image_url: width: 600 }}"
+                    alt="{{ _prod.featured_image.alt | escape | default: _prod.title }}"
+                    class="klm-mcard__img"
+                    loading="lazy"
+                    width="600" height="480">
+                {%- elsif block.settings.image != blank -%}
+                  <img
+                    src="{{ block.settings.image | image_url: width: 600 }}"
+                    alt="{{ block.settings.title }}"
+                    class="klm-mcard__img"
+                    loading="lazy"
+                    width="600" height="480">
+                {%- else -%}
+                  <div class="klm-mcard__img-ph">
+                    <svg width="64" height="48" viewBox="0 0 80 56" fill="none" aria-hidden="true">
+                      <rect x="4" y="28" width="72" height="22" rx="3" fill="currentColor" fill-opacity=".08" stroke="currentColor" stroke-width="1.5"/>
+                      <rect x="4" y="18" width="72" height="12" rx="3" fill="currentColor" fill-opacity=".06" stroke="currentColor" stroke-width="1.5"/>
+                      <rect x="4" y="10" width="72" height="10" rx="3" fill="currentColor" fill-opacity=".04" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.badge != blank -%}
+                  <span class="klm-mcard__badge">{{ block.settings.badge }}</span>
+                {%- endif -%}
+              </div>
+            </a>
+
+            <div class="klm-mcard__body">
+              {%- if block.settings.label != blank -%}
+                <span class="klm-mcard__label">{{ block.settings.label }}</span>
+              {%- endif -%}
+
+              <h3 class="klm-mcard__title">
+                <a href="{%- if _prod != blank -%}{{ _prod.url }}{%- elsif block.settings.url != blank -%}{{ block.settings.url }}{%- else -%}#{%- endif -%}">
+                  {%- if block.settings.title != blank -%}
+                    {{ block.settings.title }}
+                  {%- elsif _prod != blank -%}
+                    {{ _prod.title }}
+                  {%- endif -%}
+                </a>
+              </h3>
+
+              {%- if block.settings.description != blank -%}
+                <p class="klm-mcard__desc">{{ block.settings.description }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.spec1 != blank or block.settings.spec2 != blank or block.settings.spec3 != blank -%}
+                <ul class="klm-mcard__specs">
+                  {%- if block.settings.spec1 != blank -%}
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      {{ block.settings.spec1 }}
+                    </li>
+                  {%- endif -%}
+                  {%- if block.settings.spec2 != blank -%}
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      {{ block.settings.spec2 }}
+                    </li>
+                  {%- endif -%}
+                  {%- if block.settings.spec3 != blank -%}
+                    <li>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 7l2 2 3-3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      {{ block.settings.spec3 }}
+                    </li>
+                  {%- endif -%}
+                </ul>
+              {%- endif -%}
+
+              <div class="klm-mcard__footer">
+                {%- if block.settings.price_text != blank -%}
+                  <span class="klm-mcard__price">{{ block.settings.price_text }}</span>
+                {%- elsif _prod != blank -%}
+                  <span class="klm-mcard__price">From {{ _prod.price_min | money }}</span>
+                {%- endif -%}
+
+                <a
+                  href="{%- if _prod != blank -%}{{ _prod.url }}{%- elsif block.settings.url != blank -%}{{ block.settings.url }}{%- else -%}#{%- endif -%}"
+                  class="klm-mcard__btn btn btn--primary">
+                  {{ block.settings.cta_label | default: 'Shop Now' }}
+                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+.klm-mattress-range {
+  padding: 64px 0;
+  background: var(--clr-bg, #fff);
+}
+.klm-mattress-range__heading {
+  text-align: center;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--clr-text, #111);
+}
+.klm-mattress-range__sub {
+  text-align: center;
+  color: var(--clr-muted, #666);
+  margin: 0 0 40px;
+  font-size: 1rem;
+}
+.klm-mattress-range__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.klm-mcard {
+  border: 1.5px solid var(--clr-border, #e5e5e5);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--clr-surface, #fff);
+  transition: box-shadow .2s, border-color .2s;
+}
+.klm-mcard:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,.1);
+  border-color: var(--clr-green, #27AE60);
+}
+.klm-mcard__img-link { display: block; }
+.klm-mcard__img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--clr-light-bg, #f6f6f6);
+}
+.klm-mcard__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.klm-mcard:hover .klm-mcard__img { transform: scale(1.04); }
+.klm-mcard__img-ph {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-muted, #aaa);
+}
+.klm-mcard__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--clr-green, #27AE60);
+  color: #fff;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.klm-mcard__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.klm-mcard__label {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--clr-green, #27AE60);
+  margin-bottom: 6px;
+  display: block;
+}
+.klm-mcard__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  line-height: 1.3;
+  color: var(--clr-text, #111);
+}
+.klm-mcard__title a {
+  color: inherit;
+  text-decoration: none;
+}
+.klm-mcard__title a:hover { color: var(--clr-green, #27AE60); }
+.klm-mcard__desc {
+  font-size: .88rem;
+  color: var(--clr-muted, #555);
+  line-height: 1.55;
+  margin: 0 0 14px;
+}
+.klm-mcard__specs {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.klm-mcard__specs li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .83rem;
+  color: var(--clr-text, #333);
+}
+.klm-mcard__specs svg { flex-shrink: 0; color: var(--clr-green, #27AE60); }
+.klm-mcard__footer {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--clr-border, #eee);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.klm-mcard__price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--clr-text, #111);
+}
+.klm-mcard__btn {
+  font-size: .85rem;
+  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+@media (max-width: 600px) {
+  .klm-mattress-range { padding: 44px 0; }
+  .klm-mattress-range__grid { grid-template-columns: 1fr; }
+  .klm-mcard__footer { flex-direction: column; align-items: flex-start; }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Mattress Range",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop Our Mattress Range"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Three premium mattresses. One perfect sleep."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mattress",
+      "name": "Mattress Card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product (auto-fills image, title, price)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override image (optional)"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge (e.g. Best Seller)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label above title (e.g. Hybrid)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title override (leave blank to use product title)"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Short description"
+        },
+        {
+          "type": "text",
+          "id": "spec1",
+          "label": "Spec point 1"
+        },
+        {
+          "type": "text",
+          "id": "spec2",
+          "label": "Spec point 2"
+        },
+        {
+          "type": "text",
+          "id": "spec3",
+          "label": "Spec point 3"
+        },
+        {
+          "type": "text",
+          "id": "price_text",
+          "label": "Price text override (leave blank to use product price)"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link override (leave blank to use product URL)"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "Button label",
+          "default": "Shop Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mattress Range"
+    }
+  ]
+}
+{% endschema %}
