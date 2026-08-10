@@ -513,10 +513,10 @@
     <h2 class="klm-section__heading">Sleep Specialists At Your Service</h2>
     <div class="klm-service__inner">
       <div class="klm-service__image">
-        {%- if product.images.size > 1 -%}
+        {%- if product.images.size > 4 -%}
           <img
-            src="{{ product.images[1] | image_url: width: 600 }}"
-            alt="{{ product.images[1].alt | escape | default: product.title }}"
+            src="{{ product.images[4] | image_url: width: 600 }}"
+            alt="{{ product.images[4].alt | escape | default: product.title }}"
             width="600" height="480"
             loading="lazy"
             class="klm-service__image-img">
