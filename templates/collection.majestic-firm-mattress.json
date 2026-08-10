@@ -1,0 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 24,
+        "show_seo_content": true,
+        "seo_content": "<h3>What is the Klawford Majestic Firm?</h3><p>The Klawford Majestic Firm is a 25 cm extra-firm orthopaedic mattress designed for sleepers who need solid, no-sink support. It is built around a 23 cm high-density orthopaedic foam core for consistent spinal alignment, topped with a 1 cm reflex foam comfort layer and a 300gsm breathable knitted cover. It is a classic firm mattress — straightforward, durable, and built for those who prefer a structured sleeping surface.</p><h3>Who is the Majestic Firm suitable for?</h3><p>The Majestic Firm is ideal for back sleepers who need firm orthopaedic support, people with back or posture concerns who require a no-sink sleeping surface, and anyone who prefers a classic firm feel over a softer or medium mattress. It is also well suited to guest rooms, hotels, and rental properties where a long-lasting, low-maintenance mattress is needed.</p><h3>What is the orthopaedic core and what does it do?</h3><p>The 23 cm high-density orthopaedic foam core is the foundation of the Majestic Firm. It is engineered to hold its shape under sustained pressure, eliminate the sinking sensation, and keep your spine in proper alignment throughout the night. Unlike softer foams, the orthopaedic core does not compress or deform over time — giving you consistent support year after year.</p><h3>What is the reflex foam comfort layer?</h3><p>The 1 cm reflex foam comfort layer sits on top of the orthopaedic core. It is a responsive foam that adds a small amount of surface cushion — enough to relieve pressure points at the shoulders, hips, and lower back without softening the firm feel of the mattress. If you want firm support but not a completely rigid surface, the reflex foam layer provides just the right amount of give.</p><h3>What firmness level is the Majestic Firm?</h3><p>The Majestic Firm is an extra-firm mattress. The 23 cm high-density orthopaedic core provides a solid, supportive base that does not sink under body weight, while the 1 cm reflex foam layer adds minimal surface softness. It is designed specifically for those who prefer or require a firm sleeping surface.</p><h3>What sizes is the Majestic Firm available in?</h3><p>The Klawford Majestic Firm is available in all standard UK sizes — Small Single (2ft 6), Single (3ft), Small Double (4ft), Double (4ft 6), King (5ft), and Super King (6ft). Select your preferred size using the size selector on the product page.</p><h3>Is delivery free on the Majestic Firm?</h3><p>Yes — free delivery is included with every Klawford Majestic Firm purchase. We deliver to the room of your choice with a 2-man team. You can select your preferred delivery date at checkout. The mattress comes with a 60-night risk-free trial — if it is not right for you, contact us and we will arrange a return and full refund.</p><h3>Can I spread the cost of the Majestic Firm?</h3><p>Yes — we offer 0% interest-free financing through DivideBuy, letting you spread the cost over up to 12 months at no extra charge. Klarna is also available at checkout for pay-later or 3-payment options. Select your preferred payment method when you proceed to checkout.</p>",
+        "show_reviews": true,
+        "reviews_heading": "What Our Customers Say",
+        "show_trust_bar": true
+      }
+    }
+  },
+  "order": ["main"]
+}
