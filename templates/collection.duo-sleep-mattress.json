@@ -1,0 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 24,
+        "show_seo_content": true,
+        "seo_content": "<h3>What is the Klawford Duo Sleep?</h3><p>The Klawford Duo Sleep is a 31 cm premium foam mattress that combines a 25 cm orthopaedic foam core with three layers of medium-firm comfort foam and a premium bamboo knitted cover. It is designed to deliver balanced comfort and elevated luxury — supportive enough for back sleepers, plush enough for side and combination sleepers, and breathable enough for all-night comfort.</p><h3>What does the orthopaedic foam core do?</h3><p>The 25 cm orthopaedic foam core is the structural foundation of the Duo Sleep. It is a high-density foam engineered to keep your spine in proper alignment while you sleep, distributing your body weight evenly and reducing pressure on your hips and lower back. The reinforced core also helps the mattress hold its shape and support level over the long term.</p><h3>What are the triple comfort foam layers?</h3><p>Above the orthopaedic core, three layers of medium-firm foam work together to cushion pressure points at the shoulders, hips, and lower back. The layers provide a plush, comfortable feel on the sleeping surface while the orthopaedic core underneath maintains firm structural support — giving you the best of both a soft top and a supportive base.</p><h3>What is the bamboo knitted cover and why does it matter?</h3><p>The Duo Sleep is wrapped in a premium bamboo knitted fabric cover. Bamboo fibres are naturally breathable and moisture-wicking, which means the cover actively draws warmth and moisture away from your body during sleep. This helps regulate your sleeping temperature — keeping you cool in warmer months and consistently comfortable throughout the year, without the need for any additional cooling technology.</p><h3>What firmness level is the Duo Sleep?</h3><p>The Duo Sleep is a medium-firm mattress. It provides solid, spine-aligning support from the orthopaedic foam core while the three comfort foam layers on top add a plush, cushioned feel. This balance makes it suitable for a wide range of sleepers — back sleepers who need firm support, side sleepers who need pressure relief at the shoulders and hips, and combination sleepers who change position during the night.</p><h3>Is the Duo Sleep suitable for couples?</h3><p>Yes — the Duo Sleep is specifically designed with couples in mind. The foam construction absorbs and minimises partner movement, which means that shifting or getting up on one side of the mattress is less likely to disturb the other sleeper. It is ideal for couples, combination sleepers, and anyone who shares a bed and values an undisturbed night's sleep.</p><h3>What sizes is the Duo Sleep available in?</h3><p>The Klawford Duo Sleep is available in all standard UK sizes — Small Single (2ft 6), Single (3ft), Small Double (4ft), Double (4ft 6), King (5ft), and Super King (6ft). Select your preferred size using the size selector on the product page.</p><h3>Is delivery free on the Duo Sleep?</h3><p>Yes — free delivery is included with every Klawford Duo Sleep purchase. We deliver to the room of your choice with a 2-man team, so you do not need to manage heavy packaging on your own. You can select your preferred delivery date at checkout. The mattress also comes with a 60-night risk-free trial — if it is not right for you, contact us and we will arrange a return and full refund.</p>",
+        "show_reviews": true,
+        "reviews_heading": "What Our Customers Say",
+        "show_trust_bar": true
+      }
+    }
+  },
+  "order": ["main"]
+}
