@@ -123,7 +123,7 @@
       </div>
 
       {%- form 'product', product, id: 'klm-form' -%}
-        {%- unless product.has_only_default_variant -%}
+        {%- if product.variants.size > 1 -%}
           {%- for option in product.options_with_values -%}
             {%- assign _olc = option.name | downcase -%}
             {%- if _olc == 'size' -%}
@@ -215,7 +215,7 @@
               </div>
             {%- endif -%}
           {%- endfor -%}
-        {%- endunless -%}
+        {%- endif -%}
 
         <input type="hidden" name="id" id="klm-variant-id" value="{{ kl_first_variant.id }}">
 
@@ -460,20 +460,24 @@
 </section>
 
 {%- comment -%} ── MATTRESS LAYERS ──────────────────────────────────────────── {%- endcomment -%}
-{%- if product.images[2] -%}
 <section class="klm-section klm-layers">
   <div class="container">
     <div class="klm-layers__img-wrap">
-      <img
-        src="{{ product.images[2] | image_url: width: 900 }}"
-        alt="{{ product.title }} — mattress construction layers"
-        class="klm-layers__img"
-        loading="lazy"
-        width="900">
+      {%- if product.images[2] -%}
+        <img
+          src="{{ product.images[2] | image_url: width: 900 }}"
+          alt="{{ product.title }} — mattress construction layers"
+          class="klm-layers__img"
+          loading="lazy"
+          width="900">
+      {%- else -%}
+        <div class="klm-layers__placeholder">
+          <svg width="80" height="48" viewBox="0 0 120 60" fill="none" aria-hidden="true"><rect x="4" y="8" width="112" height="44" rx="4" stroke="currentColor" stroke-width="2"/><rect x="4" y="8" width="112" height="14" rx="4" fill="currentColor" fill-opacity=".07" stroke="none"/><rect x="4" y="22" width="112" height="10" fill="currentColor" fill-opacity=".05" stroke="none"/><rect x="4" y="32" width="112" height="20" rx="4" fill="currentColor" fill-opacity=".04" stroke="none"/><text x="60" y="38" text-anchor="middle" font-size="9" fill="currentColor" opacity=".4" font-family="sans-serif">Layers diagram image will appear here</text></svg>
+        </div>
+      {%- endif -%}
     </div>
   </div>
 </section>
-{%- endif -%}
 
 {%- comment -%} ── FINANCE SECTION ──────────────────────────────────────────── {%- endcomment -%}
 <div class="klm-finance" {% if product.images[3] %}style="background-image:url('{{ product.images[3] | image_url: width: 1600 }}');"{% endif %}>
