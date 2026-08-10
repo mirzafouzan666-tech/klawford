@@ -73,6 +73,8 @@
                 class="klm-gallery__thumb{% if forloop.first %} is-active{% endif %}"
                 type="button"
                 data-src="{{ image | image_url: width: 900 }}"
+                data-width="{{ image.width }}"
+                data-height="{{ image.height }}"
                 aria-label="View image {{ forloop.index }}">
                 <img src="{{ image | image_url: width: 160 }}" alt="{{ image.alt | escape | default: product.title }}" width="80" height="80" loading="lazy">
               </button>
@@ -727,6 +729,9 @@
       mainImg.src = thumb.dataset.src;
       mainImg.removeAttribute('srcset');
       mainImg.removeAttribute('sizes');
+      var iw = parseInt(thumb.dataset.width, 10);
+      var ih = parseInt(thumb.dataset.height, 10);
+      mainImg.style.objectFit = (ih > iw) ? 'contain' : 'cover';
       document.querySelectorAll('.klm-gallery__thumb').forEach(function(t){ t.classList.remove('is-active'); });
       thumb.classList.add('is-active');
     });
