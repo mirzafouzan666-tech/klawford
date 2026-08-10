@@ -1,4 +1,4 @@
-{%- comment -%} Dedicated mattress product page — layout: Sonno reference, Klawford branding {%- endcomment -%}
+{%- comment -%} Dedicated mattress product page — Klawford Hybrid 3000 {%- endcomment -%}
 
 {%- assign kl_first_variant = product.selected_or_first_available_variant -%}
 {%- assign kl_on_sale = false -%}
@@ -313,7 +313,7 @@
       {%- comment -%} Right: icon tabs + indicator + detail {%- endcomment -%}
       <div class="klm-features__right">
         <div class="klm-features__icon-row" id="klm-feat-icons" role="tablist">
-          {%- assign _feat_names = 'Air Vents,Hypoallergenic,Orthopaedic,Washable Cover,Pressure Relief,Temp Regulation,Motion Isolation,UK Quality' | split: ',' -%}
+          {%- assign _feat_names = 'Zoned Springs,Edge Support,Orthopaedic Layers,Foam Encapsulation,Pressure Relief,Cooling Gel Foam,Motion Isolation,UK Quality' | split: ',' -%}
           {%- for f in _feat_names -%}
             <button class="klm-feat{% if forloop.first %} is-active{% endif %}" role="tab" data-feat="{{ forloop.index0 }}" type="button" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
               <div class="klm-feat__icon" aria-hidden="true">
@@ -404,8 +404,8 @@
         </div>
 
         <div class="klm-features__detail">
-          <h3 class="klm-features__detail-title" id="klm-feat-title">Air Vents</h3>
-          <p class="klm-features__detail-body" id="klm-feat-body">Built-in ventilation channels draw heat and moisture away from the mattress core, keeping the sleeping surface fresh and breathable throughout the night.</p>
+          <h3 class="klm-features__detail-title" id="klm-feat-title">Zoned Pocket Spring System</h3>
+          <p class="klm-features__detail-body" id="klm-feat-body">The Klawford Hybrid 3000 uses a zoned pocket spring system with stronger 2.2 mm edge springs and responsive 2.0 mm centre springs, providing targeted support across every area of your body.</p>
         </div>
       </div>
 
@@ -464,7 +464,7 @@
     <div class="klm-layers__img-wrap">
       <img
         src="{{ product.images[2] | image_url: width: 900 }}"
-        alt="Seven layers of Klawford technology"
+        alt="Klawford Hybrid 3000 — mattress construction layers"
         class="klm-layers__img"
         loading="lazy"
         width="900">
@@ -605,8 +605,12 @@
         <div class="klm-faq__a">Yes — we offer 0% interest-free financing through DivideBuy, letting you spread the cost over up to 12 months with no extra charges. Klarna is also available for pay-later or 3-payment options at checkout.</div>
       </details>
       <details class="klm-faq__item">
-        <summary class="klm-faq__q">Is the cover removable and washable?</summary>
-        <div class="klm-faq__a">Our mattresses come with a removable zip cover that is machine washable. This makes it easy to keep your sleep environment clean and fresh without having to move the whole mattress.</div>
+        <summary class="klm-faq__q">What type of mattress is the Klawford Hybrid 3000?</summary>
+        <div class="klm-faq__a">The Klawford Hybrid 3000 is a premium 31 cm hybrid mattress combining a zoned pocket spring system with cooling gel memory foam and orthopaedic layers. It is designed for premium comfort, targeted support, and excellent motion isolation.</div>
+      </details>
+      <details class="klm-faq__item">
+        <summary class="klm-faq__q">Is the Klawford Hybrid 3000 suitable for couples?</summary>
+        <div class="klm-faq__a">Yes — the Hybrid 3000 is specifically designed with excellent motion isolation. The individually wrapped pocket springs respond only to the pressure applied to them, meaning your partner's movement during the night will not disturb your side of the mattress.</div>
       </details>
       <details class="klm-faq__item">
         <summary class="klm-faq__q">Where are your products manufactured?</summary>
@@ -735,14 +739,14 @@
 
   /* ── Features icon selector + indicator pip ─────────────────── */
   var featData = [
-    { name: 'Air Vents', body: 'Built-in ventilation channels draw heat and moisture away from the mattress core, keeping the sleeping surface fresh and breathable throughout the night.' },
-    { name: 'Hypoallergenic', body: 'All fillings and covers are hypoallergenic and dust mite resistant — the ideal choice for allergy sufferers, those with asthma, or anyone with sensitive skin.' },
-    { name: 'Orthopaedic Support', body: 'Engineered to keep your spine in neutral alignment and relieve pressure on hips, shoulders, and lower back — so you wake up feeling genuinely rested, not stiff.' },
-    { name: 'Washable Cover', body: 'The removable zip cover is machine washable, making it easy to keep your sleep environment clean and fresh without having to move the entire mattress.' },
-    { name: 'Pressure Relief', body: 'Targeted comfort zones respond to the specific weight of your body, cushioning pressure points at the hips and shoulders so you sleep through the night without discomfort.' },
-    { name: 'Temperature Regulation', body: 'Heat and moisture-wicking materials draw warmth away from the sleep surface through the night, keeping you at the ideal temperature so you stay comfortable from dusk to dawn.' },
-    { name: 'Motion Isolation', body: 'Each zone of the mattress responds only to the pressure directly applied to it, so your partner\'s movement at night will not carry across to your side.' },
-    { name: 'UK Quality', body: 'Every material is selected for quality, durability, and long-lasting performance — built to a standard, not a price point, so your mattress keeps delivering night after night.' }
+    { name: 'Zoned Pocket Spring System', body: 'The Klawford Hybrid 3000 uses a zoned pocket spring system with stronger 2.2 mm edge springs and responsive 2.0 mm centre springs, providing targeted support across every area of your body.' },
+    { name: 'Reinforced Edge Support', body: 'Stronger 2.2 mm edge springs reinforce the perimeter of the mattress, reducing roll-off and maximising the full usable sleeping surface from edge to edge.' },
+    { name: 'Orthopaedic Layers', body: 'The Hybrid 3000 combines high-compression pocket springs with orthopaedic layers designed to keep your spine properly aligned and relieve pressure across the back, hips, and shoulders.' },
+    { name: 'Foam Encapsulation', body: 'The pocket spring system uses foam encapsulation, reinforcing the overall structure of the mattress and providing additional perimeter stability and long-term durability.' },
+    { name: 'Pressure Relief', body: 'The 3 cm cooling gel memory foam contours to the natural curves of your body, helping cushion pressure points at the hips, shoulders, and lower back for a comfortable night\'s sleep.' },
+    { name: 'Cooling Gel Memory Foam', body: 'The 3 cm layer of cooling gel memory foam helps regulate your sleeping temperature — drawing warmth away from the surface and adapting to your body to keep you comfortable throughout the night.' },
+    { name: 'Motion Isolation', body: 'The individually wrapped pocket springs respond only to the pressure directly applied to them, minimising movement transfer across the mattress — ideal for couples sharing a bed.' },
+    { name: 'UK Quality', body: 'Every Klawford mattress is built to a high standard using quality materials — engineered for consistent comfort, durability, and long-lasting performance night after night.' }
   ];
 
   var titleEl = document.getElementById('klm-feat-title');

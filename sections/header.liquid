@@ -102,23 +102,9 @@
                 <ul role="list">
                   {%- assign _parent_lc = link.title | downcase -%}
                   {%- for child in link.links -%}
-                    {%- assign _show = true -%}
-                    {%- assign _child_url = child.url -%}
-                    {%- if _parent_lc == 'mattresses' -%}
-                      {%- assign _ctlc = child.title | downcase -%}
-                      {%- if _ctlc contains 'pocket sprung' -%}
-                        {%- assign _child_url = '/collections/pocketsprungmattress' -%}
-                      {%- elsif _ctlc contains 'memory foam' -%}
-                        {%- assign _child_url = '/collections/memoryfoammattress' -%}
-                      {%- else -%}
-                        {%- assign _show = false -%}
-                      {%- endif -%}
-                    {%- endif -%}
-                    {%- if _show -%}
-                      <li>
-                        <a href="{{ _child_url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>
-                      </li>
-                    {%- endif -%}
+                    <li>
+                      <a href="{{ child.url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>
+                    </li>
                   {%- endfor -%}
                 </ul>
               </div>
@@ -185,21 +171,7 @@
           <ul class="mobile-menu__sub" role="list">
             {%- assign _parent_lc = link.title | downcase -%}
             {%- for child in link.links -%}
-              {%- assign _show = true -%}
-              {%- assign _child_url = child.url -%}
-              {%- if _parent_lc == 'mattresses' -%}
-                {%- assign _ctlc = child.title | downcase -%}
-                {%- if _ctlc contains 'pocket sprung' -%}
-                  {%- assign _child_url = '/collections/pocketsprungmattress' -%}
-                {%- elsif _ctlc contains 'memory foam' -%}
-                  {%- assign _child_url = '/collections/memoryfoammattress' -%}
-                {%- else -%}
-                  {%- assign _show = false -%}
-                {%- endif -%}
-              {%- endif -%}
-              {%- if _show -%}
-                <li><a href="{{ _child_url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
-              {%- endif -%}
+              <li><a href="{{ child.url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
             {%- endfor -%}
           </ul>
         {%- else -%}
