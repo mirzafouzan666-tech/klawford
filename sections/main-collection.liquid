@@ -197,6 +197,10 @@
         {%- if collection.handle == 'mattresses' or collection.handle contains 'mattress' or collection.handle contains 'klawford-' -%}
           {%- assign is_mattress_col = true -%}
         {%- endif -%}
+        {%- assign show_firmness = false -%}
+        {%- if collection.handle == 'mattresses' -%}
+          {%- assign show_firmness = true -%}
+        {%- endif -%}
 
         {%- comment -%} 1. PRICE filter (from API, or hardcoded for mattress collection) {%- endcomment -%}
         {%- assign has_api_price_filter = false -%}
@@ -312,8 +316,8 @@
           </div>
         </div>
 
-        {%- if is_mattress_col -%}
-          {%- comment -%} 3. FIRMNESS filter — mattress collections only {%- endcomment -%}
+        {%- if show_firmness -%}
+          {%- comment -%} 3. FIRMNESS filter — main mattresses collection only {%- endcomment -%}
           <div class="kl-fg is-open" data-fg>
             <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
               <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
