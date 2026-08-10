@@ -1,0 +1,23 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-majestic-firm-product",
+      "settings": {
+        "review_count": "2,960",
+        "customer_count": "10,000+",
+        "dividebuy_text": "Spread the cost interest-free over 12 months, 0% credit.",
+        "klarna_text": "Pay later in 30 days or split into 3 interest-free payments."
+      }
+    }
+  },
+  "order": ["main"]
+}
