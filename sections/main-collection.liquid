@@ -317,7 +317,7 @@
         </div>
 
         {%- if show_firmness -%}
-          {%- comment -%} 3. FIRMNESS filter — main mattresses collection only {%- endcomment -%}
+          {%- comment -%} 3a. FIRMNESS filter — main mattresses collection only {%- endcomment -%}
           <div class="kl-fg is-open" data-fg>
             <button class="kl-fg__head" type="button" onclick="this.closest('[data-fg]').classList.toggle('is-open')">
               <svg class="kl-fg__chevron" width="10" height="7" viewBox="0 0 12 8" fill="none" aria-hidden="true">
@@ -337,8 +337,8 @@
               </div>
             </div>
           </div>
-        {%- else -%}
-          {%- comment -%} 3. COLOUR filter — non-mattress collections {%- endcomment -%}
+        {%- elsif is_mattress_col == false -%}
+          {%- comment -%} 3b. COLOUR filter — non-mattress collections only {%- endcomment -%}
           {%- assign colour_param = 'filter.p.v.option.colour' -%}
           {%- for filter in collection.filters -%}
             {%- assign fl_lower = filter.label | downcase -%}
