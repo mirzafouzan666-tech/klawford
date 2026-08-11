@@ -3820,8 +3820,8 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-top { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 0 0 48px; align-items: start; }
 
 /* ── Gallery ──────────────────────────────── */
-.klm-gallery__main { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #f5f3f1; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
-.klm-gallery__main-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.klm-gallery__main { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: #f5f3f1; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; }
+.klm-gallery__main-img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .klm-gallery__placeholder { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 40px; color: var(--clr-ash); text-align: center; }
 .klm-gallery__placeholder p { font-size: 13px; color: var(--clr-gray-dusty); max-width: 200px; }
 .klm-gallery__badge { position: absolute; top: 14px; left: 14px; background: #1A8A4A; color: #fff; font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 20px; display: inline-flex; align-items: center; gap: 5px; z-index: 2; }
@@ -3832,7 +3832,7 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
 .klm-gallery__thumbs { display: flex; gap: 8px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; flex: 1; }
 .klm-gallery__thumbs::-webkit-scrollbar { display: none; }
 .klm-gallery__thumb { flex-shrink: 0; width: 72px; height: 72px; border: 2px solid var(--clr-ash); border-radius: 8px; overflow: hidden; cursor: pointer; transition: border-color .15s; background: #f5f3f1; padding: 0; }
-.klm-gallery__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.klm-gallery__thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .klm-gallery__thumb.is-active,.klm-gallery__thumb:hover { border-color: var(--clr-secondary); }
 .klm-gallery__arrow { width: 30px; height: 30px; border: 1px solid var(--clr-ash); border-radius: 50%; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--clr-text); transition: border-color .15s; }
 .klm-gallery__arrow:hover { border-color: var(--clr-secondary); color: var(--clr-secondary); }
