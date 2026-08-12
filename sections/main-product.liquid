@@ -931,6 +931,25 @@
       var defSrc = (defVariant && defVariant.featured_image) ? defVariant.featured_image.src : null;
       filterThumbs(selectedOptions[colourIdx], defSrc);
     }
+
+    // Fix colour swatch images: use variant.featured_image.src (reliable) instead of Liquid-rendered img
+    if(colourIdx >= 0) {
+      var colourImgMap = {};
+      variants.forEach(function(v){
+        var c = (v.options[colourIdx] || '').toLowerCase().trim();
+        if(c && !colourImgMap[c] && v.featured_image && v.featured_image.src) {
+          colourImgMap[c] = v.featured_image.src;
+        }
+      });
+      document.querySelectorAll('.variant-card[data-option-index]').forEach(function(card){
+        if(parseInt(card.getAttribute('data-option-index')) !== colourIdx) return;
+        var val = (card.getAttribute('data-value') || '').toLowerCase().trim();
+        var src = colourImgMap[val];
+        if(!src) return;
+        var img = card.querySelector('img');
+        if(img) img.src = src;
+      });
+    }
   })();
 })();
 </script>
