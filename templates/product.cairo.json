@@ -22,17 +22,48 @@
       "type": "product-in-real-life",
       "settings": {
         "heading": "In Real Life",
-        "subheading": "See how our customers style their Cairo Ottoman bed"
+        "subheading": "See the Klawford Cairo Ottoman in every colour"
       },
       "blocks": {
-        "img1": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_1.jpg", "alt": "Klawford Cairo Ottoman Bed in luxury bedroom", "show_play": false } },
-        "img2": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_3.jpg", "alt": "Cairo Ottoman gas-lift storage open", "show_play": false } },
-        "img3": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg", "alt": "Couple relaxing on Cairo bed", "show_play": false } },
-        "img4": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_4.jpg", "alt": "Family enjoying Cairo bed", "show_play": false } },
-        "img5": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg", "alt": "Cairo Ottoman storage compartment", "show_play": false } },
-        "img6": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_5.jpg", "alt": "Professional Klawford bed assembly", "show_play": false } }
+        "c_grey1":   { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Grey-WhatsApp_Image_2026-08-12_at_10.21.22_AM.jpeg", "alt": "Cairo Ottoman Bed - Grey" } },
+        "c_grey2":   { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Grey-WhatsApp_Image_2026-08-12_at_10.21.20_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Grey angle" } },
+        "c_grey3":   { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Grey-WhatsApp_Image_2026-08-12_at_10.21.21_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Grey detail" } },
+        "c_red1":    { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Red-WhatsApp_Image_2026-08-12_at_9.51.52_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Red" } },
+        "c_red2":    { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Red-WhatsApp_Image_2026-08-12_at_9.51.53_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Red angle" } },
+        "c_red3":    { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Red-WhatsApp_Image_2026-08-12_at_9.51.54_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Red detail" } },
+        "c_brown1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Brown-WhatsApp_Image_2026-08-12_at_10.14.24_AM.jpeg", "alt": "Cairo Ottoman Bed - Brown" } },
+        "c_brown2":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Brown-WhatsApp_Image_2026-08-12_at_10.14.23_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Brown angle" } },
+        "c_brown3":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Brown-WhatsApp_Image_2026-08-12_at_10.14.24_AM_2.jpeg", "alt": "Cairo Ottoman Bed - Brown detail" } },
+        "c_black1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Black-WhatsApp_Image_2026-08-12_at_10.03.49_AM.jpeg", "alt": "Cairo Ottoman Bed - Black" } },
+        "c_black2":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Black-WhatsApp_Image_2026-08-12_at_10.03.50_AM_2.jpeg", "alt": "Cairo Ottoman Bed - Black angle" } },
+        "c_black3":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Black-WhatsApp_Image_2026-08-12_at_10.03.51_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Black detail" } },
+        "c_cream1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Cream-WhatsApp_Image_2026-08-12_at_9.56.24_AM.jpeg", "alt": "Cairo Ottoman Bed - Cream" } },
+        "c_cream2":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Cream-WhatsApp_Image_2026-08-12_at_9.56.23_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Cream angle" } },
+        "c_cream3":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Cream-WhatsApp_Image_2026-08-12_at_9.56.24_AM_1.jpeg", "alt": "Cairo Ottoman Bed - Cream detail" } },
+        "p_black1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/PragueDivanBedPlushVelvetBlackDrawer_1164x_db4d9c5d-20e6-4476-b149-393b82a1039c.webp", "alt": "Klawford Panel Bed - Black Plush Velvet" } },
+        "p_brown1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/PragueDivanBedPlushVelvetMoccaDrawer_1164x_7b6b57a5-8d4b-4525-ab74-c2b0a75b2b05.webp", "alt": "Klawford Panel Bed - Brown Plush Velvet" } },
+        "p_grey1":   { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Prague_Divan_Bed_Naples_Slate_grey_Drawer_1164x_64599a18-1b11-4b70-a8e9-d4f587bc7ce7.jpg", "alt": "Klawford Panel Bed - Grey" } },
+        "p_cream1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Prague_Divan_Bed_Naples_Cream_Drawer_1164x_e6fb1c62-a08c-4bb2-b1a8-3063c3a3ae60.jpg", "alt": "Klawford Panel Bed - Cream" } },
+        "p_wh1":     { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.58_PM.jpeg", "alt": "Klawford Panel Bed lifestyle" } },
+        "p_wh2":     { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_7.16.14_AM.jpeg", "alt": "Klawford Panel Bed detail" } },
+        "a_cream1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-1.jpg", "alt": "Klawford Alexander Bed - Cream" } },
+        "a_cream2":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg", "alt": "Klawford Alexander Bed - Cream angle" } },
+        "a_black1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-black-1.jpg", "alt": "Klawford Alexander Bed - Black" } },
+        "a_black2":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-black-2.jpg", "alt": "Klawford Alexander Bed - Black angle" } },
+        "a_brown1":  { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-brown-1.jpg", "alt": "Klawford Alexander Bed - Brown" } },
+        "a_grey1":   { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-grey-1.jpg", "alt": "Klawford Alexander Bed - Grey" } },
+        "a_grey2":   { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-grey-5.jpg", "alt": "Klawford Alexander Bed - Grey lifestyle" } },
+        "a_red1":    { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-red-3.jpg", "alt": "Klawford Alexander Bed - Red" } }
       },
-      "block_order": ["img1","img2","img3","img4","img5","img6"]
+      "block_order": [
+        "c_grey1","c_grey2","c_grey3",
+        "c_red1","c_red2","c_red3",
+        "c_brown1","c_brown2","c_brown3",
+        "c_black1","c_black2","c_black3",
+        "c_cream1","c_cream2","c_cream3",
+        "p_black1","p_brown1","p_grey1","p_cream1","p_wh1","p_wh2",
+        "a_cream1","a_cream2","a_black1","a_black2","a_brown1","a_grey1","a_grey2","a_red1"
+      ]
     },
     "social_proof": {
       "type": "social-proof-bar",
