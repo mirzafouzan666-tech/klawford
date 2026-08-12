@@ -270,11 +270,21 @@
                     {%- if opt_handle == 'colour' or opt_handle == 'color' -%}{%- assign is_colour = true -%}{%- endif -%}
                     {%- assign variant_img = blank -%}
                     {%- if is_colour -%}
-                      {%- for v in product.variants -%}
-                        {%- if v.option1 == value or v.option2 == value or v.option3 == value -%}
-                          {%- if v.image -%}{%- assign variant_img = v.image -%}{%- break -%}{%- endif -%}
+                      {%- assign _swatch_val_lower = value | downcase -%}
+                      {%- for _pi in product.images -%}
+                        {%- assign _pi_alt_lc = _pi.alt | downcase -%}
+                        {%- if _pi_alt_lc == _swatch_val_lower -%}
+                          {%- assign variant_img = _pi -%}
+                          {%- break -%}
                         {%- endif -%}
                       {%- endfor -%}
+                      {%- if variant_img == blank -%}
+                        {%- for v in product.variants -%}
+                          {%- if v.option1 == value or v.option2 == value or v.option3 == value -%}
+                            {%- if v.image -%}{%- assign variant_img = v.image -%}{%- break -%}{%- endif -%}
+                          {%- endif -%}
+                        {%- endfor -%}
+                      {%- endif -%}
                     {%- endif -%}
                     {%- assign price_mod = 0 -%}
                     {%- assign base_price = product.price_min -%}
