@@ -6,27 +6,42 @@
     {%- endif -%}
   </div>
 
-  {%- comment -%} Lifestyle images from Klawford premium visual assets {%- endcomment -%}
   {%- assign _cdn = 'https://cdn.shopify.com/s/files/1/0960/5588/6153/files/' -%}
   {%- assign _imgs = 'image_2.jpg|image_6.jpg|image_4.jpg|image_1.jpg|image_3.jpg|image_5.jpg' | split: '|' -%}
   {%- assign _alts = 'Storage drawers lifestyle|Couple relaxing in bed|Family reading in bed|Luxury bedroom|Ottoman storage interior|Professional assembly' | split: '|' -%}
 
   <div class="container" style="padding-right:0;overflow:hidden;">
     <div class="loved-gallery__track" id="product-gallery-track">
-      {%- for _img in _imgs -%}
-        {%- assign _ai = forloop.index0 -%}
-        <div class="gallery-item">
-          <div class="gallery-item__img">
-            <img
-              src="{{ _cdn }}{{ _img }}"
-              alt="{{ _alts[_ai] | default: 'Klawford bed lifestyle' }}"
-              loading="lazy"
-              width="800"
-              height="533"
-              style="width:100%;height:100%;object-fit:cover;display:block;">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="gallery-item" {{ block.shopify_attributes }}>
+            <div class="gallery-item__img">
+              <img
+                src="{{ block.settings.image_src }}"
+                alt="{{ block.settings.alt | default: 'Klawford bed lifestyle' }}"
+                loading="lazy"
+                width="800"
+                height="800"
+                style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
           </div>
-        </div>
-      {%- endfor -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for _img in _imgs -%}
+          {%- assign _ai = forloop.index0 -%}
+          <div class="gallery-item">
+            <div class="gallery-item__img">
+              <img
+                src="{{ _cdn }}{{ _img }}"
+                alt="{{ _alts[_ai] | default: 'Klawford bed lifestyle' }}"
+                loading="lazy"
+                width="800"
+                height="533"
+                style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 
@@ -49,25 +64,24 @@
     { "type": "text", "id": "heading", "label": "Heading", "default": "In Real Life" },
     { "type": "text", "id": "subheading", "label": "Subheading" }
   ],
+  "max_blocks": 60,
   "blocks": [
     {
       "type": "image",
       "name": "Photo",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "image_src", "label": "Image URL (fallback)" },
-        { "type": "text", "id": "alt", "label": "Alt text" },
-        { "type": "checkbox", "id": "show_play", "label": "Show play button", "default": false }
+        { "type": "text", "id": "image_src", "label": "Image URL" },
+        { "type": "text", "id": "alt", "label": "Alt text" }
       ]
     }
   ],
   "presets": [{ "name": "In Real Life Gallery", "blocks": [
-    { "type": "image", "settings": { "show_play": true } },
-    { "type": "image", "settings": { "show_play": true } },
-    { "type": "image", "settings": { "show_play": false } },
-    { "type": "image", "settings": { "show_play": true } },
-    { "type": "image", "settings": { "show_play": false } },
-    { "type": "image", "settings": { "show_play": false } }
+    { "type": "image" },
+    { "type": "image" },
+    { "type": "image" },
+    { "type": "image" },
+    { "type": "image" },
+    { "type": "image" }
   ] }]
 }
 {% endschema %}
