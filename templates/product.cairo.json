@@ -25,12 +25,12 @@
         "subheading": "See how our customers style their Cairo Ottoman bed"
       },
       "blocks": {
-        "img1": { "type": "image", "settings": { "image_src": "", "alt": "Klawford Cairo Ottoman Bed in bedroom setting", "show_play": false } },
-        "img2": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Ottoman Bed gas-lift storage open", "show_play": false } },
-        "img3": { "type": "image", "settings": { "image_src": "", "alt": "Cairo bed headboard close-up", "show_play": false } },
-        "img4": { "type": "image", "settings": { "image_src": "", "alt": "Cairo bed in styled bedroom", "show_play": false } },
-        "img5": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Ottoman storage interior", "show_play": false } },
-        "img6": { "type": "image", "settings": { "image_src": "", "alt": "Cairo bed lifestyle couple", "show_play": false } }
+        "img1": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_1.jpg", "alt": "Klawford Cairo Ottoman Bed in luxury bedroom", "show_play": false } },
+        "img2": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_3.jpg", "alt": "Cairo Ottoman gas-lift storage open", "show_play": false } },
+        "img3": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg", "alt": "Couple relaxing on Cairo bed", "show_play": false } },
+        "img4": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_4.jpg", "alt": "Family enjoying Cairo bed", "show_play": false } },
+        "img5": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg", "alt": "Cairo Ottoman storage compartment", "show_play": false } },
+        "img6": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_5.jpg", "alt": "Professional Klawford bed assembly", "show_play": false } }
       },
       "block_order": ["img1","img2","img3","img4","img5","img6"]
     },
@@ -55,11 +55,11 @@
         "heading": "Why Choose The Klawford Cairo Ottoman?"
       },
       "blocks": {
-        "f1": { "type": "feature", "settings": { "image_src": "", "title": "60 Night Risk-Free Trial", "description": "<p>We're so confident you'll love your Cairo bed that we offer a full 60-night risk-free trial. Not satisfied within the first 60 nights? Contact us for a hassle-free return or swap — no questions asked.</p>" } },
-        "f2": { "type": "feature", "settings": { "image_src": "", "title": "Extra Storage Space For More Room", "description": "<p>Make the most of your bedroom with the Cairo Ottoman. The full-width gas-lift base opens to reveal a spacious under-bed compartment, perfect for storing bedding, pillows and more — completely hidden from view.</p>" } },
-        "f3": { "type": "feature", "settings": { "image_src": "", "title": "Gas-Lift Opening Mechanism", "description": "<p>Experience effortless storage with the Cairo's smooth gas-lift mechanism. One gentle lift raises the entire mattress platform, giving you instant access to the full-depth storage compartment below.</p>" } },
-        "f4": { "type": "feature", "settings": { "image_src": "", "title": "Sustainably Sourced & Handmade in The UK", "description": "<p>Every Klawford Cairo Ottoman is handcrafted in Britain using sustainably sourced timber and premium upholstery fabrics, built to last and designed to impress.</p>" } },
-        "f5": { "type": "feature", "settings": { "image_src": "", "title": "Compatible With All Mattress Types", "description": "<p>The Cairo Ottoman base works perfectly with memory foam, pocket spring, hybrid, latex and orthopaedic mattresses, giving you total freedom to choose your ideal sleep surface.</p>" } }
+        "f1": { "type": "feature", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg", "title": "60 Night Risk-Free Trial", "description": "<p>We're so confident you'll love your Cairo bed that we offer a full 60-night risk-free trial. Not satisfied within the first 60 nights? Contact us for a hassle-free return or swap — no questions asked.</p>" } },
+        "f2": { "type": "feature", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg", "title": "Extra Storage Space For More Room", "description": "<p>Make the most of your bedroom with the Cairo Ottoman. The full-width gas-lift base opens to reveal a spacious under-bed compartment, perfect for storing bedding, pillows and more — completely hidden from view.</p>" } },
+        "f3": { "type": "feature", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_3.jpg", "title": "Gas-Lift Opening Mechanism", "description": "<p>Experience effortless storage with the Cairo's smooth gas-lift mechanism. One gentle lift raises the entire mattress platform, giving you instant access to the full-depth storage compartment below.</p>" } },
+        "f4": { "type": "feature", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_5.jpg", "title": "Sustainably Sourced & Handmade in The UK", "description": "<p>Every Klawford Cairo Ottoman is handcrafted in Britain using sustainably sourced timber and premium upholstery fabrics, built to last and designed to impress.</p>" } },
+        "f5": { "type": "feature", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_4.jpg", "title": "Compatible With All Mattress Types", "description": "<p>The Cairo Ottoman base works perfectly with memory foam, pocket spring, hybrid, latex and orthopaedic mattresses, giving you total freedom to choose your ideal sleep surface.</p>" } }
       },
       "block_order": ["f1","f2","f3","f4","f5"]
     },
