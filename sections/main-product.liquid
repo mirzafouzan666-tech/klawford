@@ -80,6 +80,24 @@
                   {%- endif -%}
                 {%- endif -%}
 
+                {%- comment -%} 3. Direct alt-as-colour: match alt against colour option values {%- endcomment -%}
+                {%- if img_colour == '' and image.alt != blank -%}
+                  {%- assign _alt_lower = image.alt | downcase | strip -%}
+                  {%- for _opt in product.options_with_values -%}
+                    {%- assign _oname = _opt.name | downcase -%}
+                    {%- if _oname == 'colour' or _oname == 'color' -%}
+                      {%- for _cv in _opt.values -%}
+                        {%- assign _cv_lower = _cv | downcase -%}
+                        {%- if _cv_lower == _alt_lower -%}
+                          {%- assign img_colour = _alt_lower -%}
+                          {%- break -%}
+                        {%- endif -%}
+                      {%- endfor -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+
                 <button
                   class="product-gallery__thumb {% if forloop.first %}active{% endif %}"
                   type="button"
