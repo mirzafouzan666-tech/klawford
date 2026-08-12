@@ -932,23 +932,26 @@
       filterThumbs(selectedOptions[colourIdx], defSrc);
     }
 
-    // Fix colour swatch images: use variant.featured_image.src (reliable) instead of Liquid-rendered img
+    // Fix colour swatch images: fetch fresh product data (bypasses all CDN/browser caching)
     if(colourIdx >= 0) {
-      var colourImgMap = {};
-      variants.forEach(function(v){
-        var c = (v.options[colourIdx] || '').toLowerCase().trim();
-        if(c && !colourImgMap[c] && v.featured_image && v.featured_image.src) {
-          colourImgMap[c] = v.featured_image.src;
-        }
-      });
-      document.querySelectorAll('.variant-card[data-option-index]').forEach(function(card){
-        if(parseInt(card.getAttribute('data-option-index')) !== colourIdx) return;
-        var val = (card.getAttribute('data-value') || '').toLowerCase().trim();
-        var src = colourImgMap[val];
-        if(!src) return;
-        var img = card.querySelector('img');
-        if(img) img.src = src;
-      });
+      var _ci = colourIdx;
+      fetch('/products/{{ product.handle }}.json?_=' + Date.now())
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          var map = {};
+          d.product.variants.forEach(function(v){
+            var col = (v['option' + (_ci + 1)] || '').toLowerCase().trim();
+            if(col && !map[col] && v.featured_image && v.featured_image.src){
+              map[col] = v.featured_image.src;
+            }
+          });
+          document.querySelectorAll('.variant-card[data-option-index]').forEach(function(card){
+            if(parseInt(card.getAttribute('data-option-index')) !== _ci) return;
+            var val = (card.getAttribute('data-value') || '').toLowerCase().trim();
+            var src = map[val]; if(!src) return;
+            var img = card.querySelector('img'); if(img) img.src = src;
+          });
+        }).catch(function(){});
     }
   })();
 })();
