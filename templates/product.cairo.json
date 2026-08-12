@@ -1,0 +1,144 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "review_count": "247",
+        "show_upsell": true,
+        "upsell_1_label": "Add Mattress & Base",
+        "upsell_2_label": "Choose Mattress"
+      }
+    },
+    "in_real_life": {
+      "type": "product-in-real-life",
+      "settings": {
+        "heading": "In Real Life",
+        "subheading": "See how our customers style their Cairo bed"
+      },
+      "blocks": {
+        "img1": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Upholstered Bed in bedroom", "show_play": false } },
+        "img2": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Bed lifestyle shot", "show_play": false } },
+        "img3": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Bed close-up fabric detail", "show_play": false } },
+        "img4": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Bed in grey bedroom", "show_play": false } },
+        "img5": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Bed headboard detail", "show_play": false } },
+        "img6": { "type": "image", "settings": { "image_src": "", "alt": "Cairo Bed assembly", "show_play": false } }
+      },
+      "block_order": ["img1","img2","img3","img4","img5","img6"]
+    },
+    "social_proof": {
+      "type": "social-proof-bar",
+      "settings": {
+        "text": "Over 100,000 Happy Customers",
+        "rating_text": "Trustpilot 4.9/5"
+      },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "text": "The Cairo bed is absolutely beautiful. The fabric quality is exceptional and it looks even better in person.", "author": "Sophie L.", "time_ago": "1 day ago" } },
+        "r2": { "type": "review", "settings": { "text": "Delivery was smooth and the assembly team were brilliant. Couldn't be happier with my new bed.", "author": "James H.", "time_ago": "2 days ago" } },
+        "r3": { "type": "review", "settings": { "text": "Stunning bed, great quality and exactly as described. Would highly recommend Klawford.", "author": "Emma W.", "time_ago": "3 days ago" } },
+        "r4": { "type": "review", "settings": { "text": "The grey colour is gorgeous. Really solid frame and the headboard is so comfortable to lean against.", "author": "David M.", "time_ago": "4 days ago" } },
+        "r5": { "type": "review", "settings": { "text": "Fast free delivery and a brilliant product. The Cream Cairo looks incredible in my bedroom.", "author": "Rachel K.", "time_ago": "5 days ago" } }
+      },
+      "block_order": ["r1","r2","r3","r4","r5"]
+    },
+    "product_features": {
+      "type": "product-features",
+      "settings": {
+        "heading": "Why Choose The Klawford Cairo?"
+      },
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "image_src": "", "title": "60 Night Risk-Free Trial", "description": "<p>We're so confident you'll love your Cairo bed that we offer a full 60-night risk-free trial. Not satisfied? Contact us for a hassle-free return or swap — no questions asked.</p>" } },
+        "f2": { "type": "feature", "settings": { "image_src": "", "title": "Premium Fabric Upholstery", "description": "<p>The Cairo's deeply padded headboard and upholstered frame are covered in a high-quality fabric finish, available in five colours to suit any bedroom interior.</p>" } },
+        "f3": { "type": "feature", "settings": { "image_src": "", "title": "Sustainably Sourced & Handmade in The UK", "description": "<p>Every Klawford Cairo bed is handcrafted in Britain using sustainably sourced timber and materials, built to the highest standards of quality and durability.</p>" } },
+        "f4": { "type": "feature", "settings": { "image_src": "", "title": "Solid Slatted Base for Superior Support", "description": "<p>The solid wooden slatted base provides outstanding support for your mattress, improving airflow and extending the life of your mattress for years to come.</p>" } },
+        "f5": { "type": "feature", "settings": { "image_src": "", "title": "Compatible With All Mattress Types", "description": "<p>The Klawford Cairo works perfectly with memory foam, pocket spring, hybrid and orthopaedic mattresses — giving you total freedom to choose the sleep surface you prefer.</p>" } }
+      },
+      "block_order": ["f1","f2","f3","f4","f5"]
+    },
+    "product_dimensions": {
+      "type": "product-dimensions",
+      "settings": {
+        "heading": "Dimensions",
+        "headboard_note": "Cairo Upholstered Headboard included"
+      },
+      "blocks": {
+        "d1": { "type": "dimension_row", "settings": { "size": "2ft 6 Small Single", "length": "190 cm", "width": "75 cm" } },
+        "d2": { "type": "dimension_row", "settings": { "size": "3ft Single", "length": "190 cm", "width": "90 cm" } },
+        "d3": { "type": "dimension_row", "settings": { "size": "4ft Small Double", "length": "190 cm", "width": "120 cm" } },
+        "d4": { "type": "dimension_row", "settings": { "size": "4ft 6 Double", "length": "190 cm", "width": "135 cm" } },
+        "d5": { "type": "dimension_row", "settings": { "size": "5ft King", "length": "200 cm", "width": "150 cm" } },
+        "d6": { "type": "dimension_row", "settings": { "size": "6ft Super King", "length": "200 cm", "width": "180 cm" } },
+        "p1": { "type": "package_row", "settings": { "size": "2ft 6 Small Single", "length": "100 cm", "width": "40 cm" } },
+        "p2": { "type": "package_row", "settings": { "size": "3ft Single", "length": "100 cm", "width": "48 cm" } },
+        "p3": { "type": "package_row", "settings": { "size": "4ft Small Double", "length": "100 cm", "width": "62 cm" } },
+        "p4": { "type": "package_row", "settings": { "size": "4ft 6 Double", "length": "100 cm", "width": "70 cm" } },
+        "p5": { "type": "package_row", "settings": { "size": "5ft King", "length": "106 cm", "width": "78 cm" } },
+        "p6": { "type": "package_row", "settings": { "size": "6ft Super King", "length": "106 cm", "width": "92 cm" } }
+      },
+      "block_order": ["d1","d2","d3","d4","d5","d6","p1","p2","p3","p4","p5","p6"]
+    },
+    "product_finance": {
+      "type": "product-finance",
+      "settings": {
+        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
+        "heading": "Shop Now, Pay Later",
+        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees."
+      },
+      "blocks": {
+        "pt1": { "type": "point", "settings": { "title": "Up to 12 Monthly Instalments", "description": "Spread the cost of your order over up to 12 equal monthly payments." } },
+        "pt2": { "type": "point", "settings": { "title": "Zero Interest Rate", "description": "Pay absolutely nothing extra — 0% interest for the full term of your plan." } },
+        "pt3": { "type": "point", "settings": { "title": "No Early Repayment Charges", "description": "Want to pay it off sooner? No problem — there are no fees when your balance is paid early." } }
+      },
+      "block_order": ["pt1","pt2","pt3"]
+    },
+    "product_services": {
+      "type": "product-services",
+      "settings": {
+        "heading": "Sleep Specialists At Your Service!",
+        "show_atc": true,
+        "atc_label": "Add to Basket"
+      },
+      "blocks": {
+        "s1": { "type": "service", "settings": { "title": "Delivered to Your Room", "description": "Our 2-man delivery team will bring your order straight to your room of choice at no extra charge." } },
+        "s2": { "type": "service", "settings": { "title": "Stress-Free Assembly", "description": "Your free team of experts will assemble your new Cairo bed in as little as 15 minutes so all you have to do is enjoy it." } },
+        "s3": { "type": "service", "settings": { "title": "We're Just a Phone Call Away", "description": "Got questions or need advice? Our sleep specialists are ready to help. Call us at 0800 000 0000 and we'll be happy to assist!" } }
+      },
+      "block_order": ["s1","s2","s3"]
+    },
+    "product_faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "q1": { "type": "faq_item", "settings": { "question": "What colours is the Cairo Upholstered Bed available in?", "answer": "<p>The Klawford Cairo is available in five colours: Cream, Red, Grey, Black, and Brown. All colours feature the same premium fabric upholstery and are available in every size.</p>" } },
+        "q2": { "type": "faq_item", "settings": { "question": "What sizes does the Cairo bed come in?", "answer": "<p>The Cairo is available in Small Single (2FT6), Single (3FT), Small Double (4FT), Double (4FT6), King (5FT), and Super King (6FT).</p>" } },
+        "q3": { "type": "faq_item", "settings": { "question": "Does the Cairo bed come with a headboard?", "answer": "<p>Yes — the Klawford Cairo Upholstered Bed includes a deeply padded, fabric-upholstered headboard as standard at no extra cost.</p>" } },
+        "q4": { "type": "faq_item", "settings": { "question": "How long does delivery take?", "answer": "<p>Standard delivery is 7–14 working days. Once your order is dispatched you'll receive full tracking information. Our 2-man team will contact you to arrange a convenient delivery slot.</p>" } },
+        "q5": { "type": "faq_item", "settings": { "question": "Can I pay monthly using finance?", "answer": "<p>Yes — we offer 0% interest financing through Klarna and other providers at checkout. Split your purchase into manageable monthly instalments with no hidden fees.</p>" } },
+        "q6": { "type": "faq_item", "settings": { "question": "What type of mattress works with the Cairo bed?", "answer": "<p>The Cairo's slatted base is compatible with all mattress types including memory foam, pocket spring, hybrid, latex and orthopaedic mattresses.</p>" } },
+        "q7": { "type": "faq_item", "settings": { "question": "Where is the Cairo bed manufactured?", "answer": "<p>The Klawford Cairo is handcrafted in the United Kingdom using sustainably sourced materials. We're proud to support British manufacturing.</p>" } },
+        "q8": { "type": "faq_item", "settings": { "question": "Can I change or cancel my order?", "answer": "<p>You can amend or cancel your order within 24 hours of placing it by contacting our customer service team. After manufacturing begins we are unable to make changes.</p>" } }
+      },
+      "block_order": ["q1","q2","q3","q4","q5","q6","q7","q8"]
+    }
+  },
+  "order": [
+    "main",
+    "in_real_life",
+    "social_proof",
+    "product_features",
+    "product_dimensions",
+    "product_finance",
+    "product_services",
+    "product_faq"
+  ]
+}
