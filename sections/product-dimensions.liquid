@@ -20,15 +20,53 @@
                 height="400">
             {%- else -%}
               <div class="dimensions-placeholder">
-                <svg viewBox="0 0 260 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="30" y="70" width="200" height="80" rx="4" stroke="#5C1F2E" stroke-width="1.5" fill="#F2EBE1"/>
-                  <rect x="50" y="50" width="160" height="25" rx="2" stroke="#5C1F2E" stroke-width="1.5" fill="#FAF8F4"/>
-                  <rect x="22" y="140" width="10" height="28" rx="2" stroke="#5C1F2E" stroke-width="1.5" fill="#F2EBE1"/>
-                  <rect x="228" y="140" width="10" height="28" rx="2" stroke="#5C1F2E" stroke-width="1.5" fill="#F2EBE1"/>
-                  <line x1="30" y1="175" x2="230" y2="175" stroke="#989898" stroke-width="1" stroke-dasharray="4 3"/>
-                  <text x="130" y="173" text-anchor="middle" font-size="10" fill="#474546" font-family="Nunito Sans">Width</text>
-                  <line x1="240" y1="70" x2="240" y2="150" stroke="#989898" stroke-width="1" stroke-dasharray="4 3"/>
-                  <text x="252" y="113" text-anchor="middle" font-size="10" fill="#474546" font-family="Nunito Sans">Height</text>
+                <svg viewBox="0 0 340 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:340px;">
+                  <!-- Base left side (isometric front-left face) -->
+                  <polygon points="60,160 60,210 170,245 170,195" fill="#E8DDD4" stroke="#8B6F5E" stroke-width="1.2"/>
+                  <!-- Base front face -->
+                  <polygon points="170,195 170,245 280,210 280,160" fill="#D9CEC5" stroke="#8B6F5E" stroke-width="1.2"/>
+                  <!-- Base top face -->
+                  <polygon points="60,160 170,125 280,160 170,195" fill="#F0E8E0" stroke="#8B6F5E" stroke-width="1.2"/>
+                  <!-- Mattress top -->
+                  <polygon points="68,152 170,118 272,152 170,186" fill="#FAF6F2" stroke="#8B6F5E" stroke-width="1"/>
+                  <!-- Headboard back -->
+                  <polygon points="60,65 60,160 108,145 108,50" fill="#C9BDB4" stroke="#8B6F5E" stroke-width="1.2"/>
+                  <!-- Headboard front -->
+                  <polygon points="108,50 108,145 170,130 170,35" fill="#DDD2C9" stroke="#8B6F5E" stroke-width="1.2"/>
+                  <!-- Headboard top -->
+                  <polygon points="60,65 108,50 170,35 122,48" fill="#E5DAD2" stroke="#8B6F5E" stroke-width="1.2"/>
+                  <!-- Legs -->
+                  <rect x="56" y="208" width="7" height="16" rx="1" fill="#A0877A" stroke="#8B6F5E" stroke-width="0.8"/>
+                  <rect x="167" y="243" width="7" height="16" rx="1" fill="#A0877A" stroke="#8B6F5E" stroke-width="0.8"/>
+                  <rect x="277" y="208" width="7" height="16" rx="1" fill="#A0877A" stroke="#8B6F5E" stroke-width="0.8"/>
+
+                  <!-- Dimension A: Base Height (left side) -->
+                  <line x1="35" y1="160" x2="35" y2="210" stroke="#8B6F5E" stroke-width="1" stroke-dasharray="3 2"/>
+                  <line x1="30" y1="160" x2="40" y2="160" stroke="#8B6F5E" stroke-width="1"/>
+                  <line x1="30" y1="210" x2="40" y2="210" stroke="#8B6F5E" stroke-width="1"/>
+                  <circle cx="35" cy="185" r="10" fill="#5C1F2E"/>
+                  <text x="35" y="189" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="sans-serif">A</text>
+
+                  <!-- Dimension B: Length (bottom) -->
+                  <line x1="60" y1="240" x2="280" y2="240" stroke="#5C1F2E" stroke-width="1" stroke-dasharray="3 2"/>
+                  <line x1="60" y1="235" x2="60" y2="245" stroke="#5C1F2E" stroke-width="1"/>
+                  <line x1="280" y1="235" x2="280" y2="245" stroke="#5C1F2E" stroke-width="1"/>
+                  <circle cx="170" cy="257" r="10" fill="#5C1F2E"/>
+                  <text x="170" y="261" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="sans-serif">B</text>
+
+                  <!-- Dimension C: Width (right side diagonal) -->
+                  <line x1="290" y1="160" x2="310" y2="153" stroke="#8B6F5E" stroke-width="1" stroke-dasharray="3 2"/>
+                  <line x1="290" y1="210" x2="310" y2="203" stroke="#8B6F5E" stroke-width="1" stroke-dasharray="3 2"/>
+                  <line x1="296" y1="158" x2="296" y2="205" stroke="#8B6F5E" stroke-width="1" stroke-dasharray="3 2"/>
+                  <circle cx="296" cy="182" r="10" fill="#5C1F2E"/>
+                  <text x="296" y="186" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="sans-serif">C</text>
+
+                  <!-- Dimension D: Total height incl headboard (left) -->
+                  <line x1="15" y1="35" x2="15" y2="210" stroke="#5C1F2E" stroke-width="1" stroke-dasharray="3 2"/>
+                  <line x1="10" y1="35" x2="20" y2="35" stroke="#5C1F2E" stroke-width="1"/>
+                  <line x1="10" y1="210" x2="20" y2="210" stroke="#5C1F2E" stroke-width="1"/>
+                  <circle cx="15" cy="122" r="10" fill="#5C1F2E"/>
+                  <text x="15" y="126" text-anchor="middle" font-size="10" font-weight="bold" fill="#fff" font-family="sans-serif">D</text>
                 </svg>
               </div>
             {%- endif -%}
@@ -39,6 +77,12 @@
             {%- if section.settings.headboard_note != blank -%}
               <p class="dimensions-note">{{ section.settings.headboard_note }}</p>
             {%- endif -%}
+            <div class="dimensions-key">
+              <span class="dim-key-item"><span class="dim-key-dot" style="background:#8B6F5E;"></span>A — Base Height</span>
+              <span class="dim-key-item"><span class="dim-key-dot" style="background:#5C1F2E;"></span>B — Length</span>
+              <span class="dim-key-item"><span class="dim-key-dot" style="background:#5C1F2E;"></span>C — Width</span>
+              <span class="dim-key-item"><span class="dim-key-dot" style="background:#5C1F2E;"></span>D — Total Height</span>
+            </div>
             <table class="dimensions-table">
               <thead>
                 <tr>
@@ -66,11 +110,22 @@
       <div class="dimensions-panel" id="dim-package" style="display:none;">
         <div class="dimensions-grid">
           <div class="dimensions-illustration">
-            <div class="dimensions-placeholder" style="background:var(--clr-wild-sand);">
-              <svg viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="20" y="30" width="160" height="110" rx="4" stroke="#5C1F2E" stroke-width="1.5" fill="#F2EBE1"/>
-                <path d="M20 60h160M100 30v110" stroke="#5C1F2E" stroke-width="1" stroke-dasharray="4 3"/>
-                <text x="100" y="20" text-anchor="middle" font-size="11" fill="#474546" font-family="Nunito Sans">Package</text>
+            <div class="dimensions-placeholder">
+              <svg viewBox="0 0 260 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:260px;">
+                <!-- Box isometric -->
+                <polygon points="50,80 50,160 130,190 130,110" fill="#E8DDD4" stroke="#8B6F5E" stroke-width="1.2"/>
+                <polygon points="130,110 130,190 210,160 210,80" fill="#D9CEC5" stroke="#8B6F5E" stroke-width="1.2"/>
+                <polygon points="50,80 130,50 210,80 130,110" fill="#F0E8E0" stroke="#8B6F5E" stroke-width="1.2"/>
+                <!-- Box lines -->
+                <line x1="130" y1="50" x2="130" y2="190" stroke="#8B6F5E" stroke-width="0.8" stroke-dasharray="3 2"/>
+                <text x="130" y="130" text-anchor="middle" font-size="13" fill="#8B6F5E" font-family="sans-serif" font-weight="600">Package</text>
+                <!-- Width label -->
+                <line x1="50" y1="172" x2="130" y2="200" stroke="#5C1F2E" stroke-width="1"/>
+                <line x1="130" y1="200" x2="210" y2="172" stroke="#5C1F2E" stroke-width="1"/>
+                <text x="130" y="215" text-anchor="middle" font-size="10" fill="#5C1F2E" font-family="sans-serif">Width</text>
+                <!-- Height label -->
+                <line x1="30" y1="80" x2="30" y2="160" stroke="#5C1F2E" stroke-width="1" stroke-dasharray="3 2"/>
+                <text x="20" y="124" text-anchor="middle" font-size="10" fill="#5C1F2E" font-family="sans-serif" transform="rotate(-90,20,124)">Height</text>
               </svg>
             </div>
           </div>
@@ -113,8 +168,8 @@ function switchDimTab(btn,panel){
   "name": "Product Dimensions",
   "settings": [
     { "type": "text", "id": "heading", "label": "Heading", "default": "Dimensions" },
-    { "type": "image_picker", "id": "product_image", "label": "Dimension diagram image" },
-    { "type": "text", "id": "headboard_note", "label": "Headboard note", "default": "Small Divan Standing Headboard" }
+    { "type": "image_picker", "id": "product_image", "label": "Dimension diagram image (optional)" },
+    { "type": "text", "id": "headboard_note", "label": "Headboard note", "default": "Upholstered Headboard included as standard" }
   ],
   "blocks": [
     {

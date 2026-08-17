@@ -22,6 +22,14 @@
               width="800"
               height="600"
               style="width:100%;height:100%;object-fit:cover;display:block;">
+          {%- elsif block.settings.image_src != blank -%}
+            <img
+              src="{{ block.settings.image_src }}"
+              alt="{{ block.settings.title | escape }}"
+              loading="lazy"
+              width="800"
+              height="600"
+              style="width:100%;height:100%;object-fit:cover;display:block;">
           {%- else -%}
             {%- for _fsrc in _fimgs limit: 1 offset: _fi -%}
               <img

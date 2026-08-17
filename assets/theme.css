@@ -1755,19 +1755,25 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); font-weight: var(--fw-bold);
 .dimensions-table tr:last-child td { border-bottom: none; }
 .dimensions-table tr:hover td { background: var(--clr-primary-shade); }
 
-/* ---- Finance section ------------------------------------ */
-.product-finance { padding: 64px 0; background: var(--clr-primary); }
-.product-finance__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
-.product-finance__badge { display: inline-flex; align-items: center; gap: 8px; background: var(--clr-secondary); color: var(--clr-white); font-size: var(--fs-xxs); font-weight: var(--fw-bold); padding: 6px 14px; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px; }
-.product-finance__heading { font-family: var(--ff-primary); font-size: clamp(22px, 2.5vw, 32px); font-weight: var(--fw-bold); color: var(--clr-text); margin-bottom: 8px; }
-.product-finance__sub { font-size: var(--fs-sm); color: var(--clr-text-light); margin-bottom: var(--gap-md); }
-.product-finance__points { display: flex; flex-direction: column; gap: var(--gap-md); }
+/* ---- Finance section (full-bleed Sonno-style) ---------- */
+.product-finance { padding: 0; background: none; overflow: hidden; }
+.product-finance__inner { display: grid; grid-template-columns: 460px 1fr; min-height: 520px; }
+.product-finance__text { padding: 72px 56px; background: var(--clr-primary); display: flex; flex-direction: column; justify-content: center; }
+.product-finance__badge { display: inline-flex; align-items: center; gap: 8px; background: var(--clr-secondary); color: var(--clr-white); font-size: var(--fs-xxs); font-weight: var(--fw-bold); padding: 6px 14px; border-radius: var(--radius-full); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 20px; width: fit-content; }
+.product-finance__heading { font-family: var(--ff-primary); font-size: clamp(22px, 2.5vw, 34px); font-weight: var(--fw-bold); color: var(--clr-text); margin-bottom: 10px; }
+.product-finance__sub { font-size: var(--fs-sm); color: var(--clr-text-light); margin-bottom: var(--gap-lg); line-height: 1.75; }
+.product-finance__points { display: flex; flex-direction: column; gap: var(--gap-md); list-style: none; padding: 0; margin: 0; }
 .product-finance__point { display: flex; gap: 14px; }
-.product-finance__point-icon { width: 32px; height: 32px; background: var(--clr-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--clr-white); margin-top: 2px; }
+.product-finance__point-icon { width: 32px; height: 32px; background: var(--clr-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--clr-white); margin-top: 2px; }
 .product-finance__point strong { display: block; font-size: var(--fs-sm); font-weight: var(--fw-bold); color: var(--clr-text); margin-bottom: 4px; }
-.product-finance__point p { font-size: var(--fs-xs); color: var(--clr-text-light); line-height: 1.7; }
-.product-finance__image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
-.product-finance__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.product-finance__point p { font-size: var(--fs-xs); color: var(--clr-text-light); line-height: 1.7; margin: 0; }
+.product-finance__image { position: relative; overflow: hidden; }
+.product-finance__image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* ---- Dimension key legend ------------------------------- */
+.dimensions-key { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 8px 0 16px; }
+.dim-key-item { display: flex; align-items: center; gap: 6px; font-size: var(--fs-xs); color: var(--clr-text-light); }
+.dim-key-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
 /* ---- Sleep Specialists ---------------------------------- */
 .product-services { padding: 64px 0; background: var(--clr-white); }
@@ -3668,13 +3674,14 @@ h1,h2,h3,h4,h5,h6 { color: var(--clr-text); }
   .product-feature-row__desc  { font-size: 16px !important; max-width: 100%; }
 
   /* Finance — stack text above image */
-  .product-finance__grid {
+  .product-finance__inner {
     grid-template-columns: 1fr !important;
-    gap: 32px !important;
+    min-height: unset !important;
   }
-  .product-finance { padding: 48px 0 !important; }
+  .product-finance__text { padding: 48px 24px !important; }
   .product-finance__heading { font-size: 26px !important; }
-  .product-finance__image { max-height: 280px; overflow: hidden; }
+  .product-finance__image { position: relative !important; min-height: 280px !important; }
+  .product-finance__image img { position: absolute !important; }
 
   /* Services — stack image above text */
   .product-services__grid {
