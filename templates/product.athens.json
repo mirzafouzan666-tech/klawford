@@ -1,474 +1,483 @@
-﻿{
-    "sections":  {
-                     "main":  {
-                                  "type":  "main-product",
-                                  "settings":  {
-                                                   "review_count":  "312",
-                                                   "show_upsell":  true,
-                                                   "upsell_1_label":  "Add Mattress \u0026 Save",
-                                                   "upsell_2_label":  "Choose Mattress"
-                                               }
-                              },
-                     "in_real_life":  {
-                                          "type":  "product-in-real-life",
-                                          "settings":  {
-                                                           "heading":  "In Real Life",
-                                                           "subheading":  "See how our customers style their Athens Divan bed"
-                                                       },
-                                          "blocks":  {
-                                                         "a1":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-black-WhatsApp_Image_2026_08_17_at_7.37.14_AM__1.jpeg",
-                                                                                     "alt":  "Klawford Athens Divan Bed - Black angle view"
-                                                                                 }
-                                                                },
-                                                         "a2":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.21_AM__1.jpeg",
-                                                                                     "alt":  "Klawford Athens Divan Bed - Grey angle view"
-                                                                                 }
-                                                                },
-                                                         "a3":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-WhatsApp_Image_2026_08_17_at_7.47.35_AM.jpeg",
-                                                                                     "alt":  "Klawford Athens Divan Bed - Cream angle view"
-                                                                                 }
-                                                                },
-                                                         "a4":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-red-WhatsApp_Image_2026_08_17_at_7.51.48_AM__1.jpeg",
-                                                                                     "alt":  "Klawford Athens Divan Bed - Red angle view"
-                                                                                 }
-                                                                },
-                                                         "a5":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-brown-WhatsApp_Image_2026_08_17_at_7.55.00_AM.jpeg",
-                                                                                     "alt":  "Klawford Athens Divan Bed - Brown angle view"
-                                                                                 }
-                                                                },
-                                                         "a6":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.22_AM__1.jpeg",
-                                                                                     "alt":  "Klawford Athens Divan Bed - Grey second angle"
-                                                                                 }
-                                                                },
-                                                         "a7":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg",
-                                                                                     "alt":  "Couple relaxing in a Klawford bed"
-                                                                                 }
-                                                                },
-                                                         "a8":  {
-                                                                    "type":  "image",
-                                                                    "settings":  {
-                                                                                     "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg",
-                                                                                     "alt":  "Klawford bed in a stylish bedroom setting"
-                                                                                 }
-                                                                }
-                                                     },
-                                          "block_order":  [
-                                                              "a1",
-                                                              "a2",
-                                                              "a3",
-                                                              "a4",
-                                                              "a5",
-                                                              "a6",
-                                                              "a7",
-                                                              "a8"
-                                                          ]
-                                      },
-                     "social_proof":  {
-                                          "type":  "social-proof-bar",
-                                          "settings":  {
-                                                           "text":  "Over 100,000 Happy Customers",
-                                                           "rating_text":  "Trustpilot 4.9/5"
-                                                       },
-                                          "blocks":  {
-                                                         "r1":  {
-                                                                    "type":  "review",
-                                                                    "settings":  {
-                                                                                     "text":  "The Athens Divan is stunning â€” really solid and the fabric feels incredibly premium. The storage drawers are huge and so easy to use.",
-                                                                                     "author":  "Claire B.",
-                                                                                     "time_ago":  "1 day ago"
-                                                                                 }
-                                                                },
-                                                         "r2":  {
-                                                                    "type":  "review",
-                                                                    "settings":  {
-                                                                                     "text":  "Delivery was perfect and the 2-man team assembled it in minutes. Looks even better in person. Absolutely love it.",
-                                                                                     "author":  "Mark T.",
-                                                                                     "time_ago":  "2 days ago"
-                                                                                 }
-                                                                },
-                                                         "r3":  {
-                                                                    "type":  "review",
-                                                                    "settings":  {
-                                                                                     "text":  "Best bed I\u0027ve ever bought. The grey colour is gorgeous and the headboard is so comfortable to lean against.",
-                                                                                     "author":  "Priya S.",
-                                                                                     "time_ago":  "3 days ago"
-                                                                                 }
-                                                                },
-                                                         "r4":  {
-                                                                    "type":  "review",
-                                                                    "settings":  {
-                                                                                     "text":  "Great quality, great price and fast delivery. The storage drawers hold so much â€” transformed my bedroom completely.",
-                                                                                     "author":  "Jason R.",
-                                                                                     "time_ago":  "4 days ago"
-                                                                                 }
-                                                                },
-                                                         "r5":  {
-                                                                    "type":  "review",
-                                                                    "settings":  {
-                                                                                     "text":  "Cream Athens looks absolutely beautiful in my room. Klawford service was brilliant from start to finish.",
-                                                                                     "author":  "Hannah M.",
-                                                                                     "time_ago":  "5 days ago"
-                                                                                 }
-                                                                }
-                                                     },
-                                          "block_order":  [
-                                                              "r1",
-                                                              "r2",
-                                                              "r3",
-                                                              "r4",
-                                                              "r5"
-                                                          ]
-                                      },
-                     "product_features":  {
-                                              "type":  "product-features",
-                                              "settings":  {
-                                                               "heading":  "Why Choose The Klawford Athens Divan Bed?"
-                                                           },
-                                              "blocks":  {
-                                                             "f1":  {
-                                                                        "type":  "feature",
-                                                                        "settings":  {
-                                                                                         "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-hero.jpg",
-                                                                                         "title":  "60 Night Risk-Free Trial",
-                                                                                         "description":  "\u003cp\u003eWe\u0027re so confident you\u0027ll love your Athens bed that we offer a full 60-night risk-free trial. Not satisfied within the first 60 nights? Contact us for a hassle-free return or swap â€” no questions asked.\u003c/p\u003e"
-                                                                                     }
-                                                                    },
-                                                             "f2":  {
-                                                                        "type":  "feature",
-                                                                        "settings":  {
-                                                                                         "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.21_AM__1.jpeg",
-                                                                                         "title":  "Extra Storage Option For More Space",
-                                                                                         "description":  "\u003cp\u003eMake the most of your bedroom with the Athens Divan\u0027s optional drawer storage. Choose from 2 drawers on the left or right side to keep your bedroom organised and clutter-free.\u003c/p\u003e"
-                                                                                     }
-                                                                    },
-                                                             "f3":  {
-                                                                        "type":  "feature",
-                                                                        "settings":  {
-                                                                                         "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-black-WhatsApp_Image_2026_08_17_at_7.37.14_AM__1.jpeg",
-                                                                                         "title":  "Sustainably Sourced \u0026 Handmade in The UK",
-                                                                                         "description":  "\u003cp\u003eEvery Klawford Athens Divan is handcrafted in Britain using sustainably sourced timber and premium upholstery fabrics â€” built to last a lifetime and designed to impress.\u003c/p\u003e"
-                                                                                     }
-                                                                    },
-                                                             "f4":  {
-                                                                        "type":  "feature",
-                                                                        "settings":  {
-                                                                                         "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg",
-                                                                                         "title":  "Customisable \u0026 Beautiful Headboards",
-                                                                                         "description":  "\u003cp\u003eThe Athens comes with a stunning upholstered headboard as standard, perfectly matched to your chosen fabric colour to create a seamless, luxury bedroom look.\u003c/p\u003e"
-                                                                                     }
-                                                                    },
-                                                             "f5":  {
-                                                                        "type":  "feature",
-                                                                        "settings":  {
-                                                                                         "image_src":  "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg",
-                                                                                         "title":  "Compatible With All Mattress Types",
-                                                                                         "description":  "\u003cp\u003eThe Athens Divan base works perfectly with memory foam, pocket spring, hybrid, latex and orthopaedic mattresses â€” giving you total freedom to choose your ideal sleep surface.\u003c/p\u003e"
-                                                                                     }
-                                                                    }
-                                                         },
-                                              "block_order":  [
-                                                                  "f1",
-                                                                  "f2",
-                                                                  "f3",
-                                                                  "f4",
-                                                                  "f5"
-                                                              ]
-                                          },
-                     "product_dimensions":  {
-                                                "type":  "product-dimensions",
-                                                "settings":  {
-                                                                 "heading":  "Dimensions",
-                                                                 "headboard_note":  "Athens Upholstered Headboard included as standard"
-                                                             },
-                                                "blocks":  {
-                                                               "d1":  {
-                                                                          "type":  "dimension_row",
-                                                                          "settings":  {
-                                                                                           "size":  "2ft 6 Small Single",
-                                                                                           "length":  "190 cm",
-                                                                                           "width":  "75 cm"
-                                                                                       }
-                                                                      },
-                                                               "d2":  {
-                                                                          "type":  "dimension_row",
-                                                                          "settings":  {
-                                                                                           "size":  "3ft Single",
-                                                                                           "length":  "190 cm",
-                                                                                           "width":  "90 cm"
-                                                                                       }
-                                                                      },
-                                                               "d3":  {
-                                                                          "type":  "dimension_row",
-                                                                          "settings":  {
-                                                                                           "size":  "4ft Small Double",
-                                                                                           "length":  "190 cm",
-                                                                                           "width":  "120 cm"
-                                                                                       }
-                                                                      },
-                                                               "d4":  {
-                                                                          "type":  "dimension_row",
-                                                                          "settings":  {
-                                                                                           "size":  "4ft 6 Double",
-                                                                                           "length":  "190 cm",
-                                                                                           "width":  "135 cm"
-                                                                                       }
-                                                                      },
-                                                               "d5":  {
-                                                                          "type":  "dimension_row",
-                                                                          "settings":  {
-                                                                                           "size":  "5ft King",
-                                                                                           "length":  "200 cm",
-                                                                                           "width":  "150 cm"
-                                                                                       }
-                                                                      },
-                                                               "d6":  {
-                                                                          "type":  "dimension_row",
-                                                                          "settings":  {
-                                                                                           "size":  "6ft Super King",
-                                                                                           "length":  "200 cm",
-                                                                                           "width":  "180 cm"
-                                                                                       }
-                                                                      },
-                                                               "p1":  {
-                                                                          "type":  "package_row",
-                                                                          "settings":  {
-                                                                                           "size":  "2ft 6 Small Single",
-                                                                                           "length":  "100 cm",
-                                                                                           "width":  "40 cm"
-                                                                                       }
-                                                                      },
-                                                               "p2":  {
-                                                                          "type":  "package_row",
-                                                                          "settings":  {
-                                                                                           "size":  "3ft Single",
-                                                                                           "length":  "100 cm",
-                                                                                           "width":  "48 cm"
-                                                                                       }
-                                                                      },
-                                                               "p3":  {
-                                                                          "type":  "package_row",
-                                                                          "settings":  {
-                                                                                           "size":  "4ft Small Double",
-                                                                                           "length":  "100 cm",
-                                                                                           "width":  "62 cm"
-                                                                                       }
-                                                                      },
-                                                               "p4":  {
-                                                                          "type":  "package_row",
-                                                                          "settings":  {
-                                                                                           "size":  "4ft 6 Double",
-                                                                                           "length":  "100 cm",
-                                                                                           "width":  "70 cm"
-                                                                                       }
-                                                                      },
-                                                               "p5":  {
-                                                                          "type":  "package_row",
-                                                                          "settings":  {
-                                                                                           "size":  "5ft King",
-                                                                                           "length":  "106 cm",
-                                                                                           "width":  "78 cm"
-                                                                                       }
-                                                                      },
-                                                               "p6":  {
-                                                                          "type":  "package_row",
-                                                                          "settings":  {
-                                                                                           "size":  "6ft Super King",
-                                                                                           "length":  "106 cm",
-                                                                                           "width":  "92 cm"
-                                                                                       }
-                                                                      }
-                                                           },
-                                                "block_order":  [
-                                                                    "d1",
-                                                                    "d2",
-                                                                    "d3",
-                                                                    "d4",
-                                                                    "d5",
-                                                                    "d6",
-                                                                    "p1",
-                                                                    "p2",
-                                                                    "p3",
-                                                                    "p4",
-                                                                    "p5",
-                                                                    "p6"
-                                                                ]
-                                            },
-                     "product_finance":  {
-                                             "type":  "product-finance",
-                                             "settings":  {
-                                                              "provider_label":  "0% INTEREST-FREE INSTALLMENTS",
-                                                              "heading":  "Shop Now, Pay Later",
-                                                              "subheading":  "Split the cost of your order into easy monthly instalments with no hidden fees."
-                                                          },
-                                             "blocks":  {
-                                                            "pt1":  {
-                                                                        "type":  "point",
-                                                                        "settings":  {
-                                                                                         "title":  "Pay In Monthly Instalments",
-                                                                                         "description":  "Spread the cost of your order over up to 12 equal monthly payments."
-                                                                                     }
-                                                                    },
-                                                            "pt2":  {
-                                                                        "type":  "point",
-                                                                        "settings":  {
-                                                                                         "title":  "Zero Interest Rate",
-                                                                                         "description":  "Every purchase is entirely interest-free, no matter the price or term length."
-                                                                                     }
-                                                                    },
-                                                            "pt3":  {
-                                                                        "type":  "point",
-                                                                        "settings":  {
-                                                                                         "title":  "No Early Repayment Charges",
-                                                                                         "description":  "Want to pay it off sooner? No problem â€” there are no fees when your balance is cleared early."
-                                                                                     }
-                                                                    }
-                                                        },
-                                             "block_order":  [
-                                                                 "pt1",
-                                                                 "pt2",
-                                                                 "pt3"
-                                                             ]
-                                         },
-                     "product_services":  {
-                                              "type":  "product-services",
-                                              "settings":  {
-                                                               "heading":  "Sleep Specialists At Your Service!",
-                                                               "show_atc":  true,
-                                                               "atc_label":  "Add to Basket"
-                                                           },
-                                              "blocks":  {
-                                                             "s1":  {
-                                                                        "type":  "service",
-                                                                        "settings":  {
-                                                                                         "title":  "Delivered to Your Room",
-                                                                                         "description":  "We deliver with a 2-man team straight to your room of choice at no extra charge. Choose your preferred delivery date at checkout."
-                                                                                     }
-                                                                    },
-                                                             "s2":  {
-                                                                        "type":  "service",
-                                                                        "settings":  {
-                                                                                         "title":  "Stress-Free Assembly",
-                                                                                         "description":  "Your Klawford team will assemble your new Athens Divan in your room for a smooth, hassle-free experience â€” all you do is enjoy it."
-                                                                                     }
-                                                                    },
-                                                             "s3":  {
-                                                                        "type":  "service",
-                                                                        "settings":  {
-                                                                                         "title":  "We\u0027re Just a Phone Call Away",
-                                                                                         "description":  "Got questions or need advice? Our sleep specialists are ready to help. Call us at 0800 000 0000 and we\u0027ll be happy to assist."
-                                                                                     }
-                                                                    }
-                                                         },
-                                              "block_order":  [
-                                                                  "s1",
-                                                                  "s2",
-                                                                  "s3"
-                                                              ]
-                                          },
-                     "product_faq":  {
-                                         "type":  "faq",
-                                         "settings":  {
-                                                          "heading":  "Frequently Asked Questions"
-                                                      },
-                                         "blocks":  {
-                                                        "q1":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "Do your products conform to UK fire safety regulations?",
-                                                                                    "answer":  "\u003cp\u003eYes â€” all Klawford products fully comply with UK fire safety regulations including BS 7177. Our factory holds all required certifications.\u003c/p\u003e"
-                                                                                }
-                                                               },
-                                                        "q2":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "How long does delivery take once I\u0027ve placed my order?",
-                                                                                    "answer":  "\u003cp\u003eStandard delivery is 7â€“14 working days. You\u0027ll receive full tracking information once dispatched. Our 2-man team will contact you to arrange a convenient delivery slot.\u003c/p\u003e"
-                                                                                }
-                                                               },
-                                                        "q3":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "Can I choose my delivery date and time?",
-                                                                                    "answer":  "\u003cp\u003eYes â€” once your order is ready to dispatch, our delivery partner will contact you to arrange a convenient date and time window that suits you.\u003c/p\u003e"
-                                                                                }
-                                                               },
-                                                        "q4":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "Can I place my order over the phone?",
-                                                                                    "answer":  "\u003cp\u003eYes â€” our sleep specialists are available to take your order by phone. Call us at 0800 000 0000 and we\u0027ll guide you through the options and handle your order directly.\u003c/p\u003e"
-                                                                                }
-                                                               },
-                                                        "q5":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "What is the 60-night risk-free trial?",
-                                                                                    "answer":  "\u003cp\u003eWe\u0027re so confident in our products that we offer a 60-night risk-free trial. If you\u0027re not completely satisfied within the first 60 nights, contact us for a full refund or free replacement â€” no questions asked.\u003c/p\u003e"
-                                                                                }
-                                                               },
-                                                        "q6":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "What does the 5-year warranty cover?",
-                                                                                    "answer":  "\u003cp\u003eOur 5-year warranty covers all manufacturing defects, structural issues and material faults. Contact our customer service team with your order number and we\u0027ll handle your claim promptly.\u003c/p\u003e"
-                                                                                }
-                                                               },
-                                                        "q7":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "Can I pay monthly or through financing options?",
-                                                                                    "answer":  "\u003cp\u003eYes â€” we offer 0% interest financing through Klarna and other providers at checkout. Split your purchase into manageable monthly instalments with no hidden fees.\u003c/p\u003e"
-                                                                                }
-                                                               },
-                                                        "q8":  {
-                                                                   "type":  "faq_item",
-                                                                   "settings":  {
-                                                                                    "question":  "Where are your products manufactured?",
-                                                                                    "answer":  "\u003cp\u003eAll Klawford products are handcrafted in the United Kingdom using sustainably sourced materials. We\u0027re proud to support British manufacturing.\u003c/p\u003e"
-                                                                                }
-                                                               }
-                                                    },
-                                         "block_order":  [
-                                                             "q1",
-                                                             "q2",
-                                                             "q3",
-                                                             "q4",
-                                                             "q5",
-                                                             "q6",
-                                                             "q7",
-                                                             "q8"
-                                                         ]
-                                     }
-                 },
-    "order":  [
-                  "main",
-                  "in_real_life",
-                  "social_proof",
-                  "product_features",
-                  "product_dimensions",
-                  "product_finance",
-                  "product_services",
-                  "product_faq"
-              ]
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "review_count": "312",
+        "show_upsell": true,
+        "upsell_1_label": "Add Mattress & Save",
+        "upsell_2_label": "Choose Mattress"
+      }
+    },
+    "in_real_life": {
+      "type": "product-in-real-life",
+      "settings": {
+        "heading": "In Real Life",
+        "subheading": "See how our customers style their Athens Divan bed"
+      },
+      "blocks": {
+        "a1": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-black-WhatsApp_Image_2026_08_17_at_7.37.14_AM__1.jpeg",
+            "alt": "Klawford Athens - Black angle"
+          }
+        },
+        "a2": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.21_AM__1.jpeg",
+            "alt": "Klawford Athens - Grey angle"
+          }
+        },
+        "a3": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-WhatsApp_Image_2026_08_17_at_7.47.35_AM.jpeg",
+            "alt": "Klawford Athens - Cream angle"
+          }
+        },
+        "a4": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-red-WhatsApp_Image_2026_08_17_at_7.51.48_AM__1.jpeg",
+            "alt": "Klawford Athens - Red angle"
+          }
+        },
+        "a5": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-brown-WhatsApp_Image_2026_08_17_at_7.55.00_AM.jpeg",
+            "alt": "Klawford Athens - Brown angle"
+          }
+        },
+        "a6": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.22_AM__1.jpeg",
+            "alt": "Klawford Athens - Grey second angle"
+          }
+        },
+        "a7": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg",
+            "alt": "Couple relaxing in a Klawford bed"
+          }
+        },
+        "a8": {
+          "type": "image",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg",
+            "alt": "Klawford bed in a stylish bedroom setting"
+          }
+        }
+      },
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "a4",
+        "a5",
+        "a6",
+        "a7",
+        "a8"
+      ]
+    },
+    "social_proof": {
+      "type": "social-proof-bar",
+      "settings": {
+        "text": "Over 100,000 Happy Customers",
+        "rating_text": "Trustpilot 4.9/5"
+      },
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "text": "The Athens Divan is stunning — really solid and the fabric feels incredibly premium. The storage drawers are huge and so easy to use.",
+            "author": "Claire B.",
+            "time_ago": "1 day ago"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "text": "Delivery was perfect and the 2-man team assembled it in minutes. Looks even better in person. Absolutely love it.",
+            "author": "Mark T.",
+            "time_ago": "2 days ago"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "text": "Best bed I've ever bought. The grey colour is gorgeous and the headboard is so comfortable to lean against.",
+            "author": "Priya S.",
+            "time_ago": "3 days ago"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "text": "Great quality, great price and fast delivery. The storage drawers hold so much — transformed my bedroom completely.",
+            "author": "Jason R.",
+            "time_ago": "4 days ago"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "text": "Cream Athens looks absolutely beautiful in my room. Klawford service was brilliant from start to finish.",
+            "author": "Hannah M.",
+            "time_ago": "5 days ago"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ]
+    },
+    "product_features": {
+      "type": "product-features",
+      "settings": {
+        "heading": "Why Choose The Klawford Athens Divan Bed?"
+      },
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-hero.jpg",
+            "title": "60 Night Risk-Free Trial",
+            "description": "<p>We're so confident you'll love your Athens bed that we offer a full 60-night risk-free trial. Not satisfied within the first 60 nights? Contact us for a hassle-free return or swap — no questions asked.</p>"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.21_AM__1.jpeg",
+            "title": "Extra Storage Option For More Space",
+            "description": "<p>Make the most of your bedroom with the Athens Divan's optional drawer storage. Choose from 2 drawers on the left or right side to keep your bedroom organised and clutter-free.</p>"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-black-WhatsApp_Image_2026_08_17_at_7.37.14_AM__1.jpeg",
+            "title": "Sustainably Sourced & Handmade in The UK",
+            "description": "<p>Every Klawford Athens Divan is handcrafted in Britain using sustainably sourced timber and premium upholstery fabrics — built to last a lifetime and designed to impress.</p>"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg",
+            "title": "Customisable & Beautiful Headboards",
+            "description": "<p>The Athens comes with a stunning upholstered headboard as standard, perfectly matched to your chosen fabric colour to create a seamless, luxury bedroom look.</p>"
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg",
+            "title": "Compatible With All Mattress Types",
+            "description": "<p>The Athens Divan base works perfectly with memory foam, pocket spring, hybrid, latex and orthopaedic mattresses — giving you total freedom to choose your ideal sleep surface.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5"
+      ]
+    },
+    "product_dimensions": {
+      "type": "product-dimensions",
+      "settings": {
+        "heading": "Dimensions",
+        "headboard_note": "Athens Upholstered Headboard included as standard"
+      },
+      "blocks": {
+        "d1": {
+          "type": "dimension_row",
+          "settings": {
+            "size": "2ft 6 Small Single",
+            "length": "190 cm",
+            "width": "75 cm"
+          }
+        },
+        "d2": {
+          "type": "dimension_row",
+          "settings": {
+            "size": "3ft Single",
+            "length": "190 cm",
+            "width": "90 cm"
+          }
+        },
+        "d3": {
+          "type": "dimension_row",
+          "settings": {
+            "size": "4ft Small Double",
+            "length": "190 cm",
+            "width": "120 cm"
+          }
+        },
+        "d4": {
+          "type": "dimension_row",
+          "settings": {
+            "size": "4ft 6 Double",
+            "length": "190 cm",
+            "width": "135 cm"
+          }
+        },
+        "d5": {
+          "type": "dimension_row",
+          "settings": {
+            "size": "5ft King",
+            "length": "200 cm",
+            "width": "150 cm"
+          }
+        },
+        "d6": {
+          "type": "dimension_row",
+          "settings": {
+            "size": "6ft Super King",
+            "length": "200 cm",
+            "width": "180 cm"
+          }
+        },
+        "p1": {
+          "type": "package_row",
+          "settings": {
+            "size": "2ft 6 Small Single",
+            "length": "100 cm",
+            "width": "40 cm"
+          }
+        },
+        "p2": {
+          "type": "package_row",
+          "settings": {
+            "size": "3ft Single",
+            "length": "100 cm",
+            "width": "48 cm"
+          }
+        },
+        "p3": {
+          "type": "package_row",
+          "settings": {
+            "size": "4ft Small Double",
+            "length": "100 cm",
+            "width": "62 cm"
+          }
+        },
+        "p4": {
+          "type": "package_row",
+          "settings": {
+            "size": "4ft 6 Double",
+            "length": "100 cm",
+            "width": "70 cm"
+          }
+        },
+        "p5": {
+          "type": "package_row",
+          "settings": {
+            "size": "5ft King",
+            "length": "106 cm",
+            "width": "78 cm"
+          }
+        },
+        "p6": {
+          "type": "package_row",
+          "settings": {
+            "size": "6ft Super King",
+            "length": "106 cm",
+            "width": "92 cm"
+          }
+        }
+      },
+      "block_order": [
+        "d1",
+        "d2",
+        "d3",
+        "d4",
+        "d5",
+        "d6",
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6"
+      ]
+    },
+    "product_finance": {
+      "type": "product-finance",
+      "settings": {
+        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
+        "heading": "Shop Now, Pay Later",
+        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees."
+      },
+      "blocks": {
+        "pt1": {
+          "type": "point",
+          "settings": {
+            "title": "Pay In Monthly Instalments",
+            "description": "Spread the cost of your order over up to 12 equal monthly payments."
+          }
+        },
+        "pt2": {
+          "type": "point",
+          "settings": {
+            "title": "Zero Interest Rate",
+            "description": "Every purchase is entirely interest-free, no matter the price or term length."
+          }
+        },
+        "pt3": {
+          "type": "point",
+          "settings": {
+            "title": "No Early Repayment Charges",
+            "description": "Want to pay it off sooner? No problem — there are no fees when your balance is cleared early."
+          }
+        }
+      },
+      "block_order": [
+        "pt1",
+        "pt2",
+        "pt3"
+      ]
+    },
+    "product_services": {
+      "type": "product-services",
+      "settings": {
+        "heading": "Sleep Specialists At Your Service!",
+        "show_atc": true,
+        "atc_label": "Add to Basket"
+      },
+      "blocks": {
+        "s1": {
+          "type": "service",
+          "settings": {
+            "title": "Delivered to Your Room",
+            "description": "We deliver with a 2-man team straight to your room of choice at no extra charge. Choose your preferred delivery date at checkout."
+          }
+        },
+        "s2": {
+          "type": "service",
+          "settings": {
+            "title": "Stress-Free Assembly",
+            "description": "Your Klawford team will assemble your new Athens Divan in your room for a smooth, hassle-free experience — all you do is enjoy it."
+          }
+        },
+        "s3": {
+          "type": "service",
+          "settings": {
+            "title": "We're Just a Phone Call Away",
+            "description": "Got questions or need advice? Our sleep specialists are ready to help. Call us at 0800 000 0000 and we'll be happy to assist."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ]
+    },
+    "product_faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "q1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do your products conform to UK fire safety regulations?",
+            "answer": "<p>Yes — all Klawford products fully comply with UK fire safety regulations including BS 7177. Our factory holds all required certifications.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does delivery take once I've placed my order?",
+            "answer": "<p>Standard delivery is 7–14 working days. You'll receive full tracking information once dispatched. Our 2-man team will contact you to arrange a convenient delivery slot.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I choose my delivery date and time?",
+            "answer": "<p>Yes — once your order is ready to dispatch, our delivery partner will contact you to arrange a convenient date and time window that suits you.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I place my order over the phone?",
+            "answer": "<p>Yes — our sleep specialists are available to take your order by phone. Call us at 0800 000 0000 and we'll guide you through the options and handle your order directly.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is the 60-night risk-free trial?",
+            "answer": "<p>We're so confident in our products that we offer a 60-night risk-free trial. If you're not completely satisfied within the first 60 nights, contact us for a full refund or free replacement — no questions asked.</p>"
+          }
+        },
+        "q6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What does the 5-year warranty cover?",
+            "answer": "<p>Our 5-year warranty covers all manufacturing defects, structural issues and material faults. Contact our customer service team with your order number and we'll handle your claim promptly.</p>"
+          }
+        },
+        "q7": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Can I pay monthly or through financing options?",
+            "answer": "<p>Yes — we offer 0% interest financing through Klarna and other providers at checkout. Split your purchase into manageable monthly instalments with no hidden fees.</p>"
+          }
+        },
+        "q8": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Where are your products manufactured?",
+            "answer": "<p>All Klawford products are handcrafted in the United Kingdom using sustainably sourced materials. We're proud to support British manufacturing.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8"
+      ]
+    }
+  },
+  "order": [
+    "main",
+    "in_real_life",
+    "social_proof",
+    "product_features",
+    "product_dimensions",
+    "product_finance",
+    "product_services",
+    "product_faq"
+  ]
 }
