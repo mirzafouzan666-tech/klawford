@@ -560,8 +560,11 @@
       <p style="padding:24px;color:var(--clr-gray-dusty);font-size:var(--fs-sm);">No mattresses currently available.</p>
     {%- endfor -%}
   </div>
+  <div class="mattress-drawer__size-wrap" id="mattress-size-wrap" style="display:none">
+    <p class="mattress-drawer__size-label">Select Size</p>
+    <div class="mattress-size-grid" id="mattress-size-grid"></div>
+  </div>
   <div class="mattress-drawer__footer">
-    <p class="mattress-drawer__size-note" id="mattress-size-note"></p>
     <button type="button" class="btn btn--primary btn--full mattress-drawer__confirm" id="mattress-confirm" disabled>
       Add Mattress &amp; Save
     </button>
@@ -719,8 +722,7 @@
       var optName = productOptions[idx] || '';
       var isColour = optName.toLowerCase() === 'colour' || optName.toLowerCase() === 'color';
       if (isColour) {
-        var preferredSrc = (variant && variant.featured_image) ? variant.featured_image.src : null;
-        filterThumbs(val, preferredSrc);
+        filterThumbs(val, null);
       } else if (variant && variant.featured_image) {
         var mainImg = document.getElementById('product-main-img');
         if(mainImg){
@@ -776,8 +778,19 @@
   var confirmBtn = document.getElementById('mattress-confirm');
   var skipBtn    = document.getElementById('mattress-skip');
 
+  var selectedMattressVariant = null;
+
   function openMattressDrawer(){
-    if(overlay&&drawer){ overlay.classList.add('open'); drawer.classList.add('open'); document.body.style.overflow='hidden'; }
+    if(overlay&&drawer){
+      overlay.classList.add('open'); drawer.classList.add('open'); document.body.style.overflow='hidden';
+      selectedMattressVariant = null;
+      document.querySelectorAll('.mattress-item').forEach(function(i){ i.classList.remove('selected'); });
+      var sWrap = document.getElementById('mattress-size-wrap');
+      if (sWrap) sWrap.style.display = 'none';
+      var sGrid = document.getElementById('mattress-size-grid');
+      if (sGrid) sGrid.innerHTML = '';
+      if (confirmBtn) confirmBtn.disabled = true;
+    }
   }
   function closeMattressDrawer(){
     if(overlay&&drawer){ overlay.classList.remove('open'); drawer.classList.remove('open'); document.body.style.overflow=''; }
@@ -838,30 +851,45 @@
     return '';
   }
 
+  function renderMattressSizes(vData, bedSize) {
+    var sizeWrap = document.getElementById('mattress-size-wrap');
+    var sizeGrid = document.getElementById('mattress-size-grid');
+    if (!sizeGrid) return;
+    var vs = [];
+    try { vs = JSON.parse(vData || '[]'); } catch(e) {}
+    if (!vs.length) { if (sizeWrap) sizeWrap.style.display = 'none'; return; }
+    sizeGrid.innerHTML = '';
+    selectedMattressVariant = null;
+    var autoMatch = findMattressVariant(vData, bedSize);
+    vs.forEach(function(v){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'mattress-size-btn' + (v.available === false ? ' sold-out' : '');
+      btn.textContent = v.title;
+      if (v.available === false) btn.disabled = true;
+      if (autoMatch && v.id === autoMatch.id) {
+        btn.classList.add('active');
+        selectedMattressVariant = v;
+      }
+      btn.addEventListener('click', function(){
+        sizeGrid.querySelectorAll('.mattress-size-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        selectedMattressVariant = v;
+        if (confirmBtn) confirmBtn.disabled = false;
+      });
+      sizeGrid.appendChild(btn);
+    });
+    if (sizeWrap) sizeWrap.style.display = '';
+    if (confirmBtn) confirmBtn.disabled = (selectedMattressVariant === null);
+  }
+
   document.querySelectorAll('.mattress-item').forEach(function(item){
     item.addEventListener('click', function(){
       document.querySelectorAll('.mattress-item').forEach(function(i){ i.classList.remove('selected'); });
       item.classList.add('selected');
-      if (!confirmBtn) return;
-      confirmBtn.disabled = false;
-
       var bedSize = getBedSizeOption();
       var vData   = item.getAttribute('data-variants');
-      var mv      = vData ? findMattressVariant(vData, bedSize) : null;
-      var noteEl  = document.getElementById('mattress-size-note');
-
-      if (noteEl) {
-        if (mv) {
-          var mPrice = mv.price ? ('£' + (mv.price / 100).toFixed(2).replace(/\.00$/, '')) : '';
-          noteEl.textContent = 'Size: ' + mv.title + (mPrice ? '  —  ' + mPrice : '');
-          noteEl.style.display = '';
-        } else if (bedSize) {
-          noteEl.textContent = 'Size: ' + bedSize;
-          noteEl.style.display = '';
-        } else {
-          noteEl.style.display = 'none';
-        }
-      }
+      renderMattressSizes(vData, bedSize);
     });
   });
 
@@ -883,10 +911,13 @@
       var selected = document.querySelector('.mattress-item.selected');
       if (!selected) return;
 
-      var bedVariant  = findVariant();
-      var vData       = selected.getAttribute('data-variants');
-      var bedSize     = getBedSizeOption();
-      var mv          = vData ? findMattressVariant(vData, bedSize) : null;
+      var bedVariant = findVariant();
+      var mv = selectedMattressVariant;
+      if (!mv) {
+        var vData2  = selected.getAttribute('data-variants');
+        var bedSize = getBedSizeOption();
+        mv = vData2 ? findMattressVariant(vData2, bedSize) : null;
+      }
 
       if (!bedVariant) { alert('Please select a bed variant first.'); return; }
 
@@ -906,9 +937,10 @@
         if (data.status) { throw new Error(data.description || 'Cart error'); }
         // Update upsell card to reflect chosen mattress
         var mName = selected.getAttribute('data-name') || '';
+        var sizeSuffix = mv ? (' — ' + mv.title) : '';
         var selEl = document.getElementById('mattress-upsell-selected');
         var lblEl = document.getElementById('mattress-upsell-btn-label');
-        if (selEl) { selEl.textContent = mName; selEl.style.display = ''; }
+        if (selEl) { selEl.textContent = mName + sizeSuffix; selEl.style.display = ''; }
         if (lblEl) lblEl.textContent = 'Change';
         closeMattressDrawer();
         window.location.href = '/cart';
@@ -927,9 +959,7 @@
     var colourIdx = -1;
     opts.forEach(function(o, i){ if(o.toLowerCase()==='colour'||o.toLowerCase()==='color') colourIdx=i; });
     if(colourIdx >= 0 && selectedOptions[colourIdx]) {
-      var defVariant = findVariant();
-      var defSrc = (defVariant && defVariant.featured_image) ? defVariant.featured_image.src : null;
-      filterThumbs(selectedOptions[colourIdx], defSrc);
+      filterThumbs(selectedOptions[colourIdx], null);
     }
 
     // Fix colour swatch images: read first gallery thumb per colour (reliable — no API needed)

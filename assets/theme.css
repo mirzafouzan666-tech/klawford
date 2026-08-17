@@ -1676,6 +1676,14 @@ h1,h2,h3,h4,h5,h6 { font-family: var(--ff-primary); font-weight: var(--fw-bold);
 .mattress-drawer__confirm:disabled { opacity: .38; cursor: not-allowed; pointer-events: none; }
 .mattress-drawer__skip { background: none; border: none; font-family: inherit; font-size: var(--fs-xs); color: var(--clr-gray-dusty); text-decoration: underline; cursor: pointer; padding: 2px 0; text-align: center; transition: var(--transition); }
 .mattress-drawer__skip:hover { color: var(--clr-secondary); }
+/* mattress size selector */
+.mattress-drawer__size-wrap { padding: 14px 20px 16px; border-top: 1px solid var(--clr-ash); background: var(--clr-primary); }
+.mattress-drawer__size-label { font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--clr-secondary); margin: 0 0 10px; text-transform: uppercase; letter-spacing: .5px; }
+.mattress-size-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.mattress-size-btn { padding: 7px 14px; border: 1.5px solid var(--clr-secondary-shade); border-radius: var(--radius-full); font-size: var(--fs-xs); font-weight: var(--fw-semi); cursor: pointer; transition: var(--transition); background: var(--clr-white); font-family: inherit; color: var(--clr-secondary); }
+.mattress-size-btn:hover:not(:disabled) { border-color: var(--clr-secondary); background: var(--clr-secondary-shade); }
+.mattress-size-btn.active { background: var(--clr-secondary); border-color: var(--clr-secondary); color: #fff; }
+.mattress-size-btn.sold-out { opacity: .4; cursor: not-allowed; text-decoration: line-through; }
 /* upsell card selected state */
 .product-upsell-card__selected { font-size: var(--fs-xxs); color: var(--clr-secondary); margin: 2px 0 0; font-weight: var(--fw-semi); }
 /* upsell cards */
