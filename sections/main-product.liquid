@@ -514,12 +514,13 @@
     <h3 class="mattress-drawer__title">Select Mattress and Save</h3>
     <button class="mattress-drawer__close" id="mattress-close" aria-label="Close">&times;</button>
   </div>
-  <div class="mattress-drawer__firmness" id="firmness-tabs">
-    <button class="firmness-tab active" data-firmness="">All</button>
-    {%- assign _firm_labels = 'Medium Firm,Firm,Medium,Extra Firm,Soft' | split: ',' -%}
-    {%- for f in _firm_labels -%}
-      <button class="firmness-tab" data-firmness="{{ f | handleize }}">{{ f }}</button>
-    {%- endfor -%}
+  <div class="mattress-drawer__firmness" id="mattress-size-tabs">
+    {%- assign _first_m = _mattress_col.products.first -%}
+    {%- if _first_m -%}
+      {%- for v in _first_m.variants -%}
+        <button class="firmness-tab {% if forloop.first %}active{% endif %}" data-size="{{ v.title | escape }}">{{ v.title }}</button>
+      {%- endfor -%}
+    {%- endif -%}
   </div>
   <div class="mattress-drawer__list" id="mattress-list">
     {%- for mp in _mattress_col.products -%}
@@ -559,10 +560,6 @@
     {%- else -%}
       <p style="padding:24px;color:var(--clr-gray-dusty);font-size:var(--fs-sm);">No mattresses currently available.</p>
     {%- endfor -%}
-  </div>
-  <div class="mattress-drawer__size-wrap" id="mattress-size-wrap" style="display:none">
-    <p class="mattress-drawer__size-label">Select Size</p>
-    <div class="mattress-size-grid" id="mattress-size-grid"></div>
   </div>
   <div class="mattress-drawer__footer">
     <button type="button" class="btn btn--primary btn--full mattress-drawer__confirm" id="mattress-confirm" disabled>
@@ -779,17 +776,37 @@
   var skipBtn    = document.getElementById('mattress-skip');
 
   var selectedMattressVariant = null;
+  var selectedSize = '';
+
+  function activateSizeTab(sizeTitle) {
+    selectedSize = sizeTitle;
+    document.querySelectorAll('#mattress-size-tabs .firmness-tab').forEach(function(t){
+      t.classList.toggle('active', t.getAttribute('data-size') === sizeTitle);
+    });
+    var selItem = document.querySelector('.mattress-item.selected');
+    if (selItem) {
+      selectedMattressVariant = findMattressVariant(selItem.getAttribute('data-variants'), selectedSize);
+      if (confirmBtn) confirmBtn.disabled = (selectedMattressVariant === null);
+    }
+  }
 
   function openMattressDrawer(){
     if(overlay&&drawer){
       overlay.classList.add('open'); drawer.classList.add('open'); document.body.style.overflow='hidden';
       selectedMattressVariant = null;
+      selectedSize = '';
       document.querySelectorAll('.mattress-item').forEach(function(i){ i.classList.remove('selected'); });
-      var sWrap = document.getElementById('mattress-size-wrap');
-      if (sWrap) sWrap.style.display = 'none';
-      var sGrid = document.getElementById('mattress-size-grid');
-      if (sGrid) sGrid.innerHTML = '';
       if (confirmBtn) confirmBtn.disabled = true;
+      var bedSize = getBedSizeOption();
+      var firstItem = document.querySelector('.mattress-item');
+      var tabs = Array.from(document.querySelectorAll('#mattress-size-tabs .firmness-tab'));
+      if (firstItem && bedSize && tabs.length) {
+        var mv = findMattressVariant(firstItem.getAttribute('data-variants'), bedSize);
+        var matchTab = mv ? tabs.find(function(t){ return t.getAttribute('data-size') === mv.title; }) : null;
+        activateSizeTab((matchTab || tabs[0]).getAttribute('data-size'));
+      } else if (tabs.length) {
+        activateSizeTab(tabs[0].getAttribute('data-size'));
+      }
     }
   }
   function closeMattressDrawer(){
@@ -851,57 +868,19 @@
     return '';
   }
 
-  function renderMattressSizes(vData, bedSize) {
-    var sizeWrap = document.getElementById('mattress-size-wrap');
-    var sizeGrid = document.getElementById('mattress-size-grid');
-    if (!sizeGrid) return;
-    var vs = [];
-    try { vs = JSON.parse(vData || '[]'); } catch(e) {}
-    if (!vs.length) { if (sizeWrap) sizeWrap.style.display = 'none'; return; }
-    sizeGrid.innerHTML = '';
-    selectedMattressVariant = null;
-    var autoMatch = findMattressVariant(vData, bedSize);
-    vs.forEach(function(v){
-      var btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'mattress-size-btn' + (v.available === false ? ' sold-out' : '');
-      btn.textContent = v.title;
-      if (v.available === false) btn.disabled = true;
-      if (autoMatch && v.id === autoMatch.id) {
-        btn.classList.add('active');
-        selectedMattressVariant = v;
-      }
-      btn.addEventListener('click', function(){
-        sizeGrid.querySelectorAll('.mattress-size-btn').forEach(function(b){ b.classList.remove('active'); });
-        btn.classList.add('active');
-        selectedMattressVariant = v;
-        if (confirmBtn) confirmBtn.disabled = false;
-      });
-      sizeGrid.appendChild(btn);
-    });
-    if (sizeWrap) sizeWrap.style.display = '';
-    if (confirmBtn) confirmBtn.disabled = (selectedMattressVariant === null);
-  }
-
   document.querySelectorAll('.mattress-item').forEach(function(item){
     item.addEventListener('click', function(){
       document.querySelectorAll('.mattress-item').forEach(function(i){ i.classList.remove('selected'); });
       item.classList.add('selected');
-      var bedSize = getBedSizeOption();
-      var vData   = item.getAttribute('data-variants');
-      renderMattressSizes(vData, bedSize);
+      selectedMattressVariant = findMattressVariant(item.getAttribute('data-variants'), selectedSize || getBedSizeOption());
+      if (confirmBtn) confirmBtn.disabled = (selectedMattressVariant === null);
     });
   });
 
-  // Firmness tabs
-  document.querySelectorAll('.firmness-tab').forEach(function(tab){
+  // Size tabs
+  document.querySelectorAll('#mattress-size-tabs .firmness-tab').forEach(function(tab){
     tab.addEventListener('click', function(){
-      document.querySelectorAll('.firmness-tab').forEach(function(t){ t.classList.remove('active'); });
-      tab.classList.add('active');
-      var f = tab.getAttribute('data-firmness');
-      document.querySelectorAll('.mattress-item').forEach(function(item){
-        item.style.display = (!f || f === 'all' || item.getAttribute('data-firmness') === f) ? '' : 'none';
-      });
+      activateSizeTab(tab.getAttribute('data-size'));
     });
   });
 
