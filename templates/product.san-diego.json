@@ -25,12 +25,12 @@
         "subheading": "See the Klawford San Diego Divan in every colour"
       },
       "blocks": {
-        "img1": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/PragueDivanBedPlushVelvetBlackDrawer_1164x_db4d9c5d-20e6-4476-b149-393b82a1039c.webp", "alt": "Klawford San Diego Divan Bed - Black" } },
-        "img2": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/PragueDivanBedPlushVelvetMoccaDrawer_1164x_7b6b57a5-8d4b-4525-ab74-c2b0a75b2b05.webp", "alt": "Klawford San Diego Divan Bed - Brown" } },
-        "img3": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Prague_Divan_Bed_Naples_Slate_grey_Drawer_1164x_64599a18-1b11-4b70-a8e9-d4f587bc7ce7.jpg", "alt": "Klawford San Diego Divan Bed - Grey" } },
-        "img4": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/Prague_Divan_Bed_Naples_Cream_Drawer_1164x_e6fb1c62-a08c-4bb2-b1a8-3063c3a3ae60.jpg", "alt": "Klawford San Diego Divan Bed - Cream" } },
-        "img5": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.58_PM.jpeg", "alt": "Klawford San Diego Divan Bed lifestyle" } },
-        "img6": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_7.16.14_AM.jpeg", "alt": "Klawford San Diego Divan Bed detail" } }
+        "img1": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/02a9cfe44f488fe2250ff21fecb8a1fb.jpg", "alt": "Klawford San Diego Divan Bed - Black" } },
+        "img2": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/7bbb24690b09717fca2c062b6d9d761d.jpg", "alt": "Klawford San Diego Divan Bed - Grey" } },
+        "img3": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/d5ba4d3a8dc2443d7929b65e08172fff.jpg", "alt": "Klawford San Diego Divan Bed - Cream" } },
+        "img4": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/1726e6a6f2a310594b208a6ae38ba271.jpg", "alt": "Klawford San Diego Divan Bed - Brown" } },
+        "img5": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/85c3df892aefd189fdafed5252944530.jpg", "alt": "Klawford San Diego Divan Bed - Red" } },
+        "img6": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/327fb531c50496c35baf3aa714a88351.jpg", "alt": "Klawford San Diego Divan Bed - Grey with storage drawers" } }
       },
       "block_order": ["img1","img2","img3","img4","img5","img6"]
     },
