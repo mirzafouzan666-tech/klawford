@@ -106,6 +106,9 @@
                       <a href="{{ child.url }}" {% if child.active %}aria-current="page"{% endif %}>{{ child.title }}</a>
                     </li>
                   {%- endfor -%}
+                  {%- if _parent_lc == 'beds' -%}
+                    <li><a href="/collections/rugby-bed-sets">Rugby Bed Set</a></li>
+                  {%- endif -%}
                 </ul>
               </div>
             {%- else -%}
@@ -173,6 +176,9 @@
             {%- for child in link.links -%}
               <li><a href="{{ child.url }}" class="mobile-menu__sub-link">{{ child.title }}</a></li>
             {%- endfor -%}
+            {%- if _parent_lc == 'beds' -%}
+              <li><a href="/collections/rugby-bed-sets" class="mobile-menu__sub-link">Rugby Bed Set</a></li>
+            {%- endif -%}
           </ul>
         {%- else -%}
           <a href="{{ link.url }}" class="mobile-menu__link">{{ link.title }}</a>

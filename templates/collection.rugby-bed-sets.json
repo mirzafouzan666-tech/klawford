@@ -1,0 +1,21 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "show_seo_content": true,
+        "seo_content": "<h3>What is the Klawford Rugby Bed Set?</h3><p>The Klawford Rugby Bed Set is a premium divan bed set combining a solid divan base with an upholstered headboard, available in Black, Grey, Cream, Red, and Brown. Built for style, comfort, and everyday durability, the Rugby is a Klawford original designed to bring boutique hotel style into your home.</p><h3>What sizes is the Rugby Bed Set available in?</h3><p>The Rugby Bed Set is available in all standard UK sizes: Small Single 2FT6, Single 3FT, Small Double 4FT, Double 4FT6, King 5FT, and Super King 6FT.</p><h3>Does the Rugby Bed Set come with storage?</h3><p>Yes — you can add 2 or 4 smooth-glide storage drawers to the Rugby Divan Base at checkout. Storage is built directly into the base for a clean, integrated look.</p><h3>Is the headboard included?</h3><p>Every Klawford Rugby Bed Set includes a matching upholstered headboard in your chosen colour as standard — no extra charge.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}
