@@ -1,0 +1,142 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "product_features": {
+      "type": "product-features",
+      "settings": {
+        "heading": "Why Choose The Klawford Rugby Divan Bed?"
+      },
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "title": "60 Night Risk-Free Trial",
+            "description": "<p>Sleep on your new Rugby Divan Bed for up to 60 nights completely risk-free. If you're not fully satisfied with your purchase for any reason, contact our team and we'll arrange a full refund or a free replacement — no arguments, no hassle, just great sleep guaranteed.</p>",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "title": "Extra Storage Built In",
+            "description": "<p>Maximise your bedroom space with the Rugby Divan Bed's optional smooth-glide storage drawers. Choose from 2 or 4 drawers built directly into the base — perfect for bedding, pillows, and seasonal items you want close at hand but neatly out of sight.</p>",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "title": "Sustainably Sourced & UK Handmade",
+            "description": "<p>Every Klawford Rugby Divan Bed is handcrafted in the United Kingdom using responsibly sourced timber and premium upholstery fabrics. We're committed to reducing our environmental footprint while delivering a product built to last a lifetime — because great furniture and sustainability go hand in hand.</p>",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "title": "Customisable Headboards",
+            "description": "<p>Make it truly yours. The Rugby Divan Bed comes with a fully upholstered headboard in your choice of fabric and colour — Black, Grey, Cream, Red, or Brown. Whether you prefer a sleek panel design or a wingback silhouette, the headboard arrives pre-assembled and ready to attach in minutes.</p>",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg"
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "title": "Compatible With Any Mattress",
+            "description": "<p>The Rugby Divan Base works beautifully with any mattress type — memory foam, pocket sprung, hybrid, or orthopaedic. Pair it with the Klawford Hybrid 3000 for a luxury hotel feel, or the Klawford Duo Sleep for couples with different firmness preferences. The solid platform top gives even support no matter what you choose.</p>",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg"
+          }
+        }
+      },
+      "block_order": ["f1","f2","f3","f4","f5"]
+    },
+    "product_dimensions": {
+      "type": "product-dimensions",
+      "settings": {
+        "heading": "Dimensions",
+        "headboard_note": "Upholstered Headboard included as standard"
+      },
+      "blocks": {
+        "pd1": { "type": "dimension_row", "settings": { "size": "Small Single 2FT6", "length": "190 cm", "width": "75 cm" } },
+        "pd2": { "type": "dimension_row", "settings": { "size": "Single 3FT", "length": "190 cm", "width": "90 cm" } },
+        "pd3": { "type": "dimension_row", "settings": { "size": "Small Double 4FT", "length": "190 cm", "width": "120 cm" } },
+        "pd4": { "type": "dimension_row", "settings": { "size": "Double 4FT6", "length": "190 cm", "width": "135 cm" } },
+        "pd5": { "type": "dimension_row", "settings": { "size": "King 5FT", "length": "200 cm", "width": "150 cm" } },
+        "pd6": { "type": "dimension_row", "settings": { "size": "Super King 6FT", "length": "200 cm", "width": "180 cm" } },
+        "pp1": { "type": "package_row", "settings": { "size": "Small Single 2FT6", "length": "100 cm", "width": "40 cm" } },
+        "pp2": { "type": "package_row", "settings": { "size": "Single 3FT", "length": "100 cm", "width": "48 cm" } },
+        "pp3": { "type": "package_row", "settings": { "size": "Small Double 4FT", "length": "100 cm", "width": "62 cm" } },
+        "pp4": { "type": "package_row", "settings": { "size": "Double 4FT6", "length": "100 cm", "width": "70 cm" } },
+        "pp5": { "type": "package_row", "settings": { "size": "King 5FT", "length": "106 cm", "width": "78 cm" } },
+        "pp6": { "type": "package_row", "settings": { "size": "Super King 6FT", "length": "106 cm", "width": "92 cm" } }
+      },
+      "block_order": ["pd1","pd2","pd3","pd4","pd5","pd6","pp1","pp2","pp3","pp4","pp5","pp6"]
+    },
+    "product_finance": {
+      "type": "product-finance",
+      "settings": {
+        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
+        "heading": "Shop Now, Pay Later",
+        "subheading": "Split the cost of your Rugby Divan Bed into easy monthly instalments with 0% interest."
+      },
+      "blocks": {
+        "fp1": { "type": "point", "settings": { "title": "Up to 12 Monthly Instalments", "description": "Spread the cost of your order over up to 12 equal monthly payments with no hidden fees." } },
+        "fp2": { "type": "point", "settings": { "title": "Zero Interest Rate", "description": "Pay absolutely nothing extra — 0% interest for the full term of your payment plan." } },
+        "fp3": { "type": "point", "settings": { "title": "No Early Repayment Charges", "description": "Want to pay it off sooner? No problem — there are no fees for early repayment." } }
+      },
+      "block_order": ["fp1","fp2","fp3"]
+    },
+    "product_services": {
+      "type": "product-services",
+      "settings": {
+        "heading": "Sleep Specialists At Your Service!",
+        "show_atc": true,
+        "atc_label": "Add to Basket"
+      },
+      "blocks": {
+        "sv1": { "type": "service", "settings": { "title": "Delivered to Your Room", "description": "Our 2-man delivery team will bring your Rugby Bed straight to your room of choice — no extra charge." } },
+        "sv2": { "type": "service", "settings": { "title": "Stress-Free Assembly", "description": "Your free team of experts will assemble your new bed set in as little as 15 minutes so all you have to do is enjoy it." } },
+        "sv3": { "type": "service", "settings": { "title": "We're Just a Phone Call Away", "description": "Got questions or need advice? Our sleep specialists are ready to help. Call us and we'll be happy to assist!" } }
+      },
+      "block_order": ["sv1","sv2","sv3"]
+    },
+    "product_irl": {
+      "type": "product-in-real-life",
+      "settings": {
+        "heading": "The Rugby Divan Bed — In Real Life"
+      },
+      "blocks": {
+        "irl1": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg", "alt": "Couple relaxing on a Klawford Rugby Divan Bed" } },
+        "irl2": { "type": "image", "settings": { "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg", "alt": "Klawford Rugby Divan Bed in a stylish bedroom" } }
+      },
+      "block_order": ["irl1","irl2"]
+    },
+    "product_faq": {
+      "type": "faq",
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      },
+      "blocks": {
+        "fq1": { "type": "faq_item", "settings": { "question": "What colours is the Rugby Divan Bed available in?", "answer": "<p>The Klawford Rugby Divan Bed is available in Black, Grey, Cream, Red, and Brown. All five colourways feature the same high-quality upholstered finish on both the base and headboard.</p>" } },
+        "fq2": { "type": "faq_item", "settings": { "question": "Does the Rugby Divan Bed come with a headboard?", "answer": "<p>Yes — every Klawford Rugby Divan Bed includes a matching upholstered headboard in your chosen colour as standard. No extra charge.</p>" } },
+        "fq3": { "type": "faq_item", "settings": { "question": "Can I add storage drawers to the Rugby Divan Bed?", "answer": "<p>Absolutely. The Rugby Divan Base is available with 2 or 4 smooth-glide storage drawers built into the sides of the base. Select your preferred storage option when choosing your size and colour at checkout.</p>" } },
+        "fq4": { "type": "faq_item", "settings": { "question": "How long does delivery take?", "answer": "<p>Standard delivery is 7–14 working days. Our 2-man delivery team will contact you to arrange a convenient date and time slot. Assembly is included at no extra cost.</p>" } },
+        "fq5": { "type": "faq_item", "settings": { "question": "What mattress sizes fit the Rugby Divan Base?", "answer": "<p>The Rugby Divan Base is available in Small Single 2FT6, Single 3FT, Small Double 4FT, Double 4FT6, King 5FT, and Super King 6FT — covering all standard UK mattress sizes.</p>" } }
+      },
+      "block_order": ["fq1","fq2","fq3","fq4","fq5"]
+    }
+  },
+  "order": ["main","product_features","product_dimensions","product_finance","product_services","product_irl","product_faq"]
+}
