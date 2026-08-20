@@ -35,13 +35,22 @@
           loading="lazy"
           width="1200"
           height="800">
-      {%- else -%}
+      {%- elsif section.settings.image_src != blank -%}
         <img
-          src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg"
-          alt="Couple relaxing in a Klawford bed"
+          src="{{ section.settings.image_src }}"
+          alt="Klawford bedroom lifestyle"
           loading="lazy"
           width="1200"
-          height="800">
+          height="800"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
+      {%- else -%}
+        <img
+          src="https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-grey-1.jpg"
+          alt="Klawford bedroom lifestyle"
+          loading="lazy"
+          width="1200"
+          height="800"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;">
       {%- endif -%}
     </div>
   </div>
@@ -54,7 +63,8 @@
     { "type": "text", "id": "provider_label", "label": "Provider badge label", "default": "0% INTEREST-FREE INSTALLMENTS" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Shop Now, Pay Later" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Split the cost of your order into easy monthly instalments." },
-    { "type": "image_picker", "id": "image", "label": "Right-side lifestyle image" }
+    { "type": "image_picker", "id": "image", "label": "Right-side lifestyle image" },
+    { "type": "text", "id": "image_src", "label": "Image URL (CDN fallback)", "info": "Paste a CDN image URL — used when no image is uploaded above" }
   ],
   "blocks": [
     {

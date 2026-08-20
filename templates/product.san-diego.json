@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -61,14 +70,14 @@
         "sd7": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/c765b9efd1d42f28f6e6dddd715bdf86.jpg",
             "alt": "Couple relaxing in a Klawford bed"
           }
         },
         "sd8": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/9682de18dfcd40e8687cc060a1429ad5.jpg",
             "alt": "Klawford bed in a stylish bedroom setting"
           }
         }
@@ -173,7 +182,7 @@
         "f4": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/e30f5c7cb6db0881983a1d0aa9c136e2.jpg",
             "title": "Customisable & Beautiful Headboards",
             "description": "<p>The San Diego comes with a stunning plush velvet upholstered headboard as standard, perfectly matched to your chosen fabric colour to create a seamless, luxury bedroom look.</p>"
           }
@@ -181,7 +190,7 @@
         "f5": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_2.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/56efd0020281462dc768dfbb90e8f3de.jpg",
             "title": "Compatible With All Mattress Types",
             "description": "<p>The San Diego Divan base works perfectly with memory foam, pocket spring, hybrid, latex and orthopaedic mattresses — giving you total freedom to choose your ideal sleep surface.</p>"
           }
@@ -319,7 +328,8 @@
       "settings": {
         "provider_label": "0% INTEREST-FREE INSTALLMENTS",
         "heading": "Shop Now, Pay Later",
-        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees."
+        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees.",
+        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/d5ba4d3a8dc2443d7929b65e08172fff.jpg"
       },
       "blocks": {
         "pt1": {
@@ -355,7 +365,8 @@
       "settings": {
         "heading": "Sleep Specialists At Your Service!",
         "show_atc": true,
-        "atc_label": "Add to Basket"
+        "atc_label": "Add to Basket",
+        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/02a9cfe44f488fe2250ff21fecb8a1fb.jpg"
       },
       "blocks": {
         "s1": {
