@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -11,57 +20,47 @@
     },
     "in_real_life": {
       "type": "product-in-real-life",
-      "settings": {
-        "heading": "In Real Life",
-        "subheading": "See how our customers style their bed"
-      },
       "blocks": {
         "img1": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_1.jpg",
-            "alt": "Luxury grey wingback bedroom",
-            "show_play": false
+            "alt": "Luxury grey wingback bedroom"
           }
         },
         "img2": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-grey-2.jpg",
-            "alt": "Couple relaxing in bed",
-            "show_play": false
+            "alt": "Couple relaxing in bed"
           }
         },
         "img3": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-1.jpg",
-            "alt": "Family reading in bed",
-            "show_play": false
+            "alt": "Family reading in bed"
           }
         },
         "img4": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-black-1.jpg",
-            "alt": "Storage drawers open lifestyle",
-            "show_play": false
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-black-2.jpg",
+            "alt": "Storage drawers open lifestyle"
           }
         },
         "img5": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-brown-1.jpg",
-            "alt": "Ottoman storage interior",
-            "show_play": false
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/3.jpg",
+            "alt": "Ottoman storage interior"
           }
         },
         "img6": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-red-1.jpg",
-            "alt": "Professional bed assembly",
-            "show_play": false
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/5.jpg",
+            "alt": "Professional bed assembly"
           }
         }
       },
@@ -72,14 +71,14 @@
         "img4",
         "img5",
         "img6"
-      ]
+      ],
+      "settings": {
+        "heading": "In Real Life",
+        "subheading": "See how our customers style their bed"
+      }
     },
     "social_proof": {
       "type": "social-proof-bar",
-      "settings": {
-        "text": "Over 100,000 Happy Customers",
-        "rating_text": "Trustpilot 4.9/5"
-      },
       "blocks": {
         "r1": {
           "type": "review",
@@ -128,18 +127,19 @@
         "r3",
         "r4",
         "r5"
-      ]
+      ],
+      "settings": {
+        "text": "Over 100,000 Happy Customers",
+        "rating_text": "Trustpilot 4.9/5"
+      }
     },
     "product_features": {
       "type": "product-features",
-      "settings": {
-        "heading": "Why Choose The Alexander Wing Back Bed?"
-      },
       "blocks": {
         "f1": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_1.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-grey-3.jpg",
             "title": "60 Night Risk-Free Trial",
             "description": "<p>Our beds are crafted with exceptional quality, and we're sure you'll love your Klawford bed. If you're not completely satisfied within the first 60 nights, simply contact us for a hassle-free return or swap.</p>"
           }
@@ -147,7 +147,7 @@
         "f2": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-4.jpg",
             "title": "Extra Storage Option For More Space",
             "description": "<p>Make the most of your space with optional storage drawers. Choose from our fantastic range of storage options to keep your bedroom organised and clutter-free.</p>"
           }
@@ -155,7 +155,7 @@
         "f3": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-black-3.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-black-4.jpg",
             "title": "Sustainably Sourced & Handmade in The UK",
             "description": "<p>Every Klawford bed is made with the finest components from sustainably sourced materials, ensuring longevity, comfort, and eco-friendly design.</p>"
           }
@@ -163,7 +163,7 @@
         "f4": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-brown-1.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-brown-3.jpg",
             "title": "Iconic Wingback Headboard Design",
             "description": "<p>The Alexander's signature wingback headboard adds a statement piece to any bedroom. Fully upholstered and available in 5 colours to complement your interior perfectly.</p>"
           }
@@ -171,7 +171,7 @@
         "f5": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-red-2.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-red-4.jpg",
             "title": "Handle Extreme Weight With a Reinforced Base",
             "description": "<p>Our bed base is built to last and designed for maximum durability with an exceptional weight tolerance able to support all types of sleepers.</p>"
           }
@@ -183,14 +183,13 @@
         "f3",
         "f4",
         "f5"
-      ]
+      ],
+      "settings": {
+        "heading": "Why Choose The Alexander Wing Back Bed?"
+      }
     },
     "product_dimensions": {
       "type": "product-dimensions",
-      "settings": {
-        "heading": "Dimensions",
-        "headboard_note": "Alexander Wing Back Headboard"
-      },
       "blocks": {
         "d1": {
           "type": "dimension_row",
@@ -284,16 +283,14 @@
         "p2",
         "p3",
         "p4"
-      ]
+      ],
+      "settings": {
+        "heading": "Dimensions",
+        "headboard_note": "Alexander Wing Back Headboard"
+      }
     },
     "product_finance": {
       "type": "product-finance",
-      "settings": {
-        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
-        "heading": "Shop Now, Pay Later",
-        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees.",
-        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-grey-1.jpg"
-      },
       "blocks": {
         "pt1": {
           "type": "point",
@@ -306,14 +303,14 @@
           "type": "point",
           "settings": {
             "title": "Zero Interest Rate",
-            "description": "Pay absolutely nothing extra — 0% interest for the full term of your plan."
+            "description": "Pay absolutely nothing extra â€” 0% interest for the full term of your plan."
           }
         },
         "pt3": {
           "type": "point",
           "settings": {
             "title": "No Early Repayment Charges",
-            "description": "Want to pay it off sooner? No problem — there are no fees when your balance is paid early."
+            "description": "Want to pay it off sooner? No problem â€” there are no fees when your balance is paid early."
           }
         }
       },
@@ -321,16 +318,16 @@
         "pt1",
         "pt2",
         "pt3"
-      ]
+      ],
+      "settings": {
+        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
+        "heading": "Shop Now, Pay Later",
+        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees.",
+        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-grey-1.jpg"
+      }
     },
     "product_services": {
       "type": "product-services",
-      "settings": {
-        "heading": "Sleep Specialists At Your Service!",
-        "show_atc": true,
-        "atc_label": "Add to Basket",
-        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg"
-      },
       "blocks": {
         "s1": {
           "type": "service",
@@ -358,13 +355,16 @@
         "s1",
         "s2",
         "s3"
-      ]
+      ],
+      "settings": {
+        "heading": "Sleep Specialists At Your Service!",
+        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/alexander-cream-2.jpg",
+        "show_atc": true,
+        "atc_label": "Add to Basket"
+      }
     },
     "product_faq": {
       "type": "faq",
-      "settings": {
-        "heading": "Frequently Asked Questions"
-      },
       "blocks": {
         "q1": {
           "type": "faq_item",
@@ -377,7 +377,7 @@
           "type": "faq_item",
           "settings": {
             "question": "How long does it take to make Klawford beds?",
-            "answer": "<p>Each Klawford bed is handcrafted in the UK and typically takes 5–10 working days to manufacture before dispatch. Our team works hard to ensure every detail is perfect.</p>"
+            "answer": "<p>Each Klawford bed is handcrafted in the UK and typically takes 5â€“10 working days to manufacture before dispatch. Our team works hard to ensure every detail is perfect.</p>"
           }
         },
         "q3": {
@@ -398,7 +398,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Can I pay monthly or through financing options?",
-            "answer": "<p>Yes — we offer 0% interest financing through Klarna and Dividebuy. Split your purchase into monthly instalments at checkout with no hidden fees.</p>"
+            "answer": "<p>Yes â€” we offer 0% interest financing through Klarna and Dividebuy. Split your purchase into monthly instalments at checkout with no hidden fees.</p>"
           }
         },
         "q6": {
@@ -419,7 +419,7 @@
           "type": "faq_item",
           "settings": {
             "question": "How much credit can I use through financing options?",
-            "answer": "<p>Credit limits vary depending on your credit assessment. Most customers can finance orders from £250 up to £5,000 through our 0% interest finance partners.</p>"
+            "answer": "<p>Credit limits vary depending on your credit assessment. Most customers can finance orders from Â£250 up to Â£5,000 through our 0% interest finance partners.</p>"
           }
         }
       },
@@ -432,7 +432,10 @@
         "q6",
         "q7",
         "q8"
-      ]
+      ],
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      }
     }
   },
   "order": [

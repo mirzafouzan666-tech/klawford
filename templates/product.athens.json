@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -19,35 +28,35 @@
         "a1": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-black-WhatsApp_Image_2026_08_17_at_7.37.14_AM__1.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-black-WhatsApp_Image_2026_08_17_at_7.37.14_AM__2.jpeg",
             "alt": "Klawford Athens - Black angle"
           }
         },
         "a2": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.21_AM__1.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.21_AM__3.jpeg",
             "alt": "Klawford Athens - Grey angle"
           }
         },
         "a3": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-WhatsApp_Image_2026_08_17_at_7.47.35_AM.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-WhatsApp_Image_2026_08_17_at_7.47.36_AM.jpeg",
             "alt": "Klawford Athens - Cream angle"
           }
         },
         "a4": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-red-WhatsApp_Image_2026_08_17_at_7.51.48_AM__1.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-red-WhatsApp_Image_2026_08_17_at_7.51.49_AM__1.jpeg",
             "alt": "Klawford Athens - Red angle"
           }
         },
         "a5": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-brown-WhatsApp_Image_2026_08_17_at_7.55.00_AM.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-brown-WhatsApp_Image_2026_08_17_at_7.55.02_AM.jpeg",
             "alt": "Klawford Athens - Brown angle"
           }
         },
@@ -61,14 +70,14 @@
         "a7": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-WhatsApp_Image_2026_08_17_at_7.47.36_AM__2.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/10.jpg",
             "alt": "Couple relaxing in a Klawford bed"
           }
         },
         "a8": {
           "type": "image",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-brown-WhatsApp_Image_2026_08_17_at_7.55.01_AM__1.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/11.jpg",
             "alt": "Klawford bed in a stylish bedroom setting"
           }
         }
@@ -94,7 +103,7 @@
         "r1": {
           "type": "review",
           "settings": {
-            "text": "The Athens Divan is stunning — really solid and the fabric feels incredibly premium. The storage drawers are huge and so easy to use.",
+            "text": "The Athens Divan is stunning â€” really solid and the fabric feels incredibly premium. The storage drawers are huge and so easy to use.",
             "author": "Claire B.",
             "time_ago": "1 day ago"
           }
@@ -118,7 +127,7 @@
         "r4": {
           "type": "review",
           "settings": {
-            "text": "Great quality, great price and fast delivery. The storage drawers hold so much — transformed my bedroom completely.",
+            "text": "Great quality, great price and fast delivery. The storage drawers hold so much â€” transformed my bedroom completely.",
             "author": "Jason R.",
             "time_ago": "4 days ago"
           }
@@ -149,41 +158,41 @@
         "f1": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-hero.jpg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-black-WhatsApp_Image_2026_08_17_at_7.38.55_AM.jpeg",
             "title": "60 Night Risk-Free Trial",
-            "description": "<p>We're so confident you'll love your Athens bed that we offer a full 60-night risk-free trial. Not satisfied within the first 60 nights? Simply contact us for a hassle-free return or swap — no questions asked. Sleep easy knowing your purchase is completely protected. Our friendly customer care team is available 7 days a week to assist you, ensuring your Klawford experience is nothing short of perfect from the moment you order to the night you first sleep in it.</p>"
+            "description": "<p>We're so confident you'll love your Athens bed that we offer a full 60-night risk-free trial. Not satisfied within the first 60 nights? Simply contact us for a hassle-free return or swap â€” no questions asked. Sleep easy knowing your purchase is completely protected. Our friendly customer care team is available 7 days a week to assist you, ensuring your Klawford experience is nothing short of perfect from the moment you order to the night you first sleep in it.</p>"
           }
         },
         "f2": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.21_AM__1.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-grey-WhatsApp_Image_2026_08_17_at_7.58.22_AM__2.jpeg",
             "title": "Extra Storage Option For More Space",
-            "description": "<p>Make the most of your bedroom with the Athens Divan's optional drawer storage. Choose from 2 smooth-glide drawers on the left or right side to keep your bedroom beautifully organised and clutter-free. Each drawer is deep, sturdy, and built to last — ideal for storing duvets, pillows, seasonal clothing and more. With the Athens storage base, everything stays neatly tucked away while your bedroom remains a calm, tidy sanctuary. The drawers sit flush with the base for a seamless, premium finish that looks as good as it functions.</p>"
+            "description": "<p>Make the most of your bedroom with the Athens Divan's optional drawer storage. Choose from 2 smooth-glide drawers on the left or right side to keep your bedroom beautifully organised and clutter-free. Each drawer is deep, sturdy, and built to last â€” ideal for storing duvets, pillows, seasonal clothing and more. With the Athens storage base, everything stays neatly tucked away while your bedroom remains a calm, tidy sanctuary. The drawers sit flush with the base for a seamless, premium finish that looks as good as it functions.</p>"
           }
         },
         "f3": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-WhatsApp_Image_2026_08_17_at_7.47.35_AM.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-WhatsApp_Image_2026_08_17_at_7.47.36_AM__3.jpeg",
             "title": "Sustainably Sourced & Handmade in The UK",
-            "description": "<p>Every Klawford Athens Divan is handcrafted in Britain using sustainably sourced timber and premium upholstery fabrics — built to last a lifetime and designed to impress. Our skilled British craftspeople take pride in every stitch and joint, delivering a flawless finish you can see and feel. By choosing Klawford you're supporting British manufacturing and eco-responsible sourcing that helps protect the environment for future generations. Each Athens bed carries the quality and care of true artisan craftsmanship, made with passion right here in the UK.</p>"
+            "description": "<p>Every Klawford Athens Divan is handcrafted in Britain using sustainably sourced timber and premium upholstery fabrics â€” built to last a lifetime and designed to impress. Our skilled British craftspeople take pride in every stitch and joint, delivering a flawless finish you can see and feel. By choosing Klawford you're supporting British manufacturing and eco-responsible sourcing that helps protect the environment for future generations. Each Athens bed carries the quality and care of true artisan craftsmanship, made with passion right here in the UK.</p>"
           }
         },
         "f4": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-red-WhatsApp_Image_2026_08_17_at_7.51.48_AM__1.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-red-WhatsApp_Image_2026_08_17_at_7.51.59_AM.jpeg",
             "title": "Customisable & Beautiful Headboards",
-            "description": "<p>The Athens comes with a stunning upholstered headboard as standard, perfectly matched to your chosen fabric colour for a seamless, luxury bedroom look. The generously padded headboard provides a comfortable backrest for reading or relaxing — as stylish as it is practical. Available in a range of beautiful fabric colours to suit any bedroom décor, the Athens headboard makes an instant style statement that ties the whole room together. It's the finishing touch that transforms your bedroom into a true retreat.</p>"
+            "description": "<p>The Athens comes with a stunning upholstered headboard as standard, perfectly matched to your chosen fabric colour for a seamless, luxury bedroom look. The generously padded headboard provides a comfortable backrest for reading or relaxing â€” as stylish as it is practical. Available in a range of beautiful fabric colours to suit any bedroom dÃ©cor, the Athens headboard makes an instant style statement that ties the whole room together. It's the finishing touch that transforms your bedroom into a true retreat.</p>"
           }
         },
         "f5": {
           "type": "feature",
           "settings": {
-            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-brown-WhatsApp_Image_2026_08_17_at_7.55.00_AM.jpeg",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-brown-WhatsApp_Image_2026_08_17_at_7.55.01_AM__3.jpeg",
             "title": "Compatible With All Mattress Types",
-            "description": "<p>The Athens Divan base works perfectly with memory foam, pocket spring, hybrid, latex and orthopaedic mattresses — giving you total freedom to choose your ideal sleep surface. The solid, sprung platform top distributes weight evenly across the entire mattress, enhancing comfort and extending its lifespan. Whether you need firm orthopaedic support or a plush, cloud-like feel, the Athens adapts perfectly to your sleep preferences. Pair it with the Klawford Duo Sleep or Hybrid 3000 mattress for the ultimate night's sleep.</p>"
+            "description": "<p>The Athens Divan base works perfectly with memory foam, pocket spring, hybrid, latex and orthopaedic mattresses â€” giving you total freedom to choose your ideal sleep surface. The solid, sprung platform top distributes weight evenly across the entire mattress, enhancing comfort and extending its lifespan. Whether you need firm orthopaedic support or a plush, cloud-like feel, the Athens adapts perfectly to your sleep preferences. Pair it with the Klawford Duo Sleep or Hybrid 3000 mattress for the ultimate night's sleep.</p>"
           }
         }
       },
@@ -341,7 +350,7 @@
           "type": "point",
           "settings": {
             "title": "No Early Repayment Charges",
-            "description": "Want to pay it off sooner? No problem — there are no fees when your balance is cleared early."
+            "description": "Want to pay it off sooner? No problem â€” there are no fees when your balance is cleared early."
           }
         }
       },
@@ -357,7 +366,7 @@
         "heading": "Sleep Specialists At Your Service!",
         "show_atc": true,
         "atc_label": "Add to Basket",
-        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-hero.jpg"
+        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-red-hero.jpg"
       },
       "blocks": {
         "s1": {
@@ -371,7 +380,7 @@
           "type": "service",
           "settings": {
             "title": "Stress-Free Assembly",
-            "description": "Your Klawford team will assemble your new Athens Divan in your room for a smooth, hassle-free experience — all you do is enjoy it."
+            "description": "Your Klawford team will assemble your new Athens Divan in your room for a smooth, hassle-free experience â€” all you do is enjoy it."
           }
         },
         "s3": {
@@ -398,35 +407,35 @@
           "type": "faq_item",
           "settings": {
             "question": "Do your products conform to UK fire safety regulations?",
-            "answer": "<p>Yes — all Klawford products fully comply with UK fire safety regulations including BS 7177. Our factory holds all required certifications.</p>"
+            "answer": "<p>Yes â€” all Klawford products fully comply with UK fire safety regulations including BS 7177. Our factory holds all required certifications.</p>"
           }
         },
         "q2": {
           "type": "faq_item",
           "settings": {
             "question": "How long does delivery take once I've placed my order?",
-            "answer": "<p>Standard delivery is 7–14 working days. You'll receive full tracking information once dispatched. Our 2-man team will contact you to arrange a convenient delivery slot.</p>"
+            "answer": "<p>Standard delivery is 7â€“14 working days. You'll receive full tracking information once dispatched. Our 2-man team will contact you to arrange a convenient delivery slot.</p>"
           }
         },
         "q3": {
           "type": "faq_item",
           "settings": {
             "question": "Can I choose my delivery date and time?",
-            "answer": "<p>Yes — once your order is ready to dispatch, our delivery partner will contact you to arrange a convenient date and time window that suits you.</p>"
+            "answer": "<p>Yes â€” once your order is ready to dispatch, our delivery partner will contact you to arrange a convenient date and time window that suits you.</p>"
           }
         },
         "q4": {
           "type": "faq_item",
           "settings": {
             "question": "Can I place my order over the phone?",
-            "answer": "<p>Yes — our sleep specialists are available to take your order by phone. Call us at 0800 000 0000 and we'll guide you through the options and handle your order directly.</p>"
+            "answer": "<p>Yes â€” our sleep specialists are available to take your order by phone. Call us at 0800 000 0000 and we'll guide you through the options and handle your order directly.</p>"
           }
         },
         "q5": {
           "type": "faq_item",
           "settings": {
             "question": "What is the 60-night risk-free trial?",
-            "answer": "<p>We're so confident in our products that we offer a 60-night risk-free trial. If you're not completely satisfied within the first 60 nights, contact us for a full refund or free replacement — no questions asked.</p>"
+            "answer": "<p>We're so confident in our products that we offer a 60-night risk-free trial. If you're not completely satisfied within the first 60 nights, contact us for a full refund or free replacement â€” no questions asked.</p>"
           }
         },
         "q6": {
@@ -440,7 +449,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Can I pay monthly or through financing options?",
-            "answer": "<p>Yes — we offer 0% interest financing through Klarna and other providers at checkout. Split your purchase into manageable monthly instalments with no hidden fees.</p>"
+            "answer": "<p>Yes â€” we offer 0% interest financing through Klarna and other providers at checkout. Split your purchase into manageable monthly instalments with no hidden fees.</p>"
           }
         },
         "q8": {
