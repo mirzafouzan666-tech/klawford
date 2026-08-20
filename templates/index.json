@@ -138,7 +138,7 @@
       "settings": {
         "heading": "New & Trending",
         "collection": "all",
-        "products_to_show": 8,
+        "products_to_show": 12,
         "cta_label": "Shop All Products",
         "cta_url": "/collections/all"
       }
