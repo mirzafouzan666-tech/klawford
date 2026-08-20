@@ -1,0 +1,87 @@
+<section class="bed-categories section">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="section-title">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+    <div class="bed-categories__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'category' -%}
+          <a href="{{ block.settings.url | default: '/collections/all' }}" class="bed-cat-card" {{ block.shopify_attributes }}>
+            <div class="bed-cat-card__img">
+              {%- if block.settings.image != blank -%}
+                <img
+                  src="{{ block.settings.image | image_url: width: 700 }}"
+                  alt="{{ block.settings.label | escape }}"
+                  loading="lazy"
+                  width="700"
+                  height="500">
+              {%- elsif block.settings.image_src != blank -%}
+                <img
+                  src="{{ block.settings.image_src }}"
+                  alt="{{ block.settings.label | escape }}"
+                  loading="lazy"
+                  width="700"
+                  height="500">
+              {%- else -%}
+                <div class="bed-cat-card__placeholder">
+                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="24" width="40" height="16" rx="3" stroke="currentColor" stroke-width="2"/>
+                    <rect x="4" y="20" width="40" height="6" rx="2" fill="currentColor" opacity="0.15"/>
+                    <rect x="8" y="10" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                    <rect x="4" y="38" width="6" height="6" rx="1" fill="currentColor" opacity="0.5"/>
+                    <rect x="38" y="38" width="6" height="6" rx="1" fill="currentColor" opacity="0.5"/>
+                  </svg>
+                </div>
+              {%- endif -%}
+              <div class="bed-cat-card__overlay"></div>
+              <div class="bed-cat-card__content">
+                {%- if block.settings.badge != blank -%}
+                  <span class="bed-cat-card__badge">{{ block.settings.badge }}</span>
+                {%- endif -%}
+                <h3 class="bed-cat-card__label">{{ block.settings.label }}</h3>
+                {%- if block.settings.sub != blank -%}
+                  <p class="bed-cat-card__sub">{{ block.settings.sub }}</p>
+                {%- endif -%}
+                <span class="bed-cat-card__cta">
+                  Shop Now
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bed Categories",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Section Heading", "default": "Shop by Bed Type" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Bed Category",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Category image" },
+        { "type": "text", "id": "image_src", "label": "Image URL (CDN)", "info": "Use if image picker is empty" },
+        { "type": "text", "id": "label", "label": "Category name", "default": "Divan Beds" },
+        { "type": "text", "id": "sub", "label": "Sub-label (optional)", "default": "Classic divan bases with storage" },
+        { "type": "text", "id": "badge", "label": "Badge text (optional, e.g. New)" },
+        { "type": "url", "id": "url", "label": "Link URL" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Bed Categories",
+    "blocks": [
+      { "type": "category", "settings": { "label": "Divan Beds", "sub": "Classic divan bases with optional storage", "url": "/collections/divan-beds" } },
+      { "type": "category", "settings": { "label": "Upholstered Beds", "sub": "Fully upholstered frames in premium fabrics", "url": "/collections/upholstered-beds" } },
+      { "type": "category", "settings": { "label": "Rugby Bed Set", "sub": "Premium divan bed set — 5 colours", "badge": "New", "url": "/products/klawford-rugby-divan-bed" } }
+    ]
+  }]
+}
+{% endschema %}

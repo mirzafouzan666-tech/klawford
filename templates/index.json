@@ -96,6 +96,43 @@
       },
       "block_order": ["cat1", "cat2", "cat3", "cat4"]
     },
+    "bed_categories": {
+      "type": "bed-categories",
+      "settings": {
+        "heading": "Shop by Bed Type"
+      },
+      "blocks": {
+        "bc1": {
+          "type": "category",
+          "settings": {
+            "label": "Divan Beds",
+            "sub": "Classic divan bases with optional storage drawers",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/athens-cream-hero.jpg",
+            "url": "/collections/divan-beds"
+          }
+        },
+        "bc2": {
+          "type": "category",
+          "settings": {
+            "label": "Upholstered Beds",
+            "sub": "Fully upholstered frames in premium fabrics",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/ec62fc7bd29ca5f85a71eacefc22a3e1.jpg",
+            "url": "/collections/upholstered-beds"
+          }
+        },
+        "bc3": {
+          "type": "category",
+          "settings": {
+            "label": "Rugby Bed Set",
+            "sub": "Premium divan bed set — 5 colours available",
+            "badge": "New",
+            "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/image_6.jpg",
+            "url": "/products/klawford-rugby-divan-bed"
+          }
+        }
+      },
+      "block_order": ["bc1","bc2","bc3"]
+    },
     "new_trending": {
       "type": "new-trending",
       "settings": {
@@ -260,6 +297,7 @@
     "hero_banner",
     "social_proof",
     "popular_categories",
+    "bed_categories",
     "new_trending",
     "trust_badges",
     "divan_feature",
