@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -20,47 +11,57 @@
     },
     "in_real_life": {
       "type": "product-in-real-life",
+      "settings": {
+        "heading": "In Real Life",
+        "subheading": "See how our customers style their bed"
+      },
       "blocks": {
         "img1": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.58_PM.jpeg",
-            "alt": "Storage drawers open - customer lifestyle"
+            "alt": "Storage drawers open - customer lifestyle",
+            "show_play": false
           }
         },
         "img2": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.59_PM_1.jpeg",
-            "alt": "Couple relaxing in bed"
+            "alt": "Couple relaxing in bed",
+            "show_play": false
           }
         },
         "img3": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_7.01.51_PM_1.jpeg",
-            "alt": "Family reading in bed"
+            "alt": "Family reading in bed",
+            "show_play": false
           }
         },
         "img4": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_7.07.07_PM_1.jpeg",
-            "alt": "Luxury grey bedroom"
+            "alt": "Luxury grey bedroom",
+            "show_play": false
           }
         },
         "img5": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_7.10.20_PM.jpeg",
-            "alt": "Ottoman storage interior"
+            "alt": "Ottoman storage interior",
+            "show_play": false
           }
         },
         "img6": {
           "type": "image",
           "settings": {
             "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_7.11.54_PM.jpeg",
-            "alt": "Professional bed assembly"
+            "alt": "Professional bed assembly",
+            "show_play": false
           }
         }
       },
@@ -71,14 +72,14 @@
         "img4",
         "img5",
         "img6"
-      ],
-      "settings": {
-        "heading": "In Real Life",
-        "subheading": "See how our customers style their bed"
-      }
+      ]
     },
     "social_proof": {
       "type": "social-proof-bar",
+      "settings": {
+        "text": "Over 100,000 Happy Customers",
+        "rating_text": "Trustpilot 4.9/5"
+      },
       "blocks": {
         "r1": {
           "type": "review",
@@ -127,14 +128,13 @@
         "r3",
         "r4",
         "r5"
-      ],
-      "settings": {
-        "text": "Over 100,000 Happy Customers",
-        "rating_text": "Trustpilot 4.9/5"
-      }
+      ]
     },
     "product_features": {
       "type": "product-features",
+      "settings": {
+        "heading": "Why Choose A Klawford Divan Bed?"
+      },
       "blocks": {
         "f1": {
           "type": "feature",
@@ -183,13 +183,14 @@
         "f3",
         "f4",
         "f5"
-      ],
-      "settings": {
-        "heading": "Why Choose A Klawford Divan Bed?"
-      }
+      ]
     },
     "product_dimensions": {
       "type": "product-dimensions",
+      "settings": {
+        "heading": "Dimensions",
+        "headboard_note": "Small Divan Standing Headboard"
+      },
       "blocks": {
         "d1": {
           "type": "dimension_row",
@@ -283,14 +284,16 @@
         "p3",
         "p4",
         "p5"
-      ],
-      "settings": {
-        "heading": "Dimensions",
-        "headboard_note": "Small Divan Standing Headboard"
-      }
+      ]
     },
     "product_finance": {
       "type": "product-finance",
+      "settings": {
+        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
+        "heading": "Shop Now, Pay Later",
+        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees.",
+        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.58_PM.jpeg"
+      },
       "blocks": {
         "pt1": {
           "type": "point",
@@ -318,16 +321,16 @@
         "pt1",
         "pt2",
         "pt3"
-      ],
-      "settings": {
-        "provider_label": "0% INTEREST-FREE INSTALLMENTS",
-        "heading": "Shop Now, Pay Later",
-        "subheading": "Split the cost of your order into easy monthly instalments with no hidden fees.",
-        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.58_PM.jpeg"
-      }
+      ]
     },
     "product_services": {
       "type": "product-services",
+      "settings": {
+        "heading": "Sleep Specialists At Your Service!",
+        "show_atc": true,
+        "atc_label": "Add to Basket",
+        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.59_PM_1.jpeg"
+      },
       "blocks": {
         "s1": {
           "type": "service",
@@ -355,16 +358,13 @@
         "s1",
         "s2",
         "s3"
-      ],
-      "settings": {
-        "heading": "Sleep Specialists At Your Service!",
-        "image_src": "https://cdn.shopify.com/s/files/1/0960/5588/6153/files/WhatsApp_Image_2026-07-16_at_6.56.59_PM_1.jpeg",
-        "show_atc": true,
-        "atc_label": "Add to Basket"
-      }
+      ]
     },
     "product_faq": {
       "type": "faq",
+      "settings": {
+        "heading": "Frequently Asked Questions"
+      },
       "blocks": {
         "q1": {
           "type": "faq_item",
@@ -432,10 +432,7 @@
         "q6",
         "q7",
         "q8"
-      ],
-      "settings": {
-        "heading": "Frequently Asked Questions"
-      }
+      ]
     }
   },
   "order": [
